@@ -4,7 +4,8 @@
 
 const WINDOW_MINUTES = 120;          // 2-hour arrival windows
 const FIRST_START = 7 * 60;          // earliest window start: 7:00 AM ET
-const LAST_START = 14 * 60;          // latest window start:  2:00 PM ET
+const LAST_START = 14 * 60 + 30;     // latest window start:  2:30 PM ET (mirrors HCP widget)
+const MIN_LEAD_MINUTES = 120;        // same-day bookings must start at least this far from now
 
 function etParts(iso) {
   // Returns {date:"YYYY-MM-DD", minutes: minutes-past-midnight} in America/New_York
@@ -53,17 +54,32 @@ exports.handler = async (event) => {
     if (!r.ok) throw new Error("HCP responded " + r.status);
     const data = await r.json();
 
-    const slots = [];
+    // Map every 30-min segment of the requested day: minutes-past-midnight -> {available, iso}
+    const seg = new Map();
     for (const w of (data.booking_windows || [])) {
-      if (!w.available) continue;
       const p = etParts(w.start_time);
-      if (p.date !== date) continue;                        // only the requested day
-      if (p.minutes < FIRST_START || p.minutes > LAST_START) continue;
-      const endMin = p.minutes + WINDOW_MINUTES;
+      if (p.date !== date) continue;
+      seg.set(p.minutes, { available: !!w.available, iso: w.start_time });
+    }
+
+    // HCP widget rule: a 2-hour arrival window is offered only if every existing
+    // 30-min segment it spans is available (segments past schedule end are ignored).
+    const slots = [];
+    for (let m = FIRST_START; m <= LAST_START; m += 30) {
+      const startSeg = seg.get(m);
+      if (!startSeg || !startSeg.available) continue;
+      // same-day lead time: hide windows starting too soon
+      if (new Date(startSeg.iso).getTime() - Date.now() < MIN_LEAD_MINUTES * 60000) continue;
+      let ok = true;
+      for (let k = 30; k < WINDOW_MINUTES; k += 30) {
+        const s = seg.get(m + k);
+        if (s && !s.available) { ok = false; break; }
+      }
+      if (!ok) continue;
       slots.push({
-        label: label12(p.minutes) + " \u2013 " + label12(endMin),
-        start: w.start_time,
-        end: new Date(new Date(w.start_time).getTime() + WINDOW_MINUTES * 60000).toISOString()
+        label: label12(m) + " \u2013 " + label12(m + WINDOW_MINUTES),
+        start: startSeg.iso,
+        end: new Date(new Date(startSeg.iso).getTime() + WINDOW_MINUTES * 60000).toISOString()
       });
     }
 
