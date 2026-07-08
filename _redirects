@@ -1,0 +1,16 @@
+# consolidated pricing pages
+/see-prices /how-we-price/ 301
+/single-item-prices /how-we-price/ 301
+/how-we-price/multi-item /how-we-price/ 301
+# booking
+/book-appointment /book/ 301
+/book-online /book/ 301
+/book-appointment-og /book/ 301
+# duplicate service URLs
+/commercial-junk-removal-nj /commercial/ 301
+/property-cleanouts /our-services/cleanouts/ 301
+# old ad landing URLs -> new landing twins (update Google Ads final URLs after launch)
+/hot-tub-removal-nj /hot-tub-removal/ 301
+/billiard-table-removal-nj /billiard-table-removal/ 301
+/hoarder-cleanouts-nj /cleanouts/ 301
+/deck-removal-nj /our-services/construction-waste-removal/ 302
