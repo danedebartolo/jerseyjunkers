@@ -474,7 +474,8 @@ async function loadSlots(d){
   slots.innerHTML='<div style="color:#77746a;font-size:15px;padding:6px 2px">Checking real-time availability\u2026</div>';
   const rid=++slotReq;
   try{
-    const r=await fetch("/.netlify/functions/availability?date="+encodeURIComponent(d));
+    const mins=(S.svc==="Single Item Pick-Up")?30:90;
+    const r=await fetch("/.netlify/functions/availability?date="+encodeURIComponent(d)+"&minutes="+mins);
     if(!r.ok)throw new Error(r.status);
     const data=await r.json();
     if(rid!==slotReq)return; // stale response, a newer date was picked

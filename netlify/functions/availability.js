@@ -2,7 +2,8 @@
 // Proxies Housecall Pro's booking-windows endpoint so the API key never reaches the browser.
 // Requires env var HCP_API_KEY (Netlify -> Site settings -> Environment variables).
 
-const WINDOW_MINUTES = 120;          // 2-hour arrival windows
+const WINDOW_MINUTES = 120;          // 2-hour arrival windows (what the customer sees)
+const DEFAULT_JOB_MINUTES = 90;      // capacity check span if none provided
 const FIRST_START = 7 * 60;          // earliest window start: 7:00 AM ET
 const LAST_START = 14 * 60 + 30;     // latest window start:  2:30 PM ET (mirrors HCP widget)
 const MIN_LEAD_MINUTES = 120;        // same-day bookings must start at least this far from now
@@ -36,7 +37,10 @@ exports.handler = async (event) => {
     "Cache-Control": "public, max-age=60"
   };
 
-  const date = (event.queryStringParameters || {}).date;
+  const qs = event.queryStringParameters || {};
+  const date = qs.date;
+  let jobMin = parseInt(qs.minutes, 10);
+  if (!jobMin || jobMin < 30 || jobMin > 240) jobMin = DEFAULT_JOB_MINUTES;
   if (!date || !/^\d{4}-\d{2}-\d{2}$/.test(date)) {
     return { statusCode: 400, headers, body: JSON.stringify({ error: "date required (YYYY-MM-DD)" }) };
   }
@@ -71,7 +75,7 @@ exports.handler = async (event) => {
       // same-day lead time: hide windows starting too soon
       if (new Date(startSeg.iso).getTime() - Date.now() < MIN_LEAD_MINUTES * 60000) continue;
       let ok = true;
-      for (let k = 30; k < WINDOW_MINUTES; k += 30) {
+      for (let k = 30; k < jobMin; k += 30) {
         const s = seg.get(m + k);
         if (s && !s.available) { ok = false; break; }
       }
