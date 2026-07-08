@@ -511,7 +511,7 @@ next1.onclick=()=>{
   if(S.svc==="Special Services"){
     document.getElementById("wsum").innerHTML="<b>Special Services</b>"+(S.item?" — "+S.item:"")+(P.get("zip")?" · ZIP "+P.get("zip"):"")+"<br><small style=color:#77746a>No date needed — we’ll reach out to lock your set price first.</small>";
     labelStep3(); go(3);
-  } else { go(2); }
+  } else { loadSlots(S.date); go(2); }
 };
 next2.onclick=()=>{ labelStep3();
   document.getElementById("wsum").innerHTML="<b>"+S.svc+"</b>"+(S.item?" — "+S.item:"")+" · <b>"+S.date+"</b> · "+S.slot+(P.get("zip")?" · ZIP "+P.get("zip"):"");
