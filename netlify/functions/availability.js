@@ -5,7 +5,6 @@
 const WINDOW_MINUTES = 120;          // 2-hour arrival windows (what the customer sees)
 const DEFAULT_JOB_MINUTES = 90;      // capacity check span if none provided
 const FIRST_START = 7 * 60;          // earliest window start: 7:00 AM ET
-const LAST_START = 14 * 60 + 30;     // latest window start:  2:30 PM ET (mirrors HCP widget)
 const MIN_LEAD_MINUTES = 120;        // same-day bookings must start at least this far from now
 
 function etParts(iso) {
@@ -66,18 +65,19 @@ exports.handler = async (event) => {
       seg.set(p.minutes, { available: !!w.available, iso: w.start_time });
     }
 
-    // HCP widget rule: a 2-hour arrival window is offered only if every existing
-    // 30-min segment it spans is available (segments past schedule end are ignored).
+    // HCP rule: a window is offered only if the job's full duration fits in
+    // existing, available segments (the job must finish before the schedule ends).
+    const starts = [...seg.keys()].filter(m => m >= FIRST_START).sort((a,b)=>a-b);
     const slots = [];
-    for (let m = FIRST_START; m <= LAST_START; m += 30) {
+    for (const m of starts) {
       const startSeg = seg.get(m);
-      if (!startSeg || !startSeg.available) continue;
+      if (!startSeg.available) continue;
       // same-day lead time: hide windows starting too soon
       if (new Date(startSeg.iso).getTime() - Date.now() < MIN_LEAD_MINUTES * 60000) continue;
       let ok = true;
       for (let k = 30; k < jobMin; k += 30) {
         const s = seg.get(m + k);
-        if (s && !s.available) { ok = false; break; }
+        if (!s || !s.available) { ok = false; break; }
       }
       if (!ok) continue;
       slots.push({
