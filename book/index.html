@@ -487,7 +487,8 @@ async function loadSlots(d){
     slots.insertAdjacentHTML("beforeend",'<p style="font-size:13px;color:#77746a;margin-top:10px">Live availability is unavailable right now \u2014 we\u2019ll confirm your window by text.</p>');
   }
 }
-const tom=new Date(Date.now()+86400000);wdate.value=tom.toISOString().slice(0,10);wdate.min=new Date().toISOString().slice(0,10);S.date=wdate.value;
+const etDay=t=>new Intl.DateTimeFormat("en-CA",{timeZone:"America/New_York"}).format(t);
+wdate.value=etDay(new Date(Date.now()+86400000));wdate.min=etDay(new Date());S.date=wdate.value;
 function armNext2(){const ok=S.date&&S.slot;next2.disabled=!ok;next2.style.opacity=ok?"1":".4"}
 wdate.onchange=()=>{S.date=wdate.value;loadSlots(S.date)};
 loadSlots(S.date);
