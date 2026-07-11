@@ -7,9 +7,9 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Pricing | Jersey Junkers&reg;</title>
+<title>Multi-Item Pricing | Jersey Junkers&reg;</title>
 <meta name="description" content="Junk removal pricing, posted in full. Single items from $99, truck loads from $199 to $949 — pay only for the space you fill. The dumpster alternative that loads itself.">
-<link rel="canonical" href="https://www.jerseyjunkers.com/how-we-price/">
+<link rel="canonical" href="https://www.jerseyjunkers.com/how-we-price/multi-item/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -195,6 +195,8 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 @media (max-width:820px){.rail-arrow{width:40px;height:40px;font-size:17px;box-shadow:2px 2px 0 var(--ink)}.rail-left{left:6px}.rail-right{right:6px}}
 .counties a{border:1.5px solid var(--ink);border-radius:999px;padding:9px 20px;font-size:15px;font-weight:600;background:#fff;text-decoration:none;color:var(--ink);display:inline-block}
 .counties a:hover{background:var(--gold)}
+.romw-wrap{width:100%}
+.romw-wrap > div{width:100% !important;min-width:0}
 @media (max-width:820px){.band .wrap{padding:0 14px}}
 .cbar{background:var(--gold);border-top:1px solid rgba(26,26,26,.18)}
 .cbar-in{display:flex;flex-wrap:wrap;gap:8px 30px;align-items:center;justify-content:center;padding:16px 28px;font-size:16.5px}
@@ -255,40 +257,11 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 }
 .funnel3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .f3-card{display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:24px 22px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
-.f3-card p{flex:0 0 auto}
-.f3-list{list-style:none;padding:0;margin:12px 0 0;flex:1}
-.f3-list li{padding:4px 0 4px 24px;position:relative;font-size:14.5px;color:#3E3C36}
-.f3-list li:before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:900}
-.f3-links{list-style:none;padding:0;margin:12px 0 0;flex:1}
-.f3-links li{padding:4px 0}
-.f3-links a{color:var(--navy);font-weight:700;font-size:14.5px;text-decoration:none}
-.f3-links a:hover{text-decoration:underline}
-.f3-card{cursor:pointer;overflow:hidden}
-.f3-card:hover{border-color:var(--gold);background:#FFFDF2;transform:translateY(-4px);box-shadow:0 14px 30px rgba(26,26,26,.13)}
-.f3-card .f3-img img{transition:transform .35s ease}
-.f3-card:hover .f3-img img{transform:scale(1.06)}
-.f3-card .f3-go{transition:color .15s}
-.f3-card:hover .f3-go{color:var(--ink)}
-.f3-card .f3-go:after{content:""}
-.f3-card:hover h3{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:3px;text-underline-offset:5px}
-.f3-card:hover{border-width:2.5px;padding:23px 21px}
-.rot-head{position:relative;margin:0 auto}
-.rot-title{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;color:#fff;margin:0}
-.rot-title.active{opacity:1}
-.rot-stars{color:var(--gold);font-size:30px;letter-spacing:6px;text-align:center;margin-bottom:18px;text-shadow:0 1px 0 rgba(26,26,26,.35)}
-.rot-wrap{position:relative;max-width:760px;margin:0 auto}
-.rot-quote{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;color:#fff;font-size:19px;line-height:1.65;font-weight:600;text-align:center;margin:0}
-.rot-quote.active{opacity:1}
-.hub-reviews{padding:80px 0;background-size:cover;background-position:center}
-.f3-img{aspect-ratio:1/1;border-radius:12px;overflow:hidden;margin-bottom:16px}
-.f3-img img{width:100%;height:100%;object-fit:cover;display:block}
-.f3-collage{display:grid;grid-template-columns:1fr 1fr;gap:0;aspect-ratio:auto;overflow:hidden;border-radius:12px}
-.f3-collage img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block}
+.f3-card:hover{border-color:var(--ink);transform:translateY(-2px)}
+.f3-card.f3-here{border:2.5px solid var(--gold);background:#FFFDF2}
 .f3-kicker{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:12.5px;letter-spacing:.08em;color:#77746A;margin-bottom:8px}
 .f3-card h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:19px;margin-bottom:8px}
 .f3-card p{font-size:14.5px;color:#3E3C36;flex:1}
-.f3-card p{font-size:15.5px;line-height:1.7}
-.f3-card mark{background:linear-gradient(transparent 55%, rgba(245,196,0,.55) 55%);font-weight:800;padding:0 2px}
 .f3-go{margin-top:14px;font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.04em;color:var(--navy)}
 @media (max-width:860px){.funnel3{grid-template-columns:1fr}}
 .tcheck{display:block;margin:10px 12px 16px;font-size:13.5px;font-weight:800;color:var(--navy);text-decoration:none;font-family:'Archivo',sans-serif;text-transform:uppercase;letter-spacing:.04em}
@@ -392,7 +365,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section style="padding:80px 0 44px"><div class="wrap">
 <div class="about-grid">
 <div>
-<div class="kicker">Pricing</div>
+<div class="kicker">Multi-item pricing</div>
 <h1 style="font-weight:900;font-stretch:105%;font-size:clamp(34px,4.6vw,54px);text-transform:uppercase;margin:14px 0 18px">The price is on the page.<br><span style="color:transparent;-webkit-text-stroke:2px var(--ink)">On purpose.</span></h1>
 <p style="font-size:18px">You shouldn't need to book a visit just to find out what junk removal costs. Volume-based rates, posted in full &mdash; and your crew confirms the price on-site before a single item is touched.<br><br>After thousands of pickups, we can tell you exactly how this works &mdash; because it works the same way every time.</p>
 </div>
@@ -400,56 +373,136 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section style="padding:0 0 70px"><div class="wrap">
-<div class="funnel3">
-<div class="f3-card">
-<div class="f3-img"><img src="https://static.wixstatic.com/media/36a716_c7ba5985c3e8457d88095ef8d83397e6~mv2.jpg/v1/fill/w_800,h_800,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Single item pick-up" loading="lazy"></div>
-<div class="f3-kicker">Single item</div>
-<h3>One piece, flat rate</h3>
-<p>Microwaves to mattresses &mdash; <mark>flat-rate pricing from $99</mark>, based on the item and where it's located. Sofas, appliances, treadmills, TVs &mdash; <b>one piece, one price, done.</b></p>
-<a class="f3-go" href="/book/">See single-item prices &rarr;</a>
+<section id="tiers" class="band" style="padding:70px 0 90px;border-top:1px solid var(--line);scroll-margin-top:110px"><div class="wrap">
+<div class="sec-head"><div class="kicker">Truck-load pricing</div>
+<h2>Straightforward &amp; simple pricing</h2>
+<p>Your junk removal cost is based on how much space your items take up in our truck. Our teams will price your load size to match one of our service tiers below.<br><br><b>We're ready to take as much &mdash; or as little &mdash; as you'd like.</b> And if your job is bigger than one truck? We handle that too &mdash; <a href="#multitruck" style="color:var(--navy);font-weight:800">see how multi-truck jobs work</a></p></div>
+<div class="tstack">
+<div class="trow">
+<div class="trow-truck"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_072542fd6fa04ce9a8d2a5f6a6d3253f~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="Standard service call"></div>
+<div class="trow-photo" data-tier="min"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_630d717992e749a8ba49c9ececf0a5c5~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Minimum load example"></div>
+<div class="trow-copy"><h3>Standard service call</h3><small>A group of items about the size of a loveseat</small></div>
+<div class="trow-price"><span class="tp">$199</span><a class="tcheck" href="/book/">Book your pickup &rarr;</a></div>
 </div>
-<div class="f3-card">
-<div class="f3-img"><img src="https://static.wixstatic.com/media/36a716_3e45e222296b40f682e684e5b8bd753d~mv2.png/v1/fill/w_800,h_800,al_c,q_85,enc_avif,quality_auto/file.png" alt="Multi-item truck load" loading="lazy"></div>
-<div class="f3-kicker">Multiple items</div>
-<h3>Priced by truck space</h3>
-<p>From a few items to full truckloads &mdash; <mark>volume-based tiers from $199</mark>, posted in full and illustrated truck by truck. Basements, garages, storage units, backyard piles &mdash; <b>you name it.</b></p>
-<a class="f3-go" href="/how-we-price/multi-item/">See the load sizes &rarr;</a>
+<div class="trow">
+<div class="trow-truck"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_3983496f51214ad5aca86f0dc1dbd11b~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="&frac14; truck load"></div>
+<div class="trow-photo" data-tier="quarter"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_0854235a275c46649a80d7a5c10cad0a~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Quarter load example"></div>
+<div class="trow-copy"><h3>&frac14; truck load</h3><small>Fills the bed of ONE extra-large pickup</small></div>
+<div class="trow-price"><span class="tp">$399</span><a class="tcheck" href="/book/">Book your pickup &rarr;</a></div>
 </div>
-<div class="f3-card">
-<div class="f3-img f3-collage">
-<img src="https://static.wixstatic.com/media/36a716_6cf4f8c2e9dd487899a0caa9b6e6c9f9~mv2.jpg/v1/fill/w_450,h_450,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Hot tub removal" loading="lazy">
-<img src="https://static.wixstatic.com/media/36a716_133d5835485e43de9774f13f91acd60a~mv2.jpg/v1/fill/w_450,h_450,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Above-ground pool removal" loading="lazy">
-<img src="https://static.wixstatic.com/media/36a716_54c1d769e56f45b9ae3f47e058a27c6d~mv2.jpg/v1/fill/w_450,h_450,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Swing set removal" loading="lazy">
-<img src="https://static.wixstatic.com/media/36a716_b9893735900d412ca14cba6cb1794f29~mv2.jpg/v1/fill/w_450,h_450,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Shed removal" loading="lazy">
+<div class="trow">
+<div class="trow-truck"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_2a510040a639484e96a773afb8c85288~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="&frac12; truck load"></div>
+<div class="trow-photo" data-tier="half"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_ffd77826b1ad40df870d3d4bc5943701~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Half truck load example"></div>
+<div class="trow-copy"><h3>&frac12; truck load</h3><small>Fills the beds of TWO extra-large pickups</small></div>
+<div class="trow-price"><span class="tp">$669</span><a class="tcheck" href="/book/">Book your pickup &rarr;</a></div>
 </div>
-<div class="f3-kicker">Specialty removals</div>
-<h3>Priced by the job</h3>
-<p>Beyond junk removal, we handle the big take-downs &mdash; hot tubs, above-ground pools, billiard tables, swing sets, and estate clean outs. Every job is a little different, so <mark>each one gets its own quote</mark> &mdash; <b>priced by the complexity and scope of the work.</b></p>
-<a class="f3-go" href="/our-services/">See all our services &rarr;</a>
+<div class="trow">
+<div class="trow-truck"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_f21ccfb16d0a4c3380ea8929c5cde871~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="&frac34; truck load"></div>
+<div class="trow-photo" data-tier="three-quarter"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_a15159ba0d254b3a89c22381c439da82~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Three-quarter truck load example"></div>
+<div class="trow-copy"><h3>&frac34; truck load</h3><small>Fills the beds of THREE extra-large pickups</small></div>
+<div class="trow-price"><span class="tp">$829</span><a class="tcheck" href="/book/">Book your pickup &rarr;</a></div>
 </div>
+<div class="trow">
+<div class="trow-truck"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_5470ad3c68ce4352aa97d0c5986aa0c4~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="Full truck load"></div>
+<div class="trow-photo" data-tier="full"><img loading="lazy" decoding="async" src="https://static.wixstatic.com/media/36a716_83dd5b8733f44fc8a5eb8d72adb371c8~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Full truck load example"></div>
+<div class="trow-copy"><h3>Full truck load</h3><small>FOUR pickup beds &mdash; more bang for your buck when you fill our truck</small></div>
+<div class="trow-price"><span class="tp">$949</span><a class="tcheck" href="/book/">Book your pickup &rarr;</a></div>
+</div>
+</div>
+<div style="position:relative;margin-top:36px">
+<p style="font-size:15px;color:#55524a;margin-bottom:12px">Real, unstaged loads from actual pickups &mdash; tap any photo to expand:</p>
+<div class="svc-rail" id="loadsrail">
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_5f322fa31c77473ab0e56f9f746f4a9a~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_35f6ee7912fd49bea238929d18e2283a~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_a4c335ba4e8b41519aed42f806eebb3b~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_69f634cb77fa4223b0a60773f86556ea~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_8f9d2f78751e4f0fbd99eb5b4dae459d~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_f02930ac54324b4887fa5b0fe086c749~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_9bd68c2a932342b78f0a0e3e6b69b875~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_e143f9dc6a3d48cab8c113d5d79f0193~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_ba378defa70d4058aa026a114590e507~mv2.jpg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_e8ba3e3cbf264e3699e9f71f9856dd26~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_67206aee959c45328374921fb61bcc74~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_92722ef715d341b7ba595711f78980e8~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_bfe88e8f3b83494aba1e68869244548c~mv2.jpeg/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Real Jersey Junkers load" loading="lazy"></div>
+<div class="lslot"><img src="https://static.wixstatic.com/media/36a716_630d717992e749a8ba49c9ececf0a5c5~mv2.png/v1/fill/w_600,h_600,al_c,q_82,enc_avif,quality_auto/file.png" alt="Real Jersey Junkers load" loading="lazy"></div>
+</div>
+<button class="rail-arrow rail-left" id="loadsL" type="button" aria-label="Scroll back">&larr;</button>
+<button class="rail-arrow rail-right" id="loadsR" type="button" aria-label="Scroll forward">&rarr;</button>
+</div>
+<div class="inc-band">
+<div class="inc-label">Have a little more or less? Pricing moves in increments:</div>
+<div class="inc-row"><span>$199</span><span>$299</span><span>$399</span><span>$479</span><span>$549</span><span>$599</span><span>$669</span><span>$729</span><span>$789</span><span>$829</span><span>$879</span><span>$929</span><span class="inc-full">$949 full load</span></div>
+</div>
+<p style="margin-top:30px;font-size:16px;color:#55524a">Have a single item? <a href="/book/" style="color:var(--navy);font-weight:800">Click here</a> to see pricing for single items in our booking wizard.</p>
+</div></section>
+
+<section style="padding:80px 0 90px"><div class="wrap">
+<div class="sec-head" id="multitruck" style="scroll-margin-top:120px"><div class="kicker">Bigger than one truck?</div>
+<h2>Multi-truck jobs, handled</h2>
+<p>Cleaning out a whole house? Tackling a big project? <b>We love the big jobs.</b></p></div>
+<div class="mt-row">
+<img loading="lazy" src="https://static.wixstatic.com/media/36a716_5470ad3c68ce4352aa97d0c5986aa0c4~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="Full Jersey Junkers truck">
+<span class="mt-plus">+</span>
+<img loading="lazy" src="https://static.wixstatic.com/media/36a716_2a510040a639484e96a773afb8c85288~mv2.png/v1/fit/w_900,h_580,q_85,enc_avif,quality_auto/file.png" alt="Half-loaded Jersey Junkers truck">
+</div>
+<p class="mt-caption">Example: a full truck plus a half truck &mdash; priced as exactly that.</p>
+<div class="mt-copy">
+<p>If your job needs more than one truck, we complete the first load and return &mdash; <b>same day whenever possible.</b></p>
+<p>Got a <b>really</b> big job? For large-scale cleanouts we can send <b>multiple trucks and multiple crews at once</b> &mdash; from cluttered to cleared <b>in one business day.</b></p>
+<div class="mt-callout"><p style="margin:0"><b>Planning ahead?</b> <b>Give us a call in advance</b> and we'll schedule multi-truck service at <b>no additional cost</b> to get multiple trucks on site. As always, <b>you just pay for what you fill.</b></p></div>
 </div>
 </div></section>
-<section class="hub-reviews" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_a31052da564c45bb909155723b65418f~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
-<div class="sec-head" style="text-align:center;max-width:720px;margin:0 auto 30px">
-<div class="kicker" style="display:inline-flex;color:var(--gold)">What your neighbors say</div>
-<div class="rot-head" id="rothead">
-<h2 class="rot-title active">Easy from start to finish</h2>
-<h2 class="rot-title">Transparent pricing &mdash; they never disappoint</h2>
-<h2 class="rot-title">On time, professional, priced fair</h2>
-<h2 class="rot-title">All your junk, gone &mdash; efficiently</h2>
-<h2 class="rot-title">They work their tails off</h2>
+<section style="padding:0 0 90px"><div class="wrap">
+<div class="sec-head"><div class="kicker">See it happen</div>
+<h2>Watch the crew work</h2>
+<p>Real clips from real pickups &mdash; you point, we lift, load, and haul.</p></div>
+<div class="video-slot" id="crewvideo"><video data-src="https://video.wixstatic.com/video/36a716_2c05edd377794e39845e694528f653aa/720p/mp4/file.mp4" muted loop playsinline controls preload="none"></video></div>
+</div></section>
+<section class="band"><div class="wrap">
+<div class="sec-head"><div class="kicker">The dumpster comparison</div>
+<h2>Like a dumpster &mdash; with a crew, and without the wait</h2>
+<p>Our truck-load pricing works a lot like renting a dumpster. The difference is everything that comes with it.</p></div>
+<div class="vs-wrap">
+<table class="vs">
+<tr><th></th><th class="vs-jj">Jersey Junkers&reg;</th><th>Dumpster rental</th></tr>
+<tr><td>The lifting</td><td class="vs-jj"><b>A 2-person crew</b> comes inside, lifts, and loads everything for you</td><td>You carry every item out yourself</td></tr>
+<tr><td>Time on your property</td><td class="vs-jj"><b>In and out</b> in a single visit</td><td>Sits in your driveway for days &mdash; sometimes all week</td></tr>
+<tr><td>Permits</td><td class="vs-jj"><b>None needed</b> &mdash; the truck leaves with your junk</td><td>Many NJ towns require a dumpster permit</td></tr>
+<tr><td>What you pay for</td><td class="vs-jj"><b>Only the space you fill</b> &mdash; quarter, half, three-quarter, or full</td><td>The whole container, whether you fill it or not</td></tr>
+<tr><td>The extras</td><td class="vs-jj">Sweep-up, donation &amp; recycling runs, careful crews</td><td>&mdash;</td></tr>
+</table>
 </div>
+</div></section>
+
+<section><div class="wrap">
+<div class="sec-head"><div class="kicker">Always included</div>
+<h2>Every price covers</h2></div>
+<div class="grid-cards">
+<div class="gcard"><h3>The crew &amp; the labor</h3><p>Two friendly, uniformed team members who lift, load, and transport everything &mdash; stairs included, basements and second floors at no extra charge.</p></div>
+<div class="gcard"><h3>Hauling &amp; disposal</h3><p>Transportation to disposal and donation sites, standard disposal fees, and standard furniture disassembly.</p></div>
+<div class="gcard"><h3>No sneaky fees</h3><p>No credit card fees, no fuel surcharges, and a 2-hour arrival window that holds.</p></div>
 </div>
-<div class="rot-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<div class="rot-wrap" id="rotwrap">
-<p class="rot-quote active">&ldquo;Everything about this process was easy. I called to set an appointment, they came and emptied everything for me. They were quick and efficient. Thank you so much&rdquo;</p>
-<p class="rot-quote">&ldquo;Best junk removal company in Monmouth. Professional, polite, on time, and transparent pricing. I&rsquo;ve used them many times and they never disappoint.&rdquo;</p>
-<p class="rot-quote">&ldquo;Great service&hellip;. Arrived on time&hellip; very professional&hellip; pricing was fair&hellip; great people to do business with &#128077;&#128077;&#128077;&rdquo;</p>
-<p class="rot-quote">&ldquo;Great service! They were here on time, took all my junk, and were extremely efficient!&rdquo;</p>
-<p class="rot-quote">&ldquo;The guys worked their tail off. Fast and easy to work with. Very accommodating including the office and the moves. Would use them again in a heart beat.&rdquo;</p>
+</div></section>
+
+<section class="band"><div class="wrap">
+<div class="sec-head"><div class="kicker">The fine print, printed</div>
+<h2>Extras &amp; additional disposal costs</h2>
+<p>A few items cost extra to dispose of responsibly &mdash; posted here, not sprung on you.</p></div>
+<div class="grid-cards finegrid">
+<div class="gcard"><h3>Additional disposal costs</h3><p>
+&bull; <b>Building material:</b> lumber, drywall, tile, concrete, bricks, pavers, and sand may carry a charge depending on quantity<br>
+&bull; <b>TVs / computer monitors:</b> +$25 per unit<br>
+&bull; <b>Tires:</b> $10 each &middot; on rims $20 &middot; tractor-size varies<br>
+&bull; <b>Mercer County mattress disposal:</b> $50 each</p></div>
+<div class="gcard"><h3>Extras</h3><p>
+&bull; <b>Sales tax:</b> 6.625%<br>
+&bull; <b>Elevators:</b> +15% if required (storage units excluded)<br>
+&bull; <b>Complex disassembly:</b> extra for exercise equipment or custom-built items<br>
+&bull; <b>Heavy items</b> (3&ndash;4 movers, e.g. pianos): extra fees apply<br>
+&bull; <b>Cleanouts:</b> hoarding or heavy loose debris may carry extra fees &mdash; let us know beforehand</p></div>
 </div>
-<div style="text-align:center;margin-top:18px"><a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a></div>
+<p style="margin-top:26px;font-size:14.5px;color:#55524a"><b>We can't take:</b> hazardous materials, paint, chemicals, lithium batteries, pressurized canisters, asbestos, dirt or organic yard waste, and similar &mdash; see <a href="/what-we-take/" style="color:var(--navy);font-weight:700">what we take</a>.</p>
 </div></section>
 <section class="final"><div class="wrap">
 <h2>Feel roomier by Friday.</h2>
@@ -575,36 +628,6 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     });
   },{rootMargin:"200px"});
   io.observe(v);
-})();
-</script>
-<script>
-(function(){
-  const wrap=document.getElementById("rotwrap"),head=document.getElementById("rothead");
-  if(!wrap||!head)return;
-  const qs=[...wrap.querySelectorAll(".rot-quote")],ts=[...head.querySelectorAll(".rot-title")];
-  function size(){
-    wrap.style.height=Math.max(...qs.map(q=>{q.style.position="static";const h=q.offsetHeight;q.style.position="";return h;}))+"px";
-    head.style.height=Math.max(...ts.map(t=>{t.style.position="static";const h=t.offsetHeight;t.style.position="";return h;}))+"px";
-  }
-  size();window.addEventListener("resize",size);
-  let i=0;
-  setInterval(()=>{
-    qs[i].classList.remove("active");ts[i].classList.remove("active");
-    i=(i+1)%qs.length;
-    qs[i].classList.add("active");ts[i].classList.add("active");
-  },3000);
-})();
-</script>
-<script>
-(function(){
-  document.querySelectorAll(".f3-card").forEach(c=>{
-    const go=c.querySelector(".f3-go");
-    if(!go)return;
-    c.addEventListener("click",e=>{
-      if(e.target.closest("a"))return;
-      window.location.href=go.getAttribute("href");
-    });
-  });
 })();
 </script>
 </body></html>
