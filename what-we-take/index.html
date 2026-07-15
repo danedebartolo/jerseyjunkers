@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+html,body{overflow-x:hidden;max-width:100%}
 :root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#1E3A6E;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#FDFDFB!important}
@@ -230,6 +231,15 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .ticklist li{padding:5px 0 5px 26px;position:relative;font-size:15px;color:#3E3C36}
 .ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:900}
 .ticklist.two-col{columns:2;column-gap:28px}
+.wwt-catgrid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media (max-width:820px){.wwt-catgrid{grid-template-columns:1fr;gap:26px}}
+.wwt-cat{margin-bottom:0}
+.wwt-banner{height:200px;border-radius:16px;background-size:cover;background-position:center;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.wwt-banner h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:none;color:#fff;font-size:clamp(30px,5vw,44px);text-shadow:0 2px 14px rgba(0,0,0,.45)}
+.wwt-cols{columns:2;column-gap:26px}
+.wwt-cols li{break-inside:avoid;font-size:15.5px}
+@media (max-width:760px){.wwt-cols{columns:2}.wwt-banner{height:190px}}
+@media (max-width:430px){.wwt-cols{columns:2;column-gap:18px}}
 .wwt-card{text-align:left}
 .wwt-photo{aspect-ratio:4/3;border:2px dashed var(--line);border-radius:12px;display:flex;align-items:center;justify-content:center;text-align:center;color:#A8A499;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;background:#fff;overflow:hidden;margin-bottom:14px}
 .wwt-photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -242,9 +252,7 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .xlist.two-col{columns:2;column-gap:30px}
 @media (max-width:560px){.xlist.two-col{columns:1}}
 .no-list{font-size:15.5px;line-height:2;color:#3E3C36;margin:0}
-#wwtcommon{grid-template-columns:repeat(4,1fr)}
-@media (max-width:1000px){#wwtcommon{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){#wwtcommon{grid-template-columns:1fr}.ticklist.two-col{columns:1}}
+@media (max-width:560px){.ticklist.two-col{columns:1}}
 .finegrid{grid-template-columns:1fr 1fr}
 @media (max-width:820px){.finegrid{grid-template-columns:1fr}}
 .final{background:var(--gold);text-align:center}
@@ -267,9 +275,15 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
 </style>
+<style>
+.pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
+.pt-modal.open{display:flex}
+.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
+</style>
 </head>
 <body>
-<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="/faq/">TERMS APPLY</a></div>
+<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
 <div class="utility"><div class="wrap utility-in">
 <span class="u-hours"><b>Office Hours:</b> Monday&ndash;Friday 8 am &ndash; 7 pm<span class="u-sat"><span class="u-dot"> &middot; </span>Saturday 8 am &ndash; 12 pm</span></span>
 <a class="u-portal" href="#"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/></svg> Customer Portal</a>
@@ -316,19 +330,23 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section class="band" style="border-top:1px solid var(--line)"><div class="wrap">
 <div class="sec-head"><div class="kicker">The usual suspects</div>
 <h2>The most common things we remove</h2></div>
-<div class="grid-cards" style="grid-template-columns:repeat(4,1fr)" id="wwtcommon">
-<div class="gcard wwt-card">
-<div class="wwt-photo" data-photo="household"><img src="https://static.wixstatic.com/media/36a716_246facee1e534f4cb73b8768410bb1af~mv2.jpeg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="household removal" loading="lazy"></div>
-<h3>Household Junk</h3><ul class="ticklist"><li>Old electronics</li><li>Kids toys</li><li>Cardboard &amp; recycling</li><li>Bags of trash</li><li>Rugs</li><li>Garage junk</li></ul></div>
-<div class="gcard wwt-card">
-<div class="wwt-photo" data-photo="furniture"><img src="https://static.wixstatic.com/media/36a716_3775b9ce5b204e919b98da3fb429e851~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="furniture removal" loading="lazy"></div>
-<h3>Furniture</h3><ul class="ticklist"><li>Sofas &amp; chairs</li><li>Dressers &amp; desks</li><li>Cabinets &amp; bookcases</li><li>Dining tables</li><li>China cabinets</li><li>Entertainment units</li></ul></div>
-<div class="gcard wwt-card">
-<div class="wwt-photo" data-photo="mattresses"><img src="https://static.wixstatic.com/media/36a716_bb3164325bb5494e8ccd7ad44ac1f139~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="mattresses removal" loading="lazy"></div>
-<h3>Mattresses</h3><ul class="ticklist"><li>King &amp; queen mattresses</li><li>Pillow-top beds</li><li>Sleep-by-number beds</li><li>Foam mattresses</li><li>Stained mattresses</li><li>Box springs</li></ul></div>
-<div class="gcard wwt-card">
-<div class="wwt-photo" data-photo="appliances"><img src="https://static.wixstatic.com/media/36a716_4d970d4fe6534cc0bb572c434c7e1456~mv2.jpg/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="appliances removal" loading="lazy"></div>
-<h3>Appliances</h3><ul class="ticklist"><li>Fridges &amp; freezers</li><li>Dishwashers</li><li>Laundry machines</li><li>Ovens &amp; stoves</li><li>Garbage compactors</li></ul></div>
+<div class="wwt-catgrid">
+<div class="wwt-cat">
+<div class="wwt-banner" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.5)),url('https://static.wixstatic.com/media/36a716_f7283187276447f888b834507c05af00~mv2.jpeg/v1/fill/w_1000,h_500,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><h3>Household Junk</h3></div>
+<ul class="ticklist wwt-cols"><li>Old electronics</li><li>Kids toys</li><li>Cardboard &amp; recycling</li><li>Bags of trash</li><li>Rugs</li><li>Garage junk</li></ul>
+</div>
+<div class="wwt-cat">
+<div class="wwt-banner" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.5)),url('https://static.wixstatic.com/media/36a716_3775b9ce5b204e919b98da3fb429e851~mv2.jpg/v1/fill/w_1400,h_500,al_c,q_85,enc_avif,quality_auto/file.jpg')"><h3>Furniture</h3></div>
+<ul class="ticklist wwt-cols"><li>Sofas &amp; chairs</li><li>Dressers &amp; desks</li><li>Cabinets &amp; bookcases</li><li>Dining tables</li><li>China cabinets</li><li>Entertainment units</li></ul>
+</div>
+<div class="wwt-cat">
+<div class="wwt-banner" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.5)),url('https://static.wixstatic.com/media/36a716_bb3164325bb5494e8ccd7ad44ac1f139~mv2.jpg/v1/fill/w_1400,h_500,al_c,q_85,enc_avif,quality_auto/file.jpg')"><h3>Mattresses</h3></div>
+<ul class="ticklist wwt-cols"><li>King &amp; queen mattresses</li><li>Pillow-top beds</li><li>Sleep-by-number beds</li><li>Foam mattresses</li><li>Stained mattresses</li><li>Box springs</li></ul>
+</div>
+<div class="wwt-cat">
+<div class="wwt-banner" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.5)),url('https://static.wixstatic.com/media/36a716_4d970d4fe6534cc0bb572c434c7e1456~mv2.jpg/v1/fill/w_1400,h_500,al_c,q_85,enc_avif,quality_auto/file.jpg')"><h3>Appliances</h3></div>
+<ul class="ticklist wwt-cols"><li>Fridges &amp; freezers</li><li>Dishwashers</li><li>Laundry machines</li><li>Ovens &amp; stoves</li><li>Garbage compactors</li></ul>
+</div>
 </div>
 </div></section>
 
@@ -451,6 +469,19 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   window.addEventListener("pointerup",()=>{down=false;rail.classList.remove("dragging")});
   // swallow the click if it was a drag, so cards don't open mid-drag
   rail.addEventListener("click",e=>{if(moved>8){e.preventDefault();e.stopPropagation()}},true);
+})();
+</script>
+<div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms">
+<button class="pt-close" aria-label="Close">&times;</button>
+<img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png/v1/fill/w_1200,h_1200,al_c,q_85,enc_avif,quality_auto/file.png" alt="Promo code terms and conditions">
+</div>
+<script>
+(function(){
+  const btn=document.getElementById("ptermsbtn"),m=document.getElementById("ptermsmodal");
+  if(!btn||!m)return;
+  btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
+  m.addEventListener("click",()=>m.classList.remove("open"));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
 })();
 </script>
 </body></html>

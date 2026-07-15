@@ -65,6 +65,10 @@ body.menu-open .mobilemenu{display:block}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;background:var(--gold);color:var(--ink);padding:13px 26px;border:none;border-radius:999px;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(245,196,0,.4)}
 .btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
+.pt-modal.open{display:flex}
+.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 .promo{background:#222;color:#fff;text-align:center;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;line-height:1.6}
 .promo .pg{color:var(--gold)}
 .promo .pterms{color:#7EB3FF;text-decoration:underline;font-weight:700}
@@ -195,7 +199,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></div>
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.5),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_54cd784c0dfa4fce994e28499f4bef21~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85/file.jpeg')"><div class="wrap">
 <div class="hero-solo">
-<span class="eyebrow">Storage-Unit Cleanouts &middot; Since 2012 &middot; 650+ Five-Star Reviews</span>
+<span class="eyebrow">Storage-Unit Cleanouts &middot; Since 2012 &middot; 700+ Five-Star Reviews</span>
 <h1>Stop paying rent on <span>junk</span>.</h1>
 <p class="lead">That monthly storage bill adds up fast. We meet you at the facility, clear the unit in one visit, and you hand back the keys. No freight-elevator fee for storage units either.</p>
 <form class="zipbar" data-zip>
@@ -205,9 +209,9 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <div class="zip-msg" aria-live="polite"></div>
 </div>
 </div></header><div class="strip"><div class="wrap strip-in">
-<span><i class="tick">&#10003;</i> BBB A+ accredited</span>
+<span><i class="tick">&#10003;</i> Fast &amp; friendly</span>
 <span><i class="tick">&#10003;</i> A-901 NJDEP licensed</span>
-<span><i class="tick">&#10003;</i> 650+ five-star reviews</span>
+<span><i class="tick">&#10003;</i> 700+ five-star reviews</span>
 <span><i class="tick">&#10003;</i> Locally owned since 2012</span>
 </div></div><section><div class="wrap">
 <div class="sec-head"><div class="kicker">What's included</div><h2>Storage-Unit Cleanouts: what we take</h2><p>We meet you at the unit. If two of us can lift it, it's gone.</p></div>
@@ -247,7 +251,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section><footer class="site"><div class="wrap" style="text-align:center">
 <p>Jersey Junkers&reg; &middot; New Jersey's Junk Removal Company &middot; 25 Railroad Ave. #39, Atlantic Highlands, NJ 07716</p>
 <p style="margin-top:10px"><a href="tel:8885335865" style="display:inline;color:#DCD9CF">888-533-5865</a> &middot; <a href="mailto:info@jerseyjunkers.com" style="display:inline;color:#DCD9CF">info@JerseyJunkers.com</a></p>
-<p class="legal" style="border:none;margin-top:16px">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; BBB A+ Accredited &middot; A-901 NJDEP Licensed</p>
+<p class="legal" style="border:none;margin-top:16px">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; Licensed &amp; Insured &middot; A-901 NJDEP</p>
 </div></footer>
 <script>
 const BOOKING_URL = "https://book.housecallpro.com/book/YOUR-COMPANY-SLUG";

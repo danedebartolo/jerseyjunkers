@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+html,body{overflow-x:hidden;max-width:100%}
 :root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#1E3A6E;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#FDFDFB!important}
@@ -322,9 +323,15 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
 </style>
+<style>
+.pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
+.pt-modal.open{display:flex}
+.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
+</style>
 </head>
 <body>
-<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="/faq/">TERMS APPLY</a></div>
+<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
 <div class="utility"><div class="wrap utility-in">
 <span class="u-hours"><b>Office Hours:</b> Monday&ndash;Friday 8 am &ndash; 7 pm<span class="u-sat"><span class="u-dot"> &middot; </span>Saturday 8 am &ndash; 12 pm</span></span>
 <a class="u-portal" href="#"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/></svg> Customer Portal</a>
@@ -628,6 +635,19 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     });
   },{rootMargin:"200px"});
   io.observe(v);
+})();
+</script>
+<div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms">
+<button class="pt-close" aria-label="Close">&times;</button>
+<img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png/v1/fill/w_1200,h_1200,al_c,q_85,enc_avif,quality_auto/file.png" alt="Promo code terms and conditions">
+</div>
+<script>
+(function(){
+  const btn=document.getElementById("ptermsbtn"),m=document.getElementById("ptermsmodal");
+  if(!btn||!m)return;
+  btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
+  m.addEventListener("click",()=>m.classList.remove("open"));
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
 })();
 </script>
 </body></html>

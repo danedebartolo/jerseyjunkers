@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
 <title>Junk Removal in Middlesex County, NJ | Jersey Junkers®</title>
-<meta name="description" content="Full-service junk removal throughout Middlesex County, New Jersey. Same-day or next-day pickup, upfront pricing from $99, and 650+ five-star reviews. Book online today.">
+<meta name="description" content="Full-service junk removal throughout Middlesex County, New Jersey. Same-day or next-day pickup, upfront pricing from $99, and 700+ five-star reviews. Book online today.">
 <link rel="canonical" href="https://www.jerseyjunkers.com/locations/middlesex-county/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,6 +64,10 @@ body.menu-open .mobilemenu{display:block}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:.05em;text-decoration:none;background:var(--gold);color:var(--ink);padding:13px 26px;border:none;border-radius:999px;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
 .btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(245,196,0,.4)}
 .btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
+.pt-modal.open{display:flex}
+.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 .promo{background:#222;color:#fff;text-align:center;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;line-height:1.6}
 .promo .pg{color:var(--gold)}
 .promo .pterms{color:#7EB3FF;text-decoration:underline;font-weight:700}
@@ -188,7 +192,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </style>
 </head>
 <body>
-<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="/faq/">TERMS APPLY</a></div>
+<div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
 <div class="utility"><div class="wrap utility-in">
 <span class="u-hours"><b>Office Hours:</b> Monday&ndash;Friday 8 am &ndash; 7 pm<span class="u-sat"><span class="u-dot"> &middot; </span>Saturday 8 am &ndash; 12 pm</span></span>
 <a class="u-portal" href="#"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/></svg> Customer Portal</a>
@@ -238,9 +242,9 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <div class="zip-msg" aria-live="polite"></div>
 </div>
 </div></header><div class="strip"><div class="wrap strip-in">
-<span><i class="tick">&#10003;</i> BBB A+ accredited</span>
+<span><i class="tick">&#10003;</i> Fast &amp; friendly</span>
 <span><i class="tick">&#10003;</i> A-901 NJDEP licensed</span>
-<span><i class="tick">&#10003;</i> 650+ five-star reviews</span>
+<span><i class="tick">&#10003;</i> 700+ five-star reviews</span>
 <span><i class="tick">&#10003;</i> Locally owned since 2012</span>
 </div></div><section><div class="wrap">
 <div class="sec-head"><div class="kicker">Coverage</div><h2>Towns we serve in Middlesex County</h2>
@@ -288,7 +292,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <div><h4>Get Started</h4>
 <a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>
-<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-JUNK &middot; BBB A+ Accredited &middot; A-901 NJDEP Licensed</div>
+<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-JUNK &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
 </div></footer>
 <script>
 const BOOKING_URL = "https://book.housecallpro.com/book/YOUR-COMPANY-SLUG";
@@ -312,5 +316,15 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     window.location.href = "/book/?zip=" + encodeURIComponent(zip);
   });
 });
+</script>
+<div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms"><button class="pt-close" aria-label="Close">&times;</button><img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png/v1/fill/w_1200,h_1200,al_c,q_85,enc_avif,quality_auto/file.png" alt="Promo code terms and conditions"></div>
+<script>
+(function(){
+  var btn=document.getElementById("ptermsbtn"),m=document.getElementById("ptermsmodal");
+  if(!btn||!m)return;
+  btn.addEventListener("click",function(e){e.preventDefault();m.classList.add("open");});
+  m.addEventListener("click",function(){m.classList.remove("open");});
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")m.classList.remove("open");});
+})();
 </script>
 </body></html>
