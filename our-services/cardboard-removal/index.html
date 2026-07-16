@@ -252,6 +252,9 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .fr-stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin-bottom:16px}
 .fr-quote{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:16px}
 @media (max-width:820px){section[style*="padding"]{padding-top:52px!important;padding-bottom:52px!important}.about-grid{gap:22px}.sec-head{margin-bottom:24px}}
+.pool-video{position:relative;max-width:960px;margin:0 auto;border-radius:18px;overflow:hidden;background:#000;aspect-ratio:16/9}
+.pool-video video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.pool-video-shield{position:absolute;inset:0}
 .final{background:var(--gold);text-align:center}
 .final h2{font-weight:900;font-size:clamp(32px,4.2vw,50px);text-transform:uppercase;margin-bottom:14px}
 .final p{font-size:18px;margin-bottom:36px;color:#3d3200}
@@ -360,14 +363,19 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section class="cb-reviewband" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_7183beda345d45df9b9f9ef0d132ca6a~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap" style="text-align:center">
 <div style="max-width:760px;margin:0 auto">
 <div class="fr-stars" style="text-shadow:0 1px 0 rgba(26,26,26,.35)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="fr-quote" style="color:#fff">&ldquo;Everything about this process was easy. I called to set an appointment, they came and emptied everything for me. They were quick and efficient. Thank you so much&rdquo;</p>
+<p class="fr-quote" style="color:#fff">&ldquo;If I could give this team 10 stars, I would. Customer service is the best I have ever encountered (with ANY company) and the job is always done perfectly! Excellent prices and exceptional people!&rdquo;</p>
+<p style="color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.04em;margin-bottom:14px">GABRIELLE</p>
 <a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a>
 </div>
 </div></section>
 
-<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap" style="text-align:center">
-<p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:14px">We remove just about anything</p>
-<a class="btn" href="/what-we-take/" style="background:#fff">See everything we take</a>
+<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap">
+<div class="sec-head" style="text-align:center"><div class="kicker" style="display:inline-flex">Watch us work</div>
+<h2>Cardboard, cleared</h2></div>
+<div class="pool-video">
+<video autoplay muted loop playsinline preload="none" tabindex="-1" aria-hidden="true" data-src="https://video.wixstatic.com/video/36a716_893a404ea9de40f5a4d033c3663aaeb7/720p/mp4/file.mp4"></video>
+<div class="pool-video-shield" aria-hidden="true"></div>
+</div>
 </div></section>
 
 
@@ -381,9 +389,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 <section class="band"><div class="wrap">
-<div class="sec-head" style="margin-bottom:0"><div class="kicker">Commercial solutions</div>
-<h2>On-demand cardboard removal for business</h2>
-<p style="max-width:740px">We provide specialized <b>commercial on-demand cardboard removal</b> &mdash; boxes, packaging materials, displays, and signage. Our team is committed to responsible, eco-friendly disposal, ensuring your cardboard waste is <b>recycled or properly disposed of</b> so your business stays clean, clutter-free, and sustainable. <a href="/commercial/" style="color:var(--navy);font-weight:800">Learn about our commercial services</a>.</p></div>
+<div class="about-grid">
+<div>
+<div class="kicker">Commercial solutions</div>
+<h2 style="margin:14px 0 18px">On-demand cardboard removal for business</h2>
+<p>We provide specialized <b>commercial on-demand cardboard removal</b> &mdash; boxes, packaging materials, displays, and signage. Our team is committed to responsible, eco-friendly disposal, ensuring your cardboard waste is <b>recycled or properly disposed of</b> so your business stays clean, clutter-free, and sustainable. <a href="/commercial/" style="color:var(--navy);font-weight:800">Learn about our commercial services</a>.</p>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_5e130e977d9446fc971e8862e7e1a41a~mv2.jpeg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Commercial cardboard removal" class="about-img" loading="lazy">
+</div>
 </div></section>
 
 
@@ -500,6 +513,18 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
   m.addEventListener("click",()=>m.classList.remove("open"));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
+})();
+</script>
+<script>
+(function(){
+  const v=document.querySelector(".pool-video video");
+  if(!v)return;
+  const io=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting && !v.src){v.src=v.dataset.src;v.play().catch(()=>{});io.disconnect();}
+    });
+  },{rootMargin:"200px"});
+  io.observe(v);
 })();
 </script>
 </body></html>
