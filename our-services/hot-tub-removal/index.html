@@ -227,6 +227,27 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .about-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
 .about-img{width:100%;border-radius:16px;border:1px solid var(--line);display:block}
 @media (max-width:820px){.about-grid{grid-template-columns:1fr;gap:30px}}
+.ticklist{list-style:none;padding:0;margin:0}
+.ticklist li{padding:5px 0 5px 26px;position:relative;font-size:15px;color:#3E3C36}
+.ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--green);font-weight:900}
+.ticklist.two-col{columns:2;column-gap:26px}
+@media (max-width:560px){.ticklist.two-col{columns:1}}
+.card-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:18px}
+.card-cta .btn,.card-cta .jr-call{display:inline-flex;align-items:center;line-height:1;margin:0}
+.card-call{color:var(--navy)!important}
+@media (max-width:820px){.card-cta{flex-direction:column;align-items:stretch}.card-cta .btn,.card-cta .jr-call{justify-content:center}.card-call{color:#fff!important}}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+@media (max-width:600px){.rev2{padding:64px 0}.rev2-mark{font-size:100px}.rev2-stars{font-size:22px;letter-spacing:6px}}
 .strip{padding:0}
 .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
 .final-cta{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
@@ -258,8 +279,6 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .su-lb.open{display:flex}
 .su-lb img{max-width:96%;max-height:92%;border-radius:12px}
 .ht-reviewband{padding:90px 0;background-size:cover;background-position:center}
-.fr-stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin-bottom:16px;text-shadow:0 1px 0 rgba(26,26,26,.35)}
-.fr-quote{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:16px;color:#fff}
 .faq-list{display:flex;flex-direction:column;gap:16px}
 .faq-list .gcard h3{margin-bottom:8px}
 @media (max-width:820px){
@@ -367,38 +386,37 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 
 <section><div class="wrap">
-<div class="sec-head" style="margin-bottom:0">
+<div class="about-grid">
+<div>
 <div class="kicker">The job nobody wants</div>
-<h2>Heavy, awkward, and full of water damage waiting to happen</h2>
-<p style="max-width:740px">A hot tub is a <b>fiberglass shell wrapped around a steel frame, a motor, and a few hundred pounds of waterlogged foam</b> &mdash; and it never comes out the way it went in. Decks get built around them. Fences go up. Yards grow in.<br><br>That's the job we do. Sometimes it comes out <b>in one piece</b> with enough hands on it; sometimes it gets <b>cut down where it sits</b>. It depends on the tub, the yard, and what we have to get it through &mdash; and we'll tell you which before we start. When we leave, all that's left is the empty pad.</p>
+<h2 style="margin:14px 0 18px">Heavy, awkward, and full of water damage waiting to happen</h2>
+<p>A hot tub is a <b>fiberglass shell wrapped around a steel frame, a motor, and a few hundred pounds of waterlogged foam</b> &mdash; and it never comes out the way it went in. Decks get built around them. Fences go up. Yards grow in.<br><br>That's the job we do. Sometimes it comes out <b>in one piece</b> with enough hands on it; sometimes it gets <b>cut down where it sits</b>. It depends on the tub, the yard, and what we have to get it through &mdash; and we'll tell you which before we start. When we leave, all that's left is the empty pad.</p>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_1b29afcd06ce4d178769e3263dc2e62d~mv2.jpg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Hot tub removal" class="about-img" loading="lazy">
 </div>
 </div></section>
 
 <section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">How it works</div>
-<h2>Call in, price out, tub gone</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Give us a call</h3><p>Tell us what you've got and we'll talk it through &mdash; if photos would help, we'll ask for them on the call.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>We quote the job</h3><p>Priced by the complexity and scope of the work &mdash; set before we start, with <b>no surprises</b>.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>We remove it &amp; haul it away</h3><p>Carried out whole or cut down on site &mdash; whatever the job calls for &mdash; and hauled off, <b>site left clean</b>.</p></div>
+<div class="about-grid" style="align-items:stretch">
+<div>
+<div class="kicker">Every type</div>
+<h2 style="margin:14px 0 18px">We remove all types of hot tubs</h2>
+<p>Experts in the industry &mdash; we handle your hot tub with ease.</p>
+<ul class="ticklist two-col" style="margin-top:16px"><li>Custom &amp; oversized tubs</li><li>Hot Spring &amp; name brands</li><li>In-deck installations</li><li>On decks &amp; patios</li><li>Rooftop &amp; balcony tubs</li><li>Swim spas</li></ul>
+<div class="gcard" style="margin-top:22px">
+<h3>How much does it cost?</h3>
+<p style="font-size:14.5px">Every hot tub removal costs a little bit differently. <b>Pricing is based on the size of the tub, where it sits</b> (backyard pad, deck, in-deck &mdash; even a roof), <b>and the access from the tub to our truck.</b></p>
+<div class="card-cta">
+<a class="btn" href="/book/">Get a free quote &rarr;</a>
+<a class="jr-call card-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>
+</div>
+</div>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_b50e8851c43d45c49fc550689adb6c37~mv2.jpeg/v1/fill/w_1000,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Hot tub types" class="about-img" style="height:100%;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">Before we arrive</div>
-<h2>Two things we need from you</h2></div>
-<div class="grid-cards finegrid">
-<div class="gcard">
-<h3>1. Electrically disconnected</h3>
-<p><b>The wiring must be pulled from the tub</b> &mdash; not just the breaker shut off. That's an electrician's job, and it has to be done before our crew can touch it. <b>No exceptions</b> &mdash; it's a safety line we don't cross.</p>
-</div>
-<div class="gcard">
-<h3>2. Drained</h3>
-<p>The tub needs to be <b>empty of water</b> when we arrive. Water is heavy, and a full tub is a job we can't safely lift, cut, or carry.</p>
-</div>
-</div>
-<p style="margin-top:22px;font-size:15.5px">Handle those two, and <b>the rest is ours.</b></p>
-</div></section>
+
 
 <section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">Recent work</div>
@@ -409,7 +427,9 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <button class="rail-arrow rail-right" id="suR" type="button" aria-label="Scroll forward">&rarr;</button>
 <div class="su-rail" id="surail">
 <img src="https://static.wixstatic.com/media/36a716_fca63f0316de4eafbefe4b7770be578f~mv2.jpeg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Hot tub removal job" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_1ed599d841d3463badb58012a4954b86~mv2.jpeg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Hot tub removal job" loading="lazy">
 <img src="https://static.wixstatic.com/media/36a716_8b9438aed8a744b8bda58c3477ca3f1a~mv2.jpg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Hot tub removal job" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_22103e696daa474a8618a70e52e12561~mv2.jpeg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Hot tub removal job" loading="lazy">
 <img src="https://static.wixstatic.com/media/36a716_e03d3f5f8438472dbccb0a3e9c3690ae~mv2.jpg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Hot tub removal job" loading="lazy">
 <img src="https://static.wixstatic.com/media/36a716_20d2bbf04494463d90820c220847af80~mv2.png/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.png" alt="Hot tub removal job" loading="lazy">
 <img src="https://static.wixstatic.com/media/36a716_668620155ad1421899a9340c1efe9234~mv2.jpg/v1/fill/w_700,h_520,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Hot tub removal job" loading="lazy">
@@ -419,11 +439,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section class="ht-reviewband" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_8b9438aed8a744b8bda58c3477ca3f1a~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap" style="text-align:center">
-<div style="max-width:820px;margin:0 auto">
-<div class="fr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="fr-quote">&ldquo;Excellent communication throughout the scheduling and removal process! Very professional and courteous. The entire four person team made removing an aged hot tub look easy. Very skilled at what they do. Would highly recommend for any type of haul!&rdquo;</p>
-<a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a>
+<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_8b9438aed8a744b8bda58c3477ca3f1a~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">Excellent communication throughout the scheduling and removal process! Very professional and courteous. The entire four person team made removing an aged hot tub look easy. Very skilled at what they do. Would highly recommend for any type of haul!</p>
+<div class="rev2-attr">
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
 </div>
 </div></section>
 
@@ -451,7 +474,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 <section class="final"><div class="wrap">
 <h2>Ready for your yard back?</h2>
-<p>Send a few photos, get your price, pick a day. That's it.</p>
+<p>Give us a call, get your price, pick a day. That's it.</p>
 <div class="final-cta">
 <a class="btn" href="/book/" style="background:var(--ink);color:var(--gold)">Request a quote &rarr;</a>
 <a class="jr-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>

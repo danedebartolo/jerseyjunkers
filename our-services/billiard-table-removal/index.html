@@ -235,6 +235,18 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 @media (max-width:560px){.ticklist.two-col{columns:1}}
 .img-stack{display:grid;gap:12px}
 .img-stack img{width:100%;border-radius:16px;display:block;object-fit:cover}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+@media (max-width:600px){.rev2{padding:64px 0}.rev2-mark{font-size:100px}.rev2-stars{font-size:22px;letter-spacing:6px}}
 .strip{padding:0}
 .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
 .final-cta{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
@@ -273,9 +285,6 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .pool-video video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .pool-video-shield{position:absolute;inset:0}
 .ht-reviewband{padding:90px 0;background-size:cover;background-position:center}
-.fr-stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin-bottom:16px;text-shadow:0 1px 0 rgba(26,26,26,.35)}
-.fr-quote{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:16px;color:#fff}
-.fr-quote mark{background:linear-gradient(transparent 55%, rgba(245,196,0,.6) 55%);color:#fff;font-weight:800;padding:0 2px}
 .faq-list{display:flex;flex-direction:column;gap:16px}
 .faq-list .gcard h3{margin-bottom:8px}
 @media (max-width:820px){
@@ -383,7 +392,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 
 <section><div class="wrap">
-<div class="about-grid">
+<div class="about-grid" style="align-items:stretch">
 <div>
 <div class="kicker">A decade of doing this</div>
 <h2 style="margin:14px 0 18px">We remove billiard tables</h2>
@@ -409,26 +418,17 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div>
-<img src="https://static.wixstatic.com/media/36a716_f8dfbf537c4c4d4d9785953b5fd58913~mv2.png/v1/fill/w_1000,h_900,al_c,q_85,enc_avif,quality_auto/file.png" alt="Billiard table types" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_f8dfbf537c4c4d4d9785953b5fd58913~mv2.png/v1/fill/w_1000,h_900,al_c,q_85,enc_avif,quality_auto/file.png" alt="Billiard table types" class="about-img" style="height:100%;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">How it works</div>
-<h2>Call in, price out, table gone</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Give us a call</h3><p>Tell us what you've got and we'll talk it through &mdash; if photos would help, we'll ask for them on the call.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>We quote the job</h3><p>Priced by the size, the slate, and the access &mdash; set before we start, with <b>no surprises</b>.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>Felt, rails &amp; slate &mdash; carried out</h3><p>Disassembled in place and carried out piece by piece, then <b>hauled away for good.</b></p></div>
-</div>
-</div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">What's included</div>
-<h2>The whole table, start to finish</h2>
-<p>Every billiard table job runs the same way:</p></div>
-<div class="about-grid">
+<section style="padding-top:60px;padding-bottom:60px"><div class="wrap">
+<div class="about-grid" style="align-items:center;gap:44px">
 <div>
+<div class="kicker">What's included</div>
+<h2 style="margin:14px 0 12px">The whole table,<br>start to finish</h2>
+<p>Every billiard table job runs the same way:</p>
 <ul class="ticklist">
 <li>We assess the table and the path out, then confirm the price</li>
 <li>Disassemble &mdash; felt, rails, pockets, slate, and frame</li>
@@ -438,15 +438,18 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </ul>
 <p style="margin-top:16px;font-size:15px"><b>Also common:</b> bars, arcade cabinets, air hockey, and the rest of the basement &mdash; on the same trip.</p>
 </div>
-<img src="https://static.wixstatic.com/media/36a716_73e36e8fe143404aa691974d7d3ab7d8~mv2.png/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.png" alt="Billiard table disassembly" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_73e36e8fe143404aa691974d7d3ab7d8~mv2.png/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.png" alt="Billiard table disassembly" class="about-img" style="height:420px;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section class="ht-reviewband" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_f02aa31893a44ce49993d8f28db865e3~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap" style="text-align:center">
-<div style="max-width:820px;margin:0 auto">
-<div class="fr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="fr-quote">&ldquo;The guys worked their tail off. Fast and easy to work with. Very accommodating including the office and the moves. Would use them again in a heart beat.&rdquo;</p>
-<a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a>
+<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_f02aa31893a44ce49993d8f28db865e3~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">The guys worked their tail off. Fast and easy to work with. Very accommodating including the office and the moves. Would use them again in a heart beat.</p>
+<div class="rev2-attr">
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
 </div>
 </div></section>
 
@@ -464,7 +467,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 
 <section class="final"><div class="wrap">
 <h2>Ready to get the room back?</h2>
-<p>Send a few photos, get your price, pick a day &mdash; we'll bring the crew and the muscle.</p>
+<p>Give us a call, get your price, pick a day &mdash; we'll bring the crew and the muscle.</p>
 <div class="final-cta">
 <a class="btn" href="/book/" style="background:var(--ink);color:var(--gold)">Request a quote &rarr;</a>
 <a class="jr-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>

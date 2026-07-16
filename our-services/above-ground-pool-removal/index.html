@@ -233,6 +233,18 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .ticklist.two-col{columns:2;column-gap:26px}
 .ticklist.two-col li{break-inside:avoid}
 @media (max-width:560px){.ticklist.two-col{columns:1}}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+@media (max-width:600px){.rev2{padding:64px 0}.rev2-mark{font-size:100px}.rev2-stars{font-size:22px;letter-spacing:6px}}
 .strip{padding:0}
 .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
 .final-cta{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
@@ -271,9 +283,6 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .pool-video video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .pool-video-shield{position:absolute;inset:0}
 .ht-reviewband{padding:90px 0;background-size:cover;background-position:center}
-.fr-stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin-bottom:16px;text-shadow:0 1px 0 rgba(26,26,26,.35)}
-.fr-quote{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:16px;color:#fff}
-.fr-quote mark{background:linear-gradient(transparent 55%, rgba(245,196,0,.6) 55%);color:#fff;font-weight:800;padding:0 2px}
 .faq-list{display:flex;flex-direction:column;gap:16px}
 .faq-list .gcard h3{margin-bottom:8px}
 @media (max-width:820px){
@@ -381,7 +390,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 
 <section><div class="wrap">
-<div class="about-grid">
+<div class="about-grid" style="align-items:stretch">
 <div>
 <div class="kicker">Every type, every accessory</div>
 <h2 style="margin:14px 0 18px">We remove all types of above-ground pools &amp; accessories</h2>
@@ -397,19 +406,10 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div>
-<img src="https://static.wixstatic.com/media/36a716_c04c03ec385d4b4796528111fc4ff803~mv2.jpg/v1/fill/w_1046,h_1194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/abovegroundpool-dismantle.jpg" alt="Above-ground pool dismantle" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_c04c03ec385d4b4796528111fc4ff803~mv2.jpg/v1/fill/w_1046,h_1194,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/abovegroundpool-dismantle.jpg" alt="Above-ground pool dismantle" class="about-img" style="height:100%;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">How it works</div>
-<h2>Call in, price out, pool gone</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Give us a call</h3><p>Tell us what you've got and we'll talk it through &mdash; if photos would help, we'll ask for them on the call.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>We quote the job</h3><p>Priced by shape, size, and whether it's already drained &mdash; set before we start, with <b>no surprises</b>.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>Drained, dismantled &amp; hauled away</h3><p>We tear it down, load it out, and leave the yard clean &mdash; <b>usually in a couple of hours</b>.</p></div>
-</div>
-</div></section>
 
 
 <section class="band"><div class="wrap">
@@ -421,17 +421,21 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <div class="pool-video-shield" aria-hidden="true"></div>
 </div>
 </div></section>
-<section class="ht-reviewband" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_445acb9121a543539d4eb0ed51da9ad9~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap" style="text-align:center">
-<div style="max-width:820px;margin:0 auto">
-<div class="fr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="fr-quote">&ldquo;Jersey Junkers did a fantastic job <mark>removing our pool</mark>, deck, wooden double facing swing, solar heaters and mounts, and a giant pile of accumulated debris. The entire crew was efficient, effective and did an excellent job. A definite Company to hire again!&rdquo;</p>
-<p style="color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.04em;margin-bottom:14px">JOHN T. &middot; HOLMDEL, NJ</p>
-<a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a>
+<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_445acb9121a543539d4eb0ed51da9ad9~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">Jersey Junkers did a fantastic job <mark>removing our pool</mark>, deck, wooden double facing swing, solar heaters and mounts, and a giant pile of accumulated debris. The entire crew was efficient, effective and did an excellent job. A definite Company to hire again!</p>
+<div class="rev2-attr">
+<span class="rev2-name">JOHN T. &middot; HOLMDEL, NJ</span>
+<span class="rev2-dot">&middot;</span>
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">Recent work</div>
+<section style="padding-top:56px;padding-bottom:44px"><div class="wrap">
+<div class="sec-head" style="margin-bottom:26px"><div class="kicker">Recent work</div>
 <h2>Pools we've pulled</h2>
 <p>Real jobs, real yards &mdash; before, during, and gone.</p></div>
 <div class="su-wrap">
@@ -450,8 +454,8 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">What's included</div>
+<section style="padding-top:44px;padding-bottom:56px"><div class="wrap">
+<div class="sec-head" style="margin-bottom:26px"><div class="kicker">What's included</div>
 <h2>Complete teardown &amp; disposal</h2>
 <p>Every above-ground pool job covers the full structure and its components:</p></div>
 <div class="grid-cards finegrid">

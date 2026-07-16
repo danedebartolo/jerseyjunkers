@@ -235,6 +235,18 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 @media (max-width:560px){.ticklist.two-col{columns:1}}
 .img-stack{display:grid;gap:12px}
 .img-stack img{width:100%;border-radius:16px;display:block;object-fit:cover}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+@media (max-width:600px){.rev2{padding:64px 0}.rev2-mark{font-size:100px}.rev2-stars{font-size:22px;letter-spacing:6px}}
 .strip{padding:0}
 .hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
 .final-cta{display:flex;gap:16px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
@@ -277,9 +289,6 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .pool-video video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
 .pool-video-shield{position:absolute;inset:0}
 .ht-reviewband{padding:90px 0;background-size:cover;background-position:center}
-.fr-stars{color:var(--gold);font-size:30px;letter-spacing:6px;margin-bottom:16px;text-shadow:0 1px 0 rgba(26,26,26,.35)}
-.fr-quote{font-size:19px;line-height:1.65;font-weight:600;margin-bottom:16px;color:#fff}
-.fr-quote mark{background:linear-gradient(transparent 55%, rgba(245,196,0,.6) 55%);color:#fff;font-weight:800;padding:0 2px}
 .faq-list{display:flex;flex-direction:column;gap:16px}
 .faq-list .gcard h3{margin-bottom:8px}
 @media (max-width:820px){
@@ -387,7 +396,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 
 <section><div class="wrap">
-<div class="about-grid">
+<div class="about-grid" style="align-items:stretch">
 <div>
 <div class="kicker">Dumpster vs. us</div>
 <h2 style="margin:14px 0 18px">A dumpster is a box. We're a box <i>and</i> a crew.</h2>
@@ -397,18 +406,6 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">Trusted by contractors across New Jersey</div>
-<h2>When the project makes more debris than expected</h2>
-<p style="max-width:740px">Our team handles the cleanup so you can <b>focus on the job.</b></p></div>
-<div class="grid-cards" id="cwneeds">
-<div class="gcard"><h3>Fast turnaround</h3></div>
-<div class="gcard"><h3>Clean job sites</h3></div>
-<div class="gcard"><h3>Same-day availability</h3></div>
-<div class="gcard"><h3>Reliable dump runs</h3></div>
-</div>
-<p style="margin-top:20px;font-size:15.5px">Ideal for <b>contractors, renovators, and landscapers.</b></p>
-</div></section>
 
 <section><div class="wrap">
 <div class="about-grid">
@@ -426,26 +423,17 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div>
-<img src="https://static.wixstatic.com/media/36a716_a9707966e8954507955760f040289102~mv2.jpg/v1/fill/w_1000,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Construction debris types" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_a9707966e8954507955760f040289102~mv2.jpg/v1/fill/w_1000,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Construction debris types" class="about-img" style="height:100%;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">How it works</div>
-<h2>Call in, price out, site clear</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Give us a call</h3><p>Tell us what you've got and we'll talk it through &mdash; if photos would help, we'll ask for them on the call.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>We quote the job</h3><p>Priced by material, weight, and access &mdash; set before we start, with <b>no surprises</b>.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>Loaded, hauled &amp; swept</h3><p>We do the lifting, load the truck, dispose of it properly, and <b>leave the area swept.</b></p></div>
-</div>
-</div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">What's included</div>
-<h2>The whole job, start to finish</h2>
-<p>Every construction waste job runs the same way:</p></div>
-<div class="about-grid">
+<section class="band" style="padding-top:60px;padding-bottom:60px"><div class="wrap">
+<div class="about-grid" style="align-items:center;gap:44px">
 <div>
+<div class="kicker">What's included</div>
+<h2 style="margin:14px 0 12px">The whole job,<br>start to finish</h2>
+<p>Every construction waste job runs the same way:</p>
 <ul class="ticklist">
 <li>We assess the debris and confirm the price</li>
 <li>Break down and gather what needs it</li>
@@ -456,29 +444,23 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </ul>
 <p style="margin-top:16px;font-size:15px"><b>Contractors:</b> we'll work around your schedule and clear the site between phases.</p>
 </div>
-<img src="https://static.wixstatic.com/media/36a716_8ae6396e42c14b46b66a3c6388771ec4~mv2.jpeg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Construction debris loading" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_8ae6396e42c14b46b66a3c6388771ec4~mv2.jpeg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Construction debris loading" class="about-img" style="height:420px;object-fit:cover" loading="lazy">
 </div>
 </div></section>
 
-<section class="ht-reviewband" style="background-image:linear-gradient(rgba(18,18,16,.66),rgba(18,18,16,.76)),url('https://static.wixstatic.com/media/36a716_cb65b86cad454ed4ad1e3fbd4729360a~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap" style="text-align:center">
-<div style="max-width:820px;margin:0 auto">
-<div class="fr-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="fr-quote">&ldquo;This company is the best. Most reliable, professional and efficient <mark>clean out company</mark> I've ever worked with &mdash; and I'm in business close to 40 years. There are no competitors, hands down.&rdquo;</p>
-<p style="color:var(--gold);font-weight:800;font-size:14px;letter-spacing:.04em;margin-bottom:14px">RICHARD L.</p>
-<a href="/customer-feedback/" style="color:var(--gold);font-weight:800;font-size:15px">Read 700+ more reviews &rarr;</a>
+<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_cb65b86cad454ed4ad1e3fbd4729360a~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">This company is the best. Most reliable, professional and efficient <mark>clean out company</mark> I've ever worked with &mdash; and I'm in business close to 40 years. There are no competitors, hands down.</p>
+<div class="rev2-attr">
+<span class="rev2-name">Richard L.</span>
+<span class="rev2-dot">&middot;</span>
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
 </div>
 </div></section>
 
-<section><div class="wrap">
-<div class="about-grid">
-<img src="https://static.wixstatic.com/media/36a716_2e92a30f9cc644aaa62dfa203565962d~mv2.jpeg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Construction waste removal job" class="about-img" loading="lazy">
-<div>
-<div class="kicker">Remodels, demos &amp; tear-outs</div>
-<h2 style="margin:14px 0 18px">Clear the site, keep the job moving</h2>
-<p>Kitchen tear-outs, bathroom gut jobs, roof strips, deck and shed demos, the debris pile that's been growing behind the garage since spring &mdash; <b>we take it all in one trip.</b><br><br>Homeowners get their driveway back. Contractors get a clean site and a crew that shows up when it says it will.</p>
-</div>
-</div>
-</div></section>
 
 <section class="band" style="padding-top:60px;padding-bottom:60px"><div class="wrap" style="text-align:center">
 <p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:14px">Check out some other services we offer</p>
@@ -493,7 +475,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 
 <section class="final"><div class="wrap">
 <h2>Ready to clear the site?</h2>
-<p>Send a few photos, get your price, pick a day &mdash; we'll bring the truck and the muscle.</p>
+<p>Give us a call, get your price, pick a day &mdash; we'll bring the truck and the muscle.</p>
 <div class="final-cta">
 <a class="btn" href="/book/" style="background:var(--ink);color:var(--gold)">Request a quote &rarr;</a>
 <a class="jr-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>
