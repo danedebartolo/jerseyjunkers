@@ -52,6 +52,25 @@ h1,h2,h3{font-family:'Archivo',sans-serif;line-height:1.05;letter-spacing:-0.01e
 body.menu-open .menu-toggle .ic-burger{display:none}
 body.menu-open .menu-toggle .ic-x{display:inline}
 body.menu-open .mobilemenu{display:block}
+.gn-links>a,.gn-drop>a{position:relative;padding:6px 0}
+.gn-links>a:hover,.gn-drop>a:hover{text-decoration:none}
+.gn-links>a::after,.gn-drop>a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--ink);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.gn-links>a:hover::after,.gn-drop:hover>a::after,.gn-drop:focus-within>a::after{transform:scaleX(1)}
+.gn-drop{position:relative;display:flex;align-items:center;height:56px}
+.gn-caret{font-size:11px;display:inline-block;margin-left:3px;transition:transform .2s ease}
+.gn-drop:hover .gn-caret,.gn-drop:focus-within .gn-caret{transform:rotate(180deg)}
+.gn-menu{position:absolute;top:100%;left:50%;transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;padding-top:10px;z-index:60}
+.gn-drop:hover .gn-menu,.gn-drop:focus-within .gn-menu{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.gn-panel{background:#fff;border:1.5px solid var(--line);border-radius:16px;box-shadow:0 22px 48px rgba(26,26,26,.18);padding:22px 26px}
+.gn-mega{display:grid;grid-template-columns:1fr 1fr;gap:4px 40px;width:520px}
+.gn-colhead{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#8A8478;border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:9px}
+.gn-col{display:flex;flex-direction:column}
+.gn-col a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6.5px 8px;margin:0 -8px;border-radius:8px;transition:background .12s,color .12s}
+.gn-col a:hover{background:#FFF8DC;color:var(--navy)}
+.gn-all{grid-column:1/-1;margin-top:12px;padding-top:14px;border-top:1px solid var(--line);font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12.5px;letter-spacing:.05em;color:var(--navy);text-decoration:none}
+.gn-all:hover{color:var(--ink)}
+@media (max-width:1100px){.gn-mega{width:470px}}
+@media (max-width:820px){.gn-drop{display:none}}
 .gn-book{margin-left:auto;flex:none;background:var(--ink);color:var(--gold) !important;border-radius:999px;padding:9px 20px;font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:13.5px !important;letter-spacing:.05em;min-width:208px;text-align:center;box-sizing:border-box}
 @media (max-width:920px){
 .u-hours{font-size:12.5px}
@@ -237,11 +256,8 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .img-stack img{width:100%;border-radius:16px;display:block;object-fit:cover}
 .imgph{width:100%;border-radius:16px;background:repeating-linear-gradient(45deg,#ECEAE4,#ECEAE4 12px,#E4E1D9 12px,#E4E1D9 24px);border:1.5px dashed #B9B4A8;display:flex;align-items:center;justify-content:center}
 .imgph span{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.05em;color:#8A8478;text-align:center;padding:0 16px}
-#whygrid{grid-template-columns:repeat(5,1fr)}
-#whygrid .gcard h3{font-size:15.5px;margin-bottom:8px}
-#whygrid .gcard p{font-size:13.5px}
-@media (max-width:1000px){#whygrid{grid-template-columns:1fr 1fr}}
-@media (max-width:560px){#whygrid{grid-template-columns:1fr}}
+@media (max-width:1000px){}
+@media (max-width:560px){}
 .rev2{padding:90px 0}
 .rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
 .rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
@@ -361,7 +377,34 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <span class="mt-label">MENU</span></button>
 <div class="gn-links">
 <a href="/about-jersey-junkers/">About</a>
-<a href="/residential-services/">Residential Services</a>
+<div class="gn-drop">
+<a href="/residential-services/">Residential Services <span class="gn-caret">&#9662;</span></a>
+<div class="gn-menu"><div class="gn-panel gn-mega">
+<div class="gn-col">
+<div class="gn-colhead">Everyday</div>
+<a href="/our-services/junk-removal/">Junk Removal</a>
+<a href="/our-services/furniture-removal/">Furniture Removal</a>
+<a href="/our-services/cleanouts/">Cleanouts</a>
+<a href="/our-services/cardboard-removal/">Cardboard Removal</a>
+<a href="/our-services/appliance-removal/">Appliance Removal</a>
+<a href="/our-services/storage-unit-junk-removal/">Storage Unit Cleanouts</a>
+<a href="/our-services/estate-clean-outs/">Estate Clean Outs</a>
+<a href="/our-services/trash-pick-up/">Trash Pick-Up</a>
+</div>
+<div class="gn-col">
+<div class="gn-colhead">Specialty</div>
+<a href="/our-services/above-ground-pool-removal/">Above-Ground Pools</a>
+<a href="/our-services/billiard-table-removal/">Billiard Tables</a>
+<a href="/our-services/construction-waste-removal/">Construction Waste</a>
+<a href="/our-services/deck-removal/">Deck Removal</a>
+<a href="/our-services/hot-tub-removal/">Hot Tubs</a>
+<a href="/our-services/shed-removal/">Shed Removal</a>
+<a href="/our-services/swing-set-removal/">Swing Sets</a>
+<a href="/our-services/trampoline-removal/">Trampolines</a>
+</div>
+<a class="gn-all" href="/our-services/">See all our services &rarr;</a>
+</div></div>
+</div>
 <a href="/commercial/">Commercial Services</a>
 <a href="/what-we-take/">What We Take</a>
 <a href="/how-we-price/">Pricing</a>
@@ -383,7 +426,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a class="mm-call" href="tel:8885335865">Or call 888-533-JUNK</a>
 </div>
 </div>
-<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.58),rgba(18,18,16,.74)),url('PLACEHOLDER_HERO')"><div class="wrap">
+<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.58),rgba(18,18,16,.74)),url('https://static.wixstatic.com/media/36a716_76fc7e45e70c4f629b25708fb72c526a~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Commercial Services &middot; New Jersey</span>
 <h1>Business junk,<br><span>business speed.</span></h1>
@@ -395,25 +438,25 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></header>
 
+<section class="strip"><div class="wrap strip-in">
+<span><span class="tick">&#10003;</span>Same-Day/Next-Day Service</span>
+<span><span class="tick">&#10003;</span>Licensed &amp; Insured</span>
+<span><span class="tick">&#10003;</span>Net 30 Terms*</span>
+<span><span class="tick">&#10003;</span>Dedicated Account Managers</span>
+</div></section>
+
+
 <section><div class="wrap">
-<div class="sec-head" style="margin-bottom:0">
+<div class="about-grid">
+<div>
 <div class="kicker">Commercial junk removal</div>
-<h2>Whatever your business needs gone, we take it</h2>
-<p style="max-width:760px">Whether it's an office cleanout, a retail space full of junk, dumpster overflow, or just a few bulky items, <b>we've got you covered.</b> We handle everything &mdash; lifting, hauling, and disposal &mdash; so you don't have to. Our team works fast, offers reliable service, and makes the process seamless. <b>Get a free quote today!</b></p>
+<h2 style="margin:14px 0 18px">Whatever your business needs gone, we take it</h2>
+<p>Whether it's an office cleanout, a retail space full of junk, dumpster overflow, or just a few bulky items, <b>we've got you covered.</b> We handle everything &mdash; lifting, hauling, and disposal &mdash; so you don't have to. Our team works fast, offers reliable service, and makes the process seamless. <b>Get a free quote today!</b></p>
+</div>
+<img src="https://static.wixstatic.com/media/7657be_8a6c1e8d68e341ca8f4f01e96a802f8f~mv2.jpg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Hauling office equipment" class="about-img" loading="lazy">
 </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">Why businesses choose us</div>
-<h2>Built for the way you work</h2></div>
-<div class="grid-cards" id="whygrid">
-<div class="gcard"><h3>Top rated</h3><p>Businesses across New Jersey rely on us for professional, hassle-free service.</p></div>
-<div class="gcard"><h3>Priority scheduling</h3><p>Fast, reliable service with same-day and scheduled pickups to keep your business running smoothly.</p></div>
-<div class="gcard"><h3>Licensed &amp; insured</h3><p>Fully compliant with NJ regulations for commercial waste disposal and safety.</p></div>
-<div class="gcard"><h3>Eco-friendly</h3><p>NJDEP-certified disposal with responsible recycling to minimize landfill waste.</p></div>
-<div class="gcard"><h3>Dedicated account managers</h3><p>Personalized support with a single point of contact for seamless service.</p></div>
-</div>
-</div></section>
 
 <section><div class="wrap">
 <div class="about-grid">
@@ -423,11 +466,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <p>We provide help with just about everything:</p>
 <ul class="ticklist two-col" style="margin-top:16px"><li>Cardboard waste</li><li>COD (Certificate of Destruction)</li><li>Commercial clean-outs</li><li>Dumpster cleanouts</li><li>E-waste removal</li><li>Monthly bulk service</li><li>Office cleanouts</li><li>Office furniture removal</li><li>Outdated inventory</li><li>Property cleanouts</li><li>Retail cleanouts</li><li>Tailored services</li><li>Warehouse waste</li></ul>
 </div>
-<div class="imgph" style="aspect-ratio:4/3"><span>Photo &mdash; crew / commercial job</span></div>
+<div style="display:flex;flex-direction:column;gap:16px">
+<img src="https://static.wixstatic.com/media/36a716_b39a0010afe44817994fe032aefa967b~mv2.jpg/v1/fill/w_1000,h_620,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Commercial appliance removal" class="about-img" loading="lazy">
+<img src="https://static.wixstatic.com/media/36a716_bcf86edb50b441ea992f70882a6e63ca~mv2.jpeg/v1/fill/w_1000,h_620,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Commercial junk removal job" class="about-img" loading="lazy">
+</div>
 </div>
 </div></section>
 
-<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('PLACEHOLDER_REVIEW_BG')"><div class="wrap">
+<section class="ht-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_01947c32ddfa404aaeb7338099a1f024~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap">
 <div class="rev2-in">
 <div class="rev2-mark" aria-hidden="true">&ldquo;</div>
 <div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
@@ -442,7 +488,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 
 <section class="band"><div class="wrap">
 <div class="about-grid">
-<div class="imgph" style="aspect-ratio:4/3"><span>Photo &mdash; the team</span></div>
+<img src="https://static.wixstatic.com/media/36a716_d83c097236a24dd89a50c5f2f78477be~mv2.jpg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Jersey Junkers commercial job" class="about-img" loading="lazy">
 <div>
 <div class="kicker">About us</div>
 <h2 style="margin:14px 0 18px">The go-to solution across New Jersey</h2>
