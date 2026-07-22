@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- ==== GOOGLE TAG (gtag.js) SLOT ====
+Paste the Google Ads / GA4 snippet below this line, then remove these comment markers.
+Keep it as the FIRST script in <head> per Google's guidance.
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+</script>
+==== END GOOGLE TAG SLOT ==== -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
@@ -11,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#1E3A6E;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
+:root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#3F88C5;--blue:#3F88C5;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#FDFDFB!important}
 @media (prefers-color-scheme:dark){html,body{background:#FDFDFB!important;color:#1a1a1a!important}}
@@ -35,6 +47,38 @@ h1,h2,h3{font-family:'Archivo',sans-serif;line-height:1.05;letter-spacing:-0.01e
 .gn-links{display:flex;align-items:center;gap:34px}
 .gn-links a{font-size:15.5px;font-weight:700;color:var(--ink);text-decoration:none;white-space:nowrap}
 .gn-links a:hover{text-decoration:underline}
+.gn-links>a,.gn-drop>a{position:relative;padding:6px 0}
+.gn-links>a:hover,.gn-drop>a:hover{text-decoration:none}
+.gn-links>a::after,.gn-drop>a::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:3px;background:var(--ink);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .2s ease}
+.gn-links>a:hover::after,.gn-drop:hover>a::after,.gn-drop:focus-within>a::after{transform:scaleX(1)}
+.gn-drop{position:relative;display:flex;align-items:center;height:56px}
+.gn-caret{font-size:11px;display:inline-block;margin-left:3px;transition:transform .2s ease}
+.gn-drop:hover .gn-caret,.gn-drop:focus-within .gn-caret{transform:rotate(180deg)}
+.gn-menu{position:absolute;top:100%;left:50%;transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;padding-top:10px;z-index:60}
+.gn-drop:hover .gn-menu,.gn-drop:focus-within .gn-menu{opacity:1;transform:translate(-50%,0);pointer-events:auto}
+.gn-panel{background:#fff;border:1.5px solid var(--line);border-radius:16px;box-shadow:0 22px 48px rgba(26,26,26,.18);padding:22px 26px}
+.gn-mega-sm{width:430px}
+.gn-list{display:flex;flex-direction:column;width:210px}
+.gn-list a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 10px;margin:0 -4px;border-radius:8px;transition:background .12s,color .12s}
+.gn-list a:hover{background:#FFF8DC;color:var(--navy)}
+.gn-menu-left{left:0;transform:translate(0,10px)}
+.gn-drop:hover .gn-menu-left,.gn-drop:focus-within .gn-menu-left{transform:translate(0,0)}
+.gn-mega{display:grid;grid-template-columns:1fr 1fr;gap:4px 40px;width:520px}
+.gn-colhead{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#8A8478;border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:9px}
+.gn-col{display:flex;flex-direction:column}
+.gn-col a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:6.5px 8px;margin:0 -8px;border-radius:8px;transition:background .12s,color .12s}
+.gn-col a:hover{background:#FFF8DC;color:var(--navy)}
+.gn-all{grid-column:1/-1;margin-top:12px;padding-top:14px;border-top:1px solid var(--line);font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12.5px;letter-spacing:.05em;color:var(--navy);text-decoration:none}
+.gn-all:hover{color:var(--ink)}
+@media (max-width:1100px){.gn-mega{width:470px}}
+@media (max-width:820px){.gn-drop{display:none}}
+.gn-mega-sm{width:430px}
+.gn-list{display:flex;flex-direction:column;width:210px}
+.gn-list a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 10px;margin:0 -4px;border-radius:8px;transition:background .12s,color .12s}
+.gn-list a:hover{background:#FFF8DC;color:var(--navy)}
+.gn-menu-left{left:0;transform:translate(0,10px)}
+.gn-drop:hover .gn-menu-left,.gn-drop:focus-within .gn-menu-left{transform:translate(0,0)}
+
 .menu-toggle{display:none;align-items:center;gap:9px;background:none;border:none;font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;letter-spacing:.06em;color:var(--ink);cursor:pointer;padding:8px 0}
 .mobilemenu{display:none;position:sticky;top:56px;z-index:49;background:#fff;border-bottom:2px solid var(--gold);box-shadow:0 16px 30px rgba(0,0,0,.12)}
 .mobilemenu a{display:block;padding:13px 28px;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none;border-bottom:1px solid #F0EEE8}
@@ -66,7 +110,7 @@ body.menu-open .mobilemenu{display:block}
 .btn:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
 .pt-modal.open{display:flex}
-.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-modal img{max-width:min(560px,94%);max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 .promo{background:#222;color:#fff;text-align:center;font-size:13.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;line-height:1.6}
 .promo .pg{color:var(--gold)}
@@ -178,7 +222,7 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .final .zip-msg{color:#1E5B39}.final .zip-msg.err{color:#8C1F12}
 footer.site{background:var(--ink);color:#8B887D;padding:60px 0 48px;font-size:14px}
 footer.site .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
-footer.site h4{color:#fff;font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:.1em;margin-bottom:14px}
+footer.site h4{color:#3F88C5;font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:.1em;margin-bottom:14px}
 footer.site a{color:#DCD9CF;text-decoration:none;display:block;margin-bottom:9px;font-size:14px}
 footer.site a:hover{color:var(--gold)}
 footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
@@ -189,6 +233,8 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .towns{columns:2}.nav-links a{display:none}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
+.towns a{color:inherit;text-decoration:none}
+.towns a:hover{color:var(--navy);text-decoration:underline}
 </style>
 </head>
 <body>
@@ -207,8 +253,52 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <svg class="ic-x" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M5.7 4.3 12 10.6l6.3-6.3 1.4 1.4L13.4 12l6.3 6.3-1.4 1.4L12 13.4l-6.3 6.3-1.4-1.4L10.6 12 4.3 5.7z"/></svg>
 <span class="mt-label">MENU</span></button>
 <div class="gn-links">
-<a href="/about-jersey-junkers/">About</a>
-<a href="/residential-services/">Residential Services</a>
+<div class="gn-drop">
+<a href="/about-jersey-junkers/">About <span class="gn-caret">&#9662;</span></a>
+<div class="gn-menu gn-menu-left"><div class="gn-panel gn-mega gn-mega-sm">
+<div class="gn-col">
+<div class="gn-colhead">The Company</div>
+<a href="/about-jersey-junkers/">About Us</a>
+<a href="/customer-feedback/">Reviews</a>
+<a href="/before-and-after/">Before &amp; After</a>
+</div>
+<div class="gn-col">
+<div class="gn-colhead">Good to Know</div>
+<a href="/faq/">FAQ</a>
+<a href="/jobs/">Job Opportunities</a>
+<a href="/location-search/">Service Area</a>
+</div>
+<a class="gn-all" href="/contact-us/">Get in touch &rarr;</a>
+</div></div>
+</div>
+<div class="gn-drop">
+<a href="/our-services/">Residential Services <span class="gn-caret">&#9662;</span></a>
+<div class="gn-menu"><div class="gn-panel gn-mega">
+<div class="gn-col">
+<div class="gn-colhead">Everyday</div>
+<a href="/our-services/junk-removal/">Junk Removal</a>
+<a href="/our-services/furniture-removal/">Furniture Removal</a>
+<a href="/our-services/cleanouts/">Cleanouts</a>
+<a href="/our-services/cardboard-removal/">Cardboard Removal</a>
+<a href="/our-services/appliance-removal/">Appliance Removal</a>
+<a href="/our-services/storage-unit-junk-removal/">Storage Unit Cleanouts</a>
+<a href="/our-services/estate-clean-outs/">Estate Clean Outs</a>
+<a href="/our-services/trash-pick-up/">Trash Pick-Up</a>
+</div>
+<div class="gn-col">
+<div class="gn-colhead">Specialty</div>
+<a href="/our-services/above-ground-pool-removal/">Above-Ground Pools</a>
+<a href="/our-services/billiard-table-removal/">Billiard Tables</a>
+<a href="/our-services/construction-waste-removal/">Construction Waste</a>
+<a href="/our-services/deck-removal/">Deck Removal</a>
+<a href="/our-services/hot-tub-removal/">Hot Tubs</a>
+<a href="/our-services/shed-removal/">Shed Removal</a>
+<a href="/our-services/swing-set-removal/">Swing Sets</a>
+<a href="/our-services/trampoline-removal/">Trampolines</a>
+</div>
+<a class="gn-all" href="/our-services/">See all our services &rarr;</a>
+</div></div>
+</div>
 <a href="/commercial/">Commercial Services</a>
 <a href="/what-we-take/">What We Take</a>
 <a href="/how-we-price/">Pricing</a>
@@ -218,7 +308,34 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></nav>
 <div class="mobilemenu" id="mobilemenu" hidden>
 <a href="/about-jersey-junkers/">About</a>
-<a href="/residential-services/">Residential Services</a>
+<div class="gn-drop">
+<a href="/our-services/">Residential Services <span class="gn-caret">&#9662;</span></a>
+<div class="gn-menu"><div class="gn-panel gn-mega">
+<div class="gn-col">
+<div class="gn-colhead">Everyday</div>
+<a href="/our-services/junk-removal/">Junk Removal</a>
+<a href="/our-services/furniture-removal/">Furniture Removal</a>
+<a href="/our-services/cleanouts/">Cleanouts</a>
+<a href="/our-services/cardboard-removal/">Cardboard Removal</a>
+<a href="/our-services/appliance-removal/">Appliance Removal</a>
+<a href="/our-services/storage-unit-junk-removal/">Storage Unit Cleanouts</a>
+<a href="/our-services/estate-clean-outs/">Estate Clean Outs</a>
+<a href="/our-services/trash-pick-up/">Trash Pick-Up</a>
+</div>
+<div class="gn-col">
+<div class="gn-colhead">Specialty</div>
+<a href="/our-services/above-ground-pool-removal/">Above-Ground Pools</a>
+<a href="/our-services/billiard-table-removal/">Billiard Tables</a>
+<a href="/our-services/construction-waste-removal/">Construction Waste</a>
+<a href="/our-services/deck-removal/">Deck Removal</a>
+<a href="/our-services/hot-tub-removal/">Hot Tubs</a>
+<a href="/our-services/shed-removal/">Shed Removal</a>
+<a href="/our-services/swing-set-removal/">Swing Sets</a>
+<a href="/our-services/trampoline-removal/">Trampolines</a>
+</div>
+<a class="gn-all" href="/our-services/">See all our services &rarr;</a>
+</div></div>
+</div>
 <a href="/commercial/">Commercial Services</a>
 <a href="/what-we-take/">What We Take</a>
 <a href="/how-we-price/">Pricing</a>
@@ -227,10 +344,10 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a href="/contact-us/">Contact</a>
 <div class="mm-cta">
 <a class="btn" href="/book/">Book Online</a>
-<a class="mm-call" href="tel:8885335865">Or call 888-533-JUNK</a>
+<a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
 </div>
 </div>
-<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.5),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_88be7c30ddd54b7dbfc009751dc082e8~mv2.jpg')"><div class="wrap">
+<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.5),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_932ecd64007444ef8039846d36fa40cf~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Serving Ocean County &middot; Since 2012</span>
 <h1>Junk removal in <span>Ocean County</span>.</h1>
@@ -249,21 +366,39 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></div><section><div class="wrap">
 <div class="sec-head"><div class="kicker">Coverage</div><h2>Towns we serve in Ocean County</h2>
 <p>Residential and commercial service available throughout the county.</p></div>
-<ul class="towns"><li>[TOWN LIST — paste from current Ocean page]</li></ul>
-</div></section><section><div class="wrap">
-<div class="sec-head"><div class="kicker">How it works</div>
-<h2>Three steps, zero hassle</h2>
-<p>Book in under two minutes. We handle the rest.</p></div>
-<div class="steps">
-<article class="step"><span class="num">1</span><h3>Book online</h3><p>Pick a 2-hour arrival window that fits your schedule. You'll get a confirmation text and email, plus a courtesy call before we arrive.</p></article>
-<article class="step"><span class="num">2</span><h3>Firm on-site price</h3><p>Your crew gives you a no-obligation, upfront price that matches our posted pricing structure &mdash; before touching a thing.</p></article>
-<article class="step"><span class="num">3</span><h3>We haul, you relax</h3><p>Approve the price and we get to work &mdash; removal, disposal, and a final sweep-up. Pay by cash, credit, or check, receipt emailed.</p></article>
-</div></div></section><section class="band"><div class="wrap price-cta">
-<div><div class="kicker">Transparent pricing</div>
-<p class="big">From <em>$99</em></p>
-<p style="font-size:18px;color:#55524a;margin-top:14px">Single items are flat-rate from $99. Multi-item loads are priced by truck space, from $199 to $949 &mdash; labor, hauling, and standard disposal included. Our full pricing is posted, so you know the number before we ring the bell.</p></div>
-<div style="text-align:center"><a class="btn" href="/how-we-price/" style="margin-bottom:16px">See full pricing</a>
-<p style="font-size:14px;color:#77746a">No-obligation on-site confirmation on every job.</p></div>
+<ul class="towns"><li><a href="/junk-removal-barnegat-light-nj/">Barnegat Light</a></li>
+<li><a href="/junk-removal-barnegat-township-nj/">Barnegat Township</a></li>
+<li><a href="/junk-removal-bay-head-nj/">Bay Head</a></li>
+<li><a href="/junk-removal-beach-haven-nj/">Beach Haven</a></li>
+<li><a href="/junk-removal-beachwood-nj/">Beachwood</a></li>
+<li><a href="/junk-removal-berkeley-township-nj/">Berkeley Township</a></li>
+<li><a href="/junk-removal-brick-township-nj/">Brick Township</a></li>
+<li><a href="/junk-removal-eagleswood-township-nj/">Eagleswood Township</a></li>
+<li><a href="/junk-removal-harvey-cedars-nj/">Harvey Cedars</a></li>
+<li><a href="/junk-removal-island-heights-nj/">Island Heights</a></li>
+<li><a href="/junk-removal-jackson-township-nj/">Jackson Township</a></li>
+<li><a href="/junk-removal-lacey-township-nj/">Lacey Township</a></li>
+<li><a href="/junk-removal-lakehurst-nj/">Lakehurst</a></li>
+<li><a href="/junk-removal-lakewood-township-nj/">Lakewood Township</a></li>
+<li><a href="/junk-removal-lavallette-nj/">Lavallette</a></li>
+<li><a href="/junk-removal-little-egg-harbor-township-nj/">Little Egg Harbor Township</a></li>
+<li><a href="/junk-removal-long-beach-township-nj/">Long Beach Township</a></li>
+<li><a href="/junk-removal-manchester-township-nj/">Manchester Township</a></li>
+<li><a href="/junk-removal-mantoloking-nj/">Mantoloking</a></li>
+<li><a href="/junk-removal-ocean-gate-nj/">Ocean Gate</a></li>
+<li><a href="/junk-removal-waretown-nj/">Waretown (Ocean Township)</a></li>
+<li><a href="/junk-removal-pine-beach-nj/">Pine Beach</a></li>
+<li><a href="/junk-removal-plumsted-township-nj/">Plumsted Township</a></li>
+<li><a href="/junk-removal-point-pleasant-nj/">Point Pleasant</a></li>
+<li><a href="/junk-removal-point-pleasant-beach-nj/">Point Pleasant Beach</a></li>
+<li><a href="/junk-removal-seaside-heights-nj/">Seaside Heights</a></li>
+<li><a href="/junk-removal-seaside-park-nj/">Seaside Park</a></li>
+<li><a href="/junk-removal-ship-bottom-nj/">Ship Bottom</a></li>
+<li><a href="/junk-removal-south-toms-river-nj/">South Toms River</a></li>
+<li><a href="/junk-removal-stafford-township-nj/">Stafford Township</a></li>
+<li><a href="/junk-removal-surf-city-nj/">Surf City</a></li>
+<li><a href="/junk-removal-toms-river-nj/">Toms River</a></li>
+<li><a href="/junk-removal-tuckerton-nj/">Tuckerton</a></li></ul>
 </div></section><section class="final"><div class="wrap">
 <h2>Feel roomier by Friday.</h2>
 <p>Enter your ZIP, pick a window, and consider it handled.</p>
@@ -288,11 +423,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a href="/our-services/construction-waste-removal/">Construction Material Removal</a>
 <a href="/our-services/trash-pick-up/">Trash Pick-Up</a><a href="/residential-services/">All services &rarr;</a></div>
 <div><h4>Company</h4>
-<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/contact-us/job-opportunities/">Job Opportunities</a></div>
+<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
 <div><h4>Get Started</h4>
 <a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>
-<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-JUNK &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
+<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-5865 &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
 </div></footer>
 <script>
 const BOOKING_URL = "https://book.housecallpro.com/book/YOUR-COMPANY-SLUG";
@@ -317,7 +452,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   });
 });
 </script>
-<div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms"><button class="pt-close" aria-label="Close">&times;</button><img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png/v1/fill/w_1200,h_1200,al_c,q_85,enc_avif,quality_auto/file.png" alt="Promo code terms and conditions"></div>
+<div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms"><button class="pt-close" aria-label="Close">&times;</button><img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png" alt="Promo code terms and conditions"></div>
 <script>
 (function(){
   var btn=document.getElementById("ptermsbtn"),m=document.getElementById("ptermsmodal");

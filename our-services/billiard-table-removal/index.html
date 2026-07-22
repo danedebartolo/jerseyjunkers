@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- ==== GOOGLE TAG (gtag.js) SLOT ====
+Paste the Google Ads / GA4 snippet below this line, then remove these comment markers.
+Keep it as the FIRST script in <head> per Google's guidance.
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+</script>
+==== END GOOGLE TAG SLOT ==== -->
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="only light">
@@ -15,7 +27,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 html,body{overflow-x:hidden;max-width:100%}
-:root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#1E3A6E;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
+:root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#3F88C5;--blue:#3F88C5;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#FDFDFB!important}
 @media (prefers-color-scheme:dark){html,body{background:#FDFDFB!important;color:#1a1a1a!important}}
@@ -62,6 +74,12 @@ body.menu-open .mobilemenu{display:block}
 .gn-menu{position:absolute;top:100%;left:50%;transform:translate(-50%,10px);opacity:0;pointer-events:none;transition:opacity .18s ease,transform .18s ease;padding-top:10px;z-index:60}
 .gn-drop:hover .gn-menu,.gn-drop:focus-within .gn-menu{opacity:1;transform:translate(-50%,0);pointer-events:auto}
 .gn-panel{background:#fff;border:1.5px solid var(--line);border-radius:16px;box-shadow:0 22px 48px rgba(26,26,26,.18);padding:22px 26px}
+.gn-mega-sm{width:430px}
+.gn-list{display:flex;flex-direction:column;width:210px}
+.gn-list a{font-size:14.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 10px;margin:0 -4px;border-radius:8px;transition:background .12s,color .12s}
+.gn-list a:hover{background:#FFF8DC;color:var(--navy)}
+.gn-menu-left{left:0;transform:translate(0,10px)}
+.gn-drop:hover .gn-menu-left,.gn-drop:focus-within .gn-menu-left{transform:translate(0,0)}
 .gn-mega{display:grid;grid-template-columns:1fr 1fr;gap:4px 40px;width:520px}
 .gn-colhead{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.08em;color:#8A8478;border-bottom:2px solid var(--gold);padding-bottom:7px;margin-bottom:9px}
 .gn-col{display:flex;flex-direction:column}
@@ -333,7 +351,7 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .final .zip-msg{color:#1E5B39}.final .zip-msg.err{color:#8C1F12}
 footer.site{background:var(--ink);color:#8B887D;padding:60px 0 48px;font-size:14px}
 footer.site .cols{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
-footer.site h4{color:#fff;font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:.1em;margin-bottom:14px}
+footer.site h4{color:#3F88C5;font-family:'Archivo',sans-serif;text-transform:uppercase;font-size:13px;letter-spacing:.1em;margin-bottom:14px}
 footer.site a{color:#DCD9CF;text-decoration:none;display:block;margin-bottom:9px;font-size:14px}
 footer.site a:hover{color:var(--gold)}
 footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
@@ -348,7 +366,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
 .pt-modal.open{display:flex}
-.pt-modal img{max-width:min(560px,94%);max-height:90%;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pt-modal img{max-width:min(560px,94%);max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 </style>
 </head>
@@ -368,9 +386,26 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <svg class="ic-x" viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M5.7 4.3 12 10.6l6.3-6.3 1.4 1.4L13.4 12l6.3 6.3-1.4 1.4L12 13.4l-6.3 6.3-1.4-1.4L10.6 12 4.3 5.7z"/></svg>
 <span class="mt-label">MENU</span></button>
 <div class="gn-links">
-<a href="/about-jersey-junkers/">About</a>
 <div class="gn-drop">
-<a href="/residential-services/">Residential Services <span class="gn-caret">&#9662;</span></a>
+<a href="/about-jersey-junkers/">About <span class="gn-caret">&#9662;</span></a>
+<div class="gn-menu gn-menu-left"><div class="gn-panel gn-mega gn-mega-sm">
+<div class="gn-col">
+<div class="gn-colhead">The Company</div>
+<a href="/about-jersey-junkers/">About Us</a>
+<a href="/customer-feedback/">Reviews</a>
+<a href="/before-and-after/">Before &amp; After</a>
+</div>
+<div class="gn-col">
+<div class="gn-colhead">Good to Know</div>
+<a href="/faq/">FAQ</a>
+<a href="/jobs/">Job Opportunities</a>
+<a href="/location-search/">Service Area</a>
+</div>
+<a class="gn-all" href="/contact-us/">Get in touch &rarr;</a>
+</div></div>
+</div>
+<div class="gn-drop">
+<a href="/our-services/">Residential Services <span class="gn-caret">&#9662;</span></a>
 <div class="gn-menu"><div class="gn-panel gn-mega">
 <div class="gn-col">
 <div class="gn-colhead">Everyday</div>
@@ -415,7 +450,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a href="/contact-us/">Contact</a>
 <div class="mm-cta">
 <a class="btn" href="/book/">Book Online</a>
-<a class="mm-call" href="tel:8885335865">Or call 888-533-JUNK</a>
+<a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
 </div>
 </div>
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_c76691a728a74d8dbaaee01a8d440689~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
@@ -536,11 +571,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a href="/our-services/construction-waste-removal/">Construction Material Removal</a>
 <a href="/our-services/trash-pick-up/">Trash Pick-Up</a><a href="/residential-services/">All services &rarr;</a></div>
 <div><h4>Company</h4>
-<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/contact-us/job-opportunities/">Job Opportunities</a></div>
+<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
 <div><h4>Get Started</h4>
 <a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>
-<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-JUNK &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
+<div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-5865 &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
 </div></footer>
 <script>
 const BOOKING_URL = "https://book.housecallpro.com/book/YOUR-COMPANY-SLUG";
@@ -599,7 +634,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
 </script>
 <div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms">
 <button class="pt-close" aria-label="Close">&times;</button>
-<img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png/v1/fill/w_1200,h_1200,al_c,q_85,enc_avif,quality_auto/file.png" alt="Promo code terms and conditions">
+<img src="https://static.wixstatic.com/media/36a716_b7078fb7b56c4f68b5ee836dcd761d0e~mv2.png" alt="Promo code terms and conditions">
 </div>
 <script>
 (function(){
