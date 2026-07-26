@@ -369,7 +369,8 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 footer.site .cols{grid-template-columns:1fr 1fr}}
 .ptabs{margin-bottom:64px}
 .ptab-bar{display:flex;gap:0;border-bottom:3px solid var(--ink)}
-.ptab{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.04em;padding:16px 26px;background:#EFEDE7;color:#6A665C;border:none;cursor:pointer;border-radius:12px 12px 0 0;transition:background .15s,color .15s}
+.ptab{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.04em;padding:16px 26px;background:#EFEDE7;color:#6A665C;border:1.5px solid var(--line);border-bottom:none;cursor:pointer;border-radius:12px 12px 0 0;transition:background .15s,color .15s,border-color .15s}
+.ptab.active{border-color:var(--ink)}
 .ptab.active{background:var(--ink);color:var(--gold)}
 .ptab:hover:not(.active){background:#E4E1D9;color:var(--ink)}
 .ptab-panel{display:none;background:#fff;border:1.5px solid var(--line);border-top:none;border-radius:0 0 18px 18px;padding:36px}

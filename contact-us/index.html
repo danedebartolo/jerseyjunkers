@@ -306,6 +306,17 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .ct-jobs b{color:var(--gold)}
 .ct-jobs:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(26,26,26,.25)}
 .ct-jobs-arrow{font-size:22px;color:var(--gold);font-weight:900}
+.ct-lines{display:flex;flex-direction:column;gap:14px;border-top:1.5px solid var(--line);padding-top:22px}
+.ct-line{display:flex;align-items:baseline;gap:16px}
+.ct-label{flex:0 0 64px;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:12px;letter-spacing:.07em;color:var(--blue)}
+.ct-big{font-family:'Archivo',sans-serif;font-weight:900;font-size:24px;color:var(--ink);text-decoration:none}
+.ct-big:hover{color:var(--blue)}
+.ct-val{font-size:15.5px;color:var(--ink);text-decoration:none;font-weight:700}
+a.ct-val:hover{color:var(--blue)}
+.ct-quote-wide{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-direction:row;padding:36px 40px}
+.ct-quote-wide h2{font-size:clamp(24px,3vw,34px)}
+.ct-quote-wide p{margin-top:6px}
+@media (max-width:720px){.ct-quote-wide{flex-direction:column;align-items:flex-start}}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -397,32 +408,31 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
 </div>
 </div>
-<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_79075f7f295947979625ff616e8c4d3c~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
-<div class="hero-solo">
-<span class="eyebrow">Contact Us &middot; New Jersey</span>
-<h1>Talk to a <span>human.</span></h1>
-<p class="lead">Call or email &mdash; a real member of our team will take care of you.</p>
+<section style="padding:64px 0 54px"><div class="wrap">
+<div class="about-grid" style="align-items:center;gap:48px">
+<div>
+<div class="kicker">Contact Us &middot; New Jersey</div>
+<h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-stretch:105%;text-transform:uppercase;font-size:clamp(32px,4.2vw,50px);line-height:1.05;margin:14px 0 12px">Talk to a <span style="color:transparent;-webkit-text-stroke:2px var(--ink)">human.</span></h1>
+<p style="font-size:17px;margin-bottom:26px">Call or email &mdash; a real member of our team will take care of you.</p>
+<div class="ct-lines">
+<div class="ct-line"><span class="ct-label">Call</span><a href="tel:8885335865" class="ct-big">888-533-5865</a></div>
+<div class="ct-line"><span class="ct-label">Email</span><a href="mailto:info@JerseyJunkers.com" class="ct-val">info@JerseyJunkers.com</a></div>
+<div class="ct-line"><span class="ct-label">Hours</span><span class="ct-val" style="font-weight:600"><span style="white-space:nowrap">Mon&ndash;Fri: 8 am &ndash; 7 pm</span> &nbsp;&middot;&nbsp; <span style="white-space:nowrap">Sat: 8 am &ndash; 12 pm</span> &nbsp;&middot;&nbsp; <span style="white-space:nowrap">Sun: Closed</span></span></div>
+<div class="ct-line"><span class="ct-label">Mail</span><span class="ct-val" style="font-weight:600">25 Railroad Ave. #39, Atlantic Highlands, NJ 07716</span></div>
 </div>
-</div></header>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_79075f7f295947979625ff616e8c4d3c~mv2.png/v1/fill/w_1000,h_780,al_c,q_85,enc_avif,quality_auto/file.png" alt="The Jersey Junkers office" class="about-img" loading="lazy">
+</div>
+</div></section>
 
-<section><div class="wrap">
-<div class="ct-split">
-<a class="ct-quote" href="/request-a-quote/">
-<h2>Looking for<br>a quote?</h2>
+<section class="band" style="padding:54px 0 60px"><div class="wrap">
+<a class="ct-quote ct-quote-wide" href="/request-a-quote/">
+<div>
+<h2>Looking for a quote?</h2>
 <p>Fill out our form and we'll reach out to you.</p>
+</div>
 <span class="ct-quote-btn">Request a quote &rarr;</span>
 </a>
-<div class="ct-info">
-<div class="gcard"><h3>Call</h3>
-<p><a href="tel:8885335865" style="color:var(--navy);font-weight:800;font-size:20px;text-decoration:none">888-533-5865</a></p></div>
-<div class="gcard"><h3>Email</h3>
-<p><a href="mailto:info@JerseyJunkers.com" style="color:var(--navy);font-weight:700;text-decoration:none">info@JerseyJunkers.com</a></p></div>
-<div class="gcard"><h3>Mailing address</h3>
-<p>25 Railroad Ave. #39<br>Atlantic Highlands, NJ 07716</p></div>
-<div class="gcard"><h3>Office hours</h3>
-<p><span style="white-space:nowrap">Mon&ndash;Fri: 8 am &ndash; 7 pm</span><br><span style="white-space:nowrap">Sat: 8 am &ndash; 12 pm</span> &middot; <span style="white-space:nowrap">Sun: Closed</span></p></div>
-</div>
-</div>
 <a class="ct-jobs" href="/jobs/">
 <span><b>Want to join the crew instead?</b> See open positions</span>
 <span class="ct-jobs-arrow">&rarr;</span>
