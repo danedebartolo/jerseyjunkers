@@ -20,6 +20,7 @@ Keep it as the FIRST script in <head> per Google's guidance.
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Junk Removal Services In NJ | Jersey Junkers&reg;</title>
+<meta name="jj-build" content="lander-m26">
 <meta name="description" content="NJ's top junk removal — same-day or next-day service from a single item to a whole houseful. Locally owned since 2012. Get a free estimate or call 888-533-5865.">
 <link rel="canonical" href="https://www.jerseyjunkers.com/nj-top-junk-removal/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -314,17 +315,13 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .ptab:hover:not(.active){background:#E4E1D9;color:var(--ink)}
 .ptab-panel{display:none;background:#fff;border:1.5px solid var(--line);border-top:none;border-radius:0 0 18px 18px;padding:32px}
 .ptab-panel.active{display:block}
-.ptab-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;justify-items:center}
-.ptab-grid>div{max-width:520px}
-.ptab-grid img{max-width:560px}
-@media (max-width:900px){.ptab-grid{grid-template-columns:1fr}}
-.ptab-grid img{width:100%;border-radius:14px;border:1px solid var(--line)}
+.ptab-stack{display:flex;flex-direction:column;max-width:620px;margin:0 auto}
+.ptab-stack img{width:100%;border-radius:14px;border:1px solid var(--line);margin:4px 0 16px}
 .ptab-h{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:105%;text-transform:uppercase;font-size:clamp(20px,2.2vw,26px);margin-bottom:12px}
 .ticklist{list-style:none;margin:0;padding:0}
 .ticklist li{position:relative;padding-left:26px;font-size:15.5px;font-weight:600;line-height:1.5}
 .ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--blue);font-weight:900}
 .ticklist.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 28px}
-@media (max-width:520px){.ticklist.two-col{grid-template-columns:1fr}}
 .ld-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 @media (max-width:980px){.ld-tiles{grid-template-columns:1fr 1fr}}
 .svc-tile{display:flex;align-items:flex-end;height:160px;border-radius:14px;background-size:cover;background-position:center;text-decoration:none;transition:transform .15s}
@@ -355,6 +352,7 @@ body{padding-bottom:54px}
 .ld-lightbox img{max-width:94vw;max-height:88vh;border-radius:10px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
 .ld-lb-x{position:absolute;top:16px;right:26px;color:#fff;font-size:44px;font-weight:900;cursor:pointer;line-height:1}
 .ld-map{width:100%;height:440px;border-radius:16px;border:1.5px solid var(--line);z-index:1}
+.ld-map .leaflet-tile-pane{filter:saturate(.4) brightness(1.03)}
 @media (max-width:820px){.ld-map{height:360px}}
 @keyframes ldIn{from{opacity:0;transform:translateX(-70px) scale(.94)}to{opacity:1;transform:translateX(0) scale(1)}}
 @-webkit-keyframes ldIn{from{opacity:0;-webkit-transform:translateX(-70px) scale(.94)}to{opacity:1;-webkit-transform:translateX(0) scale(1)}}
@@ -368,6 +366,90 @@ body{padding-bottom:54px}
 .pr-arrow:hover{transform:translateY(-50%) scale(1.08)}
 .pr-left{left:14px}.pr-right{right:14px}
 .ld-form.in{-webkit-animation:ldIn .7s cubic-bezier(.22,.8,.3,1) .05s both;animation:ldIn .7s cubic-bezier(.22,.8,.3,1) .05s both}
+.ld-mheroimg{display:none}
+.ld-mlogo{display:none;background:#fff;justify-content:center;padding:10px 12px;border-bottom:1px solid var(--line)}
+.ld-mlogo img{width:100%;max-width:540px;height:auto;object-fit:contain}
+.ld-mob{display:none}
+@media (max-width:820px){
+.ld-mlogo{display:flex}
+.utility,.topbar,.goldnav{display:none}
+.ld-desk{display:none}
+.ld-mob{display:block}
+.hero.photo.ld-hero{background:none !important;padding:0;min-height:0;display:grid}
+.ld-mheroimg{display:block;width:100%;height:auto;grid-area:1/1}
+.hero.photo.ld-hero>.wrap{grid-area:1/1;padding:0;max-width:none;width:100%;display:flex}
+.hero.photo.ld-hero .ld-hero-copy{max-width:none !important;width:100%;display:flex}
+.ld-mob{display:flex;flex-direction:column;justify-content:space-between;width:100%;padding:16px 16px 0;z-index:3}
+.ld-mh1{font-size:clamp(64px,21vw,96px);line-height:.94;letter-spacing:-.01em;text-shadow:0 3px 16px rgba(0,0,0,.55)}
+.ld-mob .lead{font-size:20px;font-weight:700;text-align:center;width:min(400px,94%);margin:0 auto;text-shadow:1.5px 0 0 #000,-1.5px 0 0 #000,0 1.5px 0 #000,0 -1.5px 0 #000,1.5px 1.5px 0 #000,-1.5px -1.5px 0 #000,1.5px -1.5px 0 #000,-1.5px 1.5px 0 #000,0 3px 14px rgba(0,0,0,.6)}
+.ld-gbadge{width:min(400px,94%);margin:14px auto 0;position:relative;z-index:6;display:flex;justify-content:center}
+.ld-gbadge>div{width:100%}
+.ld-gbadge>div{transform:scale(1.08);transform-origin:center;width:100%}
+.ld-mbot{padding-bottom:16px}
+.ld-mcall{display:flex;align-items:center;justify-content:center;gap:10px;width:min(400px,94%);margin:14px auto 0;background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:18px;letter-spacing:.05em;padding:17px;border-radius:10px;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.35)}
+.ld-below-grid{gap:18px}
+.ld-form{margin-top:44px}
+}
+@media (max-width:820px){
+.hero.photo.ld-hero h1.ld-mh1{font-size:clamp(46px,14.5vw,68px) !important;line-height:.96 !important;letter-spacing:-.01em}
+.ld-mob .lead{margin-bottom:0 !important}
+.ld-gbadge{display:flex !important;justify-content:center !important;margin-top:4px !important}
+.ld-gbadge>div{width:auto !important;display:flex;justify-content:center;transform:scale(1.16);transform-origin:center;margin:2px 0}
+.ld-mcall{-webkit-animation:ldPulse 1.9s ease-in-out infinite;animation:ldPulse 1.9s ease-in-out infinite}
+}
+@keyframes ldPulse{0%,100%{transform:scale(1);box-shadow:0 12px 30px rgba(0,0,0,.35)}50%{transform:scale(1.04);box-shadow:0 14px 38px rgba(245,196,0,.55)}}
+@-webkit-keyframes ldPulse{0%,100%{-webkit-transform:scale(1)}50%{-webkit-transform:scale(1.04)}}
+.ld-mmission{display:none}
+@media (max-width:820px){
+.ld-mmission{display:block;padding:34px 0 8px;background:#fff}
+.ld-mm-h{font-family:'Archivo',sans-serif;font-weight:900;font-stretch:105%;font-size:clamp(28px,8vw,38px);line-height:1.08;text-align:center;text-transform:none}
+.ld-mm-h i{font-style:italic}
+.ld-mm-bar{width:110px;height:9px;background:var(--gold);margin:16px auto}
+.ld-mm-p{font-size:17.5px;text-align:center;max-width:520px;margin:0 auto;line-height:1.55}
+.ld-illu{position:relative;width:min(480px,98%);margin:6px auto 0}
+.ld-illu-truck{display:block;width:100%;height:auto}
+.ld-illu-men{position:absolute;left:0;bottom:2%;width:36%;height:auto}
+.ld-mchecks{display:grid;grid-template-columns:1fr 1fr;gap:9px 12px;width:min(400px,94%);margin:14px auto 0;padding-bottom:16px}
+.ld-mchecks span{display:flex;align-items:center;gap:7px;color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.03em;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+.ld-mchecks i{width:17px;height:17px;border-radius:50%;background:var(--gold);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:10.5px;font-weight:900;flex:none}
+.strip{display:none}
+.ld-form{margin-top:26px}
+}
+.ld-mstrip,.ld-wr,.ld-mcallsec{display:none}
+@media (max-width:820px){
+.ld-mstrip{display:block;background:var(--ink);padding:14px 0}
+.ld-mstrip .ld-mchecks{margin:0 auto;padding-bottom:0}
+.ld-mm-h{font-size:clamp(23px,7vw,32px)}
+.ld-wr{display:block;background:#F7F4EC;padding:38px 0 34px;overflow-x:hidden;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.ld-wr-in{opacity:0;transform:translateX(-64px)}
+.ld-wr-in.in{-webkit-animation:ldIn .7s cubic-bezier(.22,.8,.3,1) both;animation:ldIn .7s cubic-bezier(.22,.8,.3,1) both}
+.ld-wr-h{color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;font-stretch:105%;text-transform:uppercase;font-size:clamp(22px,6.6vw,30px);line-height:1.12}
+.ld-wr-img{display:block;width:100%;height:auto;border-radius:14px;margin-bottom:20px}
+.ld-svcgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(13,auto);grid-auto-flow:column;gap:11px 14px}
+.ld-svc{display:flex;align-items:center;gap:8px;color:var(--ink);font-size:12.5px;font-weight:600;overflow-wrap:anywhere}
+.ld-svc i{color:var(--blue);font-style:normal;font-weight:900;font-size:14px;flex:none}
+.ld-mcallsec{display:block;background:#fff;padding:26px 0 4px}
+.ld-form{box-shadow:0 10px 24px rgba(0,0,0,.18)}
+.ticklist.two-col{grid-template-columns:repeat(2,minmax(0,1fr)) !important}
+.ticklist li{font-size:13.5px}
+}
+@media (max-width:820px){
+.ld-mstrip .ld-mchecks{display:grid;grid-template-columns:auto auto;justify-content:center;gap:10px 22px;width:auto;max-width:none}
+.ld-mstrip .ld-mchecks span{font-size:11.5px;white-space:nowrap;gap:6px}
+.ld-mstrip .ld-mchecks i{width:15px;height:15px;font-size:9.5px}
+.ld-mbot{padding-bottom:34px}
+.ld-illu-men{width:40%}
+.ld-mheroimg{height:100vh;height:100svh;object-fit:cover;object-position:center}
+}
+.ptab-cta{display:flex;flex-direction:column;align-items:center;width:100%}
+.ptab-fine{font-size:12.5px;color:#3E3C36;margin-top:9px;font-weight:600;text-align:center;line-height:1.55}
+.pgreen{color:#1F9D55;font-weight:800}
+@media (max-width:820px){
+.hero.photo.ld-hero::after{content:"";grid-area:1/1;align-self:end;width:100%;height:52%;background:linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.55) 55%,rgba(0,0,0,.8) 100%);pointer-events:none;z-index:2}
+}
+.ptab-taglabel{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:11.5px;letter-spacing:.06em;color:#6A665C;margin:16px 0 9px}
+.ptab-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.ptab-tags span{background:#F3F1EA;border:1.5px solid var(--line);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;color:var(--ink)}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -376,8 +458,12 @@ body{padding-bottom:54px}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 </style>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://reviewsonmywebsite.com">
+<script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=3da6a5fe6e118e09b7213aa5a1bd08cf" type="text/javascript" async></script>
+<script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=4a24b3ba631386ba5f4ec3ef018ac9ca" type="text/javascript" async></script>
 </head>
 <body>
+<div class="ld-mlogo"><img src="https://static.wixstatic.com/media/36a716_34f06748182947bda600f55305c5ca14~mv2.png/v1/fit/w_1000,h_300,q_85,enc_avif,quality_auto/logo.png" alt="Jersey Junkers &mdash; New Jersey's Junk Removal Company"></div>
 <div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
 <div class="utility"><div class="wrap utility-in">
 <span class="u-hours"><b>Office Hours:</b> Monday&ndash;Friday 8 am &ndash; 7 pm<span class="u-sat"><span class="u-dot"> &middot; </span>Saturday 8 am &ndash; 12 pm</span></span>
@@ -460,18 +546,89 @@ body{padding-bottom:54px}
 <a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
 </div>
 </div>
-<header class="hero photo ld-hero" style="background-image:linear-gradient(rgba(18,18,16,.6),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_2e4be4b2291b4417b72035046afcf209~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
+<header class="hero photo ld-hero" style="background-image:linear-gradient(rgba(18,18,16,.6),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_2e4be4b2291b4417b72035046afcf209~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')">
+<img class="ld-mheroimg" src="https://static.wixstatic.com/media/36a716_2e4be4b2291b4417b72035046afcf209~mv2.png/v1/fit/w_1080,h_1600,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew loading a truck">
+<div class="wrap">
 <div class="ld-hero-copy" style="max-width:640px">
+<div class="ld-desk">
 <span class="eyebrow">New Jersey's Junk Removal Company &middot; Since 2012</span>
 <h1>Providing NJ with <span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">junk removal</span> and more!</h1>
 <p class="lead">Your Junk, Our Mission: Simple, Fast, Gone! Same-day or next-day service &mdash; from a single item to a whole houseful.</p>
 </div>
+<div class="ld-mob">
+<h1 class="ld-mh1">NJ's<br><span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">junk removal</span><br>experts</h1>
+<div class="ld-mbot">
+<p class="lead">From a <b>single item</b> to <b>emptying</b><br><b>an entire home</b>, we do it all.</p>
+<div class="ld-gbadge">
+<div data-romw-token="UOzABMYkRh2ymnrGlreQGropQT9gd5GAWyguKTMUUq9dKUhwvE"></div>
+</div>
+<a class="ld-mcall" href="tel:8885335865"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.7z"/></svg> Click to call</a>
+</div>
+</div>
+</div>
 </div></header>
+
+<section class="ld-mstrip"><div class="wrap">
+<div class="ld-mchecks">
+<span><i>&#10003;</i>700+ Five-Star Reviews</span>
+<span><i>&#10003;</i>Same-Day / Next-Day</span>
+<span><i>&#10003;</i>Licensed &amp; Insured</span>
+<span><i>&#10003;</i>Locally Owned Since 2012</span>
+</div>
+</div></section>
+
+<section class="ld-mmission"><div class="wrap">
+<h2 class="ld-mm-h"><span style="color:var(--blue);white-space:nowrap">Your Junk, Our Mission:</span><br>Simple, Fast, <i>Gone!</i></h2>
+<div class="ld-mm-bar"></div>
+<p class="ld-mm-p">Whether it's <b>a single item</b> or <b>emptying the contents of a home,</b> our expert teams work fast, efficiently, and without hassle.</p>
+<div class="ld-illu">
+<img class="ld-illu-truck" src="https://static.wixstatic.com/media/36a716_1e288d994de34d9193256acce0523632~mv2.png/v1/fit/w_1000,h_700,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers truck" loading="lazy">
+<img class="ld-illu-men" src="https://static.wixstatic.com/media/36a716_ade574dc595047e0b2b79ed72b1e8b68~mv2.png/v1/fit/w_600,h_600,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew" loading="lazy">
+</div>
+</div></section>
+
+<section class="ld-wr"><div class="wrap ld-wr-in">
+<div class="sec-head" style="margin-bottom:20px;text-align:center;max-width:none"><div class="kicker" style="display:inline-flex;justify-content:center">Residential &amp; Commercial</div>
+<h2 class="ld-wr-h">We remove all types of junk.</h2></div>
+<img class="ld-wr-img" src="https://static.wixstatic.com/media/36a716_ab80a05b13544380a8c3dfd630926d90~mv2.jpeg/v1/fill/w_960,h_620,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers crew removing junk" loading="lazy">
+<div class="ld-svcgrid">
+<span class="ld-svc"><i>&#10003;</i>Furniture</span>
+<span class="ld-svc"><i>&#10003;</i>Appliances</span>
+<span class="ld-svc"><i>&#10003;</i>Mattresses</span>
+<span class="ld-svc"><i>&#10003;</i>Electronics &amp; E-Waste</span>
+<span class="ld-svc"><i>&#10003;</i>BBQ Grills</span>
+<span class="ld-svc"><i>&#10003;</i>Exercise Equipment</span>
+<span class="ld-svc"><i>&#10003;</i>Tires</span>
+<span class="ld-svc"><i>&#10003;</i>Cardboard</span>
+<span class="ld-svc"><i>&#10003;</i>Household Junk</span>
+<span class="ld-svc"><i>&#10003;</i>Garage Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Basement Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Estate Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Hoarding Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Storage Unit Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Office Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Retail Store Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Warehouse Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Pre/Post Move Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>Trampolines</span>
+<span class="ld-svc"><i>&#10003;</i>TVs &amp; Monitors</span>
+<span class="ld-svc"><i>&#10003;</i>Desks &amp; Office Furniture</span>
+<span class="ld-svc"><i>&#10003;</i>Retail Fixtures</span>
+<span class="ld-svc"><i>&#10003;</i>Bulk Items</span>
+<span class="ld-svc"><i>&#10003;</i>Dressers &amp; Chests</span>
+<span class="ld-svc"><i>&#10003;</i>Real Estate Cleanouts</span>
+<span class="ld-svc"><i>&#10003;</i>And Much More</span>
+</div>
+</div></section>
+
+<section class="ld-mcallsec"><div class="wrap">
+<a class="ld-mcall" href="tel:8885335865"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.7z"/></svg> Click to call</a>
+</div></section>
 
 <section class="ld-below" style="padding:0 0 10px"><div class="wrap">
 <div class="ld-below-grid">
 <form class="ld-form" id="ldForm">
-<div class="ldf-head">Get a free<br>estimate</div>
+<div class="ldf-head">Get a fast,<br>all-inclusive quote</div>
 <div class="ldf-body">
 <p class="ld-form-sub">Fill the form and we'll respond to you shortly.</p>
 <input type="text" name="name" placeholder="Name" required>
@@ -514,31 +671,50 @@ body{padding-bottom:54px}
 <button class="ptab" role="tab" data-tab="multi">Multiple-Items</button>
 </div>
 <div class="ptab-panel active" data-panel="single">
-<div class="ptab-grid">
-<div>
-<h3 class="ptab-h">Single items $99 and up!</h3>
+<div class="ptab-stack">
+<h3 class="ptab-h">Single items <span style="color:#1F9D55">$99</span> and up!</h3>
 <p>Got one bulky item that's in the way? Whether it's a treadmill, mattress, microwave, or sofa &mdash; we'll take care of it, quick and clean. Perfect for fast, one-off pickups.</p>
-<ul class="ticklist two-col" style="margin:14px 0 18px">
+<div class="ptab-taglabel">Popular single-item pick-ups &mdash; each priced by the item:</div>
+<ul class="ticklist two-col" style="margin:0 0 18px">
 <li>Appliances</li><li>Chairs</li><li>Couches</li><li>E-Waste</li><li>Treadmills</li><li>Mattresses</li><li>Microwaves</li><li>And more!</li>
 </ul>
-<a class="btn" href="/book/?type=single">Single-item price list &rarr;</a>
-</div>
 <img src="https://static.wixstatic.com/media/36a716_c7ba5985c3e8457d88095ef8d83397e6~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Single item pick-up" loading="lazy">
+<div class="ptab-cta"><a class="btn" href="/book/?type=single">Single-item price list &rarr;</a>
+<p class="ptab-fine"><b>Small</b> Single-Items Start at <span class="pgreen">$99</span><br><b>Large</b> Items Start at <span class="pgreen">$199</span> and up.</p></div>
 </div>
 </div>
 <div class="ptab-panel" data-panel="multi">
-<div class="ptab-grid">
-<div>
-<h3 class="ptab-h">Multiple items start at $199</h3>
+<div class="ptab-stack">
+<h3 class="ptab-h">Multi-items <span style="white-space:nowrap">start at <span style="color:#1F9D55">$199</span></span></h3>
 <p>Your cost depends on the overall space your items take up in our trucks &mdash; from our smallest load size to a full truckload. Homes, businesses &mdash; we'll even meet you at a storage unit.</p>
-<ul class="ticklist two-col" style="margin:14px 0 18px">
-<li>Junk removal</li><li>Furniture</li><li>Cardboard</li><li>Cleanouts</li><li>Storage units</li><li>Garage junk</li><li>Basement junk</li><li>And more!</li>
+<div class="ptab-taglabel">A few of the things we haul away:</div>
+<ul class="ticklist two-col" style="margin:0 0 18px">
+<li>Furniture</li><li>Appliances</li><li>Mattresses</li><li>Cardboard</li><li>Boxes &amp; clutter</li><li>Garage junk</li><li>Basement junk</li><li>And more!</li>
 </ul>
-<a class="btn" href="/how-we-price/multi-item/">See our price tiers &rarr;</a>
-</div>
 <img src="https://static.wixstatic.com/media/36a716_3e45e222296b40f682e684e5b8bd753d~mv2.png/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.png" alt="Multi-item truck load" loading="lazy">
+<div class="ptab-cta"><a class="btn" href="/how-we-price/multi-item/">See our price tiers &rarr;</a>
+<p class="ptab-fine"><b>Multi-Item</b> pricing ranges from <span class="pgreen">$199&ndash;$949</span></p></div>
 </div>
 </div>
+</div>
+</div></section>
+
+<section class="band" style="padding:56px 0"><div class="wrap" style="text-align:center">
+<div class="kicker" style="display:inline-flex">Recent feedback</div>
+<h2 style="margin:14px 0 4px">Excellent <span style="color:var(--gold)">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h2>
+<p style="font-weight:800;margin-bottom:22px">Based on 700+ reviews</p>
+<div data-romw-token="S7qsYD74LqNCZROgs2cCjoOeFBfaDUIsfLo81fEJINNuQBdvEm"></div>
+
+</div></section>
+
+<section class="band" style="padding:64px 0"><div class="wrap">
+<div class="about-grid" style="align-items:center;gap:44px">
+<div>
+<div class="kicker">About us</div>
+<h2 style="margin:14px 0 14px">Since 2012, the go-to for Central Jersey &mdash; and beyond</h2>
+<p>With over a decade of service, Jersey Junkers is proud to be a leading name in New Jersey junk removal. We're expanding to bring our top-notch, hassle-free experience to more areas &mdash; dependable, speedy, efficient, and, most importantly, friendly.</p>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_36ce8f366f884c09b0fac44f902c23ca~mv2.gif" alt="The Jersey Junkers crew" class="about-img" loading="lazy">
 </div>
 </div></section>
 
@@ -549,24 +725,16 @@ body{padding-bottom:54px}
 <a class="svc-tile" href="/our-services/junk-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Junk Removal</span></a>
 <a class="svc-tile" href="/our-services/furniture-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.png')"><span>Furniture Removal</span></a>
 <a class="svc-tile" href="/our-services/cardboard-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_927e0e181d8d4a4ab70ca2fce61bcf90~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cardboard Removal</span></a>
-<a class="svc-tile" href="/our-services/cleanouts/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_22e6c3567c8e4d4ba09eb097dd84a320~mv2.png/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.png')"><span>Clean-Outs</span></a>
+<a class="svc-tile" href="/our-services/cleanouts/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_dff666d1ea684a9c8e2cdcfbd2c6a382~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Cleanouts</span></a>
 <a class="svc-tile" href="/our-services/appliance-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_4d970d4fe6534cc0bb572c434c7e1456~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Appliance Removal</span></a>
 <a class="svc-tile" href="/our-services/above-ground-pool-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_a1189f6fc9ac44cb98064fe902415f87~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Above-Ground Pools</span></a>
-<a class="svc-tile" href="/our-services/billiard-table-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_c76691a728a74d8dbaaee01a8d440689~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Billiard Tables</span></a>
+<a class="svc-tile" href="/our-services/billiard-table-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_dabe58a138104dc581824cbb03c657d7~mv2.png/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.png')"><span>Billiard Tables</span></a>
 <a class="svc-tile" href="/our-services/construction-waste-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_37b4e40815bb450c83a5c61153e695d0~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Renovation Leftovers</span></a>
 <a class="svc-tile" href="/our-services/deck-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_e465d6dea74a49d9a5356b6645034f6f~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Deck Demolition</span></a>
 <a class="svc-tile" href="/our-services/hot-tub-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_b44831fddd0b49d89781f39a81c0b156~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Hot Tub Removal</span></a>
 <a class="svc-tile" href="/our-services/swing-set-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_a6a26c7cdf60414694e69b96d1c39854~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Swing Set Removal</span></a>
 <a class="svc-tile" href="/our-services/trampoline-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_8fd1ff1b6b6043b09688899a1fc57648~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Trampoline Removal</span></a>
 </div>
-</div></section>
-
-<section class="band" style="padding:56px 0"><div class="wrap" style="text-align:center">
-<div class="kicker" style="display:inline-flex">Recent feedback</div>
-<h2 style="margin:14px 0 4px">Excellent <span style="color:var(--gold)">&#9733;&#9733;&#9733;&#9733;&#9733;</span></h2>
-<p style="font-weight:800;margin-bottom:22px">Based on 700+ reviews</p>
-<div data-romw-token="S7qsYD74LqNCZROgs2cCjoOeFBfaDUIsfLo81fEJINNuQBdvEm" data-romw-lazy></div>
-<script src="https://reviewsonmywebsite.com/js/v2/embed.js?id=4a24b3ba631386ba5f4ec3ef018ac9ca" type="text/javascript" defer></script>
 </div></section>
 
 <section class="ld-mission" style="background-image:linear-gradient(rgba(18,18,16,.62),rgba(18,18,16,.74)),url('https://static.wixstatic.com/media/36a716_30ad4835973b4a57a51a1edb1039e83f~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/file.jpg')"><div class="wrap">
@@ -580,17 +748,6 @@ body{padding-bottom:54px}
 </div>
 </div></section>
 
-<section class="band" style="padding:64px 0"><div class="wrap">
-<div class="about-grid" style="align-items:center;gap:44px">
-<div>
-<div class="kicker">About us</div>
-<h2 style="margin:14px 0 14px">Since 2012, the go-to for Central Jersey &mdash; and beyond</h2>
-<p>With over a decade of service, Jersey Junkers is proud to be a leading name in New Jersey junk removal. We're expanding to bring our top-notch, hassle-free experience to more areas &mdash; dependable, speedy, efficient, and, most importantly, friendly.</p>
-</div>
-<img src="https://static.wixstatic.com/media/36a716_48df12bf33c4435ab241e8a9a07dbb0f~mv2.jpg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="The Jersey Junkers crew" class="about-img" loading="lazy">
-</div>
-</div></section>
-
 <section style="padding:60px 0 0"><div class="wrap">
 <div class="sec-head" style="margin-bottom:20px;text-align:center;max-width:none"><div class="kicker" style="display:inline-flex">Recent work</div>
 <h2>Recent junk removal projects</h2></div>
@@ -598,16 +755,16 @@ body{padding-bottom:54px}
 <div class="pr-wrap">
 <button class="pr-arrow pr-left" aria-label="Scroll back">&larr;</button>
 <div class="pr-rail" id="prRail">
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_82cee777e85b406b8103e6f821eddb47~mv2.jpeg/v1/fill/w_900,h_700,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_b146d229be2c4a0f8afb2b43be761497~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_86058c2381a44e5da8be0ba384b7dd0b~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_78ba7e0b0ba14ea6ba14a53376dfa1cd~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_1b29afcd54a94060a19dd10cbcbcb0da~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_bf78a1080e4e4ed3af8c39b7b2ed982c~mv2.jpg/v1/fill/w_900,h_700,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_35d2a736d86c44fd925b48d8a46e8b5a~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_ad7852bd227946cfa889b5518b73972a~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_01947c32ddfa404aaeb7338099a1f024~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"></div>
-<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_d83c097236a24dd89a50c5f2f78477be~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_a864c3e27dcf473daf6396053702ee77~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_2d4e9b76951f4dffadf0831350b46e9e~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_7be8d1a19ea84bb2b4399c15127e917b~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/c2fb4f_e1b40a83c3f04efd971ddcf947ce2252~mv2.png/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.png')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_b6bbc64e513e48658758f82178fce1f3~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/7657be_8a6c1e8d68e341ca8f4f01e96a802f8f~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_37b4e40815bb450c83a5c61153e695d0~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_0b7c0332593441869428cda01451137f~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_4e72dfb1c35847d29f6a8284bc346a6b~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
+<div class="pr-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_ad2a53f1279f4c6bb7d7dce23e89cbff~mv2.jpg/v1/fill/w_800,h_640,al_c,q_82,enc_avif,quality_auto/file.jpg')"></div>
 </div>
 <button class="pr-arrow pr-right" aria-label="Scroll forward">&rarr;</button>
 </div>
@@ -623,7 +780,7 @@ body{padding-bottom:54px}
 
 <section class="final"><div class="wrap">
 <h2>Ready to see it gone?</h2>
-<p>Get your free estimate above, book online, or just call &mdash; a real person answers.</p>
+<p>Get your free quote above, book online, or just call &mdash; a real person answers.</p>
 <div class="final-cta" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
 <a class="btn" href="tel:8885335865">Call: 888-533-5865</a>
 <a class="btn btn-outline" href="/book/">Book online &rarr;</a>
@@ -778,6 +935,11 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     });
     lb.addEventListener("click",()=>lb.classList.remove("on"));
   }
+  // we-remove section slides in from the left
+  const wr=document.querySelector(".ld-wr-in");
+  if(wr&&"IntersectionObserver" in window){
+    new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){wr.classList.add("in");o.disconnect();}})},{threshold:.15}).observe(wr);
+  }else if(wr){wr.classList.add("in");}
   // photo protection on the mission band
   const ms=document.querySelector(".ld-mission");
   if(ms){ms.addEventListener("contextmenu",e=>e.preventDefault());ms.addEventListener("dragstart",e=>e.preventDefault());}
@@ -801,7 +963,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
       const px=map.project(e.popup.getLatLng());px.y-=150;
       map.panTo(map.unproject(px),{animate:true});
     });
-    fetch("/nj-top-junk-removal/nj-counties.json").then(r=>r.json()).then(gj=>{
+    fetch("nj-counties.json").then(r=>r.json()).then(gj=>{
       L.geoJSON(gj,{style:{color:"#F5C400",weight:2,fillColor:"#F5C400",fillOpacity:.16}}).addTo(map);
     }).catch(()=>{});
   }
