@@ -364,14 +364,23 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .towns{columns:2}.nav-links a{display:none}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
-.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 0;border-bottom:1px solid #E8DFC0}
+.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 28px;border-bottom:1px solid #E8DFC0}
 .mm-drop summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .mm-drop summary::-webkit-details-marker{display:none}
 .mm-drop summary::after{content:"\25BE";font-size:13px;transition:transform .18s}
 .mm-drop[open] summary::after{transform:rotate(180deg)}
-.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
+.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.faqd{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -584,11 +593,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section><div class="wrap">
 <div class="sec-head"><div class="kicker">Deck removal questions</div>
 <h2>Asked &amp; answered</h2></div>
-<div class="faq-list">
-<div class="gcard"><h3>How long does deck removal take?</h3><p>Most deck removal jobs can be completed <b>in a day</b>, but larger or more complex decks may take longer. We'll provide a clear timeline during your estimate.</p></div>
-<div class="gcard"><h3>Will you take care of the debris?</h3><p><b>Absolutely.</b> We haul away all debris, leaving your space clean and ready for your next project.</p></div>
-<div class="gcard"><h3>Do you remove the concrete footings?</h3><p><b>Yes, depending on their size.</b> For smaller footings, we offer a cost-effective approach that doesn't require heavy machinery &mdash; most customers prefer it because it's efficient and minimizes disruption to the property. For larger footings requiring extensive removal, we'll discuss the best approach during your estimate.</p></div>
-<div class="gcard"><h3>Do I need a permit for deck removal?</h3><p>Permits may be required depending on your location and the deck's size. While we don't handle permits directly, <b>we can guide you on the requirements for your area.</b></p></div>
+<div style="max-width:900px">
+<details class="faqd"><summary>How long does deck removal take?</summary><div class="faqd-a"><p>Most deck removal jobs can be completed <b>in a day</b>, but larger or more complex decks may take longer. We'll provide a clear timeline during your estimate.</p></div></details>
+<details class="faqd"><summary>Will you take care of the debris?</summary><div class="faqd-a"><p><b>Absolutely.</b> We haul away all debris, leaving your space clean and ready for your next project.</p></div></details>
+<details class="faqd"><summary>Do you remove the concrete footings?</summary><div class="faqd-a"><p><b>Yes, depending on their size.</b> For smaller footings, we offer a cost-effective approach that doesn't require heavy machinery &mdash; most customers prefer it because it's efficient and minimizes disruption to the property. For larger footings requiring extensive removal, we'll discuss the best approach during your estimate.</p></div></details>
+<details class="faqd"><summary>Do I need a permit for deck removal?</summary><div class="faqd-a"><p>Permits may be required depending on your location and the deck's size. While we don't handle permits directly, <b>we can guide you on the requirements for your area.</b></p></div></details>
 </div>
 </div></section>
 

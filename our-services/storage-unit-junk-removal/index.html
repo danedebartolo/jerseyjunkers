@@ -136,7 +136,6 @@ section{padding:56px 0}
 .checks span{font-size:16px;font-weight:500;display:flex;gap:10px;align-items:baseline}
 .checks span::before{content:"✓";color:var(--green);font-weight:800}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px}
-.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;position:relative}
 .step .num{position:absolute;top:-22px;left:32px;width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-family:'Archivo',sans-serif;font-weight:800;font-size:18px;display:flex;align-items:center;justify-content:center;border:3px solid var(--paper)}
 .step h3{font-size:19px;font-weight:800;text-transform:uppercase;margin-bottom:10px}
 .step p{font-size:15.5px;color:#55524a}
@@ -338,12 +337,12 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .towns{columns:2}.nav-links a{display:none}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
-.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 0;border-bottom:1px solid #E8DFC0}
+.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 28px;border-bottom:1px solid #E8DFC0}
 .mm-drop summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .mm-drop summary::-webkit-details-marker{display:none}
 .mm-drop summary::after{content:"\25BE";font-size:13px;transition:transform .18s}
 .mm-drop[open] summary::after{transform:rotate(180deg)}
-.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
+.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
 .ticklist{list-style:none;padding:0;margin:0}
@@ -356,17 +355,25 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
 .intro-ticks li{font-size:16px}
 .steps-list{display:flex;flex-direction:column;gap:22px}
-.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;position:relative}
 .step h3{font-size:19px;font-weight:800;text-transform:uppercase;margin-bottom:10px}
 .step p{font-size:15.5px;color:#55524a}
 .hiw-img{height:100%;object-fit:cover;align-self:stretch}
 .steps-list{display:flex;flex-direction:column;gap:22px}
-.step{display:flex;gap:16px;align-items:flex-start}
+.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px 28px;display:flex;gap:16px;align-items:flex-start}
 .step-num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--gold);border:2px solid var(--ink);font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
 .step h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:16.5px;margin-bottom:4px}
 .step p{font-size:15px;color:#3E3C36}
 .hiw-img{height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;width:100%}
 .hiw-img{border-radius:18px}
+.faqd{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -565,11 +572,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section><div class="wrap">
 <div class="sec-head"><div class="kicker">Storage unit questions</div>
 <h2>Asked &amp; answered</h2></div>
-<div class="faq-list">
-<div class="gcard"><h3>Do I have to be there?</h3><p><b>Generally, no.</b> As long as you can give us access to the unit beforehand, we'll come in, <b>take before photos</b>, finish the work, and <b>provide photo proof</b> that everything was completed as expected. Plenty of customers simply leave the unit unlocked and give the crew a gate code &mdash; and we take it from there.</p></div>
-<div class="gcard"><h3>Can you clear it out if I'm out of state?</h3><p>Often, yes &mdash; it depends on the facility's access rules. Give us a call and we'll work it out with you.</p></div>
-<div class="gcard"><h3>Do you sweep the unit out?</h3><p><b>Yes.</b> We leave it broom-swept and ready to hand back to the facility, so you're not paying another month over a dusty floor.</p></div>
-<div class="gcard"><h3>What if the unit's packed to the ceiling?</h3><p>That's a normal Tuesday for us. We'll bring <b>the right size crew and enough truck space</b> &mdash; and if it takes multiple trucks, we'll tell you before we start.</p></div>
+<div style="max-width:900px">
+<details class="faqd"><summary>Do I have to be there?</summary><div class="faqd-a"><p><b>Generally, no.</b> As long as you can give us access to the unit beforehand, we'll come in, <b>take before photos</b>, finish the work, and <b>provide photo proof</b> that everything was completed as expected. Plenty of customers simply leave the unit unlocked and give the crew a gate code &mdash; and we take it from there.</p></div></details>
+<details class="faqd"><summary>Can you clear it out if I'm out of state?</summary><div class="faqd-a"><p>Often, yes &mdash; it depends on the facility's access rules. Give us a call and we'll work it out with you.</p></div></details>
+<details class="faqd"><summary>Do you sweep the unit out?</summary><div class="faqd-a"><p><b>Yes.</b> We leave it broom-swept and ready to hand back to the facility, so you're not paying another month over a dusty floor.</p></div></details>
+<details class="faqd"><summary>What if the unit's packed to the ceiling?</summary><div class="faqd-a"><p>That's a normal Tuesday for us. We'll bring <b>the right size crew and enough truck space</b> &mdash; and if it takes multiple trucks, we'll tell you before we start.</p></div></details>
 </div>
 </div></section>
 
@@ -584,8 +591,8 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 <section class="final"><div class="wrap">
-<h2>Feel roomier by Friday.</h2>
-<p>Enter your ZIP, pick a window, and consider it handled.</p>
+<h2>Unit cleared. Key returned. Done.</h2>
+<p>Enter your ZIP and we'll schedule a time to clear it out &mdash; one trip, one crew.</p>
 <form class="zipbar" data-zip>
 <input type="text" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" aria-label="ZIP code">
 <button class="btn" type="submit">Book online &rarr;</button>

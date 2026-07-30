@@ -329,12 +329,12 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .towns{columns:2}.nav-links a{display:none}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
-.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 0;border-bottom:1px solid #E8DFC0}
+.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 28px;border-bottom:1px solid #E8DFC0}
 .mm-drop summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .mm-drop summary::-webkit-details-marker{display:none}
 .mm-drop summary::after{content:"\25BE";font-size:13px;transition:transform .18s}
 .mm-drop[open] summary::after{transform:rotate(180deg)}
-.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
+.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
 .intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
@@ -348,6 +348,15 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--blue);font-weight:900}
 .ticklist.two-col{columns:2;column-gap:34px}
 @media (max-width:700px){.ticklist.two-col{columns:1}}
+.faqd{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -501,7 +510,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <li>And more!</li>
 </ul>
 </div>
-<div class="wrap" style="margin-top:34px"><img src="https://static.wixstatic.com/media/36a716_a215bcb744064cc29d8709fd3224b036~mv2.png/v1/fill/w_1600,h_560,al_c,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew carrying furniture out" loading="lazy" style="width:100%;border-radius:16px;border:1px solid var(--line)"></div>
+<div class="wrap" style="margin-top:34px"><img src="https://static.wixstatic.com/media/36a716_43fc29cd55c54163a339db19345a45b1~mv2.png/v1/fill/w_1600,h_560,al_c,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew carrying furniture out" loading="lazy" style="width:100%;border-radius:16px;border:1px solid var(--line)"></div>
 </div></section>
 
 
@@ -519,16 +528,18 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div></section>
-<section class="fr-reviewband rev2" style="background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_0243e320ee6c48878da1a4005ac6cb8d~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
-<div class="rev2-in">
-<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
-<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="rev2-quote">We hired them to remove furniture from our basement and they were on time, extremely professional, and very nice to work with. I look forward to hiring their team again soon!!</p>
-<div class="rev2-attr">
-<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+<section style="padding:90px 0;background-size:cover;background-position:center;background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_0243e320ee6c48878da1a4005ac6cb8d~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')">
+<div class="wrap">
+<div style="max-width:900px;margin:0 auto;text-align:center;position:relative">
+<div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:#F5C400;opacity:.9;margin-bottom:6px" aria-hidden="true">&ldquo;</div>
+<div style="color:#F5C400;font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p style="color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px">We hired them to remove furniture from our basement and they were on time, extremely professional, and very nice to work with. I look forward to hiring their team again soon!!</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
+<a href="/customer-feedback/" style="background:#F5C400;color:#1a1a1a;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none">Read 700+ more reviews &rarr;</a>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 
 
 <section class="band"><div class="wrap" style="position:relative">
@@ -537,11 +548,10 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <p>No separate booking, no runaround &mdash; the same crew handles the big ones.</p></div>
 <div class="svc-rail" id="bigrail">
 <div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_dff666d1ea684a9c8e2cdcfbd2c6a382~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Estate furniture cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Estate cleanouts</span></div>
-<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_2d4e9b76951f4dffadf0831350b46e9e~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Moving and downsizing furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Moving &amp; downsizing</span></div>
-<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_71cd874e0e2b4f1eba7305e51ad4f571~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Office furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Office furniture</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_2d4e9b76951f4dffadf0831350b46e9e~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Moving and downsizing" loading="lazy"><span><i class="tick">&#10003;</i> Moving &amp; downsizing</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_71cd874ec4ec44ab85dc5682636e240a~mv2.png/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.png" alt="Office furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Office furniture</span></div>
 <div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_22e6c3567c8e4d4ba09eb097dd84a320~mv2.png/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.png" alt="Whole-home furniture cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Whole-home cleanouts</span></div>
-<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Storage unit furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Storage-unit emptying</span></div>
-<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_b6bbc64e513e48658758f82178fce1f3~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Hoarding cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Hoarding cleanouts</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_55b89311a28747ee8d9febd6005c1e93~mv2.png/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.png" alt="Storage unit emptying" loading="lazy"><span><i class="tick">&#10003;</i> Storage-unit emptying</span></div>
 </div>
 <button class="rail-arrow rail-left" id="bigrailL" type="button" aria-label="Scroll back">&larr;</button>
 <button class="rail-arrow rail-right" id="bigrailR" type="button" aria-label="Scroll forward">&rarr;</button>
@@ -550,11 +560,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">Furniture questions</div>
 <h2>Asked &amp; answered</h2></div>
-<div class="faq-list">
-<div class="gcard"><h3>How much does couch removal cost?</h3><p>A standard sofa or loveseat starts at <b>$199</b> &mdash; and that includes us coming inside to get it. <a href="/book/?type=single" style="color:var(--navy);font-weight:800">See our single-item pricing</a> for exact rates on other pieces.</p></div>
-<div class="gcard"><h3>Can I get a price on the phone?</h3><p><b>For single items &mdash; yes.</b> We offer flat-rate pricing based on the item and where it's located. <a href="/book/?type=single" style="color:var(--navy);font-weight:800">See single-item pricing</a>.<br><br><b>For multiple items,</b> pricing depends on how much space everything takes up in our truck &mdash; and that's hard to nail down without seeing it in person. So pricing is assessed and confirmed on-site the day of your appointment, <b>with zero obligation.</b> We'll assess your pickup, give you a clear, upfront price to approve before any work begins.</p></div>
-<div class="gcard"><h3>Do you handle larger furniture cleanouts?</h3><p>Absolutely &mdash; it's one of our specialties. Whole rooms, whole homes, estates, offices, and downsizing projects all get the same treatment: <b>volume-based pricing</b>, and we can send <b>multiple trucks and crews</b> for the big ones.</p></div>
-<div class="gcard"><h3>I remodeled &mdash; and now I don't think my sofa will fit out of the basement.</h3><p>More common than you'd think! <b>We can still remove it</b> &mdash; it just takes a couple of extra steps. <a href="tel:8885335865" style="color:var(--navy);font-weight:800">Give us a call</a> to discuss.</p></div>
+<div style="max-width:860px;margin:0 auto">
+<details class="faqd"><summary>How much does couch removal cost?</summary><div class="faqd-a"><p>A standard sofa or loveseat starts at <b>$199</b> &mdash; and that includes us coming inside to get it. <a href="/book/?type=single" style="color:var(--navy);font-weight:800">See our single-item pricing</a> for exact rates on other pieces.</p></div></details>
+<details class="faqd"><summary>Can I get a price on the phone?</summary><div class="faqd-a"><p><b>For single items &mdash; yes.</b> We offer flat-rate pricing based on the item and where it's located. <a href="/book/?type=single" style="color:var(--navy);font-weight:800">See single-item pricing</a>.<br><br><b>For multiple items,</b> pricing depends on how much space everything takes up in our truck &mdash; and that's hard to nail down without seeing it in person. So pricing is assessed and confirmed on-site the day of your appointment, <b>with zero obligation.</b> We'll assess your pickup, give you a clear, upfront price to approve before any work begins.</p></div></details>
+<details class="faqd"><summary>Do you handle larger furniture cleanouts?</summary><div class="faqd-a"><p>Absolutely &mdash; it's one of our specialties. Whole rooms, whole homes, estates, offices, and downsizing projects all get the same treatment: <b>volume-based pricing</b>, and we can send <b>multiple trucks and crews</b> for the big ones.</p></div></details>
+<details class="faqd"><summary>I remodeled &mdash; and now I don't think my sofa will fit out of the basement.</summary><div class="faqd-a"><p>More common than you'd think! <b>We can still remove it</b> &mdash; it just takes a couple of extra steps. <a href="tel:8885335865" style="color:var(--navy);font-weight:800">Give us a call</a> to discuss.</p></div></details>
 </div>
 </div></section>
 

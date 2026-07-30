@@ -282,7 +282,7 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .step-num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--gold);border:2px solid var(--ink);font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
 .step h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:16.5px;margin-bottom:4px}
 .step p{font-size:15px;color:#3E3C36}
-@media (max-width:820px){.hero.photo{background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_eaab37ecdf6f4c43bb41dd847b1faafe~mv2.jpg/v1/fill/w_900,h_1200,al_c,q_85,enc_avif,quality_auto/file.jpg') !important}}
+}
 .jr-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .jr-call{color:var(--navy);font-weight:700;font-size:16px;text-decoration:none;cursor:default}
 .jr-call b{font-weight:900}
@@ -359,12 +359,12 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .svc-tile-all{background:var(--ink)!important}
 .svc-tile-all span{color:var(--gold)}
 @media (max-width:820px){.svc-tiles{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;gap:12px;padding-bottom:8px;margin-left:-28px;margin-right:-28px;padding-left:28px;padding-right:28px;scrollbar-width:none}.svc-tiles::-webkit-scrollbar{display:none}.svc-tile{flex:0 0 72%;scroll-snap-align:center;height:170px}}
-.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 0;border-bottom:1px solid #E8DFC0}
+.mobilemenu .mm-drop summary{font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;padding:11px 28px;border-bottom:1px solid #E8DFC0}
 .mm-drop summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
 .mm-drop summary::-webkit-details-marker{display:none}
 .mm-drop summary::after{content:"\25BE";font-size:13px;transition:transform .18s}
 .mm-drop[open] summary::after{transform:rotate(180deg)}
-.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
+.mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
 .ticklist.two-col{columns:2;column-gap:34px}
@@ -373,6 +373,18 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 @media (max-width:860px){.intro-grid{grid-template-columns:1fr;gap:24px}}
 .intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
 .intro-ticks li{font-size:16px}
+
+.fr-reviewband{padding:90px 0;background-size:cover;background-position:center}
+.faqd{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
+
 .rev2{padding:90px 0}
 .rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
 .rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
@@ -387,7 +399,6 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .rev2{padding:64px 0}
 .rev2-mark{font-size:100px}
 .rev2-stars{font-size:22px;letter-spacing:6px}
-.fr-reviewband{padding:90px 0;background-size:cover;background-position:center}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -504,7 +515,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
 </div>
 </div>
-<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_eaab37ecdf6f4c43bb41dd847b1faafe~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
+<header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_4d970d4fe6534cc0bb572c434c7e1456~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Appliance Removal &middot; New Jersey</span>
 <h1>Old appliances,<br><span>hauled out for good.</span></h1>
@@ -533,9 +544,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 <img src="https://static.wixstatic.com/media/36a716_10263280222c46b5883468101ca51c02~mv2.jpg/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Removing a refrigerator from a basement" class="about-img" loading="lazy">
 </div>
-<ul class="ticklist two-col" style="margin:26px 0 0">
-<li>Dead fridge or freezer</li><li>Washer &amp; dryer swap-outs</li><li>Kitchen remodel pull-outs</li><li>Broken dishwashers &amp; ovens</li><li>Window ACs &amp; dehumidifiers</li><li>Water heaters</li><li>The garage beer fridge, retired</li><li>And more!</li>
-</ul>
+
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -552,23 +561,30 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div></section>
-<section class="fr-reviewband rev2" style="background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_b6bbc64e513e48658758f82178fce1f3~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
-<div class="rev2-in">
-<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
-<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<p class="rev2-quote">Old fridge died in the garage and two other companies wouldn't touch it because of the freon. These guys hauled it up the basement stairs, handled the disposal, and were gone in twenty minutes.</p>
-<div class="rev2-attr">
-<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+<section style="padding:90px 0;background-size:cover;background-position:center;background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_b205ce97820646929ae3d2f9ebdceed0~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')">
+<div class="wrap">
+<div style="max-width:900px;margin:0 auto;text-align:center;position:relative">
+<div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:#F5C400;opacity:.9;margin-bottom:6px" aria-hidden="true">&ldquo;</div>
+<div style="color:#F5C400;font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p style="color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px">Old fridge died in the garage and two other companies wouldn&rsquo;t touch it because of the freon. These guys hauled it up the basement stairs, handled the disposal, and were gone in twenty minutes.</p>
+<div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
+<a href="/customer-feedback/" style="background:#F5C400;color:#1a1a1a;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none">Read 700+ more reviews &rarr;</a>
 </div>
 </div>
-</div></section>
+</div>
+</section>
 
 <section><div class="wrap">
 <div class="intro-grid" style="margin-bottom:26px">
+<div>
 <div class="sec-head" style="margin-bottom:0"><div class="kicker">What we take</div>
 <h2>Just about any appliance</h2>
 <p>If it plugs in, hooks up, or runs on gas, chances are we take it. Fridges and freezers with refrigerant get <b>routed to the right facilities</b>, recycled where possible, and disposed of the way New Jersey requires.</p></div>
-<img src="https://static.wixstatic.com/media/36a716_878c804fd3444a2093d5f14530499ee2~mv2.png/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.png" alt="Refrigerator ready for responsible disposal" class="about-img" loading="lazy">
+<ul class="ticklist three-col" style="margin:22px 0 0">
+<li>Dead fridge or freezer</li><li>Washer &amp; dryer swap-outs</li><li>Kitchen remodel pull-outs</li><li>Broken dishwashers &amp; ovens</li><li>Window ACs &amp; dehumidifiers</li><li>Water heaters</li><li>The garage beer fridge, retired</li><li>And more!</li>
+</ul>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_b205ce97820646929ae3d2f9ebdceed0~mv2.jpg/v1/fill/w_800,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Appliance removal" class="about-img" loading="lazy" style="border-radius:16px;object-fit:cover">
 </div>
 <div class="grid-cards" id="applgrid">
 <div class="gcard"><ul class="ticklist two-col">
@@ -590,11 +606,11 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section><div class="wrap">
 <div class="sec-head"><div class="kicker">Appliance questions</div>
 <h2>Asked &amp; answered</h2></div>
-<div class="faq-list">
-<div class="gcard"><h3>Do I need to disconnect it first?</h3><p>Depends &mdash; <b>gas lines and anything electrically hard-wired must be handled before we arrive.</b> Plug-and-play units are no problem, and we can disconnect the water as long as there's a proper shut-off valve.</p></div>
-<div class="gcard"><h3>Do you take refrigerators with freon?</h3><p><b>Yes</b> &mdash; empty or full, doesn't matter. We handle the <b>proper refrigerant disposal</b> and route them to the right facilities, so you don't have to do anything special.</p></div>
-<div class="gcard"><h3>Can you get it down the stairs?</h3><p>Not only down &mdash; <b>we can pull it out of a basement too.</b> Stairs, tight hallways, second floors: our crews bring the dollies, straps, and hands to get it out safely.</p></div>
-<div class="gcard"><h3>Do you take just one?</h3><p>We can take <b>one or many</b> &mdash; just let the team know what you want gone. A single unit is a perfectly normal call, and a full kitchen is too.</p></div>
+<div style="max-width:900px">
+<details class="faqd"><summary>Do I need to disconnect it first?</summary><div class="faqd-a"><p>Depends &mdash; <b>gas lines and anything electrically hard-wired must be handled before we arrive.</b> Plug-and-play units are no problem, and we can disconnect the water as long as there's a proper shut-off valve.</p></div></details>
+<details class="faqd"><summary>Do you take refrigerators with freon?</summary><div class="faqd-a"><p><b>Yes</b> &mdash; empty or full, doesn't matter. We handle the <b>proper refrigerant disposal</b> and route them to the right facilities, so you don't have to do anything special.</p></div></details>
+<details class="faqd"><summary>Can you get it down the stairs?</summary><div class="faqd-a"><p>Not only down &mdash; <b>we can pull it out of a basement too.</b> Stairs, tight hallways, second floors: our crews bring the dollies, straps, and hands to get it out safely.</p></div></details>
+<details class="faqd"><summary>Do you take just one?</summary><div class="faqd-a"><p>We can take <b>one or many</b> &mdash; just let the team know what you want gone. A single unit is a perfectly normal call, and a full kitchen is too.</p></div></details>
 </div>
 </div></section>
 
