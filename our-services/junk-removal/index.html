@@ -340,6 +340,35 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+@media (max-width:860px){.intro-grid{grid-template-columns:1fr;gap:24px}}
+.intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+.rev2{padding:64px 0}
+.rev2-mark{font-size:100px}
+.rev2-stars{font-size:22px;letter-spacing:6px}
+.fr-reviewband{padding:90px 0;background-size:cover;background-position:center}
+.faqd{background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold);color:var(--ink);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
+.ticklist.two-col{columns:2;column-gap:34px}
+@media (max-width:700px){.ticklist.two-col{columns:1}}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -459,7 +488,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Junk Removal &middot; New Jersey</span>
-<h1>We remove junk, furniture, <span>and more.</span></h1>
+<h1>We <span>remove junk</span>, furniture, and more.</h1>
 <p class="lead">Life's busy. Junk piles up. Whether it's an old couch, a busted appliance, or random clutter that's been sitting for months &mdash; <b>that's where we come in.</b></p>
 <form class="zipbar" data-zip>
 <input type="text" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" aria-label="ZIP code">
@@ -475,14 +504,24 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <span><span class="tick">&#10003;</span>Serving NJ Since 2012</span>
 </div></section>
 <section style="padding:56px 0 50px"><div class="wrap">
+<div class="intro-grid">
 <div class="sec-head" style="margin-bottom:0">
 <div class="kicker">The everything service</div>
 <h2>Whatever "junk" means at your house.</h2>
 <p style="max-width:740px">The garage that ate the car, the basement that became a maze, the pile that was supposed to be temporary &mdash; junk sneaks up on everybody. Whatever yours looks like, we come to it, load it, haul it, and sweep up before we leave. If it sounds like you, it is:</p>
 </div>
-<ul class="ticklist two-col" style="margin:22px 0 0;max-width:760px">
-<li>The garage that ate the car</li><li>Basement buildup</li><li>Pre-move purge</li><li>Spring-cleaning haul</li><li>Renovation leftovers</li><li>The "someday" pile</li><li>A little bit of everything</li><li>And more!</li>
+<ul class="ticklist intro-ticks">
+<li>The garage that ate the car</li>
+<li>Basement buildup</li>
+<li>Pre-move purge</li>
+<li>Spring-cleaning haul</li>
+<li>Renovation leftovers</li>
+<li>The "someday" pile</li>
+<li>A little bit of everything</li>
+<li>And more!</li>
 </ul>
+</div>
+<div class="wrap" style="margin-top:34px"><img src="https://static.wixstatic.com/media/36a716_ab80a05b13544380a8c3dfd630926d90~mv2.jpeg/v1/fill/w_1600,h_560,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="The Jersey Junkers crew hauling junk" loading="lazy" style="width:100%;border-radius:16px;border:1px solid var(--line)"></div>
 </div></section>
 
 
@@ -500,6 +539,17 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div>
 </div></section>
+<section class="fr-reviewband rev2" style="background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_30ad4835973b4a57a51a1edb1039e83f~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">They showed up on time, gave me the price before touching anything, and had years of garage junk gone in under an hour &mdash; swept the floor on their way out. Couldn't have been easier.</p>
+<div class="rev2-attr">
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
+</div>
+</div></section>
+
 <section class="band" style="border-top:1px solid var(--line)"><div class="wrap">
 <div class="sec-head"><div class="kicker">What we haul</div>
 <h2>We remove and dispose of</h2></div>
@@ -521,25 +571,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">How pricing works</div>
-<h2>You decide how much we haul</h2>
-<p><b>Our junk removal pricing is simple</b> &mdash; whether it's a single item or a full truckload, the price adjusts to match.</p></div>
-<div class="grid-cards finegrid">
-<div class="gcard">
-<div class="wwt-photo"><img src="https://static.wixstatic.com/media/36a716_7c21877386e5429f988c068342fc694c~mv2.png/v1/fit/w_800,h_600,q_85,enc_avif,quality_auto/file.png" alt="Single item pick-up" loading="lazy"></div>
-<h3>Single item &mdash; from $99</h3>
-<p>Have one item to say goodbye to &mdash; a microwave, a sofa, a mattress? This is the fast, easy solution for one-off disposals, at a flat rate.</p>
-<a class="tcheck" href="/book/?type=single" style="margin:14px 0 0">See single-item prices &rarr;</a>
-</div>
-<div class="gcard">
-<div class="wwt-photo cover"><img src="https://static.wixstatic.com/media/36a716_624909dff1f2476e9bc4d5ec71bbda8f~mv2.png/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.png" alt="Multi-item junk removal" loading="lazy"></div>
-<h3>Multiple items &mdash; from $199</h3>
-<p>Volume-based pricing: your cost depends on how much space your items take up in our truck &mdash; from a Standard Service Call, our smallest load, to a full truck. Quick seasonal cleanup or a whole basement, the price matches the space.</p>
-<p style="margin-top:12px"><b>Our trucks hold the equivalent of:</b><br>&bull; 8 full-size refrigerators <i>(or)</i><br>&bull; 6 full-length sofas <i>(or)</i><br>&bull; 16 washing machines</p>
-<a class="tcheck" href="/how-we-price/" style="margin:14px 0 0">See our price tiers &rarr;</a>
-</div>
-</div>
+<section style="padding:56px 0 40px"><div class="wrap" style="max-width:860px">
+<div class="sec-head" style="margin-bottom:18px"><div class="kicker">Junk removal questions</div>
+<h2>Asked &amp; answered</h2></div>
+<details class="faqd"><summary>Do I need to have everything in one place?</summary><div class="faqd-a"><p>Nope. Just show us what needs to go &mdash; basement, upstairs, backyard, garage &mdash; and we'll handle the rest, including the lifting and carrying.</p></div></details>
+<details class="faqd"><summary>How fast can you get here?</summary><div class="faqd-a"><p><b>Same-day or next-day</b> in most cases. Book online or call, pick a <b>2-hour arrival window</b>, and the team calls or texts 30&ndash;45 minutes before arriving.</p></div></details>
+<details class="faqd"><summary>Do I need to be home?</summary><div class="faqd-a"><p>Not necessarily. If we can reach the items and confirm the price with you by phone, we can handle the whole job while you're at work.</p></div></details>
+<details class="faqd"><summary>What can't you take?</summary><div class="faqd-a"><p>Hazardous materials &mdash; paint, chemicals, asbestos, oils, propane tanks, and anything needing licensed hazmat disposal. Pretty much everything else is fair game.</p></div></details>
+<details class="faqd"><summary>What happens to my stuff?</summary><div class="faqd-a"><p>We bring items to local <b>recycling, donation, and disposal</b> sites. When possible, we donate or recycle before anything goes to the landfill.</p></div></details>
 </div></section>
 <section style="padding:50px 0 70px"><div class="wrap">
 <p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.05em;margin-bottom:6px">We handle the big stuff too</p>

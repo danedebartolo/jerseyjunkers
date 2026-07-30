@@ -323,6 +323,42 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.ticklist{list-style:none;padding:0;margin:0}
+.ticklist li{padding:6px 0 6px 28px;position:relative;font-size:15.5px;color:#3E3C36}
+.ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--blue);font-weight:900}
+.ticklist.two-col{columns:2;column-gap:34px}
+@media (max-width:700px){.ticklist.two-col{columns:1}}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+@media (max-width:860px){.intro-grid{grid-template-columns:1fr;gap:24px}}
+.intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
+.intro-ticks li{font-size:16px}
+.steps-list{display:flex;flex-direction:column;gap:22px}
+.step{background:#fff;border:1px solid var(--line);border-radius:18px;padding:36px 32px;position:relative}
+.step h3{font-size:19px;font-weight:800;text-transform:uppercase;margin-bottom:10px}
+.step p{font-size:15.5px;color:#55524a}
+.hiw-img{height:100%;object-fit:cover;align-self:stretch}
+.steps-list{display:flex;flex-direction:column;gap:22px}
+.step{display:flex;gap:16px;align-items:flex-start}
+.step-num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--gold);border:2px solid var(--ink);font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
+.step h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:16.5px;margin-bottom:4px}
+.step p{font-size:15px;color:#3E3C36}
+.hiw-img{height:auto;max-height:none;aspect-ratio:auto;object-fit:contain;width:100%}
+.hiw-img{border-radius:18px}
+.rev2{padding:90px 0}
+.rev2-in{max-width:900px;margin:0 auto;text-align:center;position:relative}
+.rev2-mark{font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:var(--gold);opacity:.9;margin-bottom:6px}
+.rev2-stars{color:var(--gold);font-size:28px;letter-spacing:8px;margin-bottom:22px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.rev2-quote{color:#fff;font-size:clamp(19px,2.4vw,27px);line-height:1.55;font-weight:700;margin-bottom:28px}
+.rev2-quote mark{background:linear-gradient(transparent 58%, rgba(245,196,0,.65) 58%);color:#fff;font-weight:900;padding:0 3px}
+.rev2-attr{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.rev2-name{color:var(--gold);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px;letter-spacing:.08em}
+.rev2-dot{color:rgba(255,255,255,.5);font-size:20px}
+.rev2-link{background:var(--gold);color:var(--ink);font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:11px 22px;border-radius:999px;text-decoration:none;transition:transform .15s,box-shadow .15s}
+.rev2-link:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,196,0,.35)}
+.rev2{padding:64px 0}
+.rev2-mark{font-size:100px}
+.rev2-stars{font-size:22px;letter-spacing:6px}
+.fr-reviewband{padding:90px 0;background-size:cover;background-position:center}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -460,23 +496,47 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div></section>
 
 <section style="padding:80px 0 70px"><div class="wrap">
+<div class="intro-grid">
 <div class="sec-head" style="margin-bottom:0">
 <div class="kicker">On your schedule, not the township's</div>
 <h2>Too much trash? We're on the way.</h2>
-<p style="max-width:740px">Sometimes trash just outruns the schedule &mdash; a big weekend, a deep clean, <b>post-party leftovers</b>, or a missed pickup that left the cans overflowing. We come <b>when you call</b>, take the bags, and take the smell with them. Bulk items can ride along on the same trip.<br><br><b>Pick-ups start at $199</b>, priced by the space your trash takes up in our truck.</p>
+<p style="max-width:740px">Sometimes trash just outruns the schedule &mdash; a big weekend, a deep clean, <b>post-party leftovers</b>, or a missed pickup that left the cans overflowing. We come <b>when you call</b>, take the bags, and take the smell with them. Bulk items can ride along on the same trip.</p>
 </div>
-<ul class="ticklist two-col" style="margin:22px 0 0;max-width:760px">
-<li>After-party cleanup</li><li>Missed trash day</li><li>Post-move pileup</li><li>Holiday leftovers</li><li>Spring-cleaning overload</li><li>Overflowing cans &amp; bags</li><li>Bulk items the curb won't take</li><li>And more!</li>
+<ul class="ticklist intro-ticks">
+<li>After-party cleanup</li>
+<li>Missed trash day</li>
+<li>Post-move pileup</li>
+<li>Holiday leftovers</li>
+<li>Spring-cleaning overload</li>
+<li>Overflowing cans &amp; bags</li>
+<li>Bulk items the curb won't take</li>
+<li>And more!</li>
 </ul>
+</div>
 </div></section>
 
 <section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">How it works</div>
 <h2>We come, assess, and remove &mdash; same day</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div>
+<div class="about-grid">
+<img src="https://static.wixstatic.com/media/36a716_9000410e0d4240268bdb7fd229b7965e~mv2.png/v1/fill/w_1000,h_1000,al_c,q_85,enc_avif,quality_auto/file.png" alt="The Jersey Junkers crew greeting a customer at the door" class="about-img hiw-img" loading="lazy">
+<div>
+<div class="steps-list">
+<div class="step"><span class="step-num">1</span><div><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div></div>
+<div class="step"><span class="step-num">2</span><div><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div></div>
+<div class="step"><span class="step-num">3</span><div><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div></div>
+</div>
+</div>
+</div>
+</div></section>
+<section class="fr-reviewband rev2" style="background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_2d4e9b76951f4dffadf0831350b46e9e~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')"><div class="wrap">
+<div class="rev2-in">
+<div class="rev2-mark" aria-hidden="true">&ldquo;</div>
+<div class="rev2-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+<p class="rev2-quote">Missed the township pickup after a big weekend and the cans were overflowing. They came the next morning, took every bag plus an old rug, and the curb looked better than before.</p>
+<div class="rev2-attr">
+<a href="/customer-feedback/" class="rev2-link">Read 700+ more reviews &rarr;</a>
+</div>
 </div>
 </div></section>
 
@@ -491,15 +551,16 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap" style="text-align:center">
+<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap" style="text-align:center;position:relative">
 <p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:14px">Check out some other services we offer</p>
-<div class="svc-tiles" id="svctiles">
-<a class="svc-tile" href="/our-services/cardboard-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_927e0e181d8d4a4ab70ca2fce61bcf90~mv2.jpeg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cardboard removal</span></a>
-<a class="svc-tile" href="/our-services/cleanouts/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cleanouts</span></a>
-<a class="svc-tile" href="/our-services/furniture-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.png')"><span>Furniture removal</span></a>
-<a class="svc-tile" href="/our-services/junk-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Junk removal</span></a>
-<a class="svc-tile svc-tile-all" href="/residential-services/"><span>See all<br>our services &rarr;</span></a>
+<div class="svc-rail" id="otherrail">
+<a class="scard" href="/our-services/cardboard-removal/"><img src="https://static.wixstatic.com/media/36a716_927e0e181d8d4a4ab70ca2fce61bcf90~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Cardboard removal" loading="lazy"><span>Cardboard removal</span></a>
+<a class="scard" href="/our-services/cleanouts/"><img src="https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Cleanouts" loading="lazy"><span>Cleanouts</span></a>
+<a class="scard" href="/our-services/furniture-removal/"><img src="https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.png" alt="Furniture removal" loading="lazy"><span>Furniture removal</span></a>
+<a class="scard" href="/our-services/junk-removal/"><img src="https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Junk removal" loading="lazy"><span>Junk removal</span></a>
 </div>
+<button class="rail-arrow rail-left" id="otherrailL" type="button" aria-label="Scroll back">&larr;</button>
+<button class="rail-arrow rail-right" id="otherrailR" type="button" aria-label="Scroll forward">&rarr;</button>
 </div></section>
 <section class="final"><div class="wrap">
 <h2>Feel roomier by Friday.</h2>
@@ -626,6 +687,23 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
   m.addEventListener("click",()=>m.classList.remove("open"));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
+})();
+</script>
+<script>
+(function(){
+  const rail=document.getElementById("otherrail");
+  if(!rail)return;
+  const L=document.getElementById("otherrailL"),R=document.getElementById("otherrailR");
+  const STEP=520;
+  L.onclick=()=>rail.scrollBy({left:-STEP,behavior:"smooth"});
+  R.onclick=()=>rail.scrollBy({left:STEP,behavior:"smooth"});
+  function arrows(){
+    L.hidden = rail.scrollLeft <= 4;
+    R.hidden = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+  }
+  rail.addEventListener("scroll",arrows,{passive:true});
+  window.addEventListener("resize",arrows);
+  arrows();
 })();
 </script>
 </body></html>

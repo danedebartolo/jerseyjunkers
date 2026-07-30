@@ -329,6 +329,15 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.ticklist{list-style:none;padding:0;margin:0}
+.ticklist li{padding:6px 0 6px 28px;position:relative;font-size:15.5px;color:#3E3C36}
+.ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--blue);font-weight:900}
+.ticklist.two-col{columns:2;column-gap:34px}
+@media (max-width:700px){.ticklist.two-col{columns:1}}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+@media (max-width:860px){.intro-grid{grid-template-columns:1fr;gap:24px}}
+.intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
+.intro-ticks li{font-size:16px}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -473,7 +482,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 <img src="https://static.wixstatic.com/media/36a716_419b386f420a4ddc82fb829437d158e5~mv2.png/v1/fill/w_1000,h_760,al_c,q_85,enc_avif,quality_auto/file.png" alt="Cardboard removal" class="about-img" loading="lazy">
 </div>
-<ul class="ticklist two-col" style="margin:22px 0 0;max-width:760px">
+<ul class="ticklist two-col" style="margin:26px 0 0">
 <li>Amazon &amp; delivery-box buildup</li><li>Moving-day box mountains</li><li>Holiday &amp; birthday aftermath</li><li>New furniture &amp; appliance boxes</li><li>Dumpster overflow at the shop or office</li><li>Stockroom &amp; warehouse flatten-outs</li><li>Renovation packaging</li><li>And more!</li>
 </ul>
 </div></section>
@@ -481,10 +490,15 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">How it works</div>
 <h2>We come, assess, and remove &mdash; same day</h2></div>
-<div class="hiw-grid3">
-<div class="hiw-card"><span class="step-num">1</span><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div>
+<div class="about-grid">
+<img src="https://static.wixstatic.com/media/36a716_9000410e0d4240268bdb7fd229b7965e~mv2.png/v1/fill/w_1000,h_1000,al_c,q_85,enc_avif,quality_auto/file.png" alt="The Jersey Junkers crew greeting a customer at the door" class="about-img hiw-img" loading="lazy">
+<div>
+<div class="steps-list">
+<div class="step"><span class="step-num">1</span><div><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div></div>
+<div class="step"><span class="step-num">2</span><div><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div></div>
+<div class="step"><span class="step-num">3</span><div><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div></div>
+</div>
+</div>
 </div>
 </div></section>
 <section class="cb-reviewband rev2" style="background-image:linear-gradient(rgba(14,14,12,.72),rgba(14,14,12,.82)),url('https://static.wixstatic.com/media/36a716_7183beda345d45df9b9f9ef0d132ca6a~mv2.jpeg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpeg')"><div class="wrap">

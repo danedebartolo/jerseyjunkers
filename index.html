@@ -456,7 +456,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></header>
 <div class="impact"><div class="wrap impact-in">
-<div><strong>Thousands</strong><small>of homes &amp; businesses served</small></div>
+<div><strong><span class="countup-10k">10,000+</span></strong><small>homes &amp; businesses served</small></div>
 <div><strong>700+</strong><small>five-star reviews</small></div>
 <div><strong>Since 2012</strong><small>hauling across New Jersey</small></div>
 </div></div><section style="padding:40px 0 64px"><div class="wrap" style="position:relative">
@@ -639,6 +639,30 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
   m.addEventListener("click",()=>m.classList.remove("open"));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
+})();
+</script>
+<script>
+(function(){
+  function countUp(el, target, duration){
+    var start=0, step=target/Math.round(duration/16);
+    var fmt=function(n){ return n>=1000 ? Math.round(n).toLocaleString('en-US') : Math.round(n); }
+    var raf=function(){
+      start+=step;
+      if(start>=target){ el.textContent=target.toLocaleString('en-US')+'+'; return; }
+      el.textContent=fmt(start)+'+';
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        countUp(e.target, 10000, 1800);
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:0.5});
+  document.querySelectorAll('.countup-10k').forEach(function(el){ io.observe(el); });
 })();
 </script>
 </body></html>

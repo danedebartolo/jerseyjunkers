@@ -337,6 +337,17 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 2px}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+@media (max-width:860px){.intro-grid{grid-template-columns:1fr;gap:24px}}
+.intro-ticks{display:flex;flex-direction:column;gap:10px;margin:0}
+.scard-static{cursor:default}
+.scard-static span .tick{color:var(--gold);font-weight:900;margin-right:2px}
+.hiw-img{border-radius:18px}
+.ticklist{list-style:none;padding:0;margin:0}
+.ticklist li{padding:6px 0 6px 28px;position:relative;font-size:15.5px;color:#3E3C36}
+.ticklist li:before{content:"\2713";position:absolute;left:0;color:var(--blue);font-weight:900}
+.ticklist.two-col{columns:2;column-gap:34px}
+@media (max-width:700px){.ticklist.two-col{columns:1}}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -456,8 +467,8 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Furniture Removal &middot; New Jersey</span>
-<h1>Old furniture out.<br>Without lifting <span>a finger.</span></h1>
-<p class="lead">Sofas, sectionals, dressers, mattresses, dining sets &mdash; our two-person crews come inside, lift, load, and haul it all away. Same-day and next-day service available.</p>
+<h1>We <span>remove old furniture</span><br>without you lifting a finger.</h1>
+<p class="lead">Sofas, sectionals, dressers, mattresses, dining sets &mdash; our two-person crews come inside, lift, load, and haul it all away. <b>Same-day and next-day service available.</b></p>
 <form class="zipbar" data-zip>
 <input type="text" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" aria-label="ZIP code">
 <button class="btn" type="submit">Book online &rarr;</button>
@@ -473,25 +484,39 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <span><span class="tick">&#10003;</span>Since 2012</span>
 </div></section>
 <section style="padding:56px 0 50px"><div class="wrap">
+<div class="intro-grid">
 <div class="sec-head" style="margin-bottom:0">
 <div class="kicker">The heavy stuff, handled</div>
 <h2>One couch or the whole house.</h2>
 <p style="max-width:740px">A sagging sectional, a bedroom set nobody sleeps in, the dresser that's been "going to the curb" for months &mdash; furniture is too big to bag up and too heavy to wrestle alone. We bring the crew and the truck, carry it out without wrecking your walls, and it's gone the same day. Sound familiar?</p>
 </div>
-<ul class="ticklist two-col" style="margin:22px 0 0;max-width:760px">
-<li>Replacing the couch or sectional</li><li>Clearing out a bedroom set</li><li>Downsizing the house</li><li>The move that left pieces behind</li><li>Inherited furniture</li><li>Home-office refresh</li><li>Mattresses &amp; box springs too</li><li>And more!</li>
+<ul class="ticklist intro-ticks">
+<li>Replacing the couch or sectional</li>
+<li>Clearing out a bedroom set</li>
+<li>Downsizing the house</li>
+<li>The move that left pieces behind</li>
+<li>Inherited furniture</li>
+<li>Home-office refresh</li>
+<li>Mattresses &amp; box springs too</li>
+<li>And more!</li>
 </ul>
+</div>
+<div class="wrap" style="margin-top:34px"><img src="https://static.wixstatic.com/media/36a716_a215bcb744064cc29d8709fd3224b036~mv2.png/v1/fill/w_1600,h_560,al_c,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew carrying furniture out" loading="lazy" style="width:100%;border-radius:16px;border:1px solid var(--line)"></div>
 </div></section>
 
 
 <section><div class="wrap">
 <div class="sec-head"><div class="kicker">How it works</div>
 <h2>We come, assess, and remove &mdash; same day</h2></div>
-<div class="hiw-grid">
-<div class="hiw-photo"><img src="https://static.wixstatic.com/media/36a716_9000410e0d4240268bdb7fd229b7965e~mv2.png/v1/fill/w_900,h_900,al_c,q_85,enc_avif,quality_auto/file.png" alt="The Jersey Junkers crew greeting a customer at the door" loading="lazy"></div>
-<div class="hiw-card"><span class="step-num">1</span><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div>
-<div class="hiw-card"><span class="step-num">2</span><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div>
-<div class="hiw-card"><span class="step-num">3</span><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div>
+<div class="about-grid">
+<img src="https://static.wixstatic.com/media/36a716_9000410e0d4240268bdb7fd229b7965e~mv2.png/v1/fill/w_1000,h_1000,al_c,q_85,enc_avif,quality_auto/file.png" alt="The Jersey Junkers crew greeting a customer at the door" class="about-img hiw-img" loading="lazy">
+<div>
+<div class="steps-list">
+<div class="step"><span class="step-num">1</span><div><h3>Schedule your appointment</h3><p>Book your in-person appointment &mdash; the team will call or text 30&ndash;45 minutes before we arrive.</p></div></div>
+<div class="step"><span class="step-num">2</span><div><h3>Get a free on-site quote</h3><p>We'll look at your items and give you a price, based on our <a href="/how-we-price/">transparent pricing structure</a>. There's no obligation &mdash; you can say no at any time.</p></div></div>
+<div class="step"><span class="step-num">3</span><div><h3>With your approval, the team gets to work!</h3><p>Once approved, we lift, load, and haul away the same day.</p></div></div>
+</div>
+</div>
 </div>
 </div></section>
 <section class="fr-reviewband rev2" style="background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_0243e320ee6c48878da1a4005ac6cb8d~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
@@ -505,28 +530,21 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 </div>
 </div></section>
 
-<section class="band"><div class="wrap">
-<div class="sec-head"><div class="kicker">How pricing works</div>
-<h2>You decide how much we haul</h2></div>
-<div class="grid-cards" style="grid-template-columns:1fr 1fr" id="frprice">
-<div class="gcard">
-<div class="fr-img contain"><img src="https://static.wixstatic.com/media/36a716_7c21877386e5429f988c068342fc694c~mv2.png/v1/fit/w_800,h_600,q_85,enc_avif,quality_auto/file.png" alt="Single item pick-up" loading="lazy"></div>
-<h3>Single item &mdash; from $99</h3>
-<p>One piece to say goodbye to? A recliner, a dresser, a mattress &mdash; flat-rate, fast, and easy.</p>
-</div>
-<div class="gcard">
-<div class="fr-img"><img src="https://static.wixstatic.com/media/36a716_624909dff1f2476e9bc4d5ec71bbda8f~mv2.png/v1/fill/w_800,h_600,al_c,q_85,enc_avif,quality_auto/file.png" alt="Multiple item removal" loading="lazy"></div>
-<h3>Multiple items &mdash; from $199</h3>
-<p>Clearing more than one piece? Volume-based pricing &mdash; your cost depends on how much space your furniture takes up in our truck.</p>
-</div>
-</div>
-<div style="margin-top:28px;text-align:center"><a class="btn" href="/how-we-price/">See our full pricing</a></div>
-</div></section>
 
-<section><div class="wrap">
-<div class="sec-head"><div class="kicker">Moving? Downsizing?</div>
-<h2>The easiest part of your move</h2>
-<p style="max-width:720px">Moving day is chaos enough. Whether you're <b>downsizing to a smaller place</b>, clearing a home for sale, or leaving behind the furniture that isn't making the trip &mdash; we'll clear out everything you're not taking, <b>on your schedule.</b> One less truck to rent, one less thing to lift, and the old place is left broom-ready.</p></div>
+<section class="band"><div class="wrap" style="position:relative">
+<div class="sec-head" style="margin-bottom:22px"><div class="kicker">Beyond a couch or two</div>
+<h2>The bigger furniture jobs? We do those too.</h2>
+<p>No separate booking, no runaround &mdash; the same crew handles the big ones.</p></div>
+<div class="svc-rail" id="bigrail">
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_dff666d1ea684a9c8e2cdcfbd2c6a382~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Estate furniture cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Estate cleanouts</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_2d4e9b76951f4dffadf0831350b46e9e~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Moving and downsizing furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Moving &amp; downsizing</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_71cd874e0e2b4f1eba7305e51ad4f571~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Office furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Office furniture</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_22e6c3567c8e4d4ba09eb097dd84a320~mv2.png/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.png" alt="Whole-home furniture cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Whole-home cleanouts</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpeg" alt="Storage unit furniture removal" loading="lazy"><span><i class="tick">&#10003;</i> Storage-unit emptying</span></div>
+<div class="scard scard-static"><img src="https://static.wixstatic.com/media/36a716_b6bbc64e513e48658758f82178fce1f3~mv2.jpg/v1/fill/w_560,h_380,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Hoarding cleanout" loading="lazy"><span><i class="tick">&#10003;</i> Hoarding cleanouts</span></div>
+</div>
+<button class="rail-arrow rail-left" id="bigrailL" type="button" aria-label="Scroll back">&larr;</button>
+<button class="rail-arrow rail-right" id="bigrailR" type="button" aria-label="Scroll forward">&rarr;</button>
 </div></section>
 
 <section class="band"><div class="wrap">
@@ -666,6 +684,23 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   btn.addEventListener("click",e=>{e.preventDefault();m.classList.add("open");});
   m.addEventListener("click",()=>m.classList.remove("open"));
   document.addEventListener("keydown",e=>{if(e.key==="Escape")m.classList.remove("open");});
+})();
+</script>
+<script>
+(function(){
+  const rail=document.getElementById("bigrail");
+  if(!rail)return;
+  const L=document.getElementById("bigrailL"),R=document.getElementById("bigrailR");
+  const STEP=520;
+  L.onclick=()=>rail.scrollBy({left:-STEP,behavior:"smooth"});
+  R.onclick=()=>rail.scrollBy({left:STEP,behavior:"smooth"});
+  function arrows(){
+    L.hidden = rail.scrollLeft <= 4;
+    R.hidden = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+  }
+  rail.addEventListener("scroll",arrows,{passive:true});
+  window.addEventListener("resize",arrows);
+  arrows();
 })();
 </script>
 </body></html>
