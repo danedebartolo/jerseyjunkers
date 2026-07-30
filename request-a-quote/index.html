@@ -313,21 +313,6 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
-.uploadcare--widget{margin-top:8px;display:block}
-.uploadcare--widget__button{
-  display:block;width:100%;box-sizing:border-box;
-  background:#FBFAF7;border:2px dashed var(--line);border-radius:14px;
-  padding:22px 16px;cursor:pointer;
-  font-family:'Archivo',sans-serif;font-weight:800;font-size:15px;
-  color:var(--navy);letter-spacing:.02em;text-transform:none;
-  transition:border-color .15s,background .15s;
-  position:relative
-}
-.uploadcare--widget__button::before{
-  content:"📷";font-size:24px;display:block;margin-bottom:6px
-}
-.uploadcare--widget__button:hover{border-color:var(--navy);background:#FFF9DF}
-.uploadcare--widget__text{display:block;font-size:13px;color:#6A665C;margin-top:6px;font-family:'Instrument Sans',sans-serif;font-weight:400;text-transform:none;letter-spacing:0}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -335,14 +320,6 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .pt-modal img{max-width:min(560px,94%);max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 </style>
-<script>
-UPLOADCARE_PUBLIC_KEY = "3c6c6ff30a98183e8ab3";
-UPLOADCARE_LOCALE = "en";
-UPLOADCARE_TABS = "file camera";
-UPLOADCARE_MULTIPLE = true;
-UPLOADCARE_PREVIEW_STEP = false;
-</script>
-<script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8" defer></script>
 </head>
 <body>
 <div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
@@ -473,10 +450,9 @@ UPLOADCARE_PREVIEW_STEP = false;
 </div>
 <label>What do you need removed?
 <textarea name="details" rows="5" placeholder="A few couches and a mattress, a garage full of boxes, a shed out back &mdash; whatever it is, describe it here." required></textarea></label>
-
-<label class="qr-upload">Photos <span>(optional — helps us give a faster quote)</span>
-<input type="hidden" role="uploadcare-uploader" name="photos" data-public-key="3c6c6ff30a98183e8ab3" data-multiple="true" data-images-only="false" style="margin-top:8px">
-</label>
+<label class="qr-upload">Add photos <span>(optional, but it speeds things up)</span>
+<input type="file" name="photos" accept="image/*" multiple>
+<span class="qr-upload-hint">Drop in a few pictures of what you need removed.</span></label>
 <button class="btn" type="submit">Send my request &rarr;</button>
 <div class="qr-status" aria-live="polite"></div>
 </form>
@@ -607,7 +583,10 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     e.preventDefault();
     const data=Object.fromEntries(new FormData(f).entries());
     // Fire to Zapier if connected (non-blocking)
-    try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
+    if(HOOK!=="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/"){
+      try{ fetch(HOOK,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}}); }catch(_){}
+    }
+    // Always redirect — Google Ads tracks the /thank-you/ URL as a conversion
     window.location.href="/thank-you/";
   });
 })();
