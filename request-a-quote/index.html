@@ -175,7 +175,7 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .towns{columns:3;column-gap:44px;font-size:15.5px;color:#4a4a44;max-width:980px}
 .towns li{margin-bottom:8px;break-inside:avoid;list-style:none;padding-left:18px;position:relative}
 .towns li::before{content:"•";color:var(--gold);font-weight:900;position:absolute;left:0}
-.hero.photo{color:#fff;background-size:cover;background-position:center;padding:150px 0 160px}
+.hero.photo{color:#fff;background-size:cover;background-position:center;background-repeat:no-repeat;padding:150px 0 160px}
 .hero.photo .eyebrow{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.35);color:#fff}
 
 .hero.photo p.lead{color:#EDEBE4}
@@ -578,12 +578,12 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   if(!f)return;
   const status=f.querySelector(".qr-status");
   // TODO: paste the Zapier catch hook URL here when ready
-  const HOOK="ZAPIER_QUOTE_HOOK";
+  const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/";
   f.addEventListener("submit",async e=>{
     e.preventDefault();
     const data=Object.fromEntries(new FormData(f).entries());
     // Fire to Zapier if connected (non-blocking)
-    if(HOOK!=="ZAPIER_QUOTE_HOOK"){
+    if(HOOK!=="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/"){
       try{ fetch(HOOK,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}}); }catch(_){}
     }
     // Always redirect — Google Ads tracks the /thank-you/ URL as a conversion
