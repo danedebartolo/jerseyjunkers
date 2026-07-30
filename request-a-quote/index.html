@@ -432,8 +432,8 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <section class="qr-hero"><div class="wrap">
 <div class="sec-head" style="margin-bottom:0;text-align:center;max-width:660px;margin-left:auto;margin-right:auto">
 <div class="kicker" style="display:inline-flex">Request a quote</div>
-<h1 style="font-weight:900;font-stretch:105%;font-size:clamp(34px,4.6vw,52px);text-transform:uppercase;margin:14px 0 14px">Tell us what you've got.</h1>
-<p style="font-size:18px">Not sure where it fits? Doesn't matter. Give us the details below and we'll get right back to you with a price &mdash; usually the same day.</p>
+<h1 style="font-weight:900;font-stretch:105%;font-size:clamp(34px,4.6vw,52px);text-transform:uppercase;margin:14px 0 8px">Request a quote</h1>
+<p style="font-size:17px;color:#55524a;margin-bottom:22px;font-weight:500">A member of our team will reach back as soon as possible.</p>
 </div>
 </div></section>
 
@@ -581,21 +581,13 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   const HOOK="ZAPIER_QUOTE_HOOK";
   f.addEventListener("submit",async e=>{
     e.preventDefault();
-    if(HOOK==="ZAPIER_QUOTE_HOOK"){
-      status.textContent="Thanks — got it! (Form not yet connected — please call 888-533-5865 for now.)";
-      status.style.color="#C8821A";return;
-    }
-    status.textContent="Sending…";status.style.color="#6A665C";
     const data=Object.fromEntries(new FormData(f).entries());
-    try{
-      await fetch(HOOK,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}});
-      f.reset();
-      status.textContent="Thanks — we got your request. We'll be in touch shortly.";
-      status.style.color="#2E8B57";
-    }catch(err){
-      status.textContent="Something went wrong. Please call us at 888-533-5865.";
-      status.style.color="#C0392B";
+    // Fire to Zapier if connected (non-blocking)
+    if(HOOK!=="ZAPIER_QUOTE_HOOK"){
+      try{ fetch(HOOK,{method:"POST",body:JSON.stringify(data),headers:{"Content-Type":"application/json"}}); }catch(_){}
     }
+    // Always redirect — Google Ads tracks the /thank-you/ URL as a conversion
+    window.location.href="/thank-you/";
   });
 })();
 </script>
