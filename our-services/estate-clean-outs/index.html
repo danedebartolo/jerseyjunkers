@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- ==== GOOGLE TAG (gtag.js) SLOT ====
-Paste the Google Ads / GA4 snippet below this line, then remove these comment markers.
-Keep it as the FIRST script in <head> per Google's guidance.
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11037171944"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-XXXXXXXXX');
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-11037171944');
 </script>
-==== END GOOGLE TAG SLOT ==== -->
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -385,6 +382,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .faqd summary:hover{background:#FFFDF2}
 .faqd-a{padding:0 20px 18px}
 .faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
+@media (max-width:600px){.strip-in{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;justify-content:initial}.strip-in span{font-size:13px}}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -392,6 +390,21 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .pt-modal img{max-width:min(560px,94%);max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 </style>
+<!-- Event snippet for Click to call conversion -->
+<script>
+function gtag_report_conversion(url) {
+  var callback = function () {
+    if (typeof(url) != 'undefined') { window.location = url; }
+  };
+  gtag('event', 'conversion', {
+      'send_to': 'AW-11037171944/3JRmCNnB3dkcEOjB944p',
+      'value': 1.0,
+      'currency': 'USD',
+      'event_callback': callback
+  });
+  return false;
+}
+</script>
 </head>
 <body>
 <div class="promo">USE CODE <span class="pg">JUNKERS</span> TO SAVE <span class="pg">$20.00</span> ON YOUR SERVICE &middot; <a class="pterms" href="#" id="ptermsbtn">TERMS APPLY</a></div>
@@ -400,7 +413,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <span class="tb-hours"><b>Office Hours:</b> Monday to Friday <b>8 am - 7 pm</b> / Saturday <b>8 am - 12 pm</b></span>
 <div class="tb-right">
 <div class="tb-links"><svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-4.42 0-8 2.24-8 5v1h16v-1c0-2.76-3.58-5-8-5z"/></svg> <a href="https://client.housecallpro.com/customer_portal/request-link?token=44e7f8827144494ebb0c5e7525b4d8a3" target="_blank" rel="noopener">Customer Portal</a> <span class="tb-sep">/</span> <a href="/book/">Book Online</a></div>
-<a class="helpbadge" href="tel:8885335865"><svg class="hb-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg><span class="hb-txt"><em>We're here to help!</em><b>888-533-5865</b></span></a>
+<a class="helpbadge" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');"><svg class="hb-svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 3.5a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.24 1.02l-2.21 2.2z"/></svg><span class="hb-txt"><em>We're here to help!</em><b>888-533-5865</b></span></a>
 </div>
 </div></div>
 <nav class="goldnav"><div class="wrap goldnav-in">
@@ -498,7 +511,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <a href="/contact-us/">Contact</a>
 <div class="mm-cta">
 <a class="btn" href="/book/">Book Online</a>
-<a class="mm-call" href="tel:8885335865">Or call 888-533-5865</a>
+<a class="mm-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a>
 </div>
 </div>
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_fd1d67b97fcb4a3b84dfc1af584d8f65~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
@@ -508,7 +521,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <p class="lead">A full-property clean out, handled with <b>care and discretion</b> &mdash; on your timeline, at your pace.</p>
 <div class="hero-cta">
 <a class="btn" href="/request-a-quote/">Request a quote &rarr;</a>
-<a class="jr-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>
+<a class="jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call:&nbsp; <b>888-533-5865</b></a>
 </div>
 </div>
 </div></header>
@@ -527,7 +540,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <h2 style="margin:14px 0 18px">Emptying a home is a heavy thing &mdash; in more ways than one</h2>
 <p>Clearing out a loved one's home is rarely just a task. It's a lifetime of belongings, memories in every drawer, and often a deadline &mdash; a closing, a sale, a family waiting on the other side of it.<br><br>Most of the families who call us <b>can't be there to do it themselves</b>, or simply can't face going through every item alone. That's exactly what we're here for. We move at <b>your pace</b>, we handle the property with <b>respect</b>, and we do the heavy, sorting, hauling, and cleaning &mdash; so you don't have to.</p>
 </div>
-<div class="imgph" style="aspect-ratio:4/3"><span>Photo &mdash; crew at a home, respectful / wide</span></div>
+<img src="https://static.wixstatic.com/media/36a716_3eb265e23b6b49c8ad7567903bfad497~mv2.png/v1/fill/w_1000,h_750,al_c,q_85,enc_avif,quality_auto/file.png" alt="Jersey Junkers crew at an estate clean-out" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid var(--line)">
 </div>
 </div></section>
 
@@ -540,7 +553,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <div class="hiw-card"><span class="step-num">3</span><h3>One all-inclusive price</h3><p>You get a single number for the whole job &mdash; set before we start, with <b>no surprises</b>. Then we handle everything, down to the broom-sweep.</p></div>
 </div>
 </div></section>
-<section style="padding:90px 0;background-size:cover;background-position:center;background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_dd5c0b7616b74cdd9ea8beb560407d15~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')">
+<section style="padding:90px 0;background-size:cover;background-position:center;background-image:linear-gradient(rgba(18,18,16,.68),rgba(18,18,16,.78)),url('https://static.wixstatic.com/media/36a716_e43b7c0e52f4474c83ce0517ec7452df~mv2.jpg/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.jpg')">
 <div class="wrap">
 <div style="max-width:900px;margin:0 auto;text-align:center;position:relative">
 <div style="font-family:'Archivo',sans-serif;font-weight:900;font-size:150px;line-height:.6;color:#F5C400;opacity:.9;margin-bottom:6px" aria-hidden="true">&ldquo;</div>
@@ -555,7 +568,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 
 <section><div class="wrap">
 <div class="about-grid">
-<div class="imgph" style="aspect-ratio:4/3"><span>Photo &mdash; before/after or careful sorting</span></div>
+<img src="https://static.wixstatic.com/media/36a716_164284a9cc39415daa304b16a27860dc~mv2.png/v1/fill/w_1000,h_750,al_c,q_85,enc_avif,quality_auto/file.png" alt="Careful sorting during an estate clean-out" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid var(--line)">
 <div>
 <div class="kicker">Nothing leaves before you're ready</div>
 <h2 style="margin:14px 0 18px">We work around what you keep</h2>
@@ -578,7 +591,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <p style="flex:1;font-size:14.5px">We work regularly with <b>executors, attorneys, and real-estate agents</b> on estate and probate properties. If there's a <b>closing date</b> to hit, tell us &mdash; a full home can often be cleared in <b>a single day</b>, and we'll deliver before-and-after photos as proof of completion for out-of-state family or the sale file.</p>
 <div class="card-cta">
 <a class="btn" href="/request-a-quote/">Request a quote &rarr;</a>
-<a class="jr-call card-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>
+<a class="jr-call card-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call:&nbsp; <b>888-533-5865</b></a>
 </div>
 </div>
 </div>
@@ -588,7 +601,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <h2>Optional add-on services</h2>
 <p style="max-width:760px">Want the property truly <b>market-ready</b> when we're done? Add any of these to your estate cleanout package:</p></div>
 <ul class="ticklist two-col" style="max-width:760px">
-<li>Carpet cleaning</li>
+<li>Carpets vacuumed</li>
 <li>Power washing</li>
 <li>Painting</li>
 <li>Landscaping</li>
@@ -629,7 +642,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <p>Whenever the time is right, we'll handle the rest &mdash; with care, and on your schedule.</p>
 <div class="final-cta">
 <a class="btn" href="/request-a-quote/" style="background:var(--ink);color:var(--gold)">Request a quote &rarr;</a>
-<a class="jr-call" href="tel:8885335865">Or call:&nbsp; <b>888-533-5865</b></a>
+<a class="jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call:&nbsp; <b>888-533-5865</b></a>
 </div>
 </div></section>
 
@@ -640,7 +653,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 <img src="https://static.wixstatic.com/media/36a716_4eb1acaade124d138d6d7ba00160eb88~mv2.png/v1/crop/x_0,y_3037,w_10000,h_4384/fill/w_1178,h_516,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/jersey%20junkers%20junk%20truck.png" alt="Jersey Junkers truck" loading="lazy" style="max-width:200px;width:auto;display:block;margin-bottom:22px">
 <h4>Jersey Junkers&reg;</h4>
 <p>New Jersey's Junk Removal Company<br>25 Railroad Ave. #39<br>Atlantic Highlands, NJ 07716</p>
-<p style="margin-top:12px"><a href="tel:8885335865" style="display:inline">888-533-5865</a><br><a href="mailto:info@jerseyjunkers.com" style="display:inline">info@JerseyJunkers.com</a></p>
+<p style="margin-top:12px"><a href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');" style="display:inline">888-533-5865</a><br><a href="mailto:info@jerseyjunkers.com" style="display:inline">info@JerseyJunkers.com</a></p>
 <p style="margin-top:12px;font-size:13px">Office Hours: Mon&ndash;Fri 8am&ndash;7pm &middot; Sat 8am&ndash;12pm</p>
 </div>
 <div><h4>Services</h4><a href="/our-services/junk-removal/">Junk Removal</a>

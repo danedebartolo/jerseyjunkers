@@ -349,3 +349,25 @@
 /junk-removal-tuckerton-nj  /towns/tuckerton.html  200
 /junk-removal-tuckerton-nj/  /towns/tuckerton.html  200
 # end town pages
+
+# Lander moves to /landing/
+/above-ground-pool-removal-nj/* /landing/above-ground-pool-removal-nj/:splat 301
+/above-ground-pool-removal-nj /landing/above-ground-pool-removal-nj/ 301
+/built-in-cabinet-removal-nj/* /landing/built-in-cabinet-removal-nj/:splat 301
+/built-in-cabinet-removal-nj /landing/built-in-cabinet-removal-nj/ 301
+/cleanout-services-nj/* /landing/cleanout-services-nj/:splat 301
+/cleanout-services-nj /landing/cleanout-services-nj/ 301
+/construction-waste-removal-nj/* /landing/construction-waste-removal-nj/:splat 301
+/construction-waste-removal-nj /landing/construction-waste-removal-nj/ 301
+/deck-removal-nj/* /landing/deck-removal-nj/:splat 301
+/deck-removal-nj /landing/deck-removal-nj/ 301
+/nj-furniture-removal/* /landing/nj-furniture-removal/:splat 301
+/nj-furniture-removal /landing/nj-furniture-removal/ 301
+/nj-top-junk-removal/* /landing/nj-top-junk-removal/:splat 301
+/nj-top-junk-removal /landing/nj-top-junk-removal/ 301
+/shed-removal-nj/* /landing/shed-removal-nj/:splat 301
+/shed-removal-nj /landing/shed-removal-nj/ 301
+/swing-set-removal-nj/* /landing/swing-set-removal-nj/:splat 301
+/swing-set-removal-nj /landing/swing-set-removal-nj/ 301
+/trampoline-removal-nj/* /landing/trampoline-removal-nj/:splat 301
+/trampoline-removal-nj /landing/trampoline-removal-nj/ 301
