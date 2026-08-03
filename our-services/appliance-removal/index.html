@@ -279,7 +279,6 @@ td.price{text-align:right;font-family:'Archivo',sans-serif;font-weight:800;white
 .step-num{flex:none;width:40px;height:40px;border-radius:50%;background:var(--gold);border:2px solid var(--ink);font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;display:flex;align-items:center;justify-content:center}
 .step h3{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:16.5px;margin-bottom:4px}
 .step p{font-size:15px;color:#3E3C36}
-}
 .jr-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .jr-call{color:var(--navy);font-weight:700;font-size:16px;text-decoration:none;cursor:default}
 .jr-call b{font-weight:900}
@@ -338,16 +337,6 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .faq-list .gcard p{display:none;margin-top:10px}
 .faq-list .gcard.open p{display:block}
 .faq-list .gcard.open h3:after{content:"\2212"}
-.faq-list .gcard");
-  if(!cards.length)return;
-  const mq=window.matchMedia("(max-width:820px)");
-  cards.forEach(c=>{
-    c.querySelector("h3").addEventListener("click",()=>{
-      if(!mq.matches)return;
-      const was=c.classList.contains("open");
-      cards.forEach(x=>x.classList.remove("open"));
-      if(!was)c.classList.add("open");
-    }
 @media (max-width:820px){.hiw-grid3{grid-template-columns:1fr}}
 .svc-tiles{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:8px}
 .svc-tile{display:flex;align-items:center;justify-content:center;height:150px;border-radius:14px;background-size:cover;background-position:center;text-decoration:none;transition:transform .15s}
@@ -628,13 +617,14 @@ function gtag_report_conversion(url) {
 </div>
 </div></section>
 
-<section class="band" style="padding-top:60px;padding-bottom:60px"><div class="wrap" style="text-align:center;position:relative">
+<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap" style="text-align:center;position:relative">
 <p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:14px">Check out some other services we offer</p>
 <div class="svc-rail" id="otherrail">
 <a class="scard" href="/our-services/furniture-removal/"><img src="https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.png" alt="Furniture removal" loading="lazy"><span>Furniture removal</span></a>
 <a class="scard" href="/our-services/junk-removal/"><img src="https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Junk removal" loading="lazy"><span>Junk removal</span></a>
 <a class="scard" href="/our-services/cleanouts/"><img src="https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Cleanouts" loading="lazy"><span>Cleanouts</span></a>
 <a class="scard" href="/our-services/storage-unit-junk-removal/"><img src="https://static.wixstatic.com/media/36a716_54cd784c0dfa4fce994e28499f4bef21~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Storage unit" loading="lazy"><span>Storage unit</span></a>
+<a class="scard" href="/our-services/cardboard-removal/"><img src="https://static.wixstatic.com/media/36a716_927e0e181d8d4a4ab70ca2fce61bcf90~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Cardboard removal" loading="lazy"><span>Cardboard removal</span></a>
 </div>
 <button class="rail-arrow rail-left" id="otherrailL" type="button" aria-label="Scroll back">&larr;</button>
 <button class="rail-arrow rail-right" id="otherrailR" type="button" aria-label="Scroll forward">&rarr;</button>

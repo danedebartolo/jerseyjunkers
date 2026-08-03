@@ -375,6 +375,10 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .faqd-a{padding:0 20px 18px}
 .faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}
 @media (max-width:600px){.strip-in{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;justify-content:initial}.strip-in span{font-size:13px}}
+.rail-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--gold);color:var(--ink);font-size:20px;font-weight:900;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.rail-arrow[hidden]{display:none}
+.rail-left{left:8px}
+.rail-right{right:8px}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -625,15 +629,17 @@ function gtag_report_conversion(url) {
 </div>
 </div></section>
 
-<section class="band" style="padding-top:60px;padding-bottom:60px"><div class="wrap" style="text-align:center">
+<section class="band" style="padding-top:50px;padding-bottom:60px"><div class="wrap" style="text-align:center;position:relative">
 <p style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:17px;margin-bottom:14px">Check out some other services we offer</p>
-<div class="svc-tiles" id="svctiles">
-<a class="svc-tile" href="/our-services/cleanouts/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cleanouts</span></a>
-<a class="svc-tile" href="/our-services/deck-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_e465d6dea74a49d9a5356b6645034f6f~mv2.jpg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Deck removal</span></a>
-<a class="svc-tile" href="/our-services/junk-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Junk removal</span></a>
-<a class="svc-tile" href="/our-services/swing-set-removal/" style="background-image:linear-gradient(rgba(18,18,16,.4),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_a6a26c7cdf60414694e69b96d1c39854~mv2.jpg/v1/fill/w_800,h_500,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Swing sets</span></a>
-<a class="svc-tile svc-tile-all" href="/residential-services/"><span>See all<br>our services &rarr;</span></a>
+<div class="svc-rail" id="otherrail">
+<a class="scard" href="/our-services/cleanouts/"><img src="https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Cleanouts" loading="lazy"><span>Cleanouts</span></a>
+<a class="scard" href="/our-services/deck-removal/"><img src="https://static.wixstatic.com/media/36a716_e465d6dea74a49d9a5356b6645034f6f~mv2.jpg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Deck removal" loading="lazy"><span>Deck removal</span></a>
+<a class="scard" href="/our-services/junk-removal/"><img src="https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Junk removal" loading="lazy"><span>Junk removal</span></a>
+<a class="scard" href="/our-services/swing-set-removal/"><img src="https://static.wixstatic.com/media/36a716_a6a26c7cdf60414694e69b96d1c39854~mv2.jpg/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Swing sets" loading="lazy"><span>Swing sets</span></a>
+<a class="scard" href="/our-services/furniture-removal/"><img src="https://static.wixstatic.com/media/36a716_584cedb5a86a4d86b75fdb28fe6de876~mv2.png/v1/fill/w_560,h_380,al_c,q_82,enc_avif,quality_auto/file.png" alt="Furniture removal" loading="lazy"><span>Furniture removal</span></a>
 </div>
+<button class="rail-arrow rail-left" id="otherrailL" type="button" aria-label="Scroll back">&larr;</button>
+<button class="rail-arrow rail-right" id="otherrailR" type="button" aria-label="Scroll forward">&rarr;</button>
 </div></section>
 
 <section class="final"><div class="wrap">
@@ -763,6 +769,23 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     });
   },{rootMargin:"200px"});
   io.observe(v);
+})();
+</script>
+<script>
+(function(){
+  const rail=document.getElementById("otherrail");
+  if(!rail)return;
+  const L=document.getElementById("otherrailL"),R=document.getElementById("otherrailR");
+  const STEP=520;
+  L.onclick=()=>rail.scrollBy({left:-STEP,behavior:"smooth"});
+  R.onclick=()=>rail.scrollBy({left:STEP,behavior:"smooth"});
+  function arrows(){
+    L.hidden = rail.scrollLeft <= 4;
+    R.hidden = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+  }
+  rail.addEventListener("scroll",arrows,{passive:true});
+  window.addEventListener("resize",arrows);
+  arrows();
 })();
 </script>
 </body></html>
