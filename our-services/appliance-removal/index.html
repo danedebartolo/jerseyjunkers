@@ -119,8 +119,8 @@ body.menu-open .mobilemenu{display:block}
 .zip-msg{font-size:14px;color:var(--green);font-weight:600;margin-top:14px;min-height:22px}
 .zip-msg.err{color:#C0392B}
 .hero-media{height:420px}
-.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;padding:0}
-.strip-in{display:flex;justify-content:space-between;gap:24px;padding:22px 28px;flex-wrap:wrap}
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
+.strip-in{display:flex;justify-content:space-between;gap:24px;padding:24px 28px;flex-wrap:wrap}
 .strip-in span{font-size:14px;font-weight:600;letter-spacing:.02em;color:#55524a;display:flex;align-items:center;gap:9px}
 .tick{width:18px;height:18px;border-radius:50%;background:var(--gold);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:var(--ink);flex:none}
 section{padding:56px 0}
@@ -323,7 +323,6 @@ footer.site .legal{border-top:1px solid #3A3933;padding-top:24px;font-size:13px}
 .towns{columns:2}.nav-links a{display:none}
 .zipbar{flex-direction:column;border-radius:20px}.zipbar .btn{width:100%}
 footer.site .cols{grid-template-columns:1fr 1fr}}
-#applgrid .gcard{padding:26px 24px}
 .hiw-grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .hiw-grid3{grid-template-columns:1fr}
 .hiw-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px 20px}
@@ -385,7 +384,7 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .rev2{padding:64px 0}
 .rev2-mark{font-size:100px}
 .rev2-stars{font-size:22px;letter-spacing:6px}
-@media (max-width:600px){.hero.photo{background-size:contain;background-color:#1a1a1a;background-position:center;padding:60px 0 66px}}
+@media (max-width:600px){.hero.photo{background-image:linear-gradient(rgba(18,18,16,.35),rgba(18,18,16,.5)),url('https://static.wixstatic.com/media/36a716_d674921a2e894e30a59cbf5ddee7de03~mv2.png/v1/fill/w_1080,h_1350,al_c,q_85,enc_avif,quality_auto/file.png') !important;background-size:cover;background-position:center;padding:90px 0 96px}}
 @media (max-width:600px){.strip-in{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;justify-content:initial}.strip-in span{font-size:13px}}
 </style>
 <style>
@@ -433,7 +432,6 @@ function gtag_report_conversion(url) {
 <div class="gn-colhead">The Company</div>
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 </div>
 <div class="gn-col">
 <div class="gn-colhead">Good to Know</div>
@@ -506,7 +504,6 @@ function gtag_report_conversion(url) {
 <div class="mm-sub">
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 <a href="/faq/">FAQ</a>
 <a href="/jobs/">Job Opportunities</a>
 <a href="/location-search/">Service Area</a>
@@ -578,19 +575,12 @@ function gtag_report_conversion(url) {
 </section>
 
 <section><div class="wrap">
-<div class="intro-grid" style="margin-bottom:26px">
+<div class="intro-grid">
 <div>
 <div class="sec-head" style="margin-bottom:0"><div class="kicker">What we take</div>
 <h2>Just about any appliance</h2>
 <p>If it plugs in, hooks up, or runs on gas, chances are we take it. Fridges and freezers with refrigerant get <b>routed to the right facilities</b>, recycled where possible, and disposed of the way New Jersey requires.</p></div>
-<ul class="ticklist three-col" style="margin:22px 0 0">
-<li>Dead fridge or freezer</li><li>Washer &amp; dryer swap-outs</li><li>Kitchen remodel pull-outs</li><li>Broken dishwashers &amp; ovens</li><li>Window ACs &amp; dehumidifiers</li><li>Water heaters</li><li>The garage beer fridge, retired</li><li>And more!</li>
-</ul>
-</div>
-<img src="https://static.wixstatic.com/media/36a716_b205ce97820646929ae3d2f9ebdceed0~mv2.jpg/v1/fill/w_800,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Appliance removal" class="about-img" loading="lazy" style="border-radius:16px;object-fit:cover">
-</div>
-<div class="grid-cards" id="applgrid">
-<div class="gcard"><ul class="ticklist two-col">
+<ul class="ticklist two-col" style="margin:22px 0 0">
 <li>Refrigerators &amp; freezers</li>
 <li>Washers &amp; dryers</li>
 <li>Stoves, ranges &amp; ovens</li>
@@ -601,7 +591,11 @@ function gtag_report_conversion(url) {
 <li>Dehumidifiers</li>
 <li>Trash compactors</li>
 <li>Wine &amp; mini fridges</li>
-</ul></div>
+<li>Kitchen remodel pull-outs</li>
+<li>And more!</li>
+</ul>
+</div>
+<img src="https://static.wixstatic.com/media/36a716_b205ce97820646929ae3d2f9ebdceed0~mv2.jpg/v1/fill/w_800,h_760,al_c,q_85,enc_avif,quality_auto/file.jpg" alt="Appliance removal" class="about-img" loading="lazy" style="border-radius:16px;object-fit:cover">
 </div>
 </div></section>
 
@@ -656,7 +650,7 @@ function gtag_report_conversion(url) {
 <a href="/our-services/construction-waste-removal/">Construction Material Removal</a>
 <a href="/our-services/trash-pick-up/">Trash Pick-Up</a><a href="/residential-services/">All services &rarr;</a></div>
 <div><h4>Company</h4>
-<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
+<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
 <div><h4>Get Started</h4>
 <a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>

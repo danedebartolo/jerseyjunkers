@@ -325,7 +325,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .rev2-mark{font-size:100px}
 .rev2-stars{font-size:22px;letter-spacing:6px}
 .fr-reviewband{padding:90px 0;background-size:cover;background-position:center}
-@media (max-width:600px){.strip-in{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;justify-content:initial}.strip-in span{font-size:13px}}
+@media (max-width:600px){.strip{padding:0}.strip-in{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;justify-content:initial}.strip-in span{font-size:13px}}
+.hero-solo h1{font-size:clamp(30px,4.4vw,50px)}
+.hero-solo h1 .nw{white-space:nowrap}
+@media (max-width:600px){.hero-solo h1{font-size:clamp(26px,7.4vw,34px)}}
+.strip{padding:0}
+.hero-cta{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.hero-cta .jr-call{color:#fff}
+@media (max-width:600px){.hero-cta{flex-direction:column;align-items:stretch}.hero-cta .btn{text-align:center}}
 </style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
@@ -372,7 +379,6 @@ function gtag_report_conversion(url) {
 <div class="gn-colhead">The Company</div>
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 </div>
 <div class="gn-col">
 <div class="gn-colhead">Good to Know</div>
@@ -445,7 +451,6 @@ function gtag_report_conversion(url) {
 <div class="mm-sub">
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 <a href="/faq/">FAQ</a>
 <a href="/jobs/">Job Opportunities</a>
 <a href="/location-search/">Service Area</a>
@@ -453,24 +458,30 @@ function gtag_report_conversion(url) {
 </div></details>
 <a href="/contact-us/">Contact</a>
 <div class="mm-cta">
-<a class="btn" href="/book/">Book Online</a>
+<a class="btn" href="/request-a-quote/">Get a Free Quote</a>
 <a class="mm-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a>
 </div>
 </div>
 <header class="hero photo" style="background-image:linear-gradient(rgba(18,18,16,.55),rgba(18,18,16,.72)),url('https://static.wixstatic.com/media/36a716_22e6c3567c8e4d4ba09eb097dd84a320~mv2.png/v1/fill/w_1600,h_900,al_c,q_85,enc_avif,quality_auto/file.png')"><div class="wrap">
 <div class="hero-solo">
 <span class="eyebrow">Cleanouts &middot; New Jersey</span>
-<h1>Whatever filled it,<br>we'll <span>empty it.</span></h1>
+<h1><b class="nw" style="font-weight:inherit">Whatever filled it,</b><br><b class="nw" style="font-weight:inherit">we'll <span>empty it.</span></b></h1>
 <p class="lead">Garages, basements, whole houses &mdash; our crews clear the space and haul it all away. Show us the space and we'll handle the rest &mdash; lifting, loading, hauling, and the sweep-up.</p>
-<form class="zipbar" data-zip>
-<input type="text" inputmode="numeric" maxlength="5" placeholder="Enter your ZIP code" aria-label="ZIP code">
-<button class="btn" type="submit">Get a quote &rarr;</button>
-</form>
-<div class="zip-msg" aria-live="polite"></div>
+<div class="hero-cta">
+<a class="btn" href="/request-a-quote/">Request a quote &rarr;</a>
+<a class="jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call:&nbsp; <b>888-533-5865</b></a>
+</div>
 </div>
 </div></header>
 
-<section class="band" style="border-top:1px solid var(--line)"><div class="wrap">
+<section class="strip"><div class="wrap strip-in">
+<span><span class="tick">&#10003;</span>700+ Five-Star Reviews</span>
+<span><span class="tick">&#10003;</span>Licensed &amp; Insured</span>
+<span><span class="tick">&#10003;</span>Whole-Space Cleanouts</span>
+<span><span class="tick">&#10003;</span>Fast Turnaround Times</span>
+</div></section>
+
+<section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">Types of cleanouts</div>
 <h2>Every kind of full, handled</h2>
 <p style="max-width:820px">Garages, basements, moving days, whole homes &mdash; pick your project below and we'll clear it out. And if you'd rather not lift a finger, our <b>comprehensive cleanout service</b> handles everything: we empty the cabinets, bag and box it all, and leave the place broom-swept. <a href="#comprehensive" style="color:var(--navy);font-weight:800">See what's included &darr;</a></p></div>
@@ -540,6 +551,16 @@ function gtag_report_conversion(url) {
 </div>
 </div>
 </section>
+<section class="band" style="border-top:1px solid var(--line);padding:64px 0"><div class="wrap" style="text-align:center">
+<div class="kicker" style="display:inline-flex">Free custom quote</div>
+<h2 style="margin:14px 0 12px">Ready to get that space back?</h2>
+<p style="max-width:640px;margin:0 auto 26px">Every cleanout is different &mdash; that's why we quote each job individually. Send a few photos and the details, and we'll come back fast with a clear, all-in price. No visit needed, no obligation.</p>
+<div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+<a class="btn" href="/request-a-quote/">Request a free quote &rarr;</a>
+<a class="btn btn-outline" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a>
+</div>
+</div></section>
+
 <footer class="site"><div class="wrap">
 <div class="cols">
 <div>
@@ -557,9 +578,9 @@ function gtag_report_conversion(url) {
 <a href="/our-services/construction-waste-removal/">Construction Material Removal</a>
 <a href="/our-services/trash-pick-up/">Trash Pick-Up</a><a href="/residential-services/">All services &rarr;</a></div>
 <div><h4>Company</h4>
-<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
+<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
 <div><h4>Get Started</h4>
-<a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
+<a href="/request-a-quote/">Get a Quote</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>
 <div class="legal">&copy; 2012&ndash;2026 Jersey Junkers&reg; LLC &middot; 888-533-5865 &middot; Licensed &amp; Insured &middot; A-901 NJDEP</div>
 </div></footer>

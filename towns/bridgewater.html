@@ -263,6 +263,14 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .mm-sub{display:flex;flex-direction:column;padding:4px 0 8px 14px;border-left:2.5px solid var(--gold);margin:6px 0 4px 0}
 .mm-sub a{font-size:14.5px !important;padding:7px 0 !important;border-bottom:none !important}
 .mm-sub .mm-all{font-weight:900;color:var(--navy)}
+.ba-rail{display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);grid-auto-columns:300px;gap:14px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:10px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.ba-rail::-webkit-scrollbar{display:none}
+.ba-tile{width:300px;aspect-ratio:3/2;object-fit:cover;border-radius:12px;border:1px solid var(--line);display:block}
+.rail-arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:2px solid var(--ink);background:var(--gold);color:var(--ink);font-size:20px;font-weight:900;cursor:pointer;z-index:2;display:flex;align-items:center;justify-content:center}
+.rail-arrow[hidden]{display:none}
+.rail-left{left:8px}
+.rail-right{right:8px}
+@media (max-width:600px){.ba-rail{grid-auto-columns:220px}.ba-tile{width:220px}}
 </style>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Jersey Junkers","telephone":"+888-533-5865","url":"https://www.jerseyjunkers.com/junk-removal-bridgewater-nj/","image":"https://www.jerseyjunkers.com/favicon-192.png","address":{"@type":"PostalAddress","streetAddress":"25 Railroad Ave #39","addressLocality":"Atlantic Highlands","addressRegion":"NJ","postalCode":"07716"},"areaServed":{"@type":"City","name":"Bridgewater, NJ"},"description":"Junk removal in Bridgewater, NJ - furniture removal, cleanouts, appliance removal, and more. Serving Somerset County since 2012."}</script>
 <!-- Event snippet for Click to call conversion -->
@@ -304,7 +312,6 @@ function gtag_report_conversion(url) {
 <div class="gn-colhead">The Company</div>
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 </div>
 <div class="gn-col">
 <div class="gn-colhead">Good to Know</div>
@@ -377,23 +384,11 @@ function gtag_report_conversion(url) {
 <div class="mm-sub">
 <a href="/about-jersey-junkers/">About Us</a>
 <a href="/customer-feedback/">Reviews</a>
-<a href="/before-and-after/">Before &amp; After</a>
 <a href="/faq/">FAQ</a>
 <a href="/jobs/">Job Opportunities</a>
 <a href="/location-search/">Service Area</a>
 <a class="mm-all" href="/contact-us/">Get in touch &rarr;</a>
 </div></details>
-<a href="/contact-us/">Contact</a>
-<div class="mm-cta">
-<a class="btn" href="/book/">Book Online</a>
-<a class="mm-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a>
-</div>
-</div>
-<a href="/commercial/">Commercial Services</a>
-<a href="/what-we-take/">What We Take</a>
-<a href="/how-we-price/">Pricing</a>
-<a href="/location-search/">Service Area</a>
-<a href="/faq/">FAQ</a>
 <a href="/contact-us/">Contact</a>
 <div class="mm-cta">
 <a class="btn" href="/book/">Book Online</a>
@@ -412,10 +407,10 @@ function gtag_report_conversion(url) {
 <div class="zip-msg" aria-live="polite"></div>
 </div>
 </div></header><div class="strip"><div class="wrap strip-in">
-<span><i class="tick">&#10003;</i> Fast &amp; friendly</span>
-<span><i class="tick">&#10003;</i> A-901 NJDEP licensed</span>
+<span><i class="tick">&#10003;</i> Professional &amp; Reliable</span>
+<span><i class="tick">&#10003;</i> Licensed &amp; Insured</span>
 <span><i class="tick">&#10003;</i> 700+ five-star reviews</span>
-<span><i class="tick">&#10003;</i> Locally owned since 2012</span>
+<span><i class="tick">&#10003;</i> Grown In New Jersey</span>
 </div></div><section><div class="wrap">
 <div class="sec-head" style="margin-bottom:22px"><div class="kicker">What we do in Bridgewater</div>
 <h2>One call clears it all</h2>
@@ -428,7 +423,7 @@ function gtag_report_conversion(url) {
 <a class="tr-tile" href="/our-services/cleanouts/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_c412603d4d804b0aaac5fda61a4aa111~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cleanouts</span></a>
 <a class="tr-tile" href="/our-services/appliance-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_4d970d4fe6534cc0bb572c434c7e1456~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Appliance Removal</span></a>
 <a class="tr-tile" href="/our-services/cardboard-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_927e0e181d8d4a4ab70ca2fce61bcf90~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Cardboard Removal</span></a>
-<a class="tr-tile" href="/our-services/estate-clean-outs/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_3ad4b2a7453d4a47ad4e125f17fceea5~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Estate Clean Outs</span></a>
+<a class="tr-tile" href="/our-services/estate-clean-outs/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_fd1d67b97fcb4a3b84dfc1af584d8f65~mv2.png/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.png')"><span>Estate Clean Outs</span></a>
 <a class="tr-tile" href="/our-services/hot-tub-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_b44831fddd0b49d89781f39a81c0b156~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Hot Tub Removal</span></a>
 <a class="tr-tile" href="/our-services/shed-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_f07431ffa1aa456b8ebac60d471fd5b7~mv2.jpeg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')"><span>Shed Removal</span></a>
 <a class="tr-tile" href="/our-services/deck-removal/" style="background-image:linear-gradient(rgba(18,18,16,.38),rgba(18,18,16,.52)),url('https://static.wixstatic.com/media/36a716_e465d6dea74a49d9a5356b6645034f6f~mv2.jpg/v1/fill/w_640,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')"><span>Deck Removal</span></a>
@@ -445,17 +440,36 @@ function gtag_report_conversion(url) {
 <div class="sec-head" style="margin-bottom:22px"><div class="kicker">Recent work</div>
 <h2>Real jobs, real crews</h2>
 <p>A few from around Somerset County and beyond &mdash; lifted, loaded, and gone.</p></div>
-<div class="cg-grid">
-<div class="cg-tile cg-big" style="background-image:url('https://static.wixstatic.com/media/36a716_82cee777e85b406b8103e6f821eddb47~mv2.jpeg/v1/fill/w_900,h_700,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Deck demolition in progress"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_b146d229be2c4a0f8afb2b43be761497~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Shed teardown"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_86058c2381a44e5da8be0ba384b7dd0b~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Crew clearing out a shed"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_78ba7e0b0ba14ea6ba14a53376dfa1cd~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')" role="img" aria-label="Hauling deck debris"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_1b29afcd54a94060a19dd10cbcbcb0da~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Hot tub removal"></div>
-<div class="cg-tile cg-big" style="background-image:url('https://static.wixstatic.com/media/36a716_bf78a1080e4e4ed3af8c39b7b2ed982c~mv2.jpg/v1/fill/w_900,h_700,al_c,q_82,enc_avif,quality_auto/file.jpg')" role="img" aria-label="Swing set take-down"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_35d2a736d86c44fd925b48d8a46e8b5a~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')" role="img" aria-label="The crew on a swing set job"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_ad7852bd227946cfa889b5518b73972a~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Shed crew at work"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_01947c32ddfa404aaeb7338099a1f024~mv2.jpeg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpeg')" role="img" aria-label="Commercial cleanout"></div>
-<div class="cg-tile" style="background-image:url('https://static.wixstatic.com/media/36a716_d83c097236a24dd89a50c5f2f78477be~mv2.jpg/v1/fill/w_600,h_460,al_c,q_82,enc_avif,quality_auto/file.jpg')" role="img" aria-label="Jersey Junkers crew on site"></div>
+<div style="position:relative">
+<div class="ba-rail" id="barail">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_796eb3df47774c9fb2b46d0948d5d31a~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_e87ea2a141354627a4c07c3687db0f0e~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_1fa6396c0ff34f7288cfe588e17b1b13~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_081f9dbe5a2242acaf69c88ac800d245~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_23a0cadaeab4442fa1f3ba20b038b067~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_a19112742ca64488b5266bd0ee66d893~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_7b2392af27d84190bb32ba8c2667621a~mv2.png/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.png" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_9638b32089934b3197f9e8303abfc5e9~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_bb7a532fdafd455f8814985db68dfa30~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_b146d2297e2a46c2a553f0df51c1e3af~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_35d2a736d86c44fd925b48d8a46e8b5a~mv2.jpg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_bf69c42870df465ab456a666adadb64a~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_52d2b7488aae4c83a6959558b4923312~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_8f26b309e15642d39e7de0ad8662e029~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_564c3d7d9912467d9817d34daa027ff1~mv2.jpg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_4ee67b5537894727b57911090ea83273~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_c0a1502f511a4a19b24ab05151c52aa6~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_b0ea9859f794490a91f1f81e88fbdc34~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_78226ee954d24c4983b4ce82d7b02a8f~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_83b7743988414323ad961ebb5eb62746~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_baa1db2b40d5450abfb197a813ce34e4~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_1fcd0104ae994fddb5eb62234ba9741f~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_294efd7e88f64ca9b7352dbc7389b992~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_6d794d5460f74853abc662d407748c8d~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+<img class="ba-tile" src="https://static.wixstatic.com/media/36a716_8591aae08a3143f5badb4e24644c1df7~mv2.jpeg/v1/fill/w_640,h_440,al_c,q_82,enc_avif,quality_auto/file.jpeg" alt="Jersey Junkers job photo" loading="lazy">
+</div>
+<button class="rail-arrow rail-left" id="barailL" type="button" aria-label="Scroll back" hidden>&larr;</button>
+<button class="rail-arrow rail-right" id="barailR" type="button" aria-label="Scroll forward">&rarr;</button>
 </div>
 </div></section>
 
@@ -492,7 +506,7 @@ function gtag_report_conversion(url) {
 <a href="/our-services/construction-waste-removal/">Construction Material Removal</a>
 <a href="/our-services/trash-pick-up/">Trash Pick-Up</a><a href="/residential-services/">All services &rarr;</a></div>
 <div><h4>Company</h4>
-<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/before-and-after/">Before &amp; After</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
+<a href="/about-jersey-junkers/">About Us</a><a href="/customer-feedback/">Reviews</a><a href="/faq/">FAQ</a><a href="/jobs/">Job Opportunities</a></div>
 <div><h4>Get Started</h4>
 <a href="/book/">Book Online</a><a href="/how-we-price/">Pricing</a><a href="/what-we-take/">What We Take</a><a href="/location-search/">Service Area</a><a href="/commercial/">Commercial</a></div>
 </div>
@@ -551,6 +565,23 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   const l=document.querySelector(".tr-left"), r=document.querySelector(".tr-right");
   if(l)l.addEventListener("click",()=>rail.scrollBy({left:-step(),behavior:"smooth"}));
   if(r)r.addEventListener("click",()=>rail.scrollBy({left:step(),behavior:"smooth"}));
+})();
+</script>
+<script>
+(function(){
+  const rail=document.getElementById("barail");
+  if(!rail)return;
+  const L=document.getElementById("barailL"),R=document.getElementById("barailR");
+  const STEP=640;
+  L.onclick=()=>rail.scrollBy({left:-STEP,behavior:"smooth"});
+  R.onclick=()=>rail.scrollBy({left:STEP,behavior:"smooth"});
+  function arrows(){
+    L.hidden = rail.scrollLeft <= 4;
+    R.hidden = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 4;
+  }
+  rail.addEventListener("scroll",arrows,{passive:true});
+  window.addEventListener("resize",arrows);
+  arrows();
 })();
 </script>
 </body></html>
