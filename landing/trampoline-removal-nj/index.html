@@ -1002,7 +1002,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     new IntersectionObserver((es,o)=>{es.forEach(e=>{if(e.isIntersecting){f.classList.add("in");o.disconnect();}})},{threshold:.25}).observe(f);
   }else{f.classList.add("in");}
   const status=f.querySelector(".ld-status");
-  const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/"; // same hook as the request-a-quote form
+  const HOOK="/.netlify/functions/quote-hook"; // same hook as the request-a-quote form
   f.addEventListener("submit",async e=>{
     e.preventDefault();
     const data=Object.fromEntries(new FormData(f).entries());

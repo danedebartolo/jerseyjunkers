@@ -561,10 +561,10 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   if(!f)return;
   const status=f.querySelector(".qr-status");
   // TODO: paste the Zapier catch hook URL here when ready
-  const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/";
+  const HOOK="/.netlify/functions/quote-hook";
   f.addEventListener("submit",async e=>{
     e.preventDefault();
-    if(HOOK==="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/"){
+    if(HOOK==="/.netlify/functions/quote-hook"){
       status.textContent="Thanks — got it! (Form not yet connected — please call 888-533-5865 for now.)";
       status.style.color="#C8821A";return;
     }

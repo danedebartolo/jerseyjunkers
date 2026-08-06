@@ -611,7 +611,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   const f=document.getElementById("qrForm");
   if(!f)return;
   const status=f.querySelector(".qr-status");
-  const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4623o9u/";
+  const HOOK="/.netlify/functions/quote-hook";
 
   const phone=document.getElementById("qrPhone");
   if(phone){
