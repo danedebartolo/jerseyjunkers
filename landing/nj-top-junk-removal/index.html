@@ -1035,11 +1035,11 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     const map=L.map("ldMap",{scrollWheelZoom:false}).setView([40.18,-74.42],9);
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{attribution:"&copy; OpenStreetMap contributors",maxZoom:18}).addTo(map);
     const CI=(m,e)=>"/images/"+m+"_440x260."+e;
-    const pins=[["Monmouth County",40.4096,-74.0357,CI("36a716_59a9007a5b11441f8c12e0fb15d7c063","png"),"/locations/monmouth-county-service/"],
+    const pins=[["Monmouth County",40.4096,-74.0357,CI("36a716_59a9007a5b11441f8c12e0fb15d7c063","jpg"),"/locations/monmouth-county-service/"],
       ["Ocean County",39.95,-74.25,CI("36a716_932ecd64007444ef8039846d36fa40cf","jpg"),"/locations/ocean-county-service/"],
       ["Middlesex County",40.44,-74.41,CI("36a716_d4955ed16c0e489bb99af9ea8d9ae754","jpg"),"/locations/middlesex-county-service/"],
-      ["Mercer County",40.28,-74.70,CI("36a716_d974f89bc8304ac9856bdb3a8767558d","png"),"/locations/mercer-county-service/"],
-      ["Somerset County",40.56,-74.62,CI("36a716_c412603d4d804b0aaac5fda61a4aa111","jpeg"),"/locations/somerset-county-service/"]];
+      ["Mercer County",40.28,-74.70,CI("36a716_d974f89bc8304ac9856bdb3a8767558d","jpg"),"/locations/mercer-county-service/"],
+      ["Somerset County",40.56,-74.62,CI("36a716_6284d57bedaa45bfb051c7ff253276c3","jpg"),"/locations/somerset-county-service/"]];
     pins.forEach(([n,lat,lng,img,href])=>{
       L.marker([lat,lng]).addTo(map).bindPopup('<div style="width:220px"><img src="'+img+'" alt="'+n+'" style="width:100%;border-radius:8px;display:block;margin-bottom:8px"><b style="font-family:Archivo,sans-serif;font-size:14px">'+n+'</b><br><a href="'+href+'" style="font-weight:800">See the towns we serve &rarr;</a></div>',{maxWidth:240,autoPan:true,autoPanPadding:[40,70]});
     });
