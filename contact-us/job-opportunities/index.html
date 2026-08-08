@@ -262,6 +262,7 @@ function gtag_report_conversion(url) {
       'currency': 'USD',
       'event_callback': callback
   });
+  gtag('event', 'phone_call', {'currency': 'USD', 'value': 0});
   return false;
 }
 </script>
