@@ -8,6 +8,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-11037171944');
+gtag('config', 'G-HERW72JPRR');
   gtag('config', 'AW-11037171944/fpBcCMHw8fEZEOjB944p', {'phone_conversion_number': '888-533-5865'});
 </script>
 
@@ -19,7 +20,7 @@ gtag('config', 'AW-11037171944');
 <link rel="canonical" href="https://www.jerseyjunkers.com/junk-removal-somerville-nj/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=optional" rel="stylesheet">
 <style>
 :root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#3F88C5;--blue:#3F88C5;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -549,6 +550,13 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     msg.innerHTML = "We\u2019re not in your county just yet &mdash; give us a call at <a href=\"tel:8885335865\" style=\"font-weight:800;color:inherit\">888-533-5865</a> and we\u2019ll see if we have a junk removal partner in your area.";
   });
 });
+  window.addEventListener("pageshow", function(e){
+    document.querySelectorAll("[data-zip]").forEach(function(form){
+      var m = form.parentElement.querySelector(".zip-msg") || form.nextElementSibling;
+      if(m){ m.textContent = ""; m.classList.remove("err"); }
+      var inp = form.querySelector("input"); if(inp) inp.value = "";
+    });
+  });
 </script>
 <div class="pt-modal" id="ptermsmodal" role="dialog" aria-modal="true" aria-label="Promo code terms"><button class="pt-close" aria-label="Close">&times;</button><img src="/images/36a716_b7078fb7b56c4f68b5ee836dcd761d0e.jpg" alt="Promo code terms and conditions"></div>
 <script>

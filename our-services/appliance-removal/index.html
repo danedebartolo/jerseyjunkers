@@ -8,6 +8,7 @@ window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'AW-11037171944');
+gtag('config', 'G-HERW72JPRR');
   gtag('config', 'AW-11037171944/fpBcCMHw8fEZEOjB944p', {'phone_conversion_number': '888-533-5865'});
 </script>
 
@@ -22,7 +23,7 @@ gtag('config', 'AW-11037171944');
 <link rel="canonical" href="https://www.jerseyjunkers.com/our-services/appliance-removal/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Instrument+Sans:wght@400;500;600&display=optional" rel="stylesheet">
 <style>
 html,body{overflow-x:hidden;max-width:100%}
 :root{color-scheme:only light;--ink:#1a1a1a;--gold:#F5C400;--navy:#3F88C5;--blue:#3F88C5;--paper:#FDFDFB;--cloud:#F3F2EE;--line:#E6E4DD;--green:#2E8B57;--maxw:1120px}
@@ -694,6 +695,13 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     msg.innerHTML = "We\u2019re not in your county just yet &mdash; give us a call at <a href=\"tel:8885335865\" style=\"font-weight:800;color:inherit\">888-533-5865</a> and we\u2019ll see if we have a junk removal partner in your area.";
   });
 });
+  window.addEventListener("pageshow", function(e){
+    document.querySelectorAll("[data-zip]").forEach(function(form){
+      var m = form.parentElement.querySelector(".zip-msg") || form.nextElementSibling;
+      if(m){ m.textContent = ""; m.classList.remove("err"); }
+      var inp = form.querySelector("input"); if(inp) inp.value = "";
+    });
+  });
 </script>
 <script>
 (function(){
