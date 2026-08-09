@@ -744,10 +744,10 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="ldf-body">
 <p class="ld-form-sub">Fill the form and we'll respond to you shortly.</p>
 <input type="text" name="name" placeholder="Name" required>
-<input type="email" name="email" placeholder="Email Address">
+<input type="email" name="email" placeholder="Email Address" required>
 <input type="tel" name="phone" placeholder="Phone Number" required>
 <input type="text" name="zip" inputmode="numeric" maxlength="5" pattern="\d{5}" placeholder="ZIP Code" required>
-<textarea name="details" rows="4" placeholder="How can we help?"></textarea>
+<textarea name="details" rows="4" placeholder="How can we help?" required></textarea>
 <label class="ldf-upload">Photos <span>(optional — helps us quote faster)</span>
 <input type="hidden" role="uploadcare-uploader" name="photos" data-public-key="3c6c6ff30a98183e8ab3" data-multiple="true" data-images-only="false" style="margin-top:6px">
 </label>
@@ -1016,8 +1016,14 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   }else{f.classList.add("in");}
   const status=f.querySelector(".ld-status");
   const HOOK="/.netlify/functions/quote-hook"; // same hook as the request-a-quote form
-  f.addEventListener("submit",async e=>{
+  var _ph=f.querySelector('input[name="phone"]'); if(_ph){ _ph.addEventListener("input",function(){ var d=_ph.value.replace(/\D/g,"").slice(0,10); var out=d; if(d.length>6) out=d.slice(0,3)+"-"+d.slice(3,6)+"-"+d.slice(6); else if(d.length>3) out=d.slice(0,3)+"-"+d.slice(3); _ph.value=out; _ph.setCustomValidity(""); }); }
+    var _zp=f.querySelector('input[name="zip"]'); if(_zp){ _zp.addEventListener("input",function(){ _zp.value=_zp.value.replace(/\D/g,"").slice(0,5); _zp.setCustomValidity(""); }); }
+    f.addEventListener("submit",async e=>{
     e.preventDefault();
+        var _p=f.querySelector('input[name="phone"]'); if(_p){ var pd=_p.value.replace(/\D/g,""); if(pd.length!==10){ _p.setCustomValidity("Enter a 10-digit phone number"); _p.reportValidity(); return; } _p.setCustomValidity(""); }
+        var _e=f.querySelector('input[name="email"]'); if(_e && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(_e.value.trim())){ _e.setCustomValidity("Enter a valid email address"); _e.reportValidity(); return; } if(_e) _e.setCustomValidity("");
+        var _z=f.querySelector('input[name="zip"]'); if(_z && !/^\d{5}$/.test(_z.value)){ _z.setCustomValidity("Please enter a 5-digit ZIP code"); _z.reportValidity(); return; } if(_z) _z.setCustomValidity("");
+        var _d=f.querySelector('textarea[name="details"]'); if(_d && !_d.value.trim()){ _d.setCustomValidity("Please tell us how we can help"); _d.reportValidity(); return; } if(_d) _d.setCustomValidity("");
     const data=Object.fromEntries(new FormData(f).entries());
     data.source="built-in-cabinet-removal-nj";
     try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
