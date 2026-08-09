@@ -11,6 +11,7 @@ gtag('config', 'AW-11037171944');
 gtag('config', 'G-HERW72JPRR');
   gtag('config', 'AW-11037171944/fpBcCMHw8fEZEOjB944p', {'phone_conversion_number': '888-533-5865'});
 </script>
+<script>/* JJ ad-click capture */try{var _jjp=new URLSearchParams(location.search);["gclid","wbraid","gbraid"].forEach(function(k){var v=_jjp.get(k);if(v){try{sessionStorage.setItem("jj_"+k,v);}catch(_){}}});}catch(_){}</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -622,6 +623,14 @@ document.querySelectorAll("[data-zip]").forEach(form => {
 (function(){
   const f=document.getElementById("qrForm");
   if(!f)return;
+  // --- GCLID / ad-click capture (for offline conversion tracking) ---
+  try {
+    var _p = new URLSearchParams(location.search);
+    ["gclid","wbraid","gbraid"].forEach(function(k){
+      var v = _p.get(k);
+      if(v){ try{ sessionStorage.setItem("jj_"+k, v); }catch(_){} }
+    });
+  } catch(_){}
   const status=f.querySelector(".qr-status");
   const HOOK="/.netlify/functions/quote-hook";
 
@@ -661,6 +670,12 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     }
     if(zip) zip.setCustomValidity("");
     const data=Object.fromEntries(new FormData(f).entries());
+        try {
+          ["gclid","wbraid","gbraid"].forEach(function(k){
+            var v = sessionStorage.getItem("jj_"+k);
+            if(v) data[k] = v;
+          });
+        } catch(_){}
     try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
     window.location.href="/thank-you/";
   });
