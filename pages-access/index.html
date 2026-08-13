@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page Directory — Jersey Junkers</title>
+<style>
+  :root{--navy:#003A70;--gold:#F5C400;--ink:#16181d;--cloud:#f4f6f9;--line:#e2e7ec;--muted:#5c6773}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:var(--cloud);color:var(--ink);line-height:1.5}
+  .bar{background:var(--navy);color:#fff;padding:16px 0}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+  .bar .lg{font-family:'Arial Black',sans-serif;font-weight:900;font-size:19px}
+  .bar .lg span{color:var(--gold)}
+  /* login */
+  .login{max-width:380px;margin:80px auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:32px 28px;box-shadow:0 12px 40px rgba(0,0,0,.08)}
+  .login h1{font-family:'Arial Black',sans-serif;font-size:22px;margin-bottom:6px}
+  .login p{color:var(--muted);font-size:14px;margin-bottom:20px}
+  .login label{display:block;font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:6px}
+  .login input{width:100%;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:9px;margin-bottom:14px}
+  .login input:focus{outline:none;border-color:var(--navy)}
+  .login button{width:100%;background:var(--gold);color:var(--ink);font-family:'Arial Black',sans-serif;font-weight:900;font-size:15px;padding:13px;border:none;border-radius:9px;cursor:pointer}
+  .login button:hover{background:#e0b400}
+  .err{color:#d64545;font-size:13.5px;margin-bottom:12px;min-height:16px;font-weight:600}
+  /* directory */
+  #dir{display:none;padding:26px 0 60px}
+  .dir-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+  .dir-head h1{font-family:'Arial Black',sans-serif;font-size:24px}
+  .dir-head .count{color:var(--muted);font-size:14px}
+  .tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .tools input{flex:1;min-width:200px;font-size:15px;padding:10px 13px;border:1.5px solid var(--line);border-radius:9px}
+  .tools button{background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;color:var(--navy)}
+  .tools button:hover{border-color:var(--navy)}
+  .cat{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:16px;overflow:hidden}
+  .cat h2{font-family:'Arial Black',sans-serif;font-size:15px;background:var(--navy);color:#fff;padding:12px 18px;display:flex;justify-content:space-between}
+  .cat h2 span{color:var(--gold);font-weight:400;font-family:system-ui}
+  .cat ul{list-style:none}
+  .cat li{border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 18px}
+  .cat li:last-child{border-bottom:none}
+  .cat li:hover{background:var(--cloud)}
+  .cat li a{color:var(--navy);text-decoration:none;font-size:14.5px;word-break:break-all}
+  .cat li a:hover{text-decoration:underline}
+  .cat li .copy{background:var(--cloud);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font-size:12px;cursor:pointer;color:var(--muted);white-space:nowrap}
+  .cat li .copy:hover{border-color:var(--navy);color:var(--navy)}
+  .hidden{display:none !important}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap"><div class="lg">JERSEY JUNKERS<span>&reg;</span> · Page Directory</div></div></div>
+
+<!-- LOGIN -->
+<div id="login" class="login">
+  <h1>Page Directory</h1>
+  <p>Enter your credentials to view the full list of site pages.</p>
+  <div class="err" id="err"></div>
+  <label>Username</label>
+  <input type="text" id="u" autocomplete="off" autocapitalize="off">
+  <label>Password</label>
+  <input type="password" id="p">
+  <button onclick="tryLogin()">View Pages →</button>
+</div>
+
+<!-- DIRECTORY -->
+<div id="dir"><div class="wrap">
+  <div class="dir-head">
+    <h1>All Pages</h1>
+    <div class="count" id="count"></div>
+  </div>
+  <div class="tools">
+    <input type="text" id="filter" placeholder="Filter pages… (type to search)" oninput="doFilter()">
+    <button onclick="copyAll()">Copy all URLs</button>
+  </div>
+  <div id="list"></div>
+</div></div>
+
+<script>
+var BASE = "https://www.jerseyjunkers.com";
+var DATA = {"Home": ["/"], "Main Pages": ["/404.html", "/about-jersey-junkers/", "/above-ground-pool-removal-cost-nj/", "/availability/", "/book/", "/booking-confirmed/", "/commercial/", "/contact-us/", "/contact-us/job-opportunities/", "/customer-feedback/", "/faq/", "/how-we-price/", "/how-we-price/multi-item/", "/jobs/", "/location-search/", "/privacy-policy/", "/request-a-quote/", "/residential-services/", "/thank-you/", "/what-we-take/"], "Services": ["/our-services/above-ground-pool-removal/", "/our-services/appliance-removal/", "/our-services/basketball-hoop-removal/", "/our-services/billiard-table-removal/", "/our-services/cardboard-removal/", "/our-services/cleanouts/", "/our-services/construction-waste-removal/", "/our-services/deck-removal/", "/our-services/e-waste-removal/", "/our-services/estate-clean-outs/", "/our-services/furniture-removal/", "/our-services/hoarding-cleanup/", "/our-services/hot-tub-removal/", "/our-services/junk-removal/", "/our-services/riding-mower-removal/", "/our-services/shed-removal/", "/our-services/storage-unit-junk-removal/", "/our-services/swing-set-removal/", "/our-services/trampoline-removal/", "/our-services/trash-pick-up/"], "Location Pages": ["/locations/mercer-county-service/", "/locations/middlesex-county-service/", "/locations/monmouth-county-service/", "/locations/ocean-county-service/", "/locations/somerset-county-service/"], "Landing Pages (Ads)": ["/landing/above-ground-pool-removal-nj/", "/landing/built-in-cabinet-removal-nj/", "/landing/cleanout-services-nj/", "/landing/cleanouts/", "/landing/construction-waste-removal-nj/", "/landing/deck-removal-nj/", "/landing/get-junk-gone/", "/landing/hoarding-cleanup-nj/", "/landing/junk-removal-quote-nj/", "/landing/monmouth-county/", "/landing/monmouth-county2/", "/landing/monmouth-county3/", "/landing/nj-furniture-removal/", "/landing/nj-top-junk-removal/", "/landing/oc-top-junk-removal/", "/landing/shed-removal-nj/", "/landing/swing-set-removal-nj/", "/landing/trampoline-removal-nj/"], "Town Pages": ["/towns/aberdeen-township.html", "/towns/allenhurst.html", "/towns/allentown.html", "/towns/asbury-park.html", "/towns/atlantic-highlands.html", "/towns/avon-by-the-sea.html", "/towns/barnegat-light.html", "/towns/barnegat-township.html", "/towns/basking-ridge.html", "/towns/bay-head.html", "/towns/beach-haven.html", "/towns/beachwood.html", "/towns/bedminster.html", "/towns/belle-mead.html", "/towns/belmar.html", "/towns/berkeley-township.html", "/towns/bernardsville.html", "/towns/blawenburg.html", "/towns/bound-brook.html", "/towns/bradley-beach.html", "/towns/branchburg.html", "/towns/brick-township.html", "/towns/bridgewater.html", "/towns/brielle.html", "/towns/carteret.html", "/towns/colts-neck-township.html", "/towns/cranbury-township.html", "/towns/deal.html", "/towns/dunellen.html", "/towns/eagleswood-township.html", "/towns/east-brunswick-township.html", "/towns/east-windsor-township.html", "/towns/eatontown.html", "/towns/edison.html", "/towns/englishtown.html", "/towns/ewing-township.html", "/towns/fair-haven.html", "/towns/far-hills.html", "/towns/farmingdale.html", "/towns/franklin-township.html", "/towns/freehold-borough.html", "/towns/freehold-township.html", "/towns/green-brook.html", "/towns/hamilton-township.html", "/towns/harvey-cedars.html", "/towns/hazlet-township.html", "/towns/helmetta.html", "/towns/highland-park.html", "/towns/highlands.html", "/towns/hightstown.html", "/towns/hillsborough.html", "/towns/holmdel-township.html", "/towns/hopewell-borough.html", "/towns/hopewell-township.html", "/towns/howell-township.html", "/towns/interlaken.html", "/towns/island-heights.html", "/towns/jackson-township.html", "/towns/jamesburg.html", "/towns/keansburg.html", "/towns/keyport.html", "/towns/kingston.html", "/towns/lacey-township.html", "/towns/lake-como.html", "/towns/lakehurst.html", "/towns/lakewood-township.html", "/towns/lavallette.html", "/towns/lawrence-township.html", "/towns/little-egg-harbor-township.html", "/towns/little-silver.html", "/towns/loch-arbour.html", "/towns/long-beach-township.html", "/towns/long-branch.html", "/towns/manalapan-township.html", "/towns/manasquan.html", "/towns/manchester-township.html", "/towns/mantoloking.html", "/towns/manville.html", "/towns/marlboro-township.html", "/towns/martinsville.html", "/towns/matawan.html", "/towns/metuchen.html", "/towns/middlesex.html", "/towns/middletown-township.html", "/towns/millstone-township.html", "/towns/millstone.html", "/towns/milltown.html", "/towns/monmouth-beach.html", "/towns/monroe-township.html", "/towns/montgomery.html", "/towns/neptune-city.html", "/towns/neptune-township.html", "/towns/neshanic-station.html", "/towns/new-brunswick.html", "/towns/north-brunswick-township.html", "/towns/north-plainfield.html", "/towns/ocean-gate.html", "/towns/ocean-grove.html", "/towns/ocean-township.html", "/towns/oceanport.html", "/towns/old-bridge-township.html", "/towns/peapack-and-gladstone.html", "/towns/pennington.html", "/towns/perth-amboy.html", "/towns/pine-beach.html", "/towns/piscataway-township.html", "/towns/plainsboro-township.html", "/towns/plumsted-township.html", "/towns/point-pleasant-beach.html", "/towns/point-pleasant.html", "/towns/princeton.html", "/towns/raritan.html", "/towns/red-bank.html", "/towns/robbinsville-township.html", "/towns/rocky-hill.html", "/towns/roosevelt.html", "/towns/rumson.html", "/towns/sayreville.html", "/towns/sea-bright.html", "/towns/sea-girt.html", "/towns/seaside-heights.html", "/towns/seaside-park.html", "/towns/ship-bottom.html", "/towns/shrewsbury-borough.html", "/towns/shrewsbury-township.html", "/towns/skillman.html", "/towns/somerset.html", "/towns/somerville.html", "/towns/south-amboy.html", "/towns/south-bound-brook.html", "/towns/south-brunswick-township.html", "/towns/south-plainfield.html", "/towns/south-river.html", "/towns/south-toms-river.html", "/towns/spotswood.html", "/towns/spring-lake-heights.html", "/towns/spring-lake.html", "/towns/stafford-township.html", "/towns/surf-city.html", "/towns/tinton-falls.html", "/towns/toms-river.html", "/towns/trenton.html", "/towns/tuckerton.html", "/towns/union-beach.html", "/towns/upper-freehold-township.html", "/towns/wall-township.html", "/towns/waretown.html", "/towns/warren.html", "/towns/watchung.html", "/towns/west-long-branch.html", "/towns/west-windsor-township.html", "/towns/woodbridge-township.html"]};
+
+function tryLogin(){
+  var u=document.getElementById('u').value.trim();
+  var p=document.getElementById('p').value;
+  if(u==="Dane" && p==="Dane22"){
+    document.getElementById('login').style.display='none';
+    document.getElementById('dir').style.display='block';
+    render();
+  } else {
+    document.getElementById('err').textContent="Incorrect username or password.";
+  }
+}
+document.getElementById('p').addEventListener('keydown',function(e){ if(e.key==='Enter') tryLogin(); });
+
+function render(){
+  var total=0, html='';
+  for(var c in DATA){
+    var list=DATA[c]; total+=list.length;
+    html+='<div class="cat" data-cat="'+c+'"><h2>'+c+' <span>'+list.length+'</span></h2><ul>';
+    list.forEach(function(u){
+      var full=BASE+u;
+      html+='<li data-url="'+full.toLowerCase()+'"><a href="'+full+'" target="_blank">'+full+'</a>'
+          +'<button class="copy" onclick="copyOne(this,\''+full+'\')">Copy</button></li>';
+    });
+    html+='</ul></div>';
+  }
+  document.getElementById('list').innerHTML=html;
+  document.getElementById('count').textContent=total+' pages';
+}
+function doFilter(){
+  var q=document.getElementById('filter').value.toLowerCase();
+  document.querySelectorAll('.cat').forEach(function(cat){
+    var any=false;
+    cat.querySelectorAll('li').forEach(function(li){
+      var match=li.getAttribute('data-url').indexOf(q)>-1;
+      li.classList.toggle('hidden',!match);
+      if(match) any=true;
+    });
+    cat.classList.toggle('hidden',!any);
+  });
+}
+function copyOne(btn,url){
+  navigator.clipboard.writeText(url).then(function(){ var t=btn.textContent; btn.textContent='Copied!'; setTimeout(function(){btn.textContent=t;},1200); });
+}
+function copyAll(){
+  var all=[];
+  for(var c in DATA){ DATA[c].forEach(function(u){ all.push(BASE+u); }); }
+  navigator.clipboard.writeText(all.join('\n')).then(function(){ alert(all.length+' URLs copied to clipboard'); });
+}
+</script>
+</body>
+</html>
