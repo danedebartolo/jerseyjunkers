@@ -24,7 +24,7 @@
   .login button:hover{background:#e0b400}
   .err{color:#d64545;font-size:13.5px;margin-bottom:12px;min-height:16px;font-weight:600}
   /* directory */
-  #dir{display:none;padding:26px 0 60px}
+  #dir{display:block;padding:26px 0 60px}
   .dir-head{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:18px}
   .dir-head h1{font-family:'Arial Black',sans-serif;font-size:24px}
   .dir-head .count{color:var(--muted);font-size:14px}
@@ -50,18 +50,6 @@
 
 <div class="bar"><div class="wrap"><div class="lg">JERSEY JUNKERS<span>&reg;</span> · Page Directory</div></div></div>
 
-<!-- LOGIN -->
-<div id="login" class="login">
-  <h1>Page Directory</h1>
-  <p>Enter your credentials to view the full list of site pages.</p>
-  <div class="err" id="err"></div>
-  <label>Username</label>
-  <input type="text" id="u" autocomplete="off" autocapitalize="off">
-  <label>Password</label>
-  <input type="password" id="p">
-  <button onclick="tryLogin()">View Pages →</button>
-</div>
-
 <!-- DIRECTORY -->
 <div id="dir"><div class="wrap">
   <div class="dir-head">
@@ -78,19 +66,6 @@
 <script>
 var BASE = "https://www.jerseyjunkers.com";
 var DATA = {"Home": ["/"], "Main Pages": ["/404.html", "/about-jersey-junkers/", "/above-ground-pool-removal-cost-nj/", "/availability/", "/book/", "/booking-confirmed/", "/commercial/", "/contact-us/", "/contact-us/job-opportunities/", "/customer-feedback/", "/faq/", "/how-we-price/", "/how-we-price/multi-item/", "/jobs/", "/location-search/", "/privacy-policy/", "/request-a-quote/", "/residential-services/", "/thank-you/", "/what-we-take/"], "Services": ["/our-services/above-ground-pool-removal/", "/our-services/appliance-removal/", "/our-services/basketball-hoop-removal/", "/our-services/billiard-table-removal/", "/our-services/cardboard-removal/", "/our-services/cleanouts/", "/our-services/construction-waste-removal/", "/our-services/deck-removal/", "/our-services/e-waste-removal/", "/our-services/estate-clean-outs/", "/our-services/furniture-removal/", "/our-services/hoarding-cleanup/", "/our-services/hot-tub-removal/", "/our-services/junk-removal/", "/our-services/riding-mower-removal/", "/our-services/shed-removal/", "/our-services/storage-unit-junk-removal/", "/our-services/swing-set-removal/", "/our-services/trampoline-removal/", "/our-services/trash-pick-up/"], "Location Pages": ["/locations/mercer-county-service/", "/locations/middlesex-county-service/", "/locations/monmouth-county-service/", "/locations/ocean-county-service/", "/locations/somerset-county-service/"], "Landing Pages (Ads)": ["/landing/above-ground-pool-removal-nj/", "/landing/built-in-cabinet-removal-nj/", "/landing/cleanout-services-nj/", "/landing/cleanouts/", "/landing/construction-waste-removal-nj/", "/landing/deck-removal-nj/", "/landing/get-junk-gone/", "/landing/hoarding-cleanup-nj/", "/landing/junk-removal-quote-nj/", "/landing/monmouth-county/", "/landing/monmouth-county2/", "/landing/monmouth-county3/", "/landing/nj-furniture-removal/", "/landing/nj-top-junk-removal/", "/landing/oc-top-junk-removal/", "/landing/shed-removal-nj/", "/landing/swing-set-removal-nj/", "/landing/trampoline-removal-nj/"], "Town Pages": ["/towns/aberdeen-township.html", "/towns/allenhurst.html", "/towns/allentown.html", "/towns/asbury-park.html", "/towns/atlantic-highlands.html", "/towns/avon-by-the-sea.html", "/towns/barnegat-light.html", "/towns/barnegat-township.html", "/towns/basking-ridge.html", "/towns/bay-head.html", "/towns/beach-haven.html", "/towns/beachwood.html", "/towns/bedminster.html", "/towns/belle-mead.html", "/towns/belmar.html", "/towns/berkeley-township.html", "/towns/bernardsville.html", "/towns/blawenburg.html", "/towns/bound-brook.html", "/towns/bradley-beach.html", "/towns/branchburg.html", "/towns/brick-township.html", "/towns/bridgewater.html", "/towns/brielle.html", "/towns/carteret.html", "/towns/colts-neck-township.html", "/towns/cranbury-township.html", "/towns/deal.html", "/towns/dunellen.html", "/towns/eagleswood-township.html", "/towns/east-brunswick-township.html", "/towns/east-windsor-township.html", "/towns/eatontown.html", "/towns/edison.html", "/towns/englishtown.html", "/towns/ewing-township.html", "/towns/fair-haven.html", "/towns/far-hills.html", "/towns/farmingdale.html", "/towns/franklin-township.html", "/towns/freehold-borough.html", "/towns/freehold-township.html", "/towns/green-brook.html", "/towns/hamilton-township.html", "/towns/harvey-cedars.html", "/towns/hazlet-township.html", "/towns/helmetta.html", "/towns/highland-park.html", "/towns/highlands.html", "/towns/hightstown.html", "/towns/hillsborough.html", "/towns/holmdel-township.html", "/towns/hopewell-borough.html", "/towns/hopewell-township.html", "/towns/howell-township.html", "/towns/interlaken.html", "/towns/island-heights.html", "/towns/jackson-township.html", "/towns/jamesburg.html", "/towns/keansburg.html", "/towns/keyport.html", "/towns/kingston.html", "/towns/lacey-township.html", "/towns/lake-como.html", "/towns/lakehurst.html", "/towns/lakewood-township.html", "/towns/lavallette.html", "/towns/lawrence-township.html", "/towns/little-egg-harbor-township.html", "/towns/little-silver.html", "/towns/loch-arbour.html", "/towns/long-beach-township.html", "/towns/long-branch.html", "/towns/manalapan-township.html", "/towns/manasquan.html", "/towns/manchester-township.html", "/towns/mantoloking.html", "/towns/manville.html", "/towns/marlboro-township.html", "/towns/martinsville.html", "/towns/matawan.html", "/towns/metuchen.html", "/towns/middlesex.html", "/towns/middletown-township.html", "/towns/millstone-township.html", "/towns/millstone.html", "/towns/milltown.html", "/towns/monmouth-beach.html", "/towns/monroe-township.html", "/towns/montgomery.html", "/towns/neptune-city.html", "/towns/neptune-township.html", "/towns/neshanic-station.html", "/towns/new-brunswick.html", "/towns/north-brunswick-township.html", "/towns/north-plainfield.html", "/towns/ocean-gate.html", "/towns/ocean-grove.html", "/towns/ocean-township.html", "/towns/oceanport.html", "/towns/old-bridge-township.html", "/towns/peapack-and-gladstone.html", "/towns/pennington.html", "/towns/perth-amboy.html", "/towns/pine-beach.html", "/towns/piscataway-township.html", "/towns/plainsboro-township.html", "/towns/plumsted-township.html", "/towns/point-pleasant-beach.html", "/towns/point-pleasant.html", "/towns/princeton.html", "/towns/raritan.html", "/towns/red-bank.html", "/towns/robbinsville-township.html", "/towns/rocky-hill.html", "/towns/roosevelt.html", "/towns/rumson.html", "/towns/sayreville.html", "/towns/sea-bright.html", "/towns/sea-girt.html", "/towns/seaside-heights.html", "/towns/seaside-park.html", "/towns/ship-bottom.html", "/towns/shrewsbury-borough.html", "/towns/shrewsbury-township.html", "/towns/skillman.html", "/towns/somerset.html", "/towns/somerville.html", "/towns/south-amboy.html", "/towns/south-bound-brook.html", "/towns/south-brunswick-township.html", "/towns/south-plainfield.html", "/towns/south-river.html", "/towns/south-toms-river.html", "/towns/spotswood.html", "/towns/spring-lake-heights.html", "/towns/spring-lake.html", "/towns/stafford-township.html", "/towns/surf-city.html", "/towns/tinton-falls.html", "/towns/toms-river.html", "/towns/trenton.html", "/towns/tuckerton.html", "/towns/union-beach.html", "/towns/upper-freehold-township.html", "/towns/wall-township.html", "/towns/waretown.html", "/towns/warren.html", "/towns/watchung.html", "/towns/west-long-branch.html", "/towns/west-windsor-township.html", "/towns/woodbridge-township.html"]};
-
-function tryLogin(){
-  var u=document.getElementById('u').value.trim();
-  var p=document.getElementById('p').value;
-  if(u==="Dane" && p==="Dane22"){
-    document.getElementById('login').style.display='none';
-    document.getElementById('dir').style.display='block';
-    render();
-  } else {
-    document.getElementById('err').textContent="Incorrect username or password.";
-  }
-}
-document.getElementById('p').addEventListener('keydown',function(e){ if(e.key==='Enter') tryLogin(); });
 
 function render(){
   var total=0, html='';
@@ -127,6 +102,7 @@ function copyAll(){
   for(var c in DATA){ DATA[c].forEach(function(u){ all.push(BASE+u); }); }
   navigator.clipboard.writeText(all.join('\n')).then(function(){ alert(all.length+' URLs copied to clipboard'); });
 }
+render();
 </script>
 </body>
 </html>
