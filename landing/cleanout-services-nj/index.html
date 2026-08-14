@@ -19,9 +19,9 @@ gtag('config', 'G-HERW72JPRR');
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Cleanout Services In NJ | Jersey Junkers&reg;</title>
+<title>NJ Cleanout Services | We Handle It All, Start to Finish | Jersey Junkers&reg;</title>
 <meta name="jj-build" content="lander-m27">
-<meta name="description" content="NJ's cleanout services experts. From a single room to an entire property, we clear it out and haul it away start to finish. Locally owned since 2012. Call 888-533-5865.">
+<meta name="description" content="NJ cleanout services, handled for you — from a few pieces of furniture to a whole estate. No phone tag: call, send photos, or get a free quote online.">
 <link rel="canonical" href="https://www.jerseyjunkers.com/landing/cleanout-services-nj/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -585,6 +585,50 @@ UPLOADCARE_PREVIEW_STEP = false;
 </script>
 <script src="https://ucarecdn.com/libs/widget/3.x/uploadcare.full.min.js" charset="utf-8" defer></script>
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xys5nfo5xt");</script>
+<style>
+/* ===== WOW: cinematic cleanout hero ===== */
+.hero.photo.ld-hero{position:relative;overflow:hidden}
+/* animated headline: clutter words clear away */
+.wow-h1{font-family:'Archivo',sans-serif;font-weight:900;line-height:1.02;letter-spacing:-.02em;margin:0 0 16px}
+.wow-clutter{display:block;position:relative;color:#fff;opacity:.9}
+.wow-clutter .cw{display:inline-block;opacity:0;transform:translateY(8px);animation:cwIn .5s ease forwards}
+.wow-clutter .cw:nth-child(1){animation-delay:.15s}
+.wow-clutter .cw:nth-child(2){animation-delay:.30s}
+.wow-clutter .cw:nth-child(3){animation-delay:.45s}
+.wow-clutter .cw:nth-child(4){animation-delay:.60s}
+/* the strike that sweeps across the clutter */
+.wow-clutter::after{content:"";position:absolute;left:-4%;top:52%;height:4px;width:0;background:var(--gold,#F5C400);border-radius:3px;box-shadow:0 0 12px rgba(245,196,0,.6);animation:sweep .5s ease .95s forwards}
+@keyframes sweep{to{width:108%}}
+.wow-clutter.cleared .cw{animation:cwClear .55s cubic-bezier(.4,0,.2,1) forwards}
+.wow-clutter.cleared .cw:nth-child(1){animation-delay:1.45s}
+.wow-clutter.cleared .cw:nth-child(2){animation-delay:1.52s}
+.wow-clutter.cleared .cw:nth-child(3){animation-delay:1.59s}
+.wow-clutter.cleared .cw:nth-child(4){animation-delay:1.66s}
+@keyframes cwClear{to{opacity:0;transform:translateY(-26px) rotate(-4deg);filter:blur(3px)}}
+/* the payoff line lifts in after the clutter clears */
+.wow-payoff{display:block;color:var(--gold,#F5C400);opacity:0;transform:translateY(14px);animation:payoffIn .6s cubic-bezier(.2,.8,.3,1) 1.9s forwards}
+@keyframes cwIn{to{opacity:1;transform:translateY(0)}}
+@keyframes payoffIn{to{opacity:1;transform:translateY(0)}}
+/* respect reduced motion */
+@media (prefers-reduced-motion:reduce){
+  .wow-clutter .cw,.wow-payoff{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
+  .wow-clutter::after{display:none}
+  .wow-clutter.cleared .cw{opacity:.35}
+}
+/* ===== WOW: floating stat chips in hero ===== */
+.wow-stats{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0 4px}
+.wow-stat{background:rgba(255,255,255,.10);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);border-radius:12px;padding:10px 16px;opacity:0;transform:translateY(10px);animation:statIn .5s ease forwards}
+.wow-stat:nth-child(1){animation-delay:2.2s}
+.wow-stat:nth-child(2){animation-delay:2.35s}
+.wow-stat:nth-child(3){animation-delay:2.5s}
+@keyframes statIn{to{opacity:1;transform:translateY(0)}}
+.wow-stat b{font-family:'Archivo',sans-serif;font-weight:900;font-size:22px;color:var(--gold,#F5C400);display:block;line-height:1}
+.wow-stat span{font-size:12px;color:#e6ecf2;font-weight:600;letter-spacing:.02em}
+/* ===== WOW: reveal-on-scroll for sections ===== */
+.wow-reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.8,.3,1),transform .7s cubic-bezier(.2,.8,.3,1)}
+.wow-reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.wow-reveal{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 <div class="ld-mlogo"><img src="/images/36a716_34f06748182947bda600f55305c5ca14_1977c9.png" alt="Jersey Junkers &mdash; New Jersey's Junk Removal Company"></div>
@@ -693,8 +737,16 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="ld-hero-copy" style="max-width:640px">
 <div class="ld-desk">
 <span class="eyebrow">New Jersey's Junk Removal Company &middot; Since 2012</span>
-<h1>NJ's Experts In<br><span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">Cleanouts</span></h1>
-<p class="lead">From a single room to an entire property, we clear it out and haul it away start to finish.</p>
+<h1 class="wow-h1" style="font-size:clamp(38px,5.2vw,60px)">
+<span class="wow-clutter" id="wowClutter"><span class="cw">The&nbsp;</span><span class="cw">clutter.&nbsp;</span><span class="cw">The&nbsp;</span><span class="cw">chaos.</span></span>
+<span class="wow-payoff">Handled for you.</span>
+</h1>
+<p class="lead">A few pieces of furniture or a sprawling estate &mdash; our big crew clears it all out and hauls it away, start to finish. No back-and-forth phone tag: call, text a few photos, or send the online quote, and we'll get the ball rolling.</p>
+<div class="wow-stats">
+<div class="wow-stat"><b data-count="14">0</b><span>years clearing NJ</span></div>
+<div class="wow-stat"><b data-count="700" data-suffix="+">0</b><span>5-star reviews</span></div>
+<div class="wow-stat"><b>Same&nbsp;day</b><span>most cleanouts</span></div>
+</div>
 <ul class="ld-herochecks">
 <li><span class="ldc-ic">&#10003;</span>Trained Professionals</li>
 <li><span class="ldc-ic">&#10003;</span>We Clear Out Everything</li>
@@ -702,7 +754,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 </ul>
 </div>
 <div class="ld-mob">
-<h1 class="ld-mh1">NJ's Experts In<br><span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">Cleanouts</span></h1>
+<div class="ld-mh1" style="font-family:inherit;font-weight:inherit;font-size:inherit;line-height:inherit">Cleanouts,<br><span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">handled for you.</span></div>
 <div class="ld-mbot">
 <p class="lead">We handle it<br>start to <b>finish</b>.</p>
 <div class="ld-gbadge">
@@ -793,6 +845,26 @@ UPLOADCARE_PREVIEW_STEP = false;
 </div>
 </div>
 </div></section>
+<section class="band" style="padding:56px 0 64px;background:#f4f6f9">
+<div class="wrap">
+<div class="sec-head" style="margin-bottom:26px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto">
+<div class="kicker" style="display:inline-flex">Make it turnkey</div>
+<h2>Optional add-ons &mdash; leave it truly finished</h2>
+<p style="max-width:720px;margin:0 auto">Want the space move-in or list-ready when we're done? Add any of these to your cleanout and we'll take care of it in the same visit &mdash; one crew, one appointment, nothing left for you to arrange.</p>
+</div>
+<div style="max-width:820px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:12px 34px">
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Carpet &amp; padding removal</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Carpets vacuumed</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Interior cleaning</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Room deodorizing</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Power washing</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Window washing</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Painting</div>
+<div style="display:flex;gap:11px;align-items:center;font-size:16px;padding:8px 0"><span style="color:#003A70;font-weight:900">&#10003;</span> Landscaping</div>
+</div>
+</div>
+</section>
+
 
 <section class="strip"><div class="wrap strip-in">
 <span><span class="tick">&#10003;</span>700+ Five-Star Reviews</span>
@@ -819,7 +891,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <section class="band" style="padding:56px 0 64px"><div class="wrap">
 <div class="sec-head" style="margin-bottom:24px;text-align:center;max-width:760px;margin-left:auto;margin-right:auto"><div class="kicker" style="display:inline-flex">How we price</div>
 <h2>Every job is different &mdash; so every quote is custom</h2>
-<p style="max-width:720px;margin:0 auto">Cleanouts aren't one-size-fits-all. Volume, access, and what's being removed all factor in. That's why we give you a clear, upfront price for your specific job &mdash; no guessing, no surprises on the day.</p></div>
+<p style="max-width:720px;margin:0 auto">Cleanouts aren't one-size-fits-all &mdash; volume, access, and what's being removed all factor in. So skip the endless phone tag: <strong>call us, text over a few photos, or send the online quote</strong>, and we'll get you a clear, upfront price for your specific job. No guessing, no surprises on the day.</p></div>
 <div class="cq-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:920px;margin:0 auto">
 <div class="cq-card" style="background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:24px 22px;text-align:center"><div style="font-size:32px;margin-bottom:8px">📋</div><h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;margin-bottom:8px">Tell us about it</h3><p style="font-size:14px;color:#55524a;line-height:1.6;margin:0">Fill out the quick form &mdash; add a couple photos if you can. The more we see, the tighter the quote.</p></div>
 <div class="cq-card" style="background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:24px 22px;text-align:center"><div style="font-size:32px;margin-bottom:8px">💬</div><h3 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:17px;margin-bottom:8px">Get your price</h3><p style="font-size:14px;color:#55524a;line-height:1.6;margin:0">We reach back fast with a clear, all-in price for your job. No hidden fees, no obligation.</p></div>
@@ -874,8 +946,8 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="about-grid" style="align-items:center;gap:44px">
 <div>
 <div class="kicker">About us</div>
-<h2 style="margin:14px 0 14px">Since 2012, the go-to for Central Jersey &mdash; and beyond</h2>
-<p>With over a decade of service, Jersey Junkers is proud to be a leading name in New Jersey junk removal. We're expanding to bring our top-notch, hassle-free experience to more areas &mdash; dependable, speedy, efficient, and, most importantly, friendly.</p>
+<h2 style="margin:14px 0 14px">Since 2012, the crew NJ trusts to just handle it</h2>
+<p>For over a decade we've handled cleanouts of every size across New Jersey &mdash; from clearing a single room to emptying a sprawling estate. We've got the big team to tackle the largest jobs and the care to treat the smallest with the same respect. Whatever the situation, we show up reliably, do all the work, and leave the space clean &mdash; so you don't have to lift a thing or chase us down.</p>
 </div>
 <img src="/images/36a716_36ce8f366f884c09b0fac44f902c23ca.gif" alt="The Jersey Junkers crew" class="about-img" loading="lazy">
 </div>
@@ -1097,6 +1169,32 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     },{rootMargin:"200px"});
     io.observe(v);
   });
+})();
+</script>
+
+<script>
+(function(){
+  // clutter clears away
+  var cl=document.getElementById('wowClutter');
+  if(cl){ setTimeout(function(){ cl.classList.add('cleared'); }, 950); }
+  // count-up stat numbers
+  function countUp(el){
+    var target=parseInt(el.getAttribute('data-count'),10);
+    var suffix=el.getAttribute('data-suffix')||'';
+    var dur=1100, t0=null;
+    function step(ts){ if(!t0)t0=ts; var p=Math.min((ts-t0)/dur,1);
+      el.textContent=Math.floor(p*target)+(p>=1?suffix:''); if(p<1)requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  document.querySelectorAll('.wow-stat b[data-count]').forEach(function(el){
+    setTimeout(function(){ countUp(el); }, 2300);
+  });
+  // scroll reveal
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  // tag major sections for reveal (skip the hero)
+  document.querySelectorAll('section').forEach(function(s,i){ if(i>0){ s.classList.add('wow-reveal'); io.observe(s); } });
 })();
 </script>
 </body></html>
