@@ -662,9 +662,10 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   if(!v)return;
   const io=new IntersectionObserver(es=>{
     es.forEach(e=>{
-      if(e.isIntersecting && !v.src){v.src=v.dataset.src;v.play().catch(()=>{});io.disconnect();}
+      if(e.isIntersecting && !v.src){v.src=v.dataset.src;v.playbackRate=0.7;v.play().catch(()=>{});io.disconnect();}
     });
   },{rootMargin:"200px"});
+  v.addEventListener("play",function(){v.playbackRate=0.7;});
   io.observe(v);
 })();
 </script>
