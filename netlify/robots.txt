@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /thank-you/
+Disallow: /booking-confirmed/
+Disallow: /pages-access/
+
+Sitemap: https://www.jerseyjunkers.com/sitemap.xml
