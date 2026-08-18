@@ -397,6 +397,13 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
 .scard-n{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-family:'Archivo',sans-serif;font-weight:900;font-size:20px;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
 .biw-steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-top:28px}@media(max-width:760px){.biw-steps{grid-template-columns:1fr}}
+
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+.ba-item{position:relative;margin:0;border-radius:14px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.10)}
+.ba-item img{width:100%;height:100%;display:block;object-fit:cover;aspect-ratio:3/2}
+.ba-tag{position:absolute;top:14px;left:14px;background:rgba(20,22,26,.82);color:#fff;font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.06em;padding:7px 14px;border-radius:20px}
+.ba-tag.ba-after{background:#2E8B57}
+@media(max-width:640px){.ba-grid{grid-template-columns:1fr}}
 </style>
 <!-- Event snippet for Click to call conversion -->
 <script>
@@ -605,6 +612,17 @@ function gtag_report_conversion(url) {
 <h2>Clearing the way for what's next</h2>
 <p style="margin-top:12px">Painting, remodeling, new flooring, moving, refreshing a living room, or getting a home ready to sell &mdash; pulling out dated built-ins instantly opens up the room and makes it feel bigger and more modern. We clear the space so your next project can start clean.</p></div>
 </div></section>
+
+<section class="band" style="background:var(--cloud)"><div class="wrap">
+<div class="sec-head" style="text-align:center"><div class="kicker" style="display:inline-flex">Real job</div>
+<h2>Before &amp; after</h2>
+<p style="margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto">A full wall of built-in cabinetry, removed down to a clean, open wall &mdash; ready for paint, a fresh look, or whatever&rsquo;s next.</p></div>
+<div class="ba-grid">
+<figure class="ba-item"><span class="ba-tag">Before</span><img src="/images/built-in-before.jpg" alt="Built-in maple cabinetry and desk before removal" loading="lazy"></figure>
+<figure class="ba-item"><span class="ba-tag ba-after">After</span><img src="/images/built-in-after.jpg" alt="Clean open wall after Jersey Junkers removed the built-in" loading="lazy"></figure>
+</div>
+</div></section>
+
 
 <!-- WHY CHOOSE US -->
 <section class="band" style="background:var(--cloud)"><div class="wrap">
