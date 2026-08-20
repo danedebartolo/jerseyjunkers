@@ -155,7 +155,9 @@
       document.getElementById("doneMsg").textContent=m+" You can close this tab.";
     }
     if(HOOK.indexOf("hooks.zapier.com")!==-1){
-      try{ fetch(HOOK,{method:"POST",mode:"no-cors",body:JSON.stringify(data)}); }catch(_){}
+      // send as form-encoded so Zapier splits each field into its own line
+      var body=Object.keys(data).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(data[k]);}).join("&");
+      try{ fetch(HOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body}); }catch(_){}
       setTimeout(done,400);
     } else { done(); } // no hook set yet — still show success so it's testable
   });
