@@ -383,7 +383,15 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .pt-modal.open{display:flex}
 .pt-modal img{max-width:min(560px,94%);max-height:92vh;width:auto;height:auto;object-fit:contain;border-radius:14px;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.4)}
 .pt-close{position:absolute;top:18px;right:22px;color:#fff;font-size:34px;font-weight:900;line-height:1;background:none;border:0;cursor:pointer}
-</style>
+.faqd{background:#fff;border:1.5px solid var(--line,#e6e4dd);border-radius:14px;overflow:hidden;transition:border-color .15s;margin-bottom:10px}
+.faqd[open]{border-color:var(--blue,#1f6feb)}
+.faqd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;font-family:'Archivo',sans-serif;font-weight:900;font-size:15.5px}
+.faqd summary::-webkit-details-marker{display:none}
+.faqd summary::after{content:"+";flex:none;width:26px;height:26px;border-radius:50%;background:var(--gold,#F5C400);color:var(--ink,#12100e);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:900;transition:transform .18s}
+.faqd[open] summary::after{transform:rotate(45deg)}
+.faqd summary:hover{background:#FFFDF2}
+.faqd-a{padding:0 20px 18px}
+.faqd-a p{font-size:14.5px;line-height:1.68;margin:0;color:#3E3C36}</style>
 <!-- Event snippet for Click to call conversion -->
 <script>
 function gtag_report_conversion(url) {
@@ -611,12 +619,12 @@ function gtag_report_conversion(url) {
 <section class="band"><div class="wrap">
 <div class="sec-head"><div class="kicker">Above-ground pool questions</div>
 <h2>Asked &amp; answered</h2></div>
-<div class="faq-list">
-<div class="gcard"><h3>What does above-ground pool removal cost?</h3><p>It depends on a few factors: <b>shape, size, and whether it's already drained.</b> Send us a couple of photos and we'll price the job before we come out.</p></div>
-<div class="gcard"><h3>Will you drain my pool?</h3><p><b>Yes!</b> For an additional cost, we'll come <b>a day or two before</b> and drain it for you.</p></div>
-<div class="gcard"><h3>Does anyone have to be home?</h3><p><b>Nope!</b> Just make sure we have <b>access to the pool area.</b> We'll keep you in the loop with <b>before and after photos via text.</b></p></div>
-<div class="gcard"><h3>How long does it take?</h3><p>We've mastered the process over the years, so it's quick and efficient. A small, easily accessible pool typically takes <b>about an hour</b>. Larger or harder-to-reach pools can take <b>up to 2.5 hours.</b></p></div>
-<div class="gcard"><h3>What forms of payment do you take?</h3><p>Cash, checks, and all credit cards &mdash; <b>zero credit card fees.</b> Pay over the phone or on site, with a receipt emailed upon completion.</p></div>
+<div class="faq-wrap">
+<details class="faqd"><summary>What does above-ground pool removal cost?</summary><div class="faqd-a"><p>It depends on a few factors: <b>shape, size, and whether it's already drained.</b> Send us a couple of photos and we'll price the job before we come out.</p></div></details>
+<details class="faqd"><summary>Will you drain my pool?</summary><div class="faqd-a"><p><b>Yes!</b> For an additional cost, we'll come <b>a day or two before</b> and drain it for you.</p></div></details>
+<details class="faqd"><summary>Does anyone have to be home?</summary><div class="faqd-a"><p><b>Nope!</b> Just make sure we have <b>access to the pool area.</b> We'll keep you in the loop with <b>before and after photos via text.</b></p></div></details>
+<details class="faqd"><summary>How long does it take?</summary><div class="faqd-a"><p>We've mastered the process over the years, so it's quick and efficient. A small, easily accessible pool typically takes <b>about an hour</b>. Larger or harder-to-reach pools can take <b>up to 2.5 hours.</b></p></div></details>
+<details class="faqd"><summary>What forms of payment do you take?</summary><div class="faqd-a"><p>Cash, checks, and all credit cards &mdash; <b>zero credit card fees.</b> Pay over the phone or on site, with a receipt emailed upon completion.</p></div></details>
 </div>
 </div></section>
 
