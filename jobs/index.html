@@ -297,7 +297,9 @@ footer.site .cols{grid-template-columns:1fr 1fr}}
 .jb-bens h3{margin:0;font-size:15px;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase}
 .jb-form{max-width:680px;margin:0 auto}
 .jb-form label{display:block;font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.04em;color:var(--navy);margin-bottom:16px}
-.jb-form input,.jb-form textarea,.jb-form select{display:block;width:100%;box-sizing:border-box;margin-top:7px;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:'Barlow',sans-serif;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink);font-size:15.5px;background:#fff}
+.jb-form input,.jb-form textarea,.jb-form select{display:block;width:100%;box-sizing:border-box;margin-top:7px;border:1.5px solid var(--line);border-radius:12px;padding:13px 15px;font-family:'Barlow',sans-serif;font-weight:400;text-transform:none;letter-spacing:0;color:var(--ink);font-size:15.5px;line-height:1.4;background:#fff}
+.jb-form input:not([type="file"]),.jb-form select{height:50px}
+.jb-form select{-webkit-appearance:none;-moz-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%239a978d' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:42px;cursor:pointer}
 .jb-form input:focus,.jb-form textarea:focus,.jb-form select:focus{outline:none;border-color:var(--navy)}
 .jb-form textarea{resize:vertical}
 .cf-row{display:flex;gap:14px}
@@ -581,14 +583,19 @@ UPLOADCARE_PREVIEW_STEP = false;
 <p>If you're motivated and local, apply today &mdash; it takes about two minutes.</p></div>
 <form class="jb-form" id="jbForm">
 <div class="cf-row">
-<label>Name<input type="text" name="name" placeholder="Your name" required></label>
-<label>Phone<input type="tel" name="phone" placeholder="(___) ___-____" required></label>
+<label>First name<input type="text" name="first_name" placeholder="First name" required></label>
+<label>Last name<input type="text" name="last_name" placeholder="Last name" required></label>
 </div>
 <div class="cf-row">
 <label>Email<input type="email" name="email" placeholder="you@email.com" required></label>
-<label>Town / ZIP<input type="text" name="town" placeholder="Where are you based?"></label>
+<label>Phone<input type="tel" name="phone" placeholder="732-555-0100" required></label>
 </div>
 <div class="cf-row">
+<label>Street address<input type="text" name="street" placeholder="123 Main St, Town" required></label>
+<label>ZIP code<input type="text" name="zip" placeholder="07716" inputmode="numeric" maxlength="5" pattern="[0-9]{5}" required></label>
+</div>
+<div class="cf-row">
+<label>Date of birth<input type="date" name="date_of_birth" required></label>
 <label>Position
 <select name="position" required>
 <option value="">Select a position</option>
@@ -596,20 +603,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <option>Driver / Specialist (21+, Non-CDL)</option>
 <option>Customer Service Rep</option>
 </select></label>
-<label>Are you 21 or older?
-<select name="age21">
-<option value="">Select</option>
-<option>Yes</option>
-<option>No</option>
-</select></label>
 </div>
-<label>Do you have a valid driver's license and a clean driving record?
-<select name="license">
-<option value="">Select</option>
-<option>Yes &mdash; both</option>
-<option>License, but not a clean record</option>
-<option>No license</option>
-</select></label>
 <label>Resume <span class="jb-opt">(optional &mdash; PDF or Word)</span>
 <input type="hidden" role="uploadcare-uploader" name="resume" data-public-key="3c6c6ff30a98183e8ab3" data-multiple="false" data-tabs="file" data-input-accept-types=".pdf,.doc,.docx"></label>
 <label>Tell us about yourself
@@ -619,13 +613,6 @@ UPLOADCARE_PREVIEW_STEP = false;
 </form>
 </div></section>
 
-<section class="final"><div class="wrap">
-<h2>Rather talk it through?</h2>
-<p>Call us and ask for the office &mdash; we're happy to answer questions before you apply.</p>
-<div class="final-cta">
-<a class="jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Call:&nbsp; <b>888-533-5865</b></a>
-</div>
-</div></section>
 <footer class="site"><div class="wrap">
 <div class="cols">
 <div>
@@ -741,6 +728,22 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   const f=document.getElementById("jbForm");
   if(!f)return;
   const status=f.querySelector(".jb-status");
+  // auto-format phone as ###-###-####
+  var phoneEl=f.querySelector('input[name="phone"]');
+  if(phoneEl){
+    phoneEl.addEventListener('input',function(){
+      var d=phoneEl.value.replace(/\D/g,'').slice(0,10);
+      var out=d;
+      if(d.length>6){out=d.slice(0,3)+'-'+d.slice(3,6)+'-'+d.slice(6);}
+      else if(d.length>3){out=d.slice(0,3)+'-'+d.slice(3);}
+      phoneEl.value=out;
+    });
+  }
+  // keep ZIP numeric only
+  var zipEl=f.querySelector('input[name="zip"]');
+  if(zipEl){
+    zipEl.addEventListener('input',function(){ zipEl.value=zipEl.value.replace(/\D/g,'').slice(0,5); });
+  }
   // Zapier catch hook (jobs applications)
   const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4tdoo54/";
   f.addEventListener("submit",async e=>{
@@ -749,8 +752,9 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     status.textContent="Sending\u2026";status.style.color="#6A665C";
     const data=Object.fromEntries(new FormData(f).entries());
     if(data.resume instanceof File){data.resume=data.resume.name||"";}
+    const body=Object.keys(data).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(data[k]);}).join("&");
     try{
-      await fetch(HOOK,{method:"POST",mode:"no-cors",body:JSON.stringify(data)});
+      await fetch(HOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body});
       f.reset();
       status.textContent="Application received \u2014 we\u2019ll be in touch soon. Thanks!";
       status.style.color="#2E8B57";
