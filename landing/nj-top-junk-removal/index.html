@@ -999,7 +999,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
         var _d=f.querySelector('textarea[name="details"]'); if(_d && !_d.value.trim()){ _d.setCustomValidity("Please tell us how we can help"); _d.reportValidity(); return; } if(_d) _d.setCustomValidity("");
     const data=Object.fromEntries(new FormData(f).entries());
     data.source="nj-top-junk-removal";
-    try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
+    try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
     window.location.href="/thank-you/";
   });
 })();

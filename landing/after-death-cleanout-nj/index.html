@@ -341,7 +341,7 @@ Serving Monmouth, Ocean, Middlesex, Mercer &amp; Somerset counties &middot; Sinc
   var zp=f.querySelector('input[name="zip"]');
   if(zp){zp.addEventListener("input",function(){zp.value=zp.value.replace(/\D/g,"").slice(0,5);zp.setCustomValidity("");});}
   try{var _p=new URLSearchParams(location.search);["gclid","wbraid","gbraid"].forEach(function(k){var v=_p.get(k);if(v){try{sessionStorage.setItem("jj_"+k,v);}catch(_){}}});}catch(_){}
-  f.addEventListener("submit",function(e){
+  f.addEventListener("submit",async function(e){
     e.preventDefault();
     if(ph){var pd=ph.value.replace(/\D/g,"");if(pd.length!==10){ph.setCustomValidity("Enter a 10-digit phone number");ph.reportValidity();return;}ph.setCustomValidity("");}
     var em=f.querySelector('input[name="email"]');
@@ -350,7 +350,7 @@ Serving Monmouth, Ocean, Middlesex, Mercer &amp; Somerset counties &middot; Sinc
     var data=Object.fromEntries(new FormData(f).entries());
     data.source="ad-after-death-cleanout-nj";
     try{["gclid","wbraid","gbraid"].forEach(function(k){var v=sessionStorage.getItem("jj_"+k);if(v)data[k]=v;});}catch(_){}
-    try{navigator.sendBeacon(HOOK,JSON.stringify(data));}catch(_){}
+    try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
     window.location.href="/thank-you/";
   });
 })();

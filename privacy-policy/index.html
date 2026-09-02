@@ -664,7 +664,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     }
     if(zip) zip.setCustomValidity("");
     const data=Object.fromEntries(new FormData(f).entries());
-    try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
+    try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
     window.location.href="/thank-you/";
   });
 })();

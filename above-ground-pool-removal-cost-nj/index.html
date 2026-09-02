@@ -883,7 +883,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
     const data=Object.fromEntries(new FormData(f).entries());
     data.source="pool-removal-cost-page";
     try { ["gclid","wbraid","gbraid"].forEach(function(k){ var v = sessionStorage.getItem("jj_"+k); if(v) data[k] = v; }); } catch(_){}
-    try{ navigator.sendBeacon(HOOK, JSON.stringify(data)); }catch(_){}
+    try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
     window.location.href="/thank-you/";
   });
 })();
