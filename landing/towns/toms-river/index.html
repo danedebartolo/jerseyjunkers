@@ -998,7 +998,20 @@ document.querySelectorAll("[data-zip]").forEach(form => {
         var _e=f.querySelector('input[name="email"]'); if(_e && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(_e.value.trim())){ _e.setCustomValidity("Enter a valid email address"); _e.reportValidity(); return; } if(_e) _e.setCustomValidity("");
         var _z=f.querySelector('input[name="zip"]'); if(_z && !/^\d{5}$/.test(_z.value)){ _z.setCustomValidity("Please enter a 5-digit ZIP code"); _z.reportValidity(); return; } if(_z) _z.setCustomValidity("");
         var _d=f.querySelector('textarea[name="details"]'); if(_d && !_d.value.trim()){ _d.setCustomValidity("Please tell us how we can help"); _d.reportValidity(); return; } if(_d) _d.setCustomValidity("");
-    const data=Object.fromEntries(new FormData(f).entries());
+        // --- wait for any in-progress photo upload to finish before sending ---
+    var _ucW=null;
+    try{ var _ucEl=f.querySelector('[role="uploadcare-uploader"]'); if(_ucEl&&window.uploadcare){ _ucW=uploadcare.MultipleWidget(_ucEl); } }catch(_){}
+    if(_ucW){
+      var _ucVal=_ucW.value();
+      if(_ucVal){
+        var _sb=f.querySelector('[type="submit"]');
+        try{ if(_sb){ _sb.disabled=true; _sb.dataset._t=_sb.textContent; _sb.textContent="Uploading photo\u2026"; }
+          await new Promise(function(res){ try{ _ucVal.promise().done(function(){res();}).fail(function(){res();}); }catch(_){res();} });
+        }catch(_){}
+        finally{ if(_sb){ _sb.disabled=false; if(_sb.dataset._t){_sb.textContent=_sb.dataset._t;} } }
+      }
+    }
+const data=Object.fromEntries(new FormData(f).entries());
     data.source="town-toms-river";
     try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
     window.location.href="/thank-you/";

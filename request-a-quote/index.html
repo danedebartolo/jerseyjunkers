@@ -623,6 +623,12 @@ document.querySelectorAll("[data-zip]").forEach(form => {
 (function(){
   const f=document.getElementById("qrForm");
   if(!f)return;
+  // Uploadcare widget instance (for waiting on in-flight uploads before submit)
+  var ucWidget=null;
+  try{
+    var ucEl=f.querySelector('[role="uploadcare-uploader"]');
+    if(ucEl && window.uploadcare){ ucWidget = uploadcare.MultipleWidget(ucEl); }
+  }catch(_){}
   // --- GCLID / ad-click capture (for offline conversion tracking) ---
   try {
     var _p = new URLSearchParams(location.search);
@@ -669,6 +675,25 @@ document.querySelectorAll("[data-zip]").forEach(form => {
       zip.setCustomValidity("ZIP code must be 5 digits"); zip.reportValidity(); return;
     }
     if(zip) zip.setCustomValidity("");
+    // --- wait for any in-progress photo upload to finish before sending ---
+    var _submitBtn = f.querySelector('[type="submit"]');
+    if(ucWidget){
+      var _val = ucWidget.value();
+      if(_val){
+        try{
+          if(_submitBtn){ _submitBtn.disabled=true; _submitBtn.dataset._t=_submitBtn.textContent; _submitBtn.textContent="Uploading photo\u2026"; }
+          // uploadcare file/group value exposes a .promise() that resolves when the upload completes
+          await new Promise(function(resolve){
+            try{
+              _val.promise().done(function(){ resolve(); }).fail(function(){ resolve(); });
+            }catch(_){ resolve(); }
+          });
+        }catch(_){}
+        finally{
+          if(_submitBtn){ _submitBtn.disabled=false; if(_submitBtn.dataset._t){ _submitBtn.textContent=_submitBtn.dataset._t; } }
+        }
+      }
+    }
     const data=Object.fromEntries(new FormData(f).entries());
         try {
           ["gclid","wbraid","gbraid"].forEach(function(k){

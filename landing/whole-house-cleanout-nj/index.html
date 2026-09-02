@@ -347,7 +347,20 @@ Serving Monmouth, Ocean, Middlesex, Mercer &amp; Somerset counties &middot; Sinc
     var em=f.querySelector('input[name="email"]');
     if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em.value.trim())){em.setCustomValidity("Enter a valid email");em.reportValidity();return;}if(em)em.setCustomValidity("");
     if(zp&&zp.value&&!/^\d{5}$/.test(zp.value)){zp.setCustomValidity("Enter a 5-digit ZIP");zp.reportValidity();return;}if(zp)zp.setCustomValidity("");
-    var data=Object.fromEntries(new FormData(f).entries());
+        // --- wait for any in-progress photo upload to finish before sending ---
+    var _ucW=null;
+    try{ var _ucEl=f.querySelector('[role="uploadcare-uploader"]'); if(_ucEl&&window.uploadcare){ _ucW=uploadcare.MultipleWidget(_ucEl); } }catch(_){}
+    if(_ucW){
+      var _ucVal=_ucW.value();
+      if(_ucVal){
+        var _sb=f.querySelector('[type="submit"]');
+        try{ if(_sb){ _sb.disabled=true; _sb.dataset._t=_sb.textContent; _sb.textContent="Uploading photo\u2026"; }
+          await new Promise(function(res){ try{ _ucVal.promise().done(function(){res();}).fail(function(){res();}); }catch(_){res();} });
+        }catch(_){}
+        finally{ if(_sb){ _sb.disabled=false; if(_sb.dataset._t){_sb.textContent=_sb.dataset._t;} } }
+      }
+    }
+var data=Object.fromEntries(new FormData(f).entries());
     data.source="ad-whole-house-cleanout-nj";
     try{["gclid","wbraid","gbraid"].forEach(function(k){var v=sessionStorage.getItem("jj_"+k);if(v)data[k]=v;});}catch(_){}
     try{ await fetch(HOOK, {method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
