@@ -2,26 +2,21 @@ export default async (req) => {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
   }
-  const hook = process.env.ZAPIER_HOOK;
+  const hook = process.env.ZAPIER_JOBS_HOOK;
   if (!hook) {
     return new Response("Not configured", { status: 500 });
   }
   const raw = await req.text();
-
-  // Parse body (JSON or urlencoded) to inspect for spam
   let data = {};
   try {
     data = JSON.parse(raw);
   } catch {
     try { data = Object.fromEntries(new URLSearchParams(raw)); } catch { data = {}; }
   }
-
-  // --- HONEYPOT: bots fill hidden "company" field; humans never see it ---
+  // HONEYPOT
   if (data && typeof data.company === "string" && data.company.trim() !== "") {
-    // silently accept so the bot thinks it worked, but don't forward
     return new Response("ok", { status: 200 });
   }
-  // strip the honeypot field before forwarding
   if (data && "company" in data) { delete data.company; }
 
   try {
@@ -30,8 +25,6 @@ export default async (req) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     });
-  } catch (e) {
-    // swallow — lead capture must never block the user
-  }
+  } catch (e) {}
   return new Response("ok", { status: 200 });
 };

@@ -713,7 +713,7 @@ if(S.svc==="Special Services"){ payload.date=null; payload.window=null; }
 payload.source="website-booking-wizard";
 payload.submitted_at=new Date().toISOString();
 const HOOK = (payload.booking_type==="quote_request") ? ZAPIER_HOOK_SPECIAL : ZAPIER_HOOK_BOOKING;
-if(HOOK.startsWith("https://hooks.zapier.com")){
+if(HOOK && HOOK.length>0){
   fetch(HOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).catch(err=>console.error("Hook delivery failed:",err));
 }else{
   console.log("Hook not set yet - payload:",payload);
@@ -749,7 +749,7 @@ document.getElementById("confmsg").textContent = (payload.booking_type==="quote_
 </div></footer>
 <script>
 const BOOKING_URL = "https://book.housecallpro.com/book/YOUR-COMPANY-SLUG";
-const ZAPIER_HOOK_BOOKING = "https://hooks.zapier.com/hooks/catch/13137357/4uiofh8/";  // multi-item + single-item -> real-time booking zap
+const ZAPIER_HOOK_BOOKING = "";  // disabled — availability booking feature not in use
 const ZAPIER_HOOK_SPECIAL = "PASTE-SPECIAL-CATCH-HOOK-URL";  // special services -> office email zap
 const mt = document.querySelector(".menu-toggle");
 if (mt) mt.addEventListener("click", () => {

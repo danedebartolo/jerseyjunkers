@@ -106,7 +106,7 @@
 
 <script>
 (function(){
-  var HOOK="https://hooks.zapier.com/hooks/catch/13137357/4tk6hr4/"; // <-- paste your Zapier catch hook URL here
+  var HOOK="/.netlify/functions/calllog-hook"; // posts to Netlify function that hides the Zapier hook
   var q=new URLSearchParams(location.search);
   var name=q.get("name")||q.get("first_name")||"", last=q.get("last_name")||"";
   var full=(name+" "+last).trim()||"(no name)";
@@ -154,12 +154,8 @@
       var m=answered==="No"?"Marked as no-answer. The team can follow up.":"Saved. Nice work.";
       document.getElementById("doneMsg").textContent=m+" You can close this tab.";
     }
-    if(HOOK.indexOf("hooks.zapier.com")!==-1){
-      // send as form-encoded so Zapier splits each field into its own line
-      var body=Object.keys(data).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(data[k]);}).join("&");
-      try{ fetch(HOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body}); }catch(_){}
-      setTimeout(done,400);
-    } else { done(); } // no hook set yet — still show success so it's testable
+    try{ fetch(HOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true}); }catch(_){}
+    setTimeout(done,400);
   });
 })();
 </script>

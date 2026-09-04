@@ -582,6 +582,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <h2>The days go fast, the team feels solid</h2>
 <p>If you're motivated and local, apply today &mdash; it takes about two minutes.</p></div>
 <form class="jb-form" id="jbForm">
+<div style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
 <div class="cf-row">
 <label>First name<input type="text" name="first_name" placeholder="First name" required></label>
 <label>Last name<input type="text" name="last_name" placeholder="Last name" required></label>
@@ -744,17 +745,16 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   if(zipEl){
     zipEl.addEventListener('input',function(){ zipEl.value=zipEl.value.replace(/\D/g,'').slice(0,5); });
   }
-  // Zapier catch hook (jobs applications)
-  const HOOK="https://hooks.zapier.com/hooks/catch/13137357/4tdoo54/";
+  // Posts to a Netlify function that hides the Zapier hook + filters spam
+  const HOOK="/.netlify/functions/jobs-hook";
   f.addEventListener("submit",async e=>{
     e.preventDefault();
     
     status.textContent="Sending\u2026";status.style.color="#6A665C";
     const data=Object.fromEntries(new FormData(f).entries());
     if(data.resume instanceof File){data.resume=data.resume.name||"";}
-    const body=Object.keys(data).map(function(k){return encodeURIComponent(k)+"="+encodeURIComponent(data[k]);}).join("&");
     try{
-      await fetch(HOOK,{method:"POST",mode:"no-cors",headers:{"Content-Type":"application/x-www-form-urlencoded"},body:body});
+      await fetch(HOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data),keepalive:true});
       f.reset();
       status.textContent="Application received \u2014 we\u2019ll be in touch soon. Thanks!";
       status.style.color="#2E8B57";
