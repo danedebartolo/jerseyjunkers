@@ -161,17 +161,21 @@ async function jobsCreatedSince(startStr) {
 
 // ---------- aggregation ----------
 const dollars = (cents) => (+cents || 0) / 100;              // HCP amounts are in cents
-// Revenue = job total WITHOUT sales tax, to match HCP's "Job revenue earned" report.
-// Uses the job's tax field if HCP sends one, otherwise its subtotal, otherwise backs out NJ tax.
+// Revenue = what HCP's "Job revenue earned" report counts: subtotal minus discounts, no sales tax, no tips.
+// HCP's API doesn't send the discount, so it's backed out of the total:
+//   total = subtotal × 1.06625            → normal job            → subtotal
+//   total = subtotal                      → no tax charged        → subtotal
+//   total > subtotal × 1.06625            → tip added             → subtotal (tip excluded)
+//   total < subtotal × 1.06625            → discount applied      → total ÷ 1.06625
 const NJ_TAX = +process.env.SALES_TAX_RATE || 0.06625;
 let REVENUE_MODE = "unknown";
 function revenueOf(j) {
   const total = +j.total_amount || 0;
-  const taxKey = Object.keys(j).find((k) => /tax/i.test(k) && !/rate|percent|exempt|able/i.test(k) && typeof j[k] === "number");
-  if (taxKey) { REVENUE_MODE = `total_amount - ${taxKey}`; return (total - j[taxKey]) / 100; }
-  if (typeof j.subtotal === "number") { REVENUE_MODE = "subtotal"; return j.subtotal / 100; }
-  REVENUE_MODE = "total_amount / (1 + tax rate)";
-  return total / (1 + NJ_TAX) / 100;
+  if (typeof j.subtotal !== "number") { REVENUE_MODE = "total_amount / (1 + tax rate)"; return total / (1 + NJ_TAX) / 100; }
+  REVENUE_MODE = "subtotal minus discounts (matches HCP)";
+  const sub = j.subtotal, taxed = Math.round(sub * (1 + NJ_TAX));
+  if (total >= taxed - 2 || Math.abs(total - sub) <= 1) return sub / 100;
+  return Math.min(sub, total / (1 + NJ_TAX)) / 100;
 }
 const isDone = (j) => /complete/i.test(j.work_status || "");
 // Revenue counts on the day the job was COMPLETED (falls back to scheduled date if HCP has no completion stamp).
