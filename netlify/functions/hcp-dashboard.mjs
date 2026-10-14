@@ -38,9 +38,11 @@ function isAdmin(req) {
 function debugInfo(jobs, r) {
   const statuses = {};
   jobs.forEach((j) => (statuses[j.work_status || "none"] = (statuses[j.work_status || "none"] || 0) + 1));
-  const money = (j) => Object.fromEntries(Object.entries(j).filter(([k, v]) => /amount|total|balance|price|subtotal/i.test(k) && typeof v !== "object"));
+  const money = (j) => Object.fromEntries(Object.entries(j).filter(([k, v]) => /amount|total|balance|price|subtotal|tax|discount/i.test(k) && typeof v !== "object"));
   return {
     range: r, fetched: jobs.length, statuses,
+    revenueField: REVENUE_MODE,
+    completedWithoutSchedule: jobs.filter((j) => isDone(j) && !j.schedule?.scheduled_start).length,
     sample: jobs.filter(isDone).slice(0, 8).map((j) => ({
       invoice: j.invoice_number, status: j.work_status,
       scheduled: j.schedule?.scheduled_start, completed: j.work_timestamps?.completed_at,
@@ -100,9 +102,41 @@ async function jobsBetween(startStr, endStr) {
   }
   return { jobs: out, truncated: (first.total_pages || 1) > MAX_PAGES };
 }
+// Jobs created since a date, newest first, regardless of schedule.
+// Catches jobs that were completed without ever being put on the calendar.
+async function jobsCreatedSince(startStr) {
+  const cutoff = startOfDayET(startStr).getTime();
+  const out = [];
+  for (let p = 1; p <= MAX_PAGES; p += 4) {
+    const batch = [];
+    for (let q = p; q < p + 4; q++) batch.push(hcp("/jobs", { page: q, page_size: PAGE_SIZE, sort_by: "created_at", sort_direction: "desc" }));
+    const res = await Promise.all(batch);
+    let oldest = Infinity, empty = false;
+    for (const r of res) {
+      const list = r.jobs || [];
+      if (!list.length) empty = true;
+      out.push(...list);
+      for (const j of list) oldest = Math.min(oldest, +new Date(j.created_at));
+    }
+    if (empty || oldest < cutoff || p + 3 >= (res[0].total_pages || 1)) break;
+  }
+  return out;
+}
 
 // ---------- aggregation ----------
 const dollars = (cents) => (+cents || 0) / 100;              // HCP amounts are in cents
+// Revenue = job total WITHOUT sales tax, to match HCP's "Job revenue earned" report.
+// Uses the job's tax field if HCP sends one, otherwise its subtotal, otherwise backs out NJ tax.
+const NJ_TAX = +process.env.SALES_TAX_RATE || 0.06625;
+let REVENUE_MODE = "unknown";
+function revenueOf(j) {
+  const total = +j.total_amount || 0;
+  const taxKey = Object.keys(j).find((k) => /tax/i.test(k) && !/rate|percent|exempt|able/i.test(k) && typeof j[k] === "number");
+  if (taxKey) { REVENUE_MODE = `total_amount - ${taxKey}`; return (total - j[taxKey]) / 100; }
+  if (typeof j.subtotal === "number") { REVENUE_MODE = "subtotal"; return j.subtotal / 100; }
+  REVENUE_MODE = "total_amount / (1 + tax rate)";
+  return total / (1 + NJ_TAX) / 100;
+}
 const isDone = (j) => /complete/i.test(j.work_status || "");
 // Revenue counts on the day the job was COMPLETED (falls back to scheduled date if HCP has no completion stamp).
 const jobDay = (j) => ymd(new Date(j.work_timestamps?.completed_at || j.schedule?.scheduled_start || j.created_at));
@@ -142,7 +176,7 @@ function build(jobs, r, truncated) {
   const reviewMap = new Map(); // review bonus per employee
   let revenue = 0, reviewJobs = 0;
   for (const j of done) {
-    const amt = dollars(j.total_amount);
+    const amt = revenueOf(j);
     const day = jobDay(j);
     revenue += amt;
     const m = months.get(day.slice(0, 7));
@@ -199,7 +233,7 @@ function buildWeek(jobs) {
   let lastWeek = 0, lastWeekJobs = 0, lastWeekToDate = 0;
   const dow = (new Date(today + "T12:00:00Z").getUTCDay() + 6) % 7; // 0 = Monday
   for (const j of uniqDone(jobs, lastMon, today)) {
-    const d = jobDay(j), amt = dollars(j.total_amount);
+    const d = jobDay(j), amt = revenueOf(j);
     if (d >= mon) { const slot = days.find((x) => x.date === d); if (slot) { slot.revenue += amt; slot.jobs++; } }
     else {
       lastWeek += amt; lastWeekJobs++;
@@ -227,12 +261,15 @@ export default async (req) => {
   try {
     const today = ymd(new Date());
     // look back 60 days: a job scheduled earlier can be completed inside the range
-    const [{ jobs, truncated }, recent] = await Promise.all([
+    const [{ jobs: scheduled, truncated }, created, recent] = await Promise.all([
       jobsBetween(addDays(r.start, -60), r.end),
+      jobsCreatedSince(addDays(r.start, -60)),
       jobsBetween(addDays(mondayOf(today), -30), today),
     ]);
+    const jobs = [...scheduled, ...created]; // uniqDone() de-dupes by job id
+    const recentAll = [...recent.jobs, ...created];
     if (url.searchParams.get("debug") === "1" && isAdmin(req)) return json(debugInfo(jobs, r));
-    const data = { ...build(jobs, r, truncated), week: buildWeek(recent.jobs) };
+    const data = { ...build(jobs, r, truncated), week: buildWeek(recentAll) };
     cache.set(r.key, { t: Date.now(), data });
     return json(data);
   } catch (err) {
