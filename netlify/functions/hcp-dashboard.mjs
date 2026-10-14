@@ -62,6 +62,23 @@ function debugInfo(jobs, r) {
       sums["(total_amount / 1.06625)"] = (sums.total_amount || 0) / 1.06625;
       return Object.fromEntries(Object.entries(sums).map(([k, v]) => [k, Math.round(v * 100) / 100]));
     })(),
+    // Jobs whose total isn't simply subtotal + NJ tax — discounts, fees, tax-exempt, etc.
+    oddJobs: (() => {
+      const list = uniqDone(jobs, r.start, r.end)
+        .filter((j) => typeof j.subtotal === "number" && Math.abs((+j.total_amount || 0) - Math.round(j.subtotal * (1 + NJ_TAX))) > 2)
+        .map((j) => {
+          const total = (+j.total_amount || 0) / 100, sub = j.subtotal / 100, expected = Math.round(j.subtotal * (1 + NJ_TAX)) / 100;
+          return {
+            invoice: j.invoice_number,
+            customer: [j.customer?.first_name, j.customer?.last_name].filter(Boolean).join(" ") || j.customer?.company || "",
+            completed: j.work_timestamps?.completed_at ? ymd(new Date(j.work_timestamps.completed_at)) : "",
+            subtotal: sub, total, totalIfTaxed: expected,
+            totalMinusTaxGuess: Math.round(total / (1 + NJ_TAX) * 100) / 100,
+            looksLike: total === sub ? "no tax charged" : total < expected ? "less than subtotal + tax (discount?)" : "more than subtotal + tax (fee/tip?)",
+          };
+        });
+      return { count: list.length, subtotalOfOddJobs: Math.round(list.reduce((t, x) => t + x.subtotal, 0) * 100) / 100, jobs: list };
+    })(),
     sample: jobs.filter(isDone).slice(0, 8).map((j) => ({
       invoice: j.invoice_number, status: j.work_status,
       scheduled: j.schedule?.scheduled_start, completed: j.work_timestamps?.completed_at,
