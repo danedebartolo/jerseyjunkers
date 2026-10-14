@@ -27,6 +27,28 @@ function authed(req) {
   return !!m && m[1] === want;
 }
 
+function isAdmin(req) {
+  const pw = process.env.DASHBOARD_ADMIN_PASSWORD;
+  if (!pw) return false;
+  const want = createHash("sha256").update("jj-admin:" + pw).digest("hex");
+  const m = (req.headers.get("cookie") || "").match(/(?:^|;\s*)jj_admin=([a-f0-9]{64})/);
+  return !!m && m[1] === want;
+}
+// Admin-only raw sample: /api/hcp-dashboard?range=ytd&debug=1
+function debugInfo(jobs, r) {
+  const statuses = {};
+  jobs.forEach((j) => (statuses[j.work_status || "none"] = (statuses[j.work_status || "none"] || 0) + 1));
+  const money = (j) => Object.fromEntries(Object.entries(j).filter(([k, v]) => /amount|total|balance|price|subtotal/i.test(k) && typeof v !== "object"));
+  return {
+    range: r, fetched: jobs.length, statuses,
+    sample: jobs.filter(isDone).slice(0, 8).map((j) => ({
+      invoice: j.invoice_number, status: j.work_status,
+      scheduled: j.schedule?.scheduled_start, completed: j.work_timestamps?.completed_at,
+      ...money(j),
+    })),
+  };
+}
+
 // ---------- dates (Eastern) ----------
 const ymd = (d) => new Intl.DateTimeFormat("en-CA", { timeZone: TZ }).format(d); // YYYY-MM-DD
 function startOfDayET(dateStr) {
@@ -82,21 +104,37 @@ async function jobsBetween(startStr, endStr) {
 // ---------- aggregation ----------
 const dollars = (cents) => (+cents || 0) / 100;              // HCP amounts are in cents
 const isDone = (j) => /complete/i.test(j.work_status || "");
-const jobDay = (j) => ymd(new Date(j.schedule?.scheduled_start || j.work_timestamps?.completed_at || j.created_at));
+// Revenue counts on the day the job was COMPLETED (falls back to scheduled date if HCP has no completion stamp).
+const jobDay = (j) => ymd(new Date(j.work_timestamps?.completed_at || j.schedule?.scheduled_start || j.created_at));
 // Review bonus: completed jobs carrying this tag pay REVIEW_BONUS, split evenly across the crew on the job.
 const REVIEW_TAG = (process.env.REVIEW_TAG || "LEFT REVIEW").trim().toLowerCase();
 const REVIEW_BONUS = +process.env.REVIEW_BONUS || 10;
 const hasReviewTag = (j) => (j.tags || []).some((t) => String(typeof t === "string" ? t : t?.name || "").trim().toLowerCase() === REVIEW_TAG);
+// Placeholder "employees" like "1st Route" / "2nd Route" are not people: never credited, never counted in splits.
+const isRoute = (e) => /\broute\b/i.test(`${e.first_name || ""} ${e.last_name || ""}`);
+// Only these first names appear in the per-employee revenue / job sections (env DASHBOARD_EMPLOYEES overrides).
+const SHOWN = (process.env.DASHBOARD_EMPLOYEES || "Dane,Marcus,Dom,Christian,Anthony").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
+const isShown = (e) => SHOWN.includes(String(e.first_name || "").trim().toLowerCase());
+const crewOf = (j) => (j.assigned_employees || []).filter((e) => !isRoute(e));
 const empName = (e) => (e.first_name ? (e.first_name + (e.last_name ? " " + e.last_name[0] + "." : "")).trim() : "Unassigned");
 
-function build(jobs, r, truncated) {
-  const done = jobs.filter(isDone);
+function uniqDone(jobs, start, end) {
+  const seen = new Set();
+  return jobs.filter((j) => {
+    if (!isDone(j) || (j.id && seen.has(j.id))) return false;
+    if (j.id) seen.add(j.id);
+    const d = jobDay(j);
+    return d >= start && d <= end;
+  });
+}
 
-  // empty buckets for every week / month in range so gaps show as $0
-  const weeks = new Map(), months = new Map();
+function build(jobs, r, truncated) {
+  const done = uniqDone(jobs, r.start, r.end);
+
+  // empty bucket for every month in range so gaps show as $0
+  const months = new Map();
   for (let d = r.start; d <= r.end; d = addDays(d, 1)) {
-    const w = mondayOf(d), m = d.slice(0, 7);
-    if (!weeks.has(w)) weeks.set(w, { date: w, revenue: 0, jobs: 0 });
+    const m = d.slice(0, 7);
     if (!months.has(m)) months.set(m, { date: m, revenue: 0, jobs: 0 });
   }
 
@@ -107,13 +145,13 @@ function build(jobs, r, truncated) {
     const amt = dollars(j.total_amount);
     const day = jobDay(j);
     revenue += amt;
-    const w = weeks.get(mondayOf(day)), m = months.get(day.slice(0, 7));
-    if (w) { w.revenue += amt; w.jobs++; }
+    const m = months.get(day.slice(0, 7));
     if (m) { m.revenue += amt; m.jobs++; }
 
-    // Each assigned employee gets credit for the job; revenue is split evenly between them.
-    const crew = j.assigned_employees?.length ? j.assigned_employees : [{}];
+    // Real crew on the job (routes removed). Revenue + review bonus split evenly between them.
+    const crew = crewOf(j);
     for (const e of crew) {
+      if (!isShown(e)) continue; // still counts in the split, just not displayed
       const key = e.id || empName(e);
       const cur = emps.get(key) || { name: empName(e), revenue: 0, jobs: 0 };
       cur.revenue += amt / crew.length;
@@ -124,12 +162,12 @@ function build(jobs, r, truncated) {
     if (hasReviewTag(j)) {
       reviewJobs++;
       const month = day.slice(0, 7);
-      for (const e of crew) {
+      for (const e of crew.length ? crew : [{}]) {
         const key = e.id || empName(e);
         const cur = reviewMap.get(key) || { name: empName(e), reviews: 0, bonus: 0, byMonth: {} };
-        const m = cur.byMonth[month] || (cur.byMonth[month] = { reviews: 0, bonus: 0 });
-        const share = REVIEW_BONUS / crew.length;
-        cur.reviews++; cur.bonus += share; m.reviews++; m.bonus += share;
+        const mm = cur.byMonth[month] || (cur.byMonth[month] = { reviews: 0, bonus: 0 });
+        const share = REVIEW_BONUS / Math.max(crew.length, 1);
+        cur.reviews++; cur.bonus += share; mm.reviews++; mm.bonus += share;
         reviewMap.set(key, cur);
       }
     }
@@ -141,7 +179,6 @@ function build(jobs, r, truncated) {
     truncated,
     totals: { revenue, jobs: done.length, avgTicket: done.length ? revenue / done.length : 0 },
     monthly: [...months.values()],
-    weekly: [...weeks.values()],
     reviews: {
       tag: REVIEW_TAG.toUpperCase(),
       perJob: REVIEW_BONUS,
@@ -150,6 +187,31 @@ function build(jobs, r, truncated) {
       employees: [...reviewMap.values()],
     },
     employees: [...emps.values()].map((e) => ({ ...e, revenue: Math.round(e.revenue * 100) / 100 })),
+  };
+}
+
+// Current week, Monday through Saturday (Sunday shows only if there was Sunday work), plus last week's total.
+function buildWeek(jobs) {
+  const today = ymd(new Date());
+  const mon = mondayOf(today), lastMon = addDays(mon, -7);
+  const days = [];
+  for (let i = 0; i < 7; i++) days.push({ date: addDays(mon, i), revenue: 0, jobs: 0 });
+  let lastWeek = 0, lastWeekJobs = 0, lastWeekToDate = 0;
+  const dow = (new Date(today + "T12:00:00Z").getUTCDay() + 6) % 7; // 0 = Monday
+  for (const j of uniqDone(jobs, lastMon, today)) {
+    const d = jobDay(j), amt = dollars(j.total_amount);
+    if (d >= mon) { const slot = days.find((x) => x.date === d); if (slot) { slot.revenue += amt; slot.jobs++; } }
+    else {
+      lastWeek += amt; lastWeekJobs++;
+      if (d <= addDays(lastMon, dow)) lastWeekToDate += amt;
+    }
+  }
+  if (!days[6].revenue) days.pop(); // hide Sunday unless worked
+  return {
+    start: mon, today, days,
+    revenue: days.reduce((s, x) => s + x.revenue, 0),
+    jobs: days.reduce((s, x) => s + x.jobs, 0),
+    lastWeek, lastWeekJobs, lastWeekToDate,
   };
 }
 
@@ -163,8 +225,14 @@ export default async (req) => {
   if (hit && url.searchParams.get("fresh") !== "1" && Date.now() - hit.t < CACHE_MS) return json(hit.data);
 
   try {
-    const { jobs, truncated } = await jobsBetween(r.start, r.end);
-    const data = build(jobs, r, truncated);
+    const today = ymd(new Date());
+    // look back 60 days: a job scheduled earlier can be completed inside the range
+    const [{ jobs, truncated }, recent] = await Promise.all([
+      jobsBetween(addDays(r.start, -60), r.end),
+      jobsBetween(addDays(mondayOf(today), -30), today),
+    ]);
+    if (url.searchParams.get("debug") === "1" && isAdmin(req)) return json(debugInfo(jobs, r));
+    const data = { ...build(jobs, r, truncated), week: buildWeek(recent.jobs) };
     cache.set(r.key, { t: Date.now(), data });
     return json(data);
   } catch (err) {

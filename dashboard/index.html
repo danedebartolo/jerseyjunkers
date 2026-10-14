@@ -110,10 +110,60 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .nform button{font:inherit;font-weight:700;font-size:14px;border-radius:8px;padding:9px 16px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
 .nform button.save{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
 .nform button.del{margin-left:auto;color:#C0392B}
+.nform label.keep{display:flex;flex-direction:row;align-items:center;gap:10px;font-weight:500;color:var(--ink)}
+.nform label.keep input{width:18px;height:18px;flex:none;accent-color:#1a1a1a;padding:0}
 .nform .hint{font-size:12.5px;color:var(--muted)}
 .top a.out{color:#b8b6b0;font-size:13px;text-decoration:none}
 .top a.out:hover{color:#fff}
 @media (max-width:560px){.nform .row{grid-template-columns:1fr}}
+.card-h .when{font-size:13px;color:var(--muted)}
+.wk{display:flex;gap:32px;flex-wrap:wrap;margin:8px 0 14px;align-items:flex-end}
+.wk .big{font-family:Archivo,sans-serif;font-size:36px;font-weight:800;letter-spacing:-.5px;line-height:1}
+.wk .lbl{font-size:13px;color:var(--ink2);margin-top:4px}
+.wk .cmp{font-size:14px;color:var(--ink2)}
+.wk .cmp b{color:var(--ink)}
+.delta{font-weight:700}.delta.up{color:#2E8B57}.delta.down{color:#C0392B}
+.bar.today{fill:var(--gold)}
+.sform{display:grid;gap:12px;max-width:720px}
+.sform label{display:grid;gap:4px;font-size:13px;font-weight:600;color:var(--ink2)}
+.sform .opt{font-weight:400;color:var(--muted)}
+.sform input,.sform textarea{font:inherit;font-weight:400;font-size:15px;padding:10px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.sform textarea{min-height:110px;resize:vertical}
+.sform .srow{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.sform button{font:inherit;font-weight:700;font-size:15px;border:0;border-radius:8px;padding:10px 20px;background:var(--gold);color:#1a1a1a;cursor:pointer}
+.sform button:disabled{opacity:.6;cursor:default}
+.stype{border:0;padding:0;margin:0;display:flex;gap:8px;flex-wrap:wrap}
+.stype legend{font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:6px;padding:0}
+.stype label{display:flex;align-items:center;gap:8px;font-weight:500;font-size:14px;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer}
+.stype label:has(input:checked){border-color:var(--ink);background:var(--bg)}
+.stype input{accent-color:#1a1a1a;margin:0;width:auto}
+#sstatus{font-size:14px;color:var(--ink2)}
+#sstatus.ok{color:#2E8B57;font-weight:600}#sstatus.bad{color:#C0392B}
+.must{background:var(--card);border:1px solid var(--line);border-left:6px solid #C0392B;border-radius:12px;padding:16px 18px;margin:0 0 12px}
+.must.empty{border:1px dashed var(--line);border-left:6px solid var(--line);background:transparent}
+.must .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:#C0392B;border-radius:4px;padding:3px 7px;margin-bottom:8px}
+.must .nh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.must h2{font-size:19px;font-weight:800;margin:0}
+.must .when{font-size:12.5px;color:var(--muted)}
+.must .edit{margin-left:auto;font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;padding:5px 12px;cursor:pointer}
+.must .nb{white-space:pre-wrap;margin:6px 0 0;font-size:15.5px;line-height:1.5}
+.ack{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ack select,.ack input[type=text]{font:inherit;font-size:15px;padding:9px 11px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);min-width:180px}
+.ack .chk{display:flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;cursor:pointer}
+.ack .chk input{width:18px;height:18px;accent-color:#C0392B}
+.ack button{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:8px;padding:10px 18px;background:#1a1a1a;color:#fff;cursor:pointer}
+.ack button:disabled{opacity:.4;cursor:default}
+.ack .done{color:#2E8B57;font-weight:700;font-size:14.5px}
+.ack .msg{font-size:13.5px;color:#C0392B}
+.signs{margin-top:14px;padding-top:14px;border-top:1px solid var(--line)}
+.signs .sh{display:flex;justify-content:space-between;gap:10px;font-size:14px;margin-bottom:8px;flex-wrap:wrap}
+.signs .sh b{font-family:Archivo,sans-serif}
+.signs .who{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-size:13px;border-radius:999px;padding:5px 11px;border:1px solid var(--line);display:inline-flex;gap:6px;align-items:center}
+.pill.ok{background:#E8F4EC;border-color:#BFDEC9;color:#1E5E3A}
+.pill.wait{background:#FBE9E6;border-color:#EBB8AF;color:#7a1f14}
+.pill small{opacity:.75}
+@media (prefers-color-scheme: dark){.pill.ok{background:#173524;border-color:#2A5A3D;color:#9FDDB5}.pill.wait{background:#3A1A16;border-color:#6B2C24;color:#F4B3A9}}
 footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
 @media (max-width:860px){.grid2{grid-template-columns:1fr}}
 @media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:first-child{grid-column:1/-1}.kpi .num{font-size:24px}.filters .note{width:100%;margin:4px 0 0}}
@@ -136,27 +186,28 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
   <div id="banner"></div>
 
   <section id="notice" hidden></section>
+  <section id="mustread" hidden></section>
   <main id="main">
     <section class="kpis" id="kpis"></section>
 
     <section class="card">
+      <div class="card-h"><h2>This week</h2><span class="when" id="wkRange"></span></div>
+      <div class="wk" id="wkSum"></div>
+      <div class="chart" id="weekChart"></div>
+    </section>
+
+    <section class="card">
       <div class="card-h"><h2>Revenue by month</h2><button class="link" data-table="monthTable">Table</button></div>
-      <div class="cap">Completed jobs, by scheduled date</div>
+      <div class="cap">Sum of completed jobs, by the date each job was completed</div>
       <div class="chart" id="monthChart"></div>
       <div class="srtable" id="monthTable"></div>
     </section>
 
-    <section class="card">
-      <div class="card-h"><h2>Revenue by week</h2><button class="link" data-table="weekTable">Table</button></div>
-      <div class="cap">Completed jobs, weeks run Monday–Sunday</div>
-      <div class="chart" id="weekChart"></div>
-      <div class="srtable" id="weekTable"></div>
-    </section>
 
     <section class="grid2">
       <div class="card">
         <div class="card-h"><h2>Job revenue by employee</h2><button class="link" data-table="empTable">Table</button></div>
-        <div class="cap">When several people work a job, its revenue is split evenly between them</div>
+        <div class="cap">Split evenly between everyone on the job</div>
         <div class="hbars" id="empRev"></div>
         <div class="srtable" id="empTable"></div>
       </div>
@@ -173,6 +224,21 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
       <div class="rvsum" id="rvSum"></div>
       <div class="lead" id="rvLead"></div>
       <div class="srtable" id="rvTable"></div>
+    </section>
+    <section class="card" id="suggest">
+      <h2>Suggestion box</h2>
+      <div class="cap">Got an idea to make the job easier, safer or better for customers — or something you want to see on this dashboard? It goes straight to Dane.</div>
+      <form name="suggestion" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="sform" id="sform">
+        <input type="hidden" name="form-name" value="suggestion">
+        <p hidden><label>Leave blank <input name="bot-field"></label></p>
+        <label>Your name <span class="opt">(optional — leave blank to stay anonymous)</span><input name="name" maxlength="80" autocomplete="name"></label>
+        <fieldset class="stype"><legend>What’s it about?</legend>
+          <label><input type="radio" name="type" value="Suggestion" checked> A suggestion</label>
+          <label><input type="radio" name="type" value="Dashboard request"> Something I want to see on this dashboard</label>
+        </fieldset>
+        <label>Your message<textarea name="suggestion" maxlength="3000" required placeholder="What should we start, stop or change? Or what would you like to see here?"></textarea></label>
+        <div class="srow"><button type="submit">Send to Dane</button><span id="sstatus" role="status"></span></div>
+      </form>
     </section>
   </main>
   <footer>Live from Housecall Pro · cached for up to 10 minutes · Refresh pulls fresh data</footer>
@@ -251,12 +317,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     });
     table("#monthTable", ["Month", "Jobs", "Revenue", "Avg ticket"], d.monthly.map((p) => [fmtMonth(p.date, true), p.jobs, money(p.revenue), p.jobs ? money(p.revenue / p.jobs) : "—"]));
 
-    barChart("#weekChart", d.weekly, {
-      tick: (p) => fmtDay(p.date),
-      label: (p) => "Week of " + fmtDay(p.date, { month: "short", day: "numeric", year: "numeric" }),
-      maxTicks: 10,
-    });
-    table("#weekTable", ["Week of", "Jobs", "Revenue", "Avg ticket"], d.weekly.map((p) => [fmtDay(p.date, { month: "short", day: "numeric", year: "numeric" }), p.jobs, money(p.revenue), p.jobs ? money(p.revenue / p.jobs) : "—"]));
+    week(d.week);
 
     const emps = d.employees;
     const sub = (e) => `${plural(e.jobs, "job")} · ${money(e.jobs ? e.revenue / e.jobs : 0)} per job`;
@@ -270,7 +331,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     const box = $(sel);
     const W = Math.max(300, box.clientWidth || 900), H = W < 500 ? 220 : 280;
     const L = 52, R = 8, T = o.valueLabels ? 22 : 10, B = 28;
-    const max = Math.max(1, ...pts.map((p) => p.revenue));
+    const max = Math.max(o.minTop || 1, ...pts.map((p) => p.revenue));
     const step = niceStep(max / 4), top = Math.ceil(max / step) * step;
     const y = (v) => T + (H - T - B) * (1 - v / top);
     const bw = (W - L - R) / pts.length, gap = Math.min(10, Math.max(2, bw * 0.22));
@@ -288,7 +349,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     pts.forEach((p, i) => {
       const x = L + i * bw + gap / 2, w = Math.max(1, bw - gap), yt = y(p.revenue), h = y(0) - yt;
       const r = Math.min(4, w / 2, h);
-      const bar = mk("path", { class: "bar", d: h > 0 ? `M${x},${y(0)} V${yt + r} Q${x},${yt} ${x + r},${yt} H${x + w - r} Q${x + w},${yt} ${x + w},${yt + r} V${y(0)} Z` : "" });
+      const bar = mk("path", { class: "bar" + (o.highlight && o.highlight(p) ? " today" : ""), d: h > 0 ? `M${x},${y(0)} V${yt + r} Q${x},${yt} ${x + r},${yt} H${x + w - r} Q${x + w},${yt} ${x + w},${yt + r} V${y(0)} Z` : "" });
       const hit = mk("rect", { x: L + i * bw, y: T - 10, width: bw, height: H - T - B + 10, fill: "transparent", tabindex: 0 });
       hit.setAttribute("aria-label", `${o.label(p)}: ${money(p.revenue)}, ${plural(p.jobs, "job")}`);
       const on = (e) => { bar.classList.add("hot"); showTip(ptFor(hit, e), money(p.revenue), o.label(p), `${plural(p.jobs, "job")}${p.jobs ? " · " + money(p.revenue / p.jobs) + " avg" : ""}`); };
@@ -302,6 +363,29 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     });
     box.replaceChildren(svg);
   }
+  function week(w) {
+    if (!w) return;
+    const dayName = (iso) => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { weekday: "short" });
+    const lastDay = w.days[w.days.length - 1].date;
+    $("#wkRange").textContent = `${fmtDay(w.start, { weekday: "short", month: "short", day: "numeric" })} – ${fmtDay(lastDay, { weekday: "short", month: "short", day: "numeric" })} · gold bar = today`;
+    const box = $("#wkSum"); box.replaceChildren();
+    const big = el("div"); big.append(el("div", "big", money(w.revenue)), el("div", "lbl", `${plural(w.jobs, "job")} completed so far`));
+    const cmp = el("div", "cmp");
+    if (w.lastWeekToDate > 0) {
+      const ch = (w.revenue - w.lastWeekToDate) / w.lastWeekToDate;
+      cmp.append(el("span", "delta " + (ch >= 0 ? "up" : "down"), (ch >= 0 ? "▲ " : "▼ ") + Math.abs(Math.round(ch * 100)) + "%"), document.createTextNode(` vs last week at this point (${money(w.lastWeekToDate)})`));
+      cmp.append(document.createElement("br"));
+    }
+    const lw = el("span"); lw.append(document.createTextNode("Last week total: "), el("b", null, money(w.lastWeek)), document.createTextNode(` · ${plural(w.lastWeekJobs, "job")}`));
+    cmp.append(lw);
+    box.append(big, cmp);
+    barChart("#weekChart", w.days, {
+      tick: (p) => `${dayName(p.date)} ${+p.date.slice(8)}`,
+      label: (p) => fmtDay(p.date, { weekday: "long", month: "short", day: "numeric" }) + (p.date > w.today ? " (upcoming)" : ""),
+      valueLabels: true, minTop: 1000, highlight: (p) => p.date === w.today,
+    });
+  }
+
   let rvMonth = null;
   function reviews(rv) {
     const months = [...rv.months].reverse();
@@ -462,6 +546,135 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
   }
   const alertBox = (msg) => { const b = $("#banner"); b.replaceChildren(el("div", "err", msg)); };
 
+  // ---------- suggestion box (Netlify Forms → email notification) ----------
+  $("#sform").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const f = e.target, st = $("#sstatus"), btn = f.querySelector("button");
+    btn.disabled = true; st.className = ""; st.textContent = "Sending…";
+    try {
+      if (!DEMO) {
+        const res = await fetch("/", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(new FormData(f)).toString() });
+        if (!res.ok) throw new Error(res.status);
+      }
+      f.reset(); st.className = "ok"; st.textContent = "Sent — thanks! Dane will see it.";
+    } catch { st.className = "bad"; st.textContent = "Didn’t go through. Try again, or text Dane."; }
+    finally { btn.disabled = false; }
+  });
+
+  // ---------- must-read notice with sign-offs ----------
+  let must = null, mustSigned = [], mustAdmin = false, mustEditing = false, demoMust = null, demoSigned = [];
+  const DEFAULT_SIGNERS = "Marcus, Dom, Christian, Anthony";
+  const ackKey = (id) => "jj-ack-" + id;
+  async function mustApi(method, payload) {
+    if (DEMO) {
+      mustAdmin = !new URLSearchParams(location.search).has("crew");
+      if (payload?.action === "save") { const keep = payload.keepSignoffs && demoMust; demoMust = { id: keep ? demoMust.id : Date.now().toString(36), title: payload.title, body: payload.body, required: payload.required, postedAt: keep ? demoMust.postedAt : new Date().toISOString(), editedAt: keep ? new Date().toISOString() : null }; if (!keep) demoSigned = []; }
+      if (payload?.action === "clear") { demoMust = null; demoSigned = []; }
+      if (payload?.action === "ack" && !demoSigned.some((x) => x.name === payload.name)) demoSigned.push({ name: payload.name, at: new Date().toISOString() });
+      return { notice: demoMust, signed: demoSigned, isAdmin: mustAdmin };
+    }
+    const res = await fetch("/api/dashboard-notice", { method, credentials: "same-origin", headers: payload ? { "content-type": "application/json" } : {}, body: payload ? JSON.stringify(payload) : undefined });
+    const j = await res.json();
+    if (!res.ok) throw new Error(j.error || res.statusText);
+    return j;
+  }
+  async function loadMust() {
+    try { const j = await mustApi("GET"); must = j.notice; mustSigned = j.signed || []; mustAdmin = j.isAdmin; renderMust(); } catch {}
+  }
+  const when = (iso) => new Date(iso).toLocaleString("en-US", { month: "short", day: "numeric", hour: "numeric", minute: "2-digit" });
+  function renderMust() {
+    if (mustEditing) return;
+    const box = $("#mustread"); box.className = "must"; box.replaceChildren();
+    if (!must) {
+      if (!mustAdmin) { box.hidden = true; return; }
+      box.hidden = false; box.classList.add("empty");
+      const nh = el("div", "nh"); nh.append(el("span", "when", "No must-read posted. Use this for anything the team has to confirm they read."));
+      const b = el("button", "edit", "+ Post a must-read"); b.type = "button"; b.onclick = openMustEditor; nh.append(b); box.append(nh);
+      return;
+    }
+    box.hidden = false;
+    box.append(el("span", "tag", "Must read"));
+    const nh = el("div", "nh");
+    if (must.title) nh.append(el("h2", null, must.title));
+    nh.append(el("span", "when", "Posted " + when(must.postedAt) + (must.editedAt ? " · edited " + when(must.editedAt) : "")));
+    if (mustAdmin) { const b = el("button", "edit", "Edit"); b.type = "button"; b.onclick = openMustEditor; nh.append(b); }
+    box.append(nh);
+    if (must.body) box.append(el("p", "nb", must.body));
+
+    if (mustAdmin) {
+      const sg = el("div", "signs"), sh = el("div", "sh");
+      const signedNames = new Set(mustSigned.map((x) => x.name.toLowerCase()));
+      const waiting = must.required.filter((n) => !signedNames.has(n.toLowerCase()));
+      sh.append(el("b", null, must.required.length ? `Signed ${must.required.length - waiting.length} of ${must.required.length}` : `${plural(mustSigned.length, "sign-off")}`));
+      if (waiting.length) sh.append(el("span", null, "Still waiting on " + waiting.join(", ")));
+      else if (must.required.length) sh.append(el("span", null, "Everyone has signed ✓"));
+      const who = el("div", "who");
+      mustSigned.forEach((x) => { const p = el("span", "pill ok"); p.append(document.createTextNode("✓ " + x.name), el("small", null, when(x.at))); who.append(p); });
+      waiting.forEach((n) => who.append(el("span", "pill wait", "○ " + n)));
+      sg.append(sh, who); box.append(sg);
+      return;
+    }
+
+    // team view: sign-off form, or confirmation once done
+    const ack = el("div", "ack");
+    let mine = null; try { mine = localStorage.getItem(ackKey(must.id)); } catch {}
+    if (mine && mustSigned.some((x) => x.name.toLowerCase() === mine.toLowerCase())) {
+      ack.append(el("span", "done", `✓ ${mine}, you confirmed you read this.`));
+      box.append(ack); return;
+    }
+    let nameInput;
+    if (must.required.length) {
+      nameInput = el("select"); const o0 = el("option", null, "Select your name…"); o0.value = ""; nameInput.append(o0);
+      must.required.forEach((n) => { const o = el("option", null, n + (mustSigned.some((x) => x.name.toLowerCase() === n.toLowerCase()) ? " (signed)" : "")); o.value = n; nameInput.append(o); });
+    } else { nameInput = el("input"); nameInput.type = "text"; nameInput.placeholder = "Your name"; nameInput.maxLength = 60; }
+    const chk = el("label", "chk"), cb = el("input"); cb.type = "checkbox"; chk.append(cb, document.createTextNode("I read and understand this"));
+    const btn = el("button", null, "Confirm"); btn.type = "button"; btn.disabled = true;
+    const msg = el("span", "msg");
+    const sync = () => (btn.disabled = !(cb.checked && nameInput.value.trim()));
+    cb.onchange = sync; nameInput.oninput = sync; nameInput.onchange = sync;
+    btn.onclick = async () => {
+      btn.disabled = true; msg.textContent = "";
+      try {
+        const name = nameInput.value.trim();
+        const j = await mustApi("POST", { action: "ack", name });
+        must = j.notice; mustSigned = j.signed || [];
+        try { localStorage.setItem(ackKey(must.id), name); } catch {}
+        renderMust();
+      } catch (err) { msg.textContent = err.message; sync(); }
+    };
+    ack.append(nameInput, chk, btn, msg); box.append(ack);
+  }
+  function openMustEditor() {
+    mustEditing = true;
+    const box = $("#mustread"); box.hidden = false; box.className = "must"; box.replaceChildren(el("span", "tag", "Must read"));
+    const f = el("form", "nform");
+    const field = (label, input, hint) => { const l = el("label", null, label); l.append(input); if (hint) l.append(el("span", "hint", hint)); return l; };
+    const t = el("input"); t.maxLength = 120; t.placeholder = "e.g. New dump-run procedure starting Monday"; t.value = must?.title || "";
+    const b = el("textarea"); b.maxLength = 4000; b.placeholder = "What everyone needs to read and confirm"; b.value = must?.body || "";
+    const r = el("input"); r.value = must ? must.required.join(", ") : DEFAULT_SIGNERS;
+    const btns = el("div", "btns");
+    const save = el("button", "save", must ? "Save" : "Post must-read"); save.type = "submit";
+    const cancel = el("button", null, "Cancel"); cancel.type = "button"; cancel.onclick = () => { mustEditing = false; renderMust(); };
+    btns.append(save, cancel);
+    let keep = null;
+    if (must) {
+      const kl = el("label", "keep"); keep = el("input"); keep.type = "checkbox"; keep.checked = true;
+      kl.append(keep, document.createTextNode("Keep existing sign-offs (uncheck if you changed what it says — everyone signs again)"));
+      f.append(field("Title", t), field("Message", b), field("Who has to sign", r, "Names separated by commas. They pick their name from this list."), kl, btns);
+      const del = el("button", "del", "Take it down"); del.type = "button";
+      del.onclick = async () => { try { const j = await mustApi("POST", { action: "clear" }); must = j.notice; mustSigned = []; mustEditing = false; renderMust(); } catch (err) { alertBox(err.message); } };
+      btns.append(del);
+    } else f.append(field("Title", t), field("Message", b), field("Who has to sign", r, "Names separated by commas. They pick their name from this list."), btns);
+    f.onsubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const j = await mustApi("POST", { action: "save", title: t.value, body: b.value, required: r.value.split(",").map((x) => x.trim()).filter(Boolean), keepSignoffs: keep ? keep.checked : false });
+        must = j.notice; mustSigned = j.signed || []; mustEditing = false; renderMust();
+      } catch (err) { alertBox("Couldn’t save: " + err.message); }
+    };
+    box.append(f); t.focus();
+  }
+
   // ---------- controls ----------
   document.querySelectorAll("[data-range]").forEach((b) => b.addEventListener("click", () => { range = b.dataset.range; store.set("jjdash-range2", range); load(); }));
   $("#refresh").addEventListener("click", () => load(true));
@@ -481,7 +694,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     else if (rg === "12m") { start = new Date(Y, today.getMonth() - 11, 1, 12); }
     else start = new Date(Y, 0, 1, 12);
     const season = [0.55, 0.6, 0.8, 1.05, 1.2, 1.25, 1.2, 1.15, 1.1, 1.0, 0.85, 0.65];
-    const crew = [["Marcus R.", 1.0], ["Dom T.", 0.9], ["Justin K.", 0.8], ["Brendan S.", 0.7], ["Christian A.", 0.55]];
+    const crew = [["Marcus R.", 1.0], ["Dom T.", 0.9], ["Anthony P.", 0.75], ["Christian A.", 0.6], ["Dane D.", 0.25]];
     const months = new Map(), weeks = new Map(), emps = new Map(), rvw = new Map(); let revenue = 0, jobs = 0, rjobs = 0;
     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
       if (d.getDay() === 0) continue;
@@ -500,13 +713,15 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
       generatedAt: new Date().toISOString(),
       range: { start: iso(start), end: iso(end) },
       totals: { revenue, jobs, avgTicket: revenue / Math.max(jobs, 1) },
-      monthly: [...months.values()], weekly: [...weeks.values()], employees: [...emps.values()],
+      monthly: [...months.values()], employees: [...emps.values()],
+      week: (() => { const t = new Date(); t.setHours(12, 0, 0, 0); const mon = new Date(t); mon.setDate(t.getDate() - ((t.getDay() + 6) % 7)); const todayIso = iso(t); const days = []; for (let i = 0; i < 6; i++) { const d = new Date(mon); d.setDate(mon.getDate() + i); const di = iso(d); const n = di <= todayIso ? 4 + Math.round(rnd() * 4) : 0; days.push({ date: di, jobs: n, revenue: n ? Math.round(n * (420 + rnd() * 250)) : 0 }); } const rev = days.reduce((s, x) => s + x.revenue, 0); return { start: iso(mon), today: todayIso, days, revenue: rev, jobs: days.reduce((s, x) => s + x.jobs, 0), lastWeek: 24800, lastWeekJobs: 41, lastWeekToDate: Math.round(rev * 0.92) || 1 }; })(),
       reviews: { tag: "LEFT REVIEW", perJob: 10, jobs: rjobs, months: [...months.keys()], employees: [...rvw.values()] },
     };
   }
 
   if (DEMO) demoNote = { headline: "October push: 40 Google reviews", body: "Every reviewed job = $10 for the crew on it.\nIf we hit 40 as a team, lunch is on me Friday. Ask every happy customer before you leave the driveway!", goalMetric: "reviews", goalTarget: 40, goalLabel: "", updatedAt: new Date().toISOString() };
-  load(); loadNotice();
+  if (DEMO) { demoMust = { id: "demo1", title: "New dump-run procedure starting Monday", body: "Every truck checks in with Marcus before heading to the transfer station.\nPhotos of every load go in the HCP job before you leave the site — no exceptions.", required: ["Marcus", "Dom", "Christian", "Anthony"], postedAt: new Date(Date.now() - 864e5).toISOString(), editedAt: null }; demoSigned = [{ name: "Marcus", at: new Date(Date.now() - 7e7).toISOString() }, { name: "Dom", at: new Date(Date.now() - 3e6).toISOString() }]; }
+  load(); loadNotice(); loadMust();
 })();
 </script>
 </body>
