@@ -15,6 +15,16 @@ const cookieVal = (req, name) => ((req.headers.get("cookie") || "").match(new Re
 const clean = (s, max) => String(s ?? "").replace(/\r/g, "").trim().slice(0, max);
 const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60) || "x";
 
+// Remove files attached to a must-read (when it's replaced or taken down)
+async function dropAttachments(store, noticeId) {
+  if (!noticeId) return;
+  const list = (await store.get("docs/index", { type: "json" })) || [];
+  const gone = list.filter((d) => d.noticeId === noticeId);
+  if (!gone.length) return;
+  await Promise.all(gone.map((d) => store.delete(`docs/file/${d.id}`)));
+  await store.setJSON("docs/index", list.filter((d) => d.noticeId !== noticeId));
+}
+
 async function signoffs(store, id) {
   if (!id) return [];
   const { blobs } = await store.list({ prefix: `ack/${id}/` });
@@ -55,13 +65,14 @@ export default async (req) => {
 
   if (!isAdmin) return json({ error: "Only the admin login can change the notice" }, 403);
 
-  if (body.action === "clear") { await store.delete("notice"); return respond(null); }
+  if (body.action === "clear") { await dropAttachments(store, notice?.id); await store.delete("notice"); return respond(null); }
 
   if (body.action === "save") {
     const title = clean(body.title, 120), text = clean(body.body, 4000);
     if (!title && !text) return json({ error: "Add a title or message" }, 400);
     const required = [...new Set((Array.isArray(body.required) ? body.required : []).map((n) => clean(n, 60)).filter(Boolean))].slice(0, 40);
     const keep = body.keepSignoffs && notice;
+    if (notice && !keep) await dropAttachments(store, notice.id);
     const next = {
       id: keep ? notice.id : Date.now().toString(36),
       title, body: text, required,

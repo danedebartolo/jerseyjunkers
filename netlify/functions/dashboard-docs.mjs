@@ -2,7 +2,7 @@
 // GET    /api/dashboard-docs            → { docs, isAdmin }           (team login)
 // GET    /api/dashboard-docs?id=XYZ     → downloads the file          (team login)
 // POST   /api/dashboard-docs            → upload (raw file body)      (admin only)
-//          headers: x-file-name (URI-encoded), content-type, x-note (URI-encoded, optional)
+//          headers: x-file-name (URI-encoded), content-type, x-note (URI-encoded, optional), x-notice-id (must-read it belongs to)
 // DELETE /api/dashboard-docs?id=XYZ     → remove                      (admin only)
 // Storage: Netlify Blobs store "dashboard": "docs/index" (list) + "docs/file/<id>" (bytes).
 import { createHash } from "node:crypto";
@@ -67,7 +67,7 @@ export default async (req) => {
     const docId = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
     await store.set(`docs/file/${docId}`, bytes);
     const list = await index();
-    list.push({ id: docId, name, size: bytes.byteLength, note: dec(req.headers.get("x-note")).trim().slice(0, 200), uploadedAt: new Date().toISOString() });
+    list.push({ id: docId, name, size: bytes.byteLength, note: dec(req.headers.get("x-note")).trim().slice(0, 200), noticeId: String(req.headers.get("x-notice-id") || "").slice(0, 40), uploadedAt: new Date().toISOString() });
     await store.setJSON("docs/index", list);
     return json({ docs: list.sort((a, b) => b.uploadedAt.localeCompare(a.uploadedAt)), isAdmin });
   }

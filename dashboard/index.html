@@ -164,6 +164,8 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .pill.wait{background:#FBE9E6;border-color:#EBB8AF;color:#7a1f14}
 .pill small{opacity:.75}
 @media (prefers-color-scheme: dark){.pill.ok{background:#173524;border-color:#2A5A3D;color:#9FDDB5}.pill.wait{background:#3A1A16;border-color:#6B2C24;color:#F4B3A9}}
+.matt{margin-top:12px}
+.matt .mh{font-size:12.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
 .docs{display:flex;flex-direction:column}
 .doc{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--grid)}
 .doc:first-child{border-top:0}
@@ -247,13 +249,6 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
       <div class="lead" id="rvLead"></div>
       <div class="srtable" id="rvTable"></div>
     </section>
-    <section class="card" id="docs">
-      <h2>Documents</h2>
-      <div class="cap" id="docsCap">Forms, procedures and anything else you need — tap to download</div>
-      <div id="docUpload"></div>
-      <div class="docs" id="docList"></div>
-    </section>
-
     <section class="card" id="suggest">
       <h2>Suggestion box</h2>
       <div class="cap">Got an idea to make the job easier, safer or better for customers — or something you want to see on this dashboard? It goes straight to Dane.</div>
@@ -629,6 +624,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     if (mustAdmin) { const b = el("button", "edit", "Edit"); b.type = "button"; b.onclick = openMustEditor; nh.append(b); }
     box.append(nh);
     if (must.body) box.append(el("p", "nb", must.body));
+    const att = el("div", "matt"); att.id = "mustDocs"; box.append(att); renderDocs();
 
     if (mustAdmin) {
       const sg = el("div", "signs"), sh = el("div", "sh");
@@ -712,17 +708,15 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     if (DEMO) {
       docsAdmin = !new URLSearchParams(location.search).has("crew");
       if (!demoDocs) demoDocs = [
-        { id: "d1", name: "Truck Safety Checklist.pdf", size: 248000, note: "Go through this every morning before you roll out", uploadedAt: new Date(Date.now() - 2 * 864e5).toISOString() },
-        { id: "d2", name: "2026 Holiday Schedule.docx", size: 41000, note: "", uploadedAt: new Date(Date.now() - 9 * 864e5).toISOString() },
-        { id: "d3", name: "Dump Fee Rates.xlsx", size: 18000, note: "Updated rates for Monmouth + Ocean transfer stations", uploadedAt: new Date(Date.now() - 20 * 864e5).toISOString() },
+        { id: "d1", noticeId: "demo1", name: "Dump-Run Procedure.pdf", size: 248000, note: "Print it and keep a copy in every truck", uploadedAt: new Date(Date.now() - 2 * 864e5).toISOString() },
       ];
-      if (method === "POST") demoDocs.unshift({ id: "u" + Date.now(), name: opts.file.name, size: opts.file.size, note: opts.note, uploadedAt: new Date().toISOString(), url: URL.createObjectURL(opts.file) });
+      if (method === "POST") demoDocs.unshift({ id: "u" + Date.now(), name: opts.file.name, size: opts.file.size, note: opts.note, noticeId: opts.noticeId, uploadedAt: new Date().toISOString(), url: URL.createObjectURL(opts.file) });
       if (method === "DELETE") demoDocs = demoDocs.filter((d) => d.id !== opts.id);
       return { docs: demoDocs, isAdmin: docsAdmin };
     }
     const u = "/api/dashboard-docs" + (opts.id ? "?id=" + encodeURIComponent(opts.id) : "");
     const init = { method, credentials: "same-origin" };
-    if (method === "POST") init.headers = { "x-file-name": encodeURIComponent(opts.file.name), "x-note": encodeURIComponent(opts.note || ""), "content-type": opts.file.type || "application/octet-stream" }, init.body = opts.file;
+    if (method === "POST") init.headers = { "x-file-name": encodeURIComponent(opts.file.name), "x-note": encodeURIComponent(opts.note || ""), "x-notice-id": opts.noticeId || "", "content-type": opts.file.type || "application/octet-stream" }, init.body = opts.file;
     const res = await fetch(u, init);
     const j = await res.json().catch(() => ({}));
     if (!res.ok) throw new Error(j.error || (res.status === 413 ? "File too big (4.5 MB max)" : res.statusText));
@@ -730,27 +724,30 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
   }
   async function loadDocs() { try { const j = await docsApi("GET"); docs = j.docs; docsAdmin = j.isAdmin; renderDocs(); } catch {} }
   function renderDocs() {
-    const sec = $("#docs");
-    sec.hidden = !docs.length && !docsAdmin;
-    // upload bar (admin only)
-    const up = $("#docUpload"); up.replaceChildren();
+    const host = document.getElementById("mustDocs");
+    if (!host || !must) return;
+    const mine = docs.filter((d) => d.noticeId === must.id);
+    host.replaceChildren();
+    if (!mine.length && !docsAdmin) return;
+    host.append(el("div", "mh", mine.length ? `Attached ${mine.length === 1 ? "file" : "files"}` : "Attach a file"));
+    const up = el("div"); host.append(up);
     if (docsAdmin) {
       const bar = el("div", "upl");
       const file = el("input"); file.type = "file"; file.accept = ".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.txt,.png,.jpg,.jpeg,.heic,.gif";
       const note = el("input"); note.type = "text"; note.placeholder = "Short note (optional)"; note.maxLength = 200;
       const btn = el("button", null, "Upload"); btn.type = "button"; btn.disabled = true;
-      const msg = el("div", "um", "Only you see this upload bar. PDF, Word, Excel, PowerPoint, CSV, text or images · 4.5 MB max.");
+      const msg = el("div", "um", "Only you see this. Files stay with this must-read and are removed when you post a new one or take it down. PDF, Word, Excel, PowerPoint, CSV, text or images · 4.5 MB max.");
       file.onchange = () => { btn.disabled = !file.files.length; msg.className = "um"; if (file.files[0] && file.files[0].size > 4.5 * 1048576) { msg.className = "um bad"; msg.textContent = "That file is over 4.5 MB. Compress it (or split it) and try again."; btn.disabled = true; } };
       btn.onclick = async () => {
         btn.disabled = true; msg.className = "um"; msg.textContent = "Uploading…";
-        try { const j = await docsApi("POST", { file: file.files[0], note: note.value.trim() }); docs = j.docs; renderDocs(); }
+        try { const j = await docsApi("POST", { file: file.files[0], note: note.value.trim(), noticeId: must.id }); docs = j.docs; renderDocs(); }
         catch (err) { msg.className = "um bad"; msg.textContent = "Upload failed: " + err.message; btn.disabled = false; }
       };
       bar.append(file, note, btn, msg); up.append(bar);
     }
-    const list = $("#docList");
-    if (!docs.length) { list.replaceChildren(el("div", "empty", "No documents yet.")); return; }
-    list.replaceChildren(...docs.map((d) => {
+    const list = el("div", "docs"); host.append(list);
+    if (!mine.length) return;
+    list.replaceChildren(...mine.map((d) => {
       const row = el("div", "doc"), t = ftype(d.name);
       const info = el("div"); info.append(el("div", "dn", d.name));
       if (d.note) info.append(el("div", "dnote", d.note));
