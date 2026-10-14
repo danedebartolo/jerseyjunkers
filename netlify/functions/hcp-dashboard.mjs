@@ -42,7 +42,26 @@ function debugInfo(jobs, r) {
   return {
     range: r, fetched: jobs.length, statuses,
     revenueField: REVENUE_MODE,
-    completedWithoutSchedule: jobs.filter((j) => isDone(j) && !j.schedule?.scheduled_start).length,
+    // Completed in this range but never put on the calendar — these were missing before the fix
+    completedWithoutSchedule: uniqDone(jobs, r.start, r.end)
+      .filter((j) => !j.schedule?.scheduled_start)
+      .map((j) => ({
+        invoice: j.invoice_number,
+        customer: [j.customer?.first_name, j.customer?.last_name].filter(Boolean).join(" ") || j.customer?.company || "",
+        completed: j.work_timestamps?.completed_at ? ymd(new Date(j.work_timestamps.completed_at)) : "",
+        revenue: Math.round(revenueOf(j) * 100) / 100,
+        crew: crewOf(j).map((e) => e.first_name).join(", "),
+        description: (j.description || "").slice(0, 80),
+      })),
+    // dollars summed over the exact jobs the dashboard counts, for every money-looking field HCP sends
+    fieldSums: (() => {
+      const done = uniqDone(jobs, r.start, r.end), sums = {};
+      for (const j of done) for (const [k, v] of Object.entries(j))
+        if (typeof v === "number" && /amount|total|balance|price|subtotal|tax|discount/i.test(k)) sums[k] = (sums[k] || 0) + v / 100;
+      sums["(dashboard revenue)"] = done.reduce((t, j) => t + revenueOf(j), 0);
+      sums["(total_amount / 1.06625)"] = (sums.total_amount || 0) / 1.06625;
+      return Object.fromEntries(Object.entries(sums).map(([k, v]) => [k, Math.round(v * 100) / 100]));
+    })(),
     sample: jobs.filter(isDone).slice(0, 8).map((j) => ({
       invoice: j.invoice_number, status: j.work_status,
       scheduled: j.schedule?.scheduled_start, completed: j.work_timestamps?.completed_at,
@@ -148,7 +167,7 @@ const hasReviewTag = (j) => (j.tags || []).some((t) => String(typeof t === "stri
 const isRoute = (e) => /\broute\b/i.test(`${e.first_name || ""} ${e.last_name || ""}`);
 // Only these first names appear in the per-employee revenue / job sections (env DASHBOARD_EMPLOYEES overrides).
 const SHOWN = (process.env.DASHBOARD_EMPLOYEES || "Dane,Marcus,Dom,Christian,Anthony").split(",").map((s) => s.trim().toLowerCase()).filter(Boolean);
-const isShown = (e) => SHOWN.includes(String(e.first_name || "").trim().toLowerCase());
+const isShown = (e) => { const f = String(e.first_name || "").trim().toLowerCase(); return SHOWN.some((n) => f === n || f.startsWith(n)); }; // "Dom" matches "Dominic"
 const crewOf = (j) => (j.assigned_employees || []).filter((e) => !isRoute(e));
 const empName = (e) => (e.first_name ? (e.first_name + (e.last_name ? " " + e.last_name[0] + "." : "")).trim() : "Unassigned");
 
@@ -255,8 +274,9 @@ export default async (req) => {
 
   const url = new URL(req.url);
   const r = resolveRange(url.searchParams.get("range") || "ytd");
+  const debug = url.searchParams.get("debug") === "1" && isAdmin(req);
   const hit = cache.get(r.key);
-  if (hit && url.searchParams.get("fresh") !== "1" && Date.now() - hit.t < CACHE_MS) return json(hit.data);
+  if (!debug && hit && url.searchParams.get("fresh") !== "1" && Date.now() - hit.t < CACHE_MS) return json(hit.data);
 
   try {
     const today = ymd(new Date());
@@ -268,7 +288,7 @@ export default async (req) => {
     ]);
     const jobs = [...scheduled, ...created]; // uniqDone() de-dupes by job id
     const recentAll = [...recent.jobs, ...created];
-    if (url.searchParams.get("debug") === "1" && isAdmin(req)) return json(debugInfo(jobs, r));
+    if (debug) return json(debugInfo(jobs, r));
     const data = { ...build(jobs, r, truncated), week: buildWeek(recentAll) };
     cache.set(r.key, { t: Date.now(), data });
     return json(data);

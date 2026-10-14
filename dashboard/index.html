@@ -164,6 +164,28 @@ td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
 .pill.wait{background:#FBE9E6;border-color:#EBB8AF;color:#7a1f14}
 .pill small{opacity:.75}
 @media (prefers-color-scheme: dark){.pill.ok{background:#173524;border-color:#2A5A3D;color:#9FDDB5}.pill.wait{background:#3A1A16;border-color:#6B2C24;color:#F4B3A9}}
+.docs{display:flex;flex-direction:column}
+.doc{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--grid)}
+.doc:first-child{border-top:0}
+.doc .ft{width:44px;height:44px;border-radius:8px;display:grid;place-items:center;font-size:11px;font-weight:800;letter-spacing:.04em;background:var(--bg);border:1px solid var(--line);color:var(--ink2)}
+.doc .ft.pdf{background:#FBE9E6;border-color:#EBB8AF;color:#7a1f14}
+.doc .ft.word{background:#E6EDF8;border-color:#BCCBE6;color:#1E3A6E}
+.doc .ft.xl{background:#E8F4EC;border-color:#BFDEC9;color:#1E5E3A}
+.doc .dn{font-weight:600;font-size:15px;word-break:break-word}
+.doc .dm{font-size:12.5px;color:var(--muted);margin-top:2px}
+.doc .dnote{font-size:13.5px;color:var(--ink2);margin-top:2px}
+.doc .acts{display:flex;gap:8px;align-items:center}
+.doc a.dl{font:inherit;font-weight:700;font-size:14px;text-decoration:none;border-radius:8px;padding:8px 14px;background:#1a1a1a;color:#fff;white-space:nowrap}
+.doc button.rm{font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--card);color:#C0392B;border-radius:8px;padding:7px 10px;cursor:pointer}
+.doc button.rm.sure{background:#C0392B;color:#fff;border-color:#C0392B}
+.upl{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:12px;border:1px dashed var(--line);border-radius:10px;margin-bottom:8px;background:var(--bg)}
+.upl input[type=file]{font:inherit;font-size:14px;max-width:100%}
+.upl input[type=text]{font:inherit;font-size:14px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);flex:1;min-width:180px}
+.upl button{font:inherit;font-weight:700;font-size:14px;border:0;border-radius:8px;padding:9px 16px;background:var(--gold);color:#1a1a1a;cursor:pointer}
+.upl button:disabled{opacity:.5;cursor:default}
+.upl .um{font-size:13px;color:var(--ink2);width:100%}
+.upl .um.bad{color:#C0392B}
+@media (max-width:560px){.doc{grid-template-columns:40px 1fr}.doc .acts{grid-column:1/-1}}
 footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
 @media (max-width:860px){.grid2{grid-template-columns:1fr}}
 @media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:first-child{grid-column:1/-1}.kpi .num{font-size:24px}.filters .note{width:100%;margin:4px 0 0}}
@@ -225,6 +247,13 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
       <div class="lead" id="rvLead"></div>
       <div class="srtable" id="rvTable"></div>
     </section>
+    <section class="card" id="docs">
+      <h2>Documents</h2>
+      <div class="cap" id="docsCap">Forms, procedures and anything else you need — tap to download</div>
+      <div id="docUpload"></div>
+      <div class="docs" id="docList"></div>
+    </section>
+
     <section class="card" id="suggest">
       <h2>Suggestion box</h2>
       <div class="cap">Got an idea to make the job easier, safer or better for customers — or something you want to see on this dashboard? It goes straight to Dane.</div>
@@ -675,6 +704,73 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
     box.append(f); t.focus();
   }
 
+  // ---------- documents ----------
+  let docs = [], docsAdmin = false, demoDocs = null;
+  const fsize = (b) => b >= 1048576 ? (b / 1048576).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
+  const ftype = (n) => { const e = (n.split(".").pop() || "").toLowerCase(); return { label: e.toUpperCase().slice(0, 4), cls: e === "pdf" ? "pdf" : /^docx?$/.test(e) ? "word" : /^(xlsx?|csv)$/.test(e) ? "xl" : "" }; };
+  async function docsApi(method, opts = {}) {
+    if (DEMO) {
+      docsAdmin = !new URLSearchParams(location.search).has("crew");
+      if (!demoDocs) demoDocs = [
+        { id: "d1", name: "Truck Safety Checklist.pdf", size: 248000, note: "Go through this every morning before you roll out", uploadedAt: new Date(Date.now() - 2 * 864e5).toISOString() },
+        { id: "d2", name: "2026 Holiday Schedule.docx", size: 41000, note: "", uploadedAt: new Date(Date.now() - 9 * 864e5).toISOString() },
+        { id: "d3", name: "Dump Fee Rates.xlsx", size: 18000, note: "Updated rates for Monmouth + Ocean transfer stations", uploadedAt: new Date(Date.now() - 20 * 864e5).toISOString() },
+      ];
+      if (method === "POST") demoDocs.unshift({ id: "u" + Date.now(), name: opts.file.name, size: opts.file.size, note: opts.note, uploadedAt: new Date().toISOString(), url: URL.createObjectURL(opts.file) });
+      if (method === "DELETE") demoDocs = demoDocs.filter((d) => d.id !== opts.id);
+      return { docs: demoDocs, isAdmin: docsAdmin };
+    }
+    const u = "/api/dashboard-docs" + (opts.id ? "?id=" + encodeURIComponent(opts.id) : "");
+    const init = { method, credentials: "same-origin" };
+    if (method === "POST") init.headers = { "x-file-name": encodeURIComponent(opts.file.name), "x-note": encodeURIComponent(opts.note || ""), "content-type": opts.file.type || "application/octet-stream" }, init.body = opts.file;
+    const res = await fetch(u, init);
+    const j = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(j.error || (res.status === 413 ? "File too big (4.5 MB max)" : res.statusText));
+    return j;
+  }
+  async function loadDocs() { try { const j = await docsApi("GET"); docs = j.docs; docsAdmin = j.isAdmin; renderDocs(); } catch {} }
+  function renderDocs() {
+    const sec = $("#docs");
+    sec.hidden = !docs.length && !docsAdmin;
+    // upload bar (admin only)
+    const up = $("#docUpload"); up.replaceChildren();
+    if (docsAdmin) {
+      const bar = el("div", "upl");
+      const file = el("input"); file.type = "file"; file.accept = ".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.txt,.png,.jpg,.jpeg,.heic,.gif";
+      const note = el("input"); note.type = "text"; note.placeholder = "Short note (optional)"; note.maxLength = 200;
+      const btn = el("button", null, "Upload"); btn.type = "button"; btn.disabled = true;
+      const msg = el("div", "um", "Only you see this upload bar. PDF, Word, Excel, PowerPoint, CSV, text or images · 4.5 MB max.");
+      file.onchange = () => { btn.disabled = !file.files.length; msg.className = "um"; if (file.files[0] && file.files[0].size > 4.5 * 1048576) { msg.className = "um bad"; msg.textContent = "That file is over 4.5 MB. Compress it (or split it) and try again."; btn.disabled = true; } };
+      btn.onclick = async () => {
+        btn.disabled = true; msg.className = "um"; msg.textContent = "Uploading…";
+        try { const j = await docsApi("POST", { file: file.files[0], note: note.value.trim() }); docs = j.docs; renderDocs(); }
+        catch (err) { msg.className = "um bad"; msg.textContent = "Upload failed: " + err.message; btn.disabled = false; }
+      };
+      bar.append(file, note, btn, msg); up.append(bar);
+    }
+    const list = $("#docList");
+    if (!docs.length) { list.replaceChildren(el("div", "empty", "No documents yet.")); return; }
+    list.replaceChildren(...docs.map((d) => {
+      const row = el("div", "doc"), t = ftype(d.name);
+      const info = el("div"); info.append(el("div", "dn", d.name));
+      if (d.note) info.append(el("div", "dnote", d.note));
+      info.append(el("div", "dm", `${fsize(d.size)} · added ${new Date(d.uploadedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}`));
+      const acts = el("div", "acts");
+      const a = el("a", "dl", "Download"); a.href = DEMO ? (d.url || "#") : "/api/dashboard-docs?id=" + encodeURIComponent(d.id); a.setAttribute("download", d.name);
+      acts.append(a);
+      if (docsAdmin) {
+        const rm = el("button", "rm", "Delete"); rm.type = "button";
+        rm.onclick = async () => {
+          if (!rm.classList.contains("sure")) { rm.classList.add("sure"); rm.textContent = "Tap again to delete"; setTimeout(() => { rm.classList.remove("sure"); rm.textContent = "Delete"; }, 4000); return; }
+          try { const j = await docsApi("DELETE", { id: d.id }); docs = j.docs; renderDocs(); } catch (err) { alertBox("Couldn’t delete: " + err.message); }
+        };
+        acts.append(rm);
+      }
+      row.append(el("div", "ft " + t.cls, t.label), info, acts);
+      return row;
+    }));
+  }
+
   // ---------- controls ----------
   document.querySelectorAll("[data-range]").forEach((b) => b.addEventListener("click", () => { range = b.dataset.range; store.set("jjdash-range2", range); load(); }));
   $("#refresh").addEventListener("click", () => load(true));
@@ -721,7 +817,7 @@ footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
 
   if (DEMO) demoNote = { headline: "October push: 40 Google reviews", body: "Every reviewed job = $10 for the crew on it.\nIf we hit 40 as a team, lunch is on me Friday. Ask every happy customer before you leave the driveway!", goalMetric: "reviews", goalTarget: 40, goalLabel: "", updatedAt: new Date().toISOString() };
   if (DEMO) { demoMust = { id: "demo1", title: "New dump-run procedure starting Monday", body: "Every truck checks in with Marcus before heading to the transfer station.\nPhotos of every load go in the HCP job before you leave the site — no exceptions.", required: ["Marcus", "Dom", "Christian", "Anthony"], postedAt: new Date(Date.now() - 864e5).toISOString(), editedAt: null }; demoSigned = [{ name: "Marcus", at: new Date(Date.now() - 7e7).toISOString() }, { name: "Dom", at: new Date(Date.now() - 3e6).toISOString() }]; }
-  load(); loadNotice(); loadMust();
+  load(); loadNotice(); loadMust(); loadDocs();
 })();
 </script>
 </body>
