@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Dashboard · Jersey Junkers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;800&family=Instrument+Sans:wght@400;500;600&display=optional" rel="stylesheet">
+<style>
+:root{
+  --bg:#F4F3EF; --card:#FFFFFF; --ink:#1a1a1a; --ink2:#55534E; --muted:#86837C;
+  --line:#E4E2DC; --grid:#EEECE7; --bar:#1E3A6E; --barHover:#2F5496;
+  --gold:#F5C400; --head:#121210;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#0F0F0E; --card:#1A1A19; --ink:#F2F1ED; --ink2:#BDBAB2; --muted:#8A877F;
+    --line:#2C2B29; --grid:#252423; --bar:#7FA2E0; --barHover:#A3BEEE; }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.45 "Instrument Sans",system-ui,-apple-system,sans-serif}
+h1,h2,.num{font-family:Archivo,system-ui,sans-serif}
+.top{background:var(--head);border-bottom:4px solid var(--gold);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:16px;padding:14px 16px;flex-wrap:wrap}
+.top h1{font-size:18px;font-weight:800;margin:0;letter-spacing:.2px}
+.top h1 span{color:var(--gold)}
+.top .meta{margin-left:auto;font-size:13px;color:#b8b6b0;display:flex;align-items:center;gap:10px}
+.top button{background:transparent;border:1px solid #444;color:#fff;border-radius:8px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
+.top button:hover{border-color:var(--gold)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+.filters{display:flex;gap:6px;padding:18px 0 6px;flex-wrap:wrap;align-items:center}
+.filters button{font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.filters .note{margin-left:auto;font-size:13px;color:var(--muted)}
+.demo{background:#FFF6CC;color:#5a4a00;border:1px solid #EAD67A;border-radius:10px;padding:10px 14px;font-size:14px;margin-top:12px}
+.err{background:#FBE9E6;color:#7a1f14;border:1px solid #EBB8AF;border-radius:10px;padding:12px 14px;font-size:14px;margin-top:12px}
+main{transition:opacity .2s}
+main.loading{opacity:.45}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:12px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+.kpi .lbl{font-size:13px;color:var(--ink2);font-weight:500}
+.kpi .num{font-size:30px;font-weight:800;margin:4px 0 0;letter-spacing:-.5px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;min-width:0;margin-bottom:12px}
+.grid2 .card{margin-bottom:0}
+.card h2{font-size:16px;font-weight:800;margin:0}
+.card .cap{font-size:13px;color:var(--muted);margin:2px 0 12px}
+.card-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.card-h .link{margin-left:auto;font-size:13px;color:var(--ink2);background:none;border:0;cursor:pointer;text-decoration:underline;font:inherit}
+.chart svg{display:block;width:100%;height:auto;overflow:visible}
+.axis text{fill:var(--muted);font-size:11px}
+.vlabel{fill:var(--ink2);font-size:11px;font-weight:600}
+.gridline{stroke:var(--grid);stroke-width:1}
+.baseline{stroke:var(--line);stroke-width:1}
+.bar{fill:var(--bar)} .bar.hot{fill:var(--barHover)}
+.hbars{display:flex;flex-direction:column;gap:10px}
+.hrow{display:grid;grid-template-columns:minmax(90px,32%) 1fr auto;gap:10px;align-items:center;font-size:14px;cursor:default;border-radius:6px}
+.hrow:focus{outline:2px solid var(--barHover);outline-offset:3px}
+.hrow .nm{color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hrow .fill{height:14px;background:var(--bar);border-radius:0 4px 4px 0;min-width:2px}
+.hrow:hover .fill{background:var(--barHover)}
+.hrow .val{color:var(--ink2);font-variant-numeric:tabular-nums;text-align:right;min-width:66px;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-weight:600;color:var(--ink2);font-size:12.5px;padding:8px 10px;border-bottom:1px solid var(--line)}
+td{white-space:nowrap;padding:8px 10px;border-bottom:1px solid var(--grid)}
+td.r,th.r{text-align:right;font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);font-size:14px;padding:12px 0}
+.srtable{margin-top:12px;display:none;overflow-x:auto}
+.srtable.show{display:block}
+#tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--bg);padding:8px 10px;border-radius:8px;font-size:13px;line-height:1.35;opacity:0;z-index:10;white-space:nowrap}
+#tip b{font-size:15px;font-family:Archivo,sans-serif}
+#tip .s{opacity:.75}
+.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:thin}
+.chips button{flex:none;font:inherit;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink2);cursor:pointer}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.rvsum{display:flex;gap:28px;flex-wrap:wrap;margin:4px 0 16px}
+.rvsum div{font-size:13px;color:var(--ink2)}
+.rvsum b{display:block;font-family:Archivo,sans-serif;font-size:24px;color:var(--ink);font-weight:800}
+.lead{display:flex;flex-direction:column;gap:10px}
+.lrow{display:grid;grid-template-columns:22px minmax(90px,28%) 1fr 90px 76px;gap:10px;align-items:center;font-size:14px;border-radius:6px}
+.lrow:focus{outline:2px solid var(--barHover);outline-offset:3px}
+.lrow .rk{color:var(--muted);font-weight:600;text-align:right;font-variant-numeric:tabular-nums}
+.lrow .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lrow .fill{height:14px;background:var(--bar);border-radius:0 4px 4px 0;min-width:2px}
+.lrow:hover .fill{background:var(--barHover)}
+.lrow .ct{white-space:nowrap;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;font-size:13px}
+.lrow .bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+@media (max-width:560px){.lrow{grid-template-columns:18px minmax(70px,30%) 1fr 58px}.lrow .ct{display:none}}
+.notice{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--gold);border-radius:12px;padding:16px 18px;margin:12px 0}
+.notice.empty{border:1px dashed var(--line);border-left:6px solid var(--line);background:transparent}
+.notice .nh{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.notice h2{font-size:20px;font-weight:800;margin:0}
+.notice .when{font-size:12.5px;color:var(--muted)}
+.notice .edit{margin-left:auto;font:inherit;font-size:13px;font-weight:600;border:1px solid var(--line);background:var(--card);color:var(--ink2);border-radius:8px;padding:5px 12px;cursor:pointer}
+.notice .edit:hover{border-color:var(--ink2)}
+.notice .nb{white-space:pre-wrap;margin:6px 0 0;font-size:15.5px;line-height:1.5}
+.goal{margin-top:14px}
+.goal .gl{display:flex;justify-content:space-between;gap:12px;font-size:14px;margin-bottom:6px;flex-wrap:wrap}
+.goal .gl b{font-family:Archivo,sans-serif}
+.goal .gm{height:12px;border-radius:999px;background:var(--grid);overflow:hidden}
+.goal .gm>div{height:100%;background:var(--gold);border-radius:999px;transition:width .4s}
+.goal .gs{font-size:13px;color:var(--ink2);margin-top:6px}
+.nform{display:grid;gap:10px;margin-top:10px}
+.nform label{font-size:13px;font-weight:600;color:var(--ink2);display:grid;gap:4px}
+.nform input,.nform textarea,.nform select{font:inherit;font-weight:400;font-size:15px;padding:9px 11px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%}
+.nform textarea{min-height:90px;resize:vertical}
+.nform .row{display:grid;grid-template-columns:1fr 160px;gap:10px}
+.nform .btns{display:flex;gap:8px;flex-wrap:wrap}
+.nform button{font:inherit;font-weight:700;font-size:14px;border-radius:8px;padding:9px 16px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.nform button.save{background:var(--gold);border-color:var(--gold);color:#1a1a1a}
+.nform button.del{margin-left:auto;color:#C0392B}
+.nform .hint{font-size:12.5px;color:var(--muted)}
+.top a.out{color:#b8b6b0;font-size:13px;text-decoration:none}
+.top a.out:hover{color:#fff}
+@media (max-width:560px){.nform .row{grid-template-columns:1fr}}
+footer{color:var(--muted);font-size:12.5px;padding:4px 0 32px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+@media (max-width:560px){.kpis{grid-template-columns:1fr 1fr}.kpis .kpi:first-child{grid-column:1/-1}.kpi .num{font-size:24px}.filters .note{width:100%;margin:4px 0 0}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>JERSEY JUNKERS <span>· Dashboard</span></h1>
+  <div class="meta"><span id="updated">Loading…</span><button id="refresh" type="button">Refresh</button><a class="out" href="/dashboard/logout">Log out</a></div>
+</div></header>
+
+<div class="wrap">
+  <div class="filters" role="group" aria-label="Date range">
+    <button data-range="ytd">Year to date</button>
+    <button data-range="12m">Last 12 months</button>
+    <button data-range="90d">Last 90 days</button>
+    <button data-range="lastyear">Last year</button>
+    <span class="note" id="rangeNote"></span>
+  </div>
+  <div id="banner"></div>
+
+  <section id="notice" hidden></section>
+  <main id="main">
+    <section class="kpis" id="kpis"></section>
+
+    <section class="card">
+      <div class="card-h"><h2>Revenue by month</h2><button class="link" data-table="monthTable">Table</button></div>
+      <div class="cap">Completed jobs, by scheduled date</div>
+      <div class="chart" id="monthChart"></div>
+      <div class="srtable" id="monthTable"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-h"><h2>Revenue by week</h2><button class="link" data-table="weekTable">Table</button></div>
+      <div class="cap">Completed jobs, weeks run Monday–Sunday</div>
+      <div class="chart" id="weekChart"></div>
+      <div class="srtable" id="weekTable"></div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="card-h"><h2>Job revenue by employee</h2><button class="link" data-table="empTable">Table</button></div>
+        <div class="cap">When several people work a job, its revenue is split evenly between them</div>
+        <div class="hbars" id="empRev"></div>
+        <div class="srtable" id="empTable"></div>
+      </div>
+      <div class="card">
+        <h2>Jobs per employee</h2>
+        <div class="cap">Completed jobs each person was assigned to</div>
+        <div class="hbars" id="empJobs"></div>
+      </div>
+    </section>
+    <section class="card">
+      <div class="card-h"><h2>Google review bonus</h2><button class="link" data-table="rvTable">Table</button></div>
+      <div class="cap" id="rvCap">Completed jobs tagged LEFT REVIEW in Housecall Pro</div>
+      <div class="chips" id="rvMonths" role="group" aria-label="Month"></div>
+      <div class="rvsum" id="rvSum"></div>
+      <div class="lead" id="rvLead"></div>
+      <div class="srtable" id="rvTable"></div>
+    </section>
+  </main>
+  <footer>Live from Housecall Pro · cached for up to 10 minutes · Refresh pulls fresh data</footer>
+</div>
+<div id="tip" role="tooltip"></div>
+
+<script>
+(() => {
+  const $ = (s) => document.querySelector(s);
+  const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
+  const money = (v) => "$" + Math.round(+v || 0).toLocaleString("en-US");
+  const moneyK = (v) => v >= 1000 ? "$" + (v / 1000).toFixed(v >= 100000 ? 0 : 1).replace(/\.0$/, "") + "k" : money(v);
+  const plural = (n, w) => `${n.toLocaleString()} ${w}${n === 1 ? "" : "s"}`;
+  const DEMO = location.protocol === "file:" || new URLSearchParams(location.search).has("demo");
+  const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+  let range = store.get("jjdash-range2") || "ytd";
+  let last = null;
+
+  // ---------- tooltip ----------
+  const tip = $("#tip");
+  function showTip(e, value, label, sub) {
+    tip.replaceChildren(el("b", null, value), document.createElement("br"), el("span", null, label));
+    if (sub) tip.append(document.createElement("br"), el("span", "s", sub));
+    tip.style.opacity = 1; moveTip(e);
+  }
+  function moveTip(e) {
+    const r = tip.getBoundingClientRect();
+    let x = e.clientX + 14, y = e.clientY - r.height - 10;
+    if (x + r.width > innerWidth - 8) x = e.clientX - r.width - 14;
+    if (y < 8) y = e.clientY + 16;
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  const hideTip = () => (tip.style.opacity = 0);
+  const ptFor = (node, e) => (e && e.clientX != null ? e : (() => { const b = node.getBoundingClientRect(); return { clientX: b.x + b.width / 2, clientY: b.y + 10 }; })());
+
+  // ---------- data ----------
+  async function load(fresh) {
+    $("#main").classList.add("loading");
+    document.querySelectorAll("[data-range]").forEach((b) => b.setAttribute("aria-pressed", b.dataset.range === range));
+    try {
+      let data;
+      if (DEMO) data = demoData(range);
+      else {
+        const res = await fetch(`/api/hcp-dashboard?range=${encodeURIComponent(range)}${fresh ? "&fresh=1" : ""}`, { credentials: "same-origin" });
+        if (res.status === 401) { location.reload(); return; }
+        data = await res.json();
+        if (!res.ok) throw new Error(data.error || res.statusText);
+      }
+      last = data; render(data); renderNotice();
+      $("#banner").replaceChildren();
+      if (DEMO) $("#banner").append(el("div", "demo", "Preview mode — sample numbers, not your real Housecall Pro data."));
+      if (data.truncated) $("#banner").append(el("div", "err", "Very large range — only the first 6,000 jobs were counted."));
+    } catch (err) {
+      $("#banner").replaceChildren(el("div", "err", "Couldn’t load Housecall Pro data: " + err.message));
+      $("#updated").textContent = "Load failed";
+    } finally { $("#main").classList.remove("loading"); }
+  }
+
+  // ---------- render ----------
+  const fmtDay = (s, opt = { month: "short", day: "numeric" }) => new Date(s + "T12:00:00").toLocaleDateString("en-US", opt);
+  const fmtMonth = (s, long) => new Date(s + "-15T12:00:00").toLocaleDateString("en-US", long ? { month: "long", year: "numeric" } : { month: "short" });
+
+  function render(d) {
+    const r = d.range;
+    $("#rangeNote").textContent = `${fmtDay(r.start, { month: "short", day: "numeric", year: "numeric" })} – ${fmtDay(r.end, { month: "short", day: "numeric", year: "numeric" })}`;
+    $("#updated").textContent = "Updated " + new Date(d.generatedAt).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+
+    const kpi = (lbl, num) => { const k = el("div", "kpi"); k.append(el("div", "lbl", lbl), el("div", "num", num)); return k; };
+    $("#kpis").replaceChildren(kpi("Revenue", money(d.totals.revenue)), kpi("Jobs completed", d.totals.jobs.toLocaleString()), kpi("Average ticket", money(d.totals.avgTicket)));
+
+    const yearSpan = new Set(d.monthly.map((m) => m.date.slice(0, 4))).size > 1;
+    barChart("#monthChart", d.monthly, {
+      tick: (p) => fmtMonth(p.date) + (yearSpan && p.date.endsWith("-01") ? " ’" + p.date.slice(2, 4) : ""),
+      label: (p) => fmtMonth(p.date, true),
+      valueLabels: true,
+    });
+    table("#monthTable", ["Month", "Jobs", "Revenue", "Avg ticket"], d.monthly.map((p) => [fmtMonth(p.date, true), p.jobs, money(p.revenue), p.jobs ? money(p.revenue / p.jobs) : "—"]));
+
+    barChart("#weekChart", d.weekly, {
+      tick: (p) => fmtDay(p.date),
+      label: (p) => "Week of " + fmtDay(p.date, { month: "short", day: "numeric", year: "numeric" }),
+      maxTicks: 10,
+    });
+    table("#weekTable", ["Week of", "Jobs", "Revenue", "Avg ticket"], d.weekly.map((p) => [fmtDay(p.date, { month: "short", day: "numeric", year: "numeric" }), p.jobs, money(p.revenue), p.jobs ? money(p.revenue / p.jobs) : "—"]));
+
+    const emps = d.employees;
+    const sub = (e) => `${plural(e.jobs, "job")} · ${money(e.jobs ? e.revenue / e.jobs : 0)} per job`;
+    hbars("#empRev", [...emps].sort((a, b) => b.revenue - a.revenue), (e) => e.revenue, moneyK, (e) => [money(e.revenue), e.name, sub(e)]);
+    hbars("#empJobs", [...emps].sort((a, b) => b.jobs - a.jobs), (e) => e.jobs, (v) => v.toLocaleString(), (e) => [plural(e.jobs, "job"), e.name, money(e.revenue) + " revenue"]);
+    reviews(d.reviews);
+    table("#empTable", ["Employee", "Jobs", "Revenue", "Per job"], [...emps].sort((a, b) => b.revenue - a.revenue).map((e) => [e.name, e.jobs, money(e.revenue), money(e.jobs ? e.revenue / e.jobs : 0)]));
+  }
+
+  function barChart(sel, pts, o) {
+    const box = $(sel);
+    const W = Math.max(300, box.clientWidth || 900), H = W < 500 ? 220 : 280;
+    const L = 52, R = 8, T = o.valueLabels ? 22 : 10, B = 28;
+    const max = Math.max(1, ...pts.map((p) => p.revenue));
+    const step = niceStep(max / 4), top = Math.ceil(max / step) * step;
+    const y = (v) => T + (H - T - B) * (1 - v / top);
+    const bw = (W - L - R) / pts.length, gap = Math.min(10, Math.max(2, bw * 0.22));
+    const NS = "http://www.w3.org/2000/svg", mk = (t, a) => { const n = document.createElementNS(NS, t); for (const k in a) n.setAttribute(k, a[k]); return n; };
+    const svg = mk("svg", { viewBox: `0 0 ${W} ${H}`, width: W, height: H, role: "img" });
+    const ax = mk("g", { class: "axis" });
+    for (let v = 0; v <= top + 1e-9; v += step) {
+      svg.append(mk("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), class: v === 0 ? "baseline" : "gridline" }));
+      const t = mk("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }); t.textContent = moneyK(v); ax.append(t);
+    }
+    svg.append(ax);
+    const maxTicks = Math.min(o.maxTicks || 99, Math.floor((W - L) / 54));
+    const every = Math.max(1, Math.ceil(pts.length / maxTicks));
+    const showVals = o.valueLabels && bw >= 40;
+    pts.forEach((p, i) => {
+      const x = L + i * bw + gap / 2, w = Math.max(1, bw - gap), yt = y(p.revenue), h = y(0) - yt;
+      const r = Math.min(4, w / 2, h);
+      const bar = mk("path", { class: "bar", d: h > 0 ? `M${x},${y(0)} V${yt + r} Q${x},${yt} ${x + r},${yt} H${x + w - r} Q${x + w},${yt} ${x + w},${yt + r} V${y(0)} Z` : "" });
+      const hit = mk("rect", { x: L + i * bw, y: T - 10, width: bw, height: H - T - B + 10, fill: "transparent", tabindex: 0 });
+      hit.setAttribute("aria-label", `${o.label(p)}: ${money(p.revenue)}, ${plural(p.jobs, "job")}`);
+      const on = (e) => { bar.classList.add("hot"); showTip(ptFor(hit, e), money(p.revenue), o.label(p), `${plural(p.jobs, "job")}${p.jobs ? " · " + money(p.revenue / p.jobs) + " avg" : ""}`); };
+      const off = () => { bar.classList.remove("hot"); hideTip(); };
+      hit.addEventListener("pointerenter", on); hit.addEventListener("pointermove", moveTip);
+      hit.addEventListener("pointerleave", off); hit.addEventListener("focus", on); hit.addEventListener("blur", off);
+      svg.append(bar);
+      if (showVals && p.revenue > 0) { const t = mk("text", { x: x + w / 2, y: yt - 6, "text-anchor": "middle", class: "vlabel" }); t.textContent = moneyK(p.revenue); svg.append(t); }
+      if (i % every === 0) { const t = mk("text", { x: L + i * bw + bw / 2, y: H - 8, "text-anchor": "middle" }); t.textContent = o.tick(p); ax.append(t); }
+      svg.append(hit);
+    });
+    box.replaceChildren(svg);
+  }
+  let rvMonth = null;
+  function reviews(rv) {
+    const months = [...rv.months].reverse();
+    if (!rvMonth || (rvMonth !== "all" && !months.includes(rvMonth))) rvMonth = months[0];
+    $("#rvCap").textContent = `$${rv.perJob} for every completed job tagged ${rv.tag} in Housecall Pro, split evenly between the crew on that job`;
+    const chip = (key, label) => { const b = el("button", null, label); b.type = "button"; b.setAttribute("aria-pressed", key === rvMonth); b.addEventListener("click", () => { rvMonth = key; reviews(rv); }); return b; };
+    $("#rvMonths").replaceChildren(...months.map((m) => chip(m, fmtMonth(m, true))), chip("all", "Whole range"));
+
+    const stat = (e) => rvMonth === "all" ? { reviews: e.reviews, bonus: e.bonus } : (e.byMonth[rvMonth] || { reviews: 0, bonus: 0 });
+    const list = rv.employees.map((e) => ({ name: e.name, ...stat(e) })).filter((e) => e.reviews > 0).sort((a, b) => b.bonus - a.bonus || b.reviews - a.reviews);
+    const totalBonus = list.reduce((s, e) => s + e.bonus, 0);
+    const jobs = Math.round(totalBonus / rv.perJob);
+    const sumItem = (big, small) => { const d2 = el("div"); d2.append(el("b", null, big), document.createTextNode(small)); return d2; };
+    const when = rvMonth === "all" ? "in this range" : "in " + fmtMonth(rvMonth, true);
+    $("#rvSum").replaceChildren(sumItem(jobs.toLocaleString(), `Reviewed jobs ${when}`), sumItem(money2(totalBonus), "Bonus earned"), sumItem(list[0] ? list[0].name : "—", "Leader"));
+
+    const box = $("#rvLead");
+    if (!list.length) box.replaceChildren(el("div", "empty", `No jobs tagged ${rv.tag} ${when} yet.`));
+    else {
+      const max = Math.max(...list.map((e) => e.bonus));
+      box.replaceChildren(...list.map((e, i) => {
+        const row = el("div", "lrow"); row.tabIndex = 0;
+        const tr = el("div"), f = el("div", "fill"); f.style.width = (e.bonus / max * 100) + "%"; tr.append(f);
+        row.append(el("span", "rk", i + 1), el("span", "nm", e.name), tr, el("span", "ct", plural(e.reviews, "review")), el("span", "bn", money2(e.bonus)));
+        const on = (ev) => showTip(ptFor(row, ev), money2(e.bonus), e.name, `${plural(e.reviews, "reviewed job")} ${when}`);
+        row.addEventListener("pointerenter", on); row.addEventListener("pointermove", moveTip);
+        row.addEventListener("pointerleave", hideTip); row.addEventListener("focus", on); row.addEventListener("blur", hideTip);
+        return row;
+      }));
+    }
+    // employee x month grid
+    const all = [...rv.employees].sort((a, b) => b.bonus - a.bonus);
+    table("#rvTable", ["Employee", ...rv.months.map((m) => fmtMonth(m)), "Total"],
+      all.map((e) => [e.name, ...rv.months.map((m) => e.byMonth[m] ? `${money2(e.byMonth[m].bonus)} (${e.byMonth[m].reviews})` : "—"), `${money2(e.bonus)} (${e.reviews})`]));
+  }
+  const money2 = (v) => "$" + (+v || 0).toLocaleString("en-US", { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 });
+
+  function niceStep(raw) { const p = Math.pow(10, Math.floor(Math.log10(raw || 1))); const n = raw / p; return (n <= 1 ? 1 : n <= 2 ? 2 : n <= 2.5 ? 2.5 : n <= 5 ? 5 : 10) * p; }
+
+  function hbars(sel, list, val, fmt, tipFn) {
+    const box = $(sel);
+    if (!list.length) { box.replaceChildren(el("div", "empty", "No completed jobs in this range.")); return; }
+    const max = Math.max(...list.map(val), 1);
+    box.replaceChildren(...list.map((x) => {
+      const row = el("div", "hrow"); row.tabIndex = 0;
+      const tr = el("div"), f = el("div", "fill"); f.style.width = (val(x) / max * 100) + "%"; tr.append(f);
+      row.append(el("span", "nm", x.name), tr, el("span", "val", fmt(val(x))));
+      const on = (e) => { const [a, b, c] = tipFn(x); showTip(ptFor(row, e), a, b, c); };
+      row.addEventListener("pointerenter", on); row.addEventListener("pointermove", moveTip);
+      row.addEventListener("pointerleave", hideTip); row.addEventListener("focus", on); row.addEventListener("blur", hideTip);
+      return row;
+    }));
+  }
+
+  function table(sel, heads, rows) {
+    const t = el("table"), hr = el("tr");
+    heads.forEach((h, i) => hr.append(el("th", i ? "r" : null, h)));
+    t.append(hr);
+    rows.forEach((r) => { const tr = el("tr"); r.forEach((c, i) => tr.append(el("td", i ? "r" : null, c))); t.append(tr); });
+    $(sel).replaceChildren(t);
+  }
+
+  // ---------- team message ----------
+  let note = null, isAdmin = false, editing = false, demoNote = null;
+  async function loadNotice() {
+    try {
+      if (DEMO) { note = demoNote; isAdmin = true; }
+      else {
+        const res = await fetch("/api/dashboard-message", { credentials: "same-origin" });
+        if (!res.ok) return;
+        const j = await res.json(); note = j.message; isAdmin = j.isAdmin;
+      }
+      renderNotice();
+    } catch {}
+  }
+  const curMonth = () => new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date()).slice(0, 7);
+  const METRIC = {
+    revenue: { name: "revenue", fmt: money },
+    jobs: { name: "completed jobs", fmt: (v) => Math.round(v).toLocaleString() },
+    reviews: { name: "Google reviews", fmt: (v) => Math.round(v).toLocaleString() },
+  };
+  function progress(metric) {
+    if (!last) return null;
+    const m = curMonth();
+    if (!last.monthly.some((x) => x.date === m)) return null; // range doesn't include this month
+    if (metric === "revenue") return last.monthly.find((x) => x.date === m).revenue;
+    if (metric === "jobs") return last.monthly.find((x) => x.date === m).jobs;
+    if (metric === "reviews") { const rv = last.reviews; return Math.round(rv.employees.reduce((s, e) => s + (e.byMonth[m]?.bonus || 0), 0) / rv.perJob); }
+    return null;
+  }
+  function renderNotice() {
+    const box = $("#notice");
+    if (editing) return;
+    box.className = "notice"; box.replaceChildren();
+    if (!note) {
+      if (!isAdmin) { box.hidden = true; return; }
+      box.hidden = false; box.classList.add("empty");
+      const nh = el("div", "nh"); nh.append(el("span", "when", "No message posted. Only you can see this box."));
+      const b = el("button", "edit", "+ Post a message"); b.type = "button"; b.onclick = openEditor; nh.append(b); box.append(nh);
+      return;
+    }
+    box.hidden = false;
+    const nh = el("div", "nh");
+    if (note.headline) nh.append(el("h2", null, note.headline));
+    nh.append(el("span", "when", "Posted " + new Date(note.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })));
+    if (isAdmin) { const b = el("button", "edit", "Edit"); b.type = "button"; b.onclick = openEditor; nh.append(b); }
+    box.append(nh);
+    if (note.body) box.append(el("p", "nb", note.body));
+    if (note.goalMetric && note.goalMetric !== "none" && note.goalTarget > 0) {
+      const M = METRIC[note.goalMetric], cur = progress(note.goalMetric);
+      const g = el("div", "goal"), gl = el("div", "gl");
+      gl.append(el("b", null, note.goalLabel || `${fmtMonth(curMonth(), true).split(" ")[0]} goal: ${M.fmt(note.goalTarget)} ${M.name}`));
+      if (cur != null) gl.append(el("span", null, `${Math.min(100, Math.round(cur / note.goalTarget * 100))}%`));
+      g.append(gl);
+      if (cur != null) {
+        const gm = el("div", "gm"), f = el("div"); f.style.width = Math.min(100, cur / note.goalTarget * 100) + "%"; gm.append(f); g.append(gm);
+        const left = note.goalTarget - cur;
+        g.append(el("div", "gs", `${M.fmt(cur)} of ${M.fmt(note.goalTarget)} so far this month` + (left > 0 ? ` · ${M.fmt(left)} to go` : " · Goal hit!")));
+      } else g.append(el("div", "gs", "Pick Year to date, Last 12 months or Last 90 days to see progress."));
+      box.append(g);
+    }
+  }
+  function openEditor() {
+    editing = true;
+    const box = $("#notice"); box.hidden = false; box.className = "notice"; box.replaceChildren();
+    const f = el("form", "nform");
+    const field = (label, input, hint) => { const l = el("label", null, label); l.append(input); if (hint) l.append(el("span", "hint", hint)); return l; };
+    const hl = el("input"); hl.maxLength = 120; hl.placeholder = "e.g. October push: 40 Google reviews"; hl.value = note?.headline || "";
+    const bd = el("textarea"); bd.maxLength = 2000; bd.placeholder = "Message for the whole team. Incentives, reminders, shout-outs…"; bd.value = note?.body || "";
+    const gm = el("select");
+    [["none", "No goal"], ["revenue", "Revenue this month"], ["jobs", "Jobs completed this month"], ["reviews", "Google reviews this month"]].forEach(([v, t]) => { const o = el("option", null, t); o.value = v; gm.append(o); });
+    gm.value = note?.goalMetric || "none";
+    const gt = el("input"); gt.type = "number"; gt.min = 0; gt.step = "any"; gt.placeholder = "Target"; gt.value = note?.goalTarget || "";
+    const gla = el("input"); gla.maxLength = 120; gla.placeholder = "Optional, e.g. Hit 40 reviews = team lunch on me"; gla.value = note?.goalLabel || "";
+    const row = el("div", "row"); row.append(field("Goal tracker", gm, "Progress fills in automatically from Housecall Pro"), field("Target", gt));
+    const sync = () => { const on = gm.value !== "none"; gt.disabled = gla.disabled = !on; };
+    gm.onchange = sync; sync();
+    const btns = el("div", "btns");
+    const save = el("button", "save", "Post for everyone"); save.type = "submit";
+    const cancel = el("button", null, "Cancel"); cancel.type = "button"; cancel.onclick = () => { editing = false; renderNotice(); };
+    btns.append(save, cancel);
+    if (note) { const del = el("button", "del", "Remove message"); del.type = "button"; del.onclick = () => saveNotice({ clear: true }); btns.append(del); }
+    f.append(field("Headline", hl), field("Message", bd), row, field("Goal label", gla), btns);
+    f.onsubmit = (e) => { e.preventDefault(); saveNotice({ headline: hl.value.trim(), body: bd.value.trim(), goalMetric: gm.value, goalTarget: +gt.value || 0, goalLabel: gla.value.trim() }); };
+    box.append(f); hl.focus();
+  }
+  async function saveNotice(payload) {
+    try {
+      if (DEMO) note = demoNote = payload.clear ? null : { ...payload, updatedAt: new Date().toISOString() };
+      else {
+        const res = await fetch("/api/dashboard-message", { method: "POST", credentials: "same-origin", headers: { "content-type": "application/json" }, body: JSON.stringify(payload) });
+        const j = await res.json();
+        if (!res.ok) throw new Error(j.error || res.statusText);
+        note = j.message;
+      }
+      editing = false; renderNotice();
+    } catch (err) { alertBox("Couldn’t save the message: " + err.message); }
+  }
+  const alertBox = (msg) => { const b = $("#banner"); b.replaceChildren(el("div", "err", msg)); };
+
+  // ---------- controls ----------
+  document.querySelectorAll("[data-range]").forEach((b) => b.addEventListener("click", () => { range = b.dataset.range; store.set("jjdash-range2", range); load(); }));
+  $("#refresh").addEventListener("click", () => load(true));
+  document.querySelectorAll("[data-table]").forEach((b) => b.addEventListener("click", () => { const t = document.getElementById(b.dataset.table); t.classList.toggle("show"); b.textContent = t.classList.contains("show") ? "Hide table" : "Table"; }));
+  let rz; addEventListener("resize", () => { clearTimeout(rz); rz = setTimeout(() => last && render(last), 150); });
+  setInterval(() => { if (!document.hidden) load(); }, 10 * 60 * 1000);
+
+  // ---------- demo data (preview only — never used on the live site) ----------
+  function demoData(rg) {
+    let seed = 11; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const iso = (d) => d.toISOString().slice(0, 10);
+    const today = new Date(); today.setHours(12, 0, 0, 0);
+    const Y = today.getFullYear();
+    let start, end = new Date(today);
+    if (rg === "lastyear") { start = new Date(Y - 1, 0, 1, 12); end = new Date(Y - 1, 11, 31, 12); }
+    else if (rg === "90d") { start = new Date(today); start.setDate(today.getDate() - 89); }
+    else if (rg === "12m") { start = new Date(Y, today.getMonth() - 11, 1, 12); }
+    else start = new Date(Y, 0, 1, 12);
+    const season = [0.55, 0.6, 0.8, 1.05, 1.2, 1.25, 1.2, 1.15, 1.1, 1.0, 0.85, 0.65];
+    const crew = [["Marcus R.", 1.0], ["Dom T.", 0.9], ["Justin K.", 0.8], ["Brendan S.", 0.7], ["Christian A.", 0.55]];
+    const months = new Map(), weeks = new Map(), emps = new Map(), rvw = new Map(); let revenue = 0, jobs = 0, rjobs = 0;
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      if (d.getDay() === 0) continue;
+      const n = Math.round((d.getDay() === 6 ? 2 : 5) * season[d.getMonth()] + rnd() * 3);
+      const mk = iso(d).slice(0, 7); const mon = new Date(d); mon.setDate(d.getDate() - ((d.getDay() + 6) % 7)); const wk = iso(mon);
+      for (let j = 0; j < n; j++) {
+        const rev = Math.round(250 + rnd() * 700 + (rnd() < 0.08 ? 1500 : 0));
+        revenue += rev; jobs++;
+        for (const [k, map] of [[mk, months], [wk, weeks]]) { const c = map.get(k) || { date: k, revenue: 0, jobs: 0 }; c.revenue += rev; c.jobs++; map.set(k, c); }
+        const team = []; while (team.length < 2) { const pick = crew.find(([, w]) => rnd() < w * 0.45); if (pick && !team.includes(pick[0])) team.push(pick[0]); }
+        team.forEach((nm) => { const c = emps.get(nm) || { name: nm, revenue: 0, jobs: 0 }; c.revenue += rev / 2; c.jobs++; emps.set(nm, c); });
+        if (rnd() < 0.14) { rjobs++; team.forEach((nm) => { const c = rvw.get(nm) || { name: nm, reviews: 0, bonus: 0, byMonth: {} }; const m = c.byMonth[mk] || (c.byMonth[mk] = { reviews: 0, bonus: 0 }); c.reviews++; c.bonus += 5; m.reviews++; m.bonus += 5; rvw.set(nm, c); }); }
+      }
+    }
+    return {
+      generatedAt: new Date().toISOString(),
+      range: { start: iso(start), end: iso(end) },
+      totals: { revenue, jobs, avgTicket: revenue / Math.max(jobs, 1) },
+      monthly: [...months.values()], weekly: [...weeks.values()], employees: [...emps.values()],
+      reviews: { tag: "LEFT REVIEW", perJob: 10, jobs: rjobs, months: [...months.keys()], employees: [...rvw.values()] },
+    };
+  }
+
+  if (DEMO) demoNote = { headline: "October push: 40 Google reviews", body: "Every reviewed job = $10 for the crew on it.\nIf we hit 40 as a team, lunch is on me Friday. Ask every happy customer before you leave the driveway!", goalMetric: "reviews", goalTarget: 40, goalLabel: "", updatedAt: new Date().toISOString() };
+  load(); loadNotice();
+})();
+</script>
+</body>
+</html>
