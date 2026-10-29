@@ -504,7 +504,18 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .ticklist.clean-cols li{break-inside:avoid;margin:0 0 12px;padding-left:28px;position:relative;font-size:15.5px;line-height:1.45}
 .ticklist.clean-cols li:before{content:"\2713";position:absolute;left:0;top:0;color:var(--gold);font-weight:900}
 @media(max-width:560px){.ticklist.clean-cols{column-count:1}}
-#out-of-state,#whats-included{scroll-margin-top:80px}html{scroll-behavior:smooth}</style>
+#out-of-state,#whats-included{scroll-margin-top:80px}html{scroll-behavior:smooth}
+.price-reassure{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pr-card{background:#fff;border:1.5px solid var(--line,#e6e4dd);border-radius:16px;padding:24px 22px;box-shadow:0 4px 14px rgba(0,0,0,.05)}
+.pr-ico{font-size:30px;line-height:1;margin-bottom:12px}
+.pr-card h3{font-family:'Archivo',sans-serif;font-weight:900;font-size:18px;margin:0 0 8px;color:var(--ink,#12100e)}
+.pr-card p{margin:0;font-size:15px;line-height:1.6;color:#4a4740}
+.pr-oneprice{text-align:center;font-size:16.5px;color:var(--ink,#12100e);margin:26px auto 0;max-width:620px;line-height:1.6}
+@media(max-width:620px){.price-reassure{grid-template-columns:1fr}}
+
+.oos-banner-mobile{display:none}
+@media(max-width:760px){.oos-banner-desktop{display:none}.oos-banner-mobile{display:block}}
+</style>
 <style>
 .pt-modal{position:fixed;inset:0;background:rgba(18,18,16,.9);display:none;align-items:center;justify-content:center;z-index:300;padding:22px;cursor:zoom-out}
 .pt-modal.open{display:flex}
@@ -666,12 +677,16 @@ UPLOADCARE_PREVIEW_STEP = false;
 
 <section class="ld-mstrip"><div class="wrap">
 <div class="ld-mchecks">
-<span><i>&#10003;</i>700+ Five-Star Reviews</span>
+<span><i>&#10003;</i>750+ Five-Star Reviews</span>
 <span><i>&#10003;</i>Professional Service</span>
 <span><i>&#10003;</i>Licensed &amp; Insured</span>
 <span><i>&#10003;</i>Locally Owned Since 2012</span>
 </div>
 </div></section>
+<div class="oos-banner-mobile" style="background:#1a1a1a;text-align:center;padding:13px 20px">
+<a href="#out-of-state" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:.3px;color:#fff;text-decoration:none">&#9992;&nbsp; We work with <span style="color:#F5C400">out-of-state families</span> &mdash; <span style="text-decoration:underline">learn more &rarr;</span></a>
+</div>
+
 
 <section class="ld-mmission"><div class="wrap">
 <h2 class="ld-mm-h"><span style="color:var(--blue)">Whatever Filled It,</span><br>We&rsquo;ll <i>Empty It</i></h2>
@@ -687,7 +702,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="sec-head" style="margin-bottom:24px;text-align:center;max-width:none"><div class="kicker" style="display:inline-flex;justify-content:center">Residential &amp; Commercial</div>
 <h2 class="ld-wr-h">We clear out every kind of space.</h2>
 <div style="margin-top:18px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-<a class="btn" href="#whats-included" style="background:var(--gold);color:#1a1a1a">See what&rsquo;s included &rarr;</a>
+<a class="btn" href="/request-a-quote/" style="background:var(--gold);color:#1a1a1a">Get My Free Quote &rarr;</a>
 <a class="btn jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');" style="background:#1a1a1a;color:#fff">&#9742;&nbsp; Call 888-533-5865</a>
 </div></div>
 <div class="wwt-catgrid">
@@ -734,13 +749,13 @@ UPLOADCARE_PREVIEW_STEP = false;
 </div>
 </div>
 </div></section>
-<div style="background:#1a1a1a;text-align:center;padding:13px 20px">
+<div class="oos-banner-desktop" style="background:#1a1a1a;text-align:center;padding:13px 20px">
 <a href="#out-of-state" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;letter-spacing:.3px;color:#fff;text-decoration:none">&#9992;&nbsp; We work with <span style="color:#F5C400">out-of-state families</span> &mdash; <span style="text-decoration:underline">learn more &rarr;</span></a>
 </div>
 
 
 <section class="strip"><div class="wrap strip-in">
-<span><span class="tick">&#10003;</span>700+ Five-Star Reviews</span>
+<span><span class="tick">&#10003;</span>750+ Five-Star Reviews</span>
 <span><span class="tick">&#10003;</span>Professional Service</span>
 <span><span class="tick">&#10003;</span>Licensed &amp; Insured</span>
 <span><span class="tick">&#10003;</span>Locally Owned Since 2012</span>
@@ -748,10 +763,32 @@ UPLOADCARE_PREVIEW_STEP = false;
 
 <section id="whats-included" class="band" style="padding:56px 0 64px"><div class="wrap">
 <div class="sec-head" style="margin-bottom:24px;text-align:center;max-width:none"><div class="kicker" style="display:inline-flex;justify-content:center">What&rsquo;s included</div>
-<h2>Cleanout pricing includes</h2>
-<p style="max-width:700px;margin:10px auto 0">Every cleanout is quoted as one clear, all-in price &mdash; no surprises. Here&rsquo;s what comes standard with every job:</p></div>
-<div style="max-width:820px;margin:0 auto">
-<div class="gcard clrev-pricecard"><h3>All-inclusive pricing includes</h3><ul class="ticklist clean-cols"><li>2-hour arrival window</li><li>Trucks on site, ready to load items</li><li>Friendly, professional, uniformed team members</li><li>Emptying cabinets and closets</li><li>Removal of items from walls</li><li>Furniture disassembly</li><li>Bagging and boxing items for disposal</li><li>Labor to lift and load</li><li>Transportation to disposal and donation centers</li><li>Disposal fees</li><li>Before &amp; after photos</li><li>Property broom-swept upon completion</li><li>No credit card fees</li></ul></div>
+<h2>Everything&rsquo;s included. Nothing&rsquo;s a surprise.</h2>
+<p style="max-width:700px;margin:10px auto 0">One price covers the whole job &mdash; start to finish. You never have to wonder what&rsquo;s included or worry about a surprise at the end.</p></div>
+<div style="max-width:880px;margin:0 auto">
+<div class="price-reassure">
+<div class="pr-card">
+<div class="pr-ico">&#128666;</div>
+<h3>We bring everything</h3>
+<p>Trucks, dollies, tools, and a full uniformed crew show up ready to work &mdash; within a 2-hour arrival window.</p>
+</div>
+<div class="pr-card">
+<div class="pr-ico">&#128170;</div>
+<h3>We do all the work</h3>
+<p>Every item lifted, carried, and loaded. We empty cabinets and closets, take things off walls, and break down furniture. You don&rsquo;t touch a thing.</p>
+</div>
+<div class="pr-card">
+<div class="pr-ico">&#128679;</div>
+<h3>We haul &amp; dispose of it all</h3>
+<p>Hauling, transportation, donation drop-offs, and disposal fees &mdash; all handled and all included in your price.</p>
+</div>
+<div class="pr-card">
+<div class="pr-ico">&#10024;</div>
+<h3>We leave it clean</h3>
+<p>Before &amp; after photos, and the whole space broom-swept when we&rsquo;re done. No credit card fees, ever.</p>
+</div>
+</div>
+<p class="pr-oneprice"><b>One clear price before we start.</b> Everything above is included &mdash; no surprises at the end.</p>
 </div>
 <div class="sec-head" style="margin:48px 0 20px;text-align:center;max-width:none"><div class="kicker" style="display:inline-flex;justify-content:center">Turnkey-ready</div>
 <h2>Optional add-on services</h2>
@@ -760,16 +797,18 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="gcard clrev-pricecard"><h3>Add-ons available</h3><ul class="ticklist clean-cols"><li>Carpets vacuumed</li><li>Carpet &amp; padding removal</li><li>Power washing</li><li>Painting</li><li>Landscaping</li><li>Interior cleaning</li><li>Room deodorizing</li><li>Window washing</li></ul></div>
 </div>
 </div></section>
-
 <section id="out-of-state" class="band" style="padding:56px 0;background:var(--cloud)"><div class="wrap">
 <div class="sec-head" style="text-align:center;max-width:none"><div class="kicker" style="display:inline-flex;justify-content:center">Out-of-state families welcome</div>
 <h2>Settling a NJ estate from out of state? We&rsquo;ve got you.</h2>
 <p style="max-width:720px;margin:12px auto 0;font-size:16.5px;line-height:1.7">A lot of our cleanouts are for families who live out of state &mdash; adult kids settling a parent&rsquo;s home, handling a sale, or clearing a property they can&rsquo;t get to. You don&rsquo;t need to fly in or be there. We coordinate everything by phone and photo, send you before-and-after pictures, work with your realtor or attorney, and leave the home broom-swept and ready. You handle it all from wherever you are.</p>
 <div style="text-align:center;margin-top:24px"><a class="btn jr-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');" style="background:#1a1a1a;color:#fff">&#9742;&nbsp; Call 888-533-5865</a></div></div>
 </div></section>
+
+
+
 <section class="clrev-sec" style="padding:90px 0;background-size:cover;background-position:center;background-image:linear-gradient(rgba(18,18,16,.72),rgba(18,18,16,.82)),url('/images/36a716_b19fb15eea804cfe85e7903cf50f6b97_a552c7_64d38.jpg')"><div class="wrap"><div class="clrev" id="clrev">
 <div style="color:#F5C400;font-size:26px;letter-spacing:8px;margin-bottom:8px;text-shadow:0 2px 12px rgba(0,0,0,.4);text-align:center">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-<div style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.05em;font-size:12.5px;color:#cfc9bd;text-align:center;margin-bottom:24px">Excellent &middot; based on 700+ reviews</div>
+<div style="font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.05em;font-size:12.5px;color:#cfc9bd;text-align:center;margin-bottom:24px">Excellent &middot; based on 750+ reviews</div>
 <div class="clrev-track">
 <div class="clrev-slide is-active"><p class="clrev-quote">We live out of state, and my father&rsquo;s estate needed to be cleared. The team was so professional &mdash; they assessed based on photos I sent in, worked with my realtor to empty the entire home remotely, and even sent me photos of the property after the work was completed!</p><div class="clrev-by">&mdash; Patricia D.</div></div>
 <div class="clrev-slide"><p class="clrev-quote">My mother passed away and her home was loaded with items. Jersey Junkers brought a large crew and was able to tackle the whole job in a day. Incredible.</p><div class="clrev-by">&mdash; James H.</div></div>
@@ -784,7 +823,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <button class="clrev-dot" data-dot="3" aria-label="Review 4"></button>
 <button class="clrev-dot" data-dot="4" aria-label="Review 5"></button>
 </div>
-<div style="text-align:center;margin-top:26px"><a href="/customer-feedback/" style="display:inline-block;background:#F5C400;color:#1a1a1a;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:12px 24px;border-radius:999px;text-decoration:none">Read 700+ more reviews &rarr;</a></div>
+<div style="text-align:center;margin-top:26px"><a href="/customer-feedback/" style="display:inline-block;background:#F5C400;color:#1a1a1a;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:13.5px;letter-spacing:.05em;padding:12px 24px;border-radius:999px;text-decoration:none">Read 750+ more reviews &rarr;</a></div>
 </div></div></section>
 
 
@@ -816,12 +855,13 @@ UPLOADCARE_PREVIEW_STEP = false;
 
 <section class="final"><div class="wrap">
 <div class="kicker" style="display:inline-flex;justify-content:center;margin-bottom:10px">Free custom quote</div>
-<h2>Ready to get that space back?</h2>
-<p style="max-width:620px;margin:0 auto">Every cleanout is different &mdash; that&rsquo;s why we quote each job individually. Send a few photos and the details, and we&rsquo;ll come back fast with a clear, all-in price. No visit needed, no obligation.</p>
+<h2>Get your free cleanout quote today</h2>
+<p style="max-width:620px;margin:0 auto">Text or upload a few photos and we&rsquo;ll send back a clear, all-in price &mdash; usually same day. No home visit, no obligation, no pressure. Most cleanouts can be booked for same-day or next-day service.</p>
 <div class="final-cta" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:22px">
-<a class="btn" href="https://www.jerseyjunkers.com/request-a-quote/">Request a free quote &rarr;</a>
+<a class="btn" href="https://www.jerseyjunkers.com/request-a-quote/">Get My Free Quote &rarr;</a>
 <a class="btn btn-outline" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a>
 </div>
+<p style="margin-top:16px;font-size:14px;color:#6b6862">&#9733;&#9733;&#9733;&#9733;&#9733; 750+ five-star reviews &middot; Licensed &amp; insured &middot; Same-day service available</p>
 </div></section>
 
 <a class="ld-callbar" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">&#9742;&nbsp; Tap to call &mdash; 888-533-5865</a>
