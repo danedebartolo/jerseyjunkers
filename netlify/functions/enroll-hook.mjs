@@ -6,7 +6,7 @@ export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
-  const hook = process.env.ZAPIER_HOOK_ENROLL;
+  const hook = process.env.ZAPIER_HOOK_ENROLL || 'https://hooks.zapier.com/hooks/catch/13137357/49aczyt/';
   if (!hook) {
     return { statusCode: 500, body: 'Enrollment hook not configured' };
   }
