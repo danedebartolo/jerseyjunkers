@@ -2,7 +2,7 @@
 // The Zapier URL lives ONLY in the Netlify env var ZAPIER_HOOK_ENROLL (never in page source).
 const FIELDS = ['name', 'company', 'phone', 'email', 'zip', 'property_type', 'details', 'source', 'gclid', 'wbraid', 'gbraid'];
 
-exports.handler = async (event) => {
+export const handler = async (event) => {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
