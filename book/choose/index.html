@@ -362,6 +362,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 .fnl-bar{background:#fff;border-bottom:1px solid var(--line)}
 .fnl-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:12px;padding-bottom:12px}
 .fnl-logo{height:40px;width:auto;display:block}
+.fnl-logo-btn{background:none;border:none;padding:0;cursor:pointer;line-height:0}
 .fnl-call{font-family:'Archivo',sans-serif;font-weight:800;font-size:14px;color:var(--ink);text-decoration:none;background:var(--gold);padding:10px 17px;border-radius:999px;white-space:nowrap}
 .fnl-call:hover{filter:brightness(.96)}
 @media(max-width:560px){.fnl-logo{height:32px}.fnl-call{font-size:13px;padding:8px 13px}}
@@ -391,7 +392,7 @@ function gtag_report_conversion(url) {
 <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "xys5nfo5xt");</script>
 </head>
 <body>
-<div class="fnl-bar"><div class="wrap fnl-in"><img class="fnl-logo" src="https://mcusercontent.com/b4304a0ed8543b85186708ba6/images/9c8653bb-c115-69cf-2e4a-fdfd37855ee8.png" alt="Jersey Junkers&reg; &mdash; New Jersey's Junk Removal Company"><a class="fnl-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Call 888-533-5865</a></div></div>
+<div class="fnl-bar"><div class="wrap fnl-in"><button type="button" id="logoBack" class="fnl-logo-btn" aria-label="Back to services"><img class="fnl-logo" src="https://mcusercontent.com/b4304a0ed8543b85186708ba6/images/9c8653bb-c115-69cf-2e4a-fdfd37855ee8.png" alt="Jersey Junkers&reg; &mdash; New Jersey's Junk Removal Company"></button><a class="fnl-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Call 888-533-5865</a></div></div>
 <header style="position:relative;background-image:linear-gradient(90deg,rgba(12,14,18,.88) 0%,rgba(12,14,18,.64) 48%,rgba(12,14,18,.46) 100%),url('/images/book-hero.png');background-size:cover;background-position:center 26%;color:#fff;padding:66px 0 58px">
 <div class="wrap">
 <div class="kicker" style="color:var(--gold)">Book online</div>
@@ -623,11 +624,14 @@ document.querySelectorAll("[data-zip]").forEach(form => {
   var show=document.getElementById('showItems'),
       back=document.getElementById('itemsBack'),
       choose=document.getElementById('chooseView'),
-      items=document.getElementById('itemsView');
+      items=document.getElementById('itemsView'),
+      logo=document.getElementById('logoBack');
   if(!show||!items||!choose)return;
   function anim(el){el.classList.remove('view-in');void el.offsetWidth;el.classList.add('view-in');}
+  function goBack(){items.hidden=true;choose.style.display='';anim(choose);}
   show.addEventListener('click',function(e){e.preventDefault();choose.style.display='none';items.hidden=false;anim(items);});
-  if(back)back.addEventListener('click',function(){items.hidden=true;choose.style.display='';anim(choose);});
+  if(back)back.addEventListener('click',goBack);
+  if(logo)logo.addEventListener('click',function(){if(!items.hidden)goBack();});
 })();
 </script>
 </body></html>
