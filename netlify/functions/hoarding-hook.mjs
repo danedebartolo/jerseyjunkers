@@ -60,7 +60,7 @@ function customerEmail(d) {
         '<strong>One flat price</strong>, locked before we start',
         'Every room cleared, floor to ceiling',
         'Valuables, photos &amp; papers set aside for you',
-        'Donation &amp; recycling whenever possible',
+        'Set start and finish date',
         'Left clear and broom-swept',
       ];
 
