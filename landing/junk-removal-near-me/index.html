@@ -528,6 +528,16 @@ UPLOADCARE_PREVIEW_STEP = false;
 .hi-book{background:#F5C400;color:#1a1a1a;font-size:16px}
 .hi-mbook{display:block;margin-top:12px;text-align:center;background:#fff;color:#1a1a1a;font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:15px;padding:16px;border-radius:12px;text-decoration:none}
 .hi-call{color:#fff;font-weight:800;text-decoration:none;border-bottom:2px solid rgba(255,255,255,.5)}
+.tt-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.tt{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;text-align:center}
+.tt-truck{height:14px;border-radius:7px;background:#ece9df;overflow:hidden;margin-bottom:14px}
+.tt-truck span{display:block;height:100%;background:#F5C400}
+.tt-name{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:15px}
+.tt-desc{font-size:13px;color:#5a5a5a;margin:4px 0 10px;min-height:42px}
+.tt-price{font-family:'Archivo',sans-serif;font-weight:900;font-size:30px;color:#1F9D55}
+.tt-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:22px}
+.tt-foot span{color:#5a5a5a;font-size:14px}
+@media(max-width:900px){.tt-grid{grid-template-columns:1fr 1fr}.tt:last-child{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -544,7 +554,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <div class="wrap">
 <div class="ld-hero-copy" style="max-width:640px">
 <div class="ld-desk">
-<span class="eyebrow">Local Junk Removal &middot; Same-Day &amp; Next-Day</span>
+<span class="eyebrow">Local Junk Removal &middot; All-Inclusive $199&ndash;$949</span>
 <h1>Junk removal near you, <span style="color:#F5C400;-webkit-text-stroke:0;text-shadow:none">ready when you are.</span></h1>
 <p class="lead">A friendly local crew walks in, does every bit of the carrying and loading, sweeps up after, and drives it all away. You never touch a thing. Pick a time online in about a minute, or call and a real person answers.</p>
 <div class="hi-cta"><a class="btn hi-book" href="/book/">See open times &amp; book &rarr;</a><a class="hi-call" href="tel:8885335865" onclick="return gtag_report_conversion('tel:8885335865');">Or call 888-533-5865</a></div>
@@ -575,7 +585,7 @@ UPLOADCARE_PREVIEW_STEP = false;
 <section class="ld-mmission"><div class="wrap">
 <h2 class="ld-mm-h"><span style="color:var(--blue)">You point.</span><br>We do all the lifting.</h2>
 <div class="ld-mm-bar"></div>
-<p class="ld-mm-p">Whether it's <b>a single item</b> or <b>emptying the contents of a home,</b> our expert teams work fast, efficiently, and without hassle.</p>
+<p class="ld-mm-p">Whether it's <b>a garage full</b> or <b>emptying the contents of a home,</b> our expert teams work fast, efficiently, and without hassle.</p>
 <div class="ld-illu">
 <img class="ld-illu-truck" src="/images/36a716_1e288d994de34d9193256acce0523632_1977c9.png" alt="Jersey Junkers truck" loading="lazy">
 <img class="ld-illu-men" src="/images/36a716_ade574dc595047e0b2b79ed72b1e8b68_1977c9.png" alt="Jersey Junkers crew" loading="lazy">
@@ -660,40 +670,16 @@ UPLOADCARE_PREVIEW_STEP = false;
 
 <section class="band" style="padding:56px 0 64px"><div class="wrap">
 <div class="sec-head" style="margin-bottom:24px"><div class="kicker">How we price</div>
-<h2>How our pricing works</h2>
-<p style="max-width:740px">Your cost is based on the space your items fill in our truck &mdash; from one item to a truck full. You choose what we haul; we have a price tier to match.</p></div>
-<div class="ptabs">
-<div class="ptab-bar" role="tablist">
-<button class="ptab active" role="tab" data-tab="single">Single-Item</button>
-<button class="ptab" role="tab" data-tab="multi">Multiple-Items</button>
+<h2>Priced by truck space. <span style="color:#1F9D55;white-space:nowrap">$199&ndash;$949.</span></h2>
+<p style="max-width:740px">You pay for the space your items take up in our truck, and nothing else. Every price includes the crew, all the lifting and loading, hauling and disposal. Your crew confirms the price on site before anything moves.</p></div>
+<div class="tt-grid">
+<div class="tt"><div class="tt-truck"><span style="width:12%"></span></div><div class="tt-name">Minimum load</div><div class="tt-desc">A few big pieces</div><div class="tt-price">$199</div></div>
+<div class="tt"><div class="tt-truck"><span style="width:25%"></span></div><div class="tt-name">1/4 truck</div><div class="tt-desc">A room's worth of furniture</div><div class="tt-price">$399</div></div>
+<div class="tt"><div class="tt-truck"><span style="width:50%"></span></div><div class="tt-name">1/2 truck</div><div class="tt-desc">Garage or basement corner</div><div class="tt-price">$669</div></div>
+<div class="tt"><div class="tt-truck"><span style="width:75%"></span></div><div class="tt-name">3/4 truck</div><div class="tt-desc">Most of a basement or garage</div><div class="tt-price">$829</div></div>
+<div class="tt"><div class="tt-truck"><span style="width:100%"></span></div><div class="tt-name">Full truck</div><div class="tt-desc">A whole floor or big cleanout</div><div class="tt-price">$949</div></div>
 </div>
-<div class="ptab-panel active" data-panel="single">
-<div class="ptab-stack">
-<h3 class="ptab-h">Single items <span style="color:#1F9D55">$99</span> and up!</h3>
-<p>Got one bulky item that's in the way? Whether it's a treadmill, mattress, microwave, or sofa &mdash; we'll take care of it, quick and clean. Perfect for fast, one-off pickups.</p>
-<div class="ptab-taglabel">Popular single-item pick-ups &mdash; each priced by the item:</div>
-<ul class="ticklist two-col" style="margin:0 0 18px">
-<li>Appliances</li><li>Chairs</li><li>Couches</li><li>E-Waste</li><li>Treadmills</li><li>Mattresses</li><li>Microwaves</li><li>And more!</li>
-</ul>
-<img src="/images/36a716_c7ba5985c3e8457d88095ef8d83397e6_a552c7.jpg" alt="Single item pick-up" loading="lazy">
-<div class="ptab-cta"><a class="btn" href="/book/">Book a pickup &rarr;</a>
-<p class="ptab-fine"><b>Small</b> Single-Items Start at <span class="pgreen">$99</span><br><b>Large</b> Items Start at <span class="pgreen">$199</span> and up.</p></div>
-</div>
-</div>
-<div class="ptab-panel" data-panel="multi">
-<div class="ptab-stack">
-<h3 class="ptab-h">Multi-items <span style="white-space:nowrap">start at <span style="color:#1F9D55">$199</span></span></h3>
-<p>Your cost depends on the overall space your items take up in our trucks &mdash; from our smallest load size to a full truckload. Homes, businesses &mdash; we'll even meet you at a storage unit.</p>
-<div class="ptab-taglabel">A few of the things we haul away:</div>
-<ul class="ticklist two-col" style="margin:0 0 18px">
-<li>Furniture</li><li>Appliances</li><li>Mattresses</li><li>Cardboard</li><li>Boxes &amp; clutter</li><li>Garage junk</li><li>Basement junk</li><li>And more!</li>
-</ul>
-<img src="/images/36a716_3e45e222296b40f682e684e5b8bd753d_a552c7.jpg" alt="Multi-item truck load" loading="lazy">
-<div class="ptab-cta"><a class="btn" href="/book/">Book a pickup &rarr;</a>
-<p class="ptab-fine"><b>Multi-Item</b> pricing ranges from <span class="pgreen">$199&ndash;$949</span></p></div>
-</div>
-</div>
-</div>
+<div class="tt-foot"><a class="btn" href="/book/">See open times &amp; book &rarr;</a><span>More than a truck? We bring a second one.</span></div>
 </div></section>
 
 <section class="band" style="padding:56px 0"><div class="wrap" style="text-align:center">
