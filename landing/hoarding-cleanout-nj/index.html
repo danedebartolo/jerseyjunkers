@@ -664,8 +664,8 @@ function gtag_report_conversion(url) {
 <img src="/images/hoarding-crew.jpg" alt="A cleared-out living room, broom-swept, with a stack of boxes marked Keep" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px;border:1px solid var(--line);margin-top:24px">
 </div>
 <div class="qform">
-<h3 id="qTitle">Get a price for the house</h3>
-<p class="qsub" id="qSub">Send photos for a fast quote, or we&rsquo;ll set up a free walkthrough.</p>
+<h3 id="qTitle">Tell us what you need</h3>
+<p class="qsub" id="qSub">Whether it&rsquo;s a full cleanout or an hourly session, a real person will call you back to talk it through.</p>
 <form class="ld-form" id="ldForm">
 <div style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden" aria-hidden="true"><label>Company<input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
 <div class="ldf-body">
@@ -674,23 +674,23 @@ function gtag_report_conversion(url) {
 <input type="tel" name="phone" placeholder="Phone Number" required>
 <input type="text" name="zip" inputmode="numeric" maxlength="5" pattern="\d{5}" placeholder="ZIP Code" required>
 <select name="service_option" required style="width:100%;font-family:inherit;font-size:15px;padding:12px 13px;border:1.5px solid var(--line);border-radius:10px;margin-top:5px;color:var(--ink);background:#fff">
-<option value="" disabled selected>What do you need?</option>
-<option value="Complete Cleanout (flat price)">Clear the whole house (flat price)</option>
-<option value="Declutter Session (hourly)">Request an hourly session ($249/hr)</option>
+<option value="" disabled selected>Which option are you interested in?</option>
+<option value="Complete Cleanout (flat price)">Complete Cleanout (flat price)</option>
+<option value="Declutter Session (hourly)">Hourly Session ($249/hr)</option>
 <option value="Not sure yet">Not sure yet &mdash; help me decide</option>
 </select>
 <select name="timing" required>
-<option value="" disabled selected id="qWhen">When do you need it done?</option>
+<option value="" disabled selected id="qWhen">When are you looking to get started?</option>
 <option value="This week">This week</option>
 <option value="This month">This month</option>
 <option value="Have a deadline (closing, move-out, sale)">I have a deadline (closing, move-out, sale)</option>
 <option value="No rush">No rush, just getting prices</option>
 </select>
-<textarea name="details" rows="4" id="qDetails" placeholder="Tell us about the house: size, rooms, any deadline (closing, move-out, sale)" required></textarea>
+<textarea name="details" rows="4" id="qDetails" placeholder="Tell us a little about the home and what you need help with" required></textarea>
 <label class="up">Photos <span>(optional — helps us quote faster)</span>
 <input type="hidden" role="uploadcare-uploader" name="photos" data-public-key="3c6c6ff30a98183e8ab3" data-multiple="true" data-images-only="false" style="margin-top:6px">
 </label>
-<button class="btn" type="submit">Submit now</button>
+<button class="btn" type="submit">Send my request</button>
 <div class="ld-status" aria-live="polite"></div>
 </div>
 </form>
@@ -859,27 +859,6 @@ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isInter
 v.forEach(function(e){io.observe(e);});})();
 </script>
 <script>
-function jjMode(m){
-  var sel=document.querySelector('select[name=service_option]'),t=document.getElementById('qTitle'),sub=document.getElementById('qSub'),w=document.getElementById('qWhen'),d=document.getElementById('qDetails'),b=document.querySelector('#ldForm [type=submit]');
-  if(m==='session'){
-    if(sel)sel.value='Declutter Session (hourly)';
-    t.textContent='Request a session';
-    sub.textContent='$249/hr, 2-hour minimum. We\u2019ll call to set a day and talk through what to expect.';
-    w.textContent='When would you like to start?';
-    d.placeholder='Who is the session for, and what areas do you want to start with? (kitchen, garage, a bedroom\u2026)';
-    if(b)b.textContent='Request my session';
-  }else{
-    if(sel)sel.value='Complete Cleanout (flat price)';
-    t.textContent='Get a price for the house';
-    sub.textContent='Send photos for a fast quote, or we\u2019ll set up a free walkthrough.';
-    w.textContent='When do you need it done?';
-    d.placeholder='Tell us about the house: size, rooms, any deadline (closing, move-out, sale)';
-    if(b)b.textContent='Get my price';
-  }
-}
-document.addEventListener('DOMContentLoaded',function(){
-  var sel=document.querySelector('select[name=service_option]');
-  if(sel)sel.addEventListener('change',function(){jjMode(sel.value.indexOf('Declutter')===0?'session':'cleanout');});
-});
+function jjMode(m){var sel=document.querySelector('select[name=service_option]');if(sel)sel.value=(m==='session')?'Declutter Session (hourly)':'Complete Cleanout (flat price)';}
 </script>
 </body></html>
