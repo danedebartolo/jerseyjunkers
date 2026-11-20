@@ -820,7 +820,7 @@ document.querySelectorAll("[data-zip]").forEach(form => {
 <script>
 (function(){
   var f=document.getElementById("ldForm"); if(!f)return;
-  var HOOK="/.netlify/functions/quote-hook";
+  var HOOK="/.netlify/functions/hoarding-hook";
   var ph=f.querySelector('input[name="phone"]');
   if(ph){ph.addEventListener("input",function(){var d=ph.value.replace(/\D/g,"").slice(0,10);var o=d;if(d.length>6)o=d.slice(0,3)+"-"+d.slice(3,6)+"-"+d.slice(6);else if(d.length>3)o=d.slice(0,3)+"-"+d.slice(3);ph.value=o;ph.setCustomValidity("");});}
   var zp=f.querySelector('input[name="zip"]');
