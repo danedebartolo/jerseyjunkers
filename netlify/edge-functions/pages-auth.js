@@ -52,7 +52,7 @@ function loginPage(error) {
 }
 
 export default async (request, context) => {
-  const password = Deno.env.get("PROTECTED_PAGE_PASSWORD");
+  const password = Deno.env.get("PROTECTED_PAGE_PASSWORD") || Deno.env.get("DASHBOARD_PASSWORD");
 
   // If no password is configured, fail closed (deny) rather than exposing the page.
   if (!password) {
